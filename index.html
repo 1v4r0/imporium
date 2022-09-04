@@ -9,7 +9,7 @@
   var col = Number(cap); // Comparison
   const ma = prompt('What are your monthly annuities(without the currency symbol)?');
   const cma = prompt('What are the monthly annuities you want to compare to(without the currency symbol)?')
-  const ic = 'day'; //prompt('How often are interests calculated? Every (type) "day" or "month".');
+  const ic = prompt('How often are interests calculated? Every (type) "day" or "month".');
   const ia = prompt('How often are interests added to the loan? Every (type) "1" or "3" month(s).');
   var N = 0; // Month
   var ti = 0; // Temporary interests
@@ -28,14 +28,17 @@
       }
       ti += ol*di*months[N%12]; // Increasing temporary interests
       ol -= ma; // Paying annuity
-
-      //alert('Outstanding loan: '+ol+' after '+N+' months.')
+    } else if(ic=='month'){
+      if(N%Number(ia)==0){
+        ol += ti; // Adding interests
+        ti = 0; // Resetting temporary interests
+      }
+      ti += ol*mi; // Increasing temporary interests
+      ol -= ma; // Paying annuity
     }
     N++;
-    //alert(ol)
   }
   p = (N+1)*ma+ol+ti-cap; // Calculating price
-  //alert(p)
   ti=0;
   N=0;
   while (col > cma-ti) {
@@ -46,14 +49,19 @@
       }
       ti += col*cdi*months[N%12];
       col -= cma;
-      //alert('Outstanding loan: '+ol+' after '+N+' months.')
+    } else if(ic=='month') {
+      if(N%Number(ia)==0){
+        col += ti;
+        ti = 0;
+      }
+      ti += col*cmi;
+      col -= cma;
     }
     N++;
-    //alert(ol)
   }
   cp = (N+1)*cma+col+ti-cap;
-  var P = p-cp
-  alert('The original price of the loan was: '+Math.round(p)+'. The new price is: '+Math.round(cp)+'. You will save: ' + Math.round(P));
+  var P = p-cp;
+  alert('Your current price is: '+Math.round(p)+'. Your new price is: '+Math.round(cp)+'. You will save: ' + Math.round(P));
 </script>
 </head>
 <body>
