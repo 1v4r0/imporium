@@ -62,28 +62,29 @@ function loancalculator(cap,ai,cai,ma,cma,ic,ia){
 </script>
 </head>
 <body>
-<p>How much of the loan is still outstanding(No currency and only US decimals)?</p>
-<input type="number" id="oulo" value=850000>
-<p>What is your current interest-rate(No % and only US decimals)?</p>
-<input type="number" id="cir" value=3.45>
-<p>What is your new interest-rate?</p>
-<input type="number" id="nir" value=2.95>
-<p>What is your monthly payment?</p>
-<input type="number" id="mp" value=4200>
-<p>What is your new monthly payment?</p>
-<input type="number" id="nmp" value=4200>
-<p>Please select how often interests are calculated:</p>
-<input type="radio" id="cDaily" name="inca" value=1>
-<label for="Daily">Daily</label><br>
-<input type="radio" id="cMonthly" name="inca" value=3>
-<label for="Monthly">Monthly</label>
-<p>Please select how often interests are added to the loan:</p>
-<input type="radio" id="aMonthly" name="inad" value=1>
-<label for="Monthly">Monthly</label><br>
-<input type="radio" id="aAnnually" name="inad" value=3>
-<label for="Quarterly">Quarterly</label><br>
-<p><button id="calc" value="Calculate"> Calculate </button></p>
-<p id="price"></p>
+  <p> Use no symbols other than numbers and US decimal indicators.</p>
+  <p>How much of the loan is still outstanding?</p>
+  <input type="number" id="oulo" value=850000>
+  <p>What is your current interest-rate?</p>
+  <input type="number" id="cir" value=3.45>
+  <p>What is your new interest-rate?</p>
+  <input type="number" id="nir" value=2.95>
+  <p>What is your monthly payment?</p>
+  <input type="number" id="mp" value=4200>
+  <p>What is your new monthly payment?</p>
+  <input type="number" id="nmp" value=4200>
+  <p>Please select how often interests are calculated:</p>
+  <input type="radio" id="cDaily" name="inca" value=1>
+  <label for="Daily">Daily</label><br>
+  <input type="radio" id="cMonthly" name="inca" value=3>
+  <label for="Monthly">Monthly</label>
+  <p>Please select how often interests are added to the loan:</p>
+  <input type="radio" id="aMonthly" name="inad" value=1>
+  <label for="Monthly">Monthly</label><br>
+  <input type="radio" id="aAnnually" name="inad" value=3>
+  <label for="Quarterly">Quarterly</label><br>
+  <p><button id="calc" value="Calculate"> Calculate </button></p>
+  <p id="price"></p>
 <script>
   const calc = document.querySelector('#calc');
   const cFreqs = document.querySelectorAll('input[name="inca"]');
