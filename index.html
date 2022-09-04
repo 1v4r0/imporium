@@ -2,13 +2,13 @@
 <head>
 <title>Loan Calculator</title>
 <script>
-function loancalculator(cap,ai,cai,ic,ia){
+function loancalculator(cap,ai,cai,ma,cma,ic,ia){
   ai=ai/100; // Turn into decimal
   cai=cai/100; // Comparison
   var ol = Number(cap); // Outstanding Loan
   var col = Number(cap); // Comparison
-  const ma = 4200;//prompt('What are your monthly annuities(without the currency symbol)?');
-  const cma = 4200;//prompt('What are the monthly annuities you want to compare to(without the currency symbol)?')
+  //const ma = 4200;//prompt('What are your monthly annuities(without the currency symbol)?');
+  //const cma = 4200;//prompt('What are the monthly annuities you want to compare to(without the currency symbol)?')
   var N = 0; // Month
   var ti = 0; // Temporary interests
   var p = 0; // Price
@@ -70,8 +70,10 @@ function loancalculator(cap,ai,cai,ic,ia){
 <input type="text" id="cir" value=3.45>
 <p>What is your new interest-rate?</p>
 <input type="text" id="nir" value=2.95>
-<p>What is your new interest-rate?</p>
-<input type="text" id="nir" value=2.95>
+<p>What is your monthly payment?</p>
+<input type="text" id="mp" value=4200>
+<p>What is your new monthly payment?</p>
+<input type="text" id="nmp" value=4200>
 <p>Please select how often interests are calculated:</p>
 <input type="radio" id="cDaily" name="inca" value=1>
 <label for="Daily">Daily</label><br>
@@ -103,7 +105,7 @@ function loancalculator(cap,ai,cai,ic,ia){
         break;
       }
     }
-    loancalculator(document.getElementById("oulo").value,document.getElementById("cir").value,document.getElementById("nir").value,scFreq,saFreq);
+    loancalculator(document.getElementById("oulo").value,document.getElementById("cir").value,document.getElementById("nir").value,document.getElementById("mp").value,document.getElementById("nmp").value,scFreq,saFreq);
    });
 </script>
 </body>
