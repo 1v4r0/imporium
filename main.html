@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Hund</title>
+<script>
+  var time = 6;
+  var hunger = 0;
+  var energy = 100;
+  var weekdayindex = 0;
+  var weekdays = ["Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag","Søndag"];
+  function setToNextHour(){ //Lader tiden gå med 1 time mellem klokken 6 og 21. Sultniveauet og energiniveauet forøges for hver time.
+    time+=1;
+    checkHourOverflow()
+  }
+  function eat(){ //Spisning sænker sultniveauet.
+    hunger -= 33
+  }
+  function walk(){ //Gåtur sænker energiniveauet.
+    energy -= 33
+  }
+  function checkHourOverflow(){
+    if (time>21) {
+      time = 6;
+      weekdayindex += 1
+    }
+  }
+  for (var i = 0; i <100; i++) {
+    setTimeout(setToNextHour(),100);
+    alert(time)
+  }
+</script>
+</head>
+<body>
+</body>
