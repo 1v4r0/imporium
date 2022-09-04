@@ -14,8 +14,8 @@ function loancalculator(cap,ai,cai,ic,ia){
   const months = [31,28,31,30,31,30,31,31,30,31,30,31]; // Days in the months
   const di = (ai/100+1)**(1/365)-1; // Daily interests
   const cdi = (cai/100+1)**(1/365)-1; // Comparison
-  const mi = (ai+1)**(1/12)-1; // Monthly interests
-  const cmi = (cai+1)**(1/12)-1; // Comparison
+  const mi = (ai/100+1)**(1/12)-1; // Monthly interests
+  const cmi = (cai/100+1)**(1/12)-1; // Comparison
   while (ol > ma-ti) { // Simulating the loan
     if(ic==1){
       if(N%ia==0){
@@ -68,39 +68,40 @@ function loancalculator(cap,ai,cai,ic,ia){
 <input type="text" id="cir" value=3.45>
 <p>What is your new interest-rate?</p>
 <input type="text" id="nir" value=2.95>
-  <p>Please select how often interests are calculated:</p>
-  <input type="radio" id="cDaily" name="inca" value=1>
-  <label for="Daily">Daily</label><br>
-  <input type="radio" id="cMonthly" name="inca" value=3>
-  <label for="Monthly">Monthly</label>
+<p>What is your new interest-rate?</p>
+<input type="text" id="nir" value=2.95>
+<p>Please select how often interests are calculated:</p>
+<input type="radio" id="cDaily" name="inca" value=1>
+<label for="Daily">Daily</label><br>
+<input type="radio" id="cMonthly" name="inca" value=3>
+<label for="Monthly">Monthly</label>
 <p>Please select how often interests are added to the loan:</p>
-  <input type="radio" id="aMonthly" name="inad" value=1>
-  <label for="Monthly">Monthly</label><br>
-  <input type="radio" id="aAnnually" name="inad" value=3>
-  <label for="Quarterly">Quarterly</label><br>
-  <p><button id="calc" value="Calculate"> Calculate </button></p>
-  <p id="price"></p>
-  <script>
-        const calc = document.querySelector('#calc');
-        const cFreqs = document.querySelectorAll('input[name="inca"]');
-        const aFreqs = document.querySelectorAll('input[name="inad"]');
-        calc.addEventListener("click", () => {
-            let cFreq;
-            let aFreq
-            for (const freq of cFreqs) {
-                if (freq.checked) {
-                    scFreq = freq.value;
-                    break;
-                }
-            }
-            for (const freq of aFreqs) {
-                if (freq.checked) {
-                    saFreq = freq.value;
-                    break;
-                }
-            }
-            // show the output:
-            loancalculator(document.getElementById("oulo").value,document.getElementById("cir").value,document.getElementById("nir").value,scFreq,saFreq);
-        });
-    </script>
+<input type="radio" id="aMonthly" name="inad" value=1>
+<label for="Monthly">Monthly</label><br>
+<input type="radio" id="aAnnually" name="inad" value=3>
+<label for="Quarterly">Quarterly</label><br>
+<p><button id="calc" value="Calculate"> Calculate </button></p>
+<p id="price"></p>
+<script>
+  const calc = document.querySelector('#calc');
+  const cFreqs = document.querySelectorAll('input[name="inca"]');
+  const aFreqs = document.querySelectorAll('input[name="inad"]');
+  calc.addEventListener("click", () => {
+    let cFreq;
+    let aFreq
+    for (const freq of cFreqs) {
+      if (freq.checked) {
+        scFreq = freq.value;
+        break;
+      }
+    }
+    for (const freq of aFreqs) {
+      if (freq.checked) {
+        saFreq = freq.value;
+        break;
+      }
+    }
+    loancalculator(document.getElementById("oulo").value,document.getElementById("cir").value,document.getElementById("nir").value,scFreq,saFreq);
+   });
+</script>
 </body>
