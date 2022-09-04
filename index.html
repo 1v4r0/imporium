@@ -2,34 +2,31 @@
 <head>
 <title>Loan Calculator</title>
 <script>
-  const ai = prompt('What are your current annual interests in percentages(without %)?')/100;
-  const cai = prompt('What are the annual interests you want to compare to in percentages(without %)?')/100;
-  const cap = prompt('How much do you still owe on the loan(without the currency symbol)?');
+function loancalculator(cap,ai,cai,ic,ia){
   var ol = Number(cap); // Outstanding Loan
   var col = Number(cap); // Comparison
-  const ma = prompt('What are your monthly annuities(without the currency symbol)?');
-  const cma = prompt('What are the monthly annuities you want to compare to(without the currency symbol)?')
-  const ic = prompt('How often are interests calculated? Every (type) "day" or "month".');
-  const ia = prompt('How often are interests added to the loan? Every (type) "1" or "3" month(s).');
+  const ma = 4200;//prompt('What are your monthly annuities(without the currency symbol)?');
+  const cma = 4200;//prompt('What are the monthly annuities you want to compare to(without the currency symbol)?')
   var N = 0; // Month
   var ti = 0; // Temporary interests
   var p = 0; // Price
   var cp = 0; // Comparison
   const months = [31,28,31,30,31,30,31,31,30,31,30,31]; // Days in the months
-  const di = (ai+1)**(1/365)-1; // Daily interests
-  const cdi = (cai+1)**(1/365)-1; // Comparison
+  const di = (ai/100+1)**(1/365)-1; // Daily interests
+  alert(di)
+  const cdi = (cai/100+1)**(1/365)-1; // Comparison
   const mi = (ai+1)**(1/12)-1; // Monthly interests
   const cmi = (cai+1)**(1/12)-1; // Comparison
   while (ol > ma-ti) { // Simulating the loan
-    if(ic=='day'){
-      if(N%Number(ia)==0){
+    if(ic==1){
+      if(N%ia==0){
         ol += ti; // Adding interests
         ti = 0; // Resetting temporary interests
       }
       ti += ol*di*months[N%12]; // Increasing temporary interests
       ol -= ma; // Paying annuity
-    } else if(ic=='month'){
-      if(N%Number(ia)==0){
+    } else if(ic==3){
+      if(N%ia==0){
         ol += ti; // Adding interests
         ti = 0; // Resetting temporary interests
       }
@@ -38,19 +35,19 @@
     }
     N++;
   }
-  p = (N+1)*ma+ol+ti-cap; // Calculating price
+  p = (N+1)*ma+ol+ti-cap; // Calculating pricealert(p)
   ti=0;
   N=0;
   while (col > cma-ti) {
-    if(ic=='day'){
-      if(N%Number(ia)==0){
+    if(ic==1){
+      if(N%ia==0){
         col += ti;
         ti = 0;
       }
       ti += col*cdi*months[N%12];
       col -= cma;
-    } else if(ic=='month') {
-      if(N%Number(ia)==0){
+    } else if(ic==3) {
+      if(N%ia==0){
         col += ti;
         ti = 0;
       }
@@ -61,8 +58,52 @@
   }
   cp = (N+1)*cma+col+ti-cap;
   var P = p-cp;
-  alert('Your current price is: '+Math.round(p)+'. Your new price is: '+Math.round(cp)+'. You will save: ' + Math.round(P));
+  alert('The current price of the loan: '+Math.round(p)+'. The new price of the loan: '+Math.round(cp)+'. You will save: '+Math.round(P));
+}
 </script>
 </head>
 <body>
+<p>How much of the loan is still outstanding?</p>
+<input type="text" id="oulo" value=850000>
+<p>What is your current interest-rate?</p>
+<input type="text" id="cir" value=3.45>
+<p>What is your new interest-rate?</p>
+<input type="text" id="nir" value=2.95>
+  <p>Please select how often interests are calculated:</p>
+  <input type="radio" id="cDaily" name="inca" value=1>
+  <label for="Daily">Daily</label><br>
+  <input type="radio" id="cWeekly" name="inca" value=2>
+  <label for="Weekly">Weekly</label><br>
+  <input type="radio" id="cMonthly" name="inca" value=3>
+  <label for="Monthly">Monthly</label>
+<p>Please select how often interests are added to the loan:</p>
+  <input type="radio" id="aMonthly" name="inad" value=1>
+  <label for="Monthly">Monthly</label><br>
+  <input type="radio" id="aAnnually" name="inad" value=3>
+  <label for="Quarterly">Quarterly</label><br>
+  <p><button id="calc" value="Calculate"> Calculate </button></p>
+  <p id="price"></p>
+  <script>
+        const calc = document.querySelector('#calc');
+        const cFreqs = document.querySelectorAll('input[name="inca"]');
+        const aFreqs = document.querySelectorAll('input[name="inad"]');
+        calc.addEventListener("click", () => {
+            let cFreq;
+            let aFreq
+            for (const freq of cFreqs) {
+                if (freq.checked) {
+                    scFreq = freq.value;
+                    break;
+                }
+            }
+            for (const freq of aFreqs) {
+                if (freq.checked) {
+                    saFreq = freq.value;
+                    break;
+                }
+            }
+            // show the output:
+            loancalculator(document.getElementById("oulo").value,document.getElementById("cir").value,document.getElementById("nir").value,scFreq,saFreq);
+        });
+    </script>
 </body>
