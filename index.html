@@ -5,10 +5,8 @@
 function loancalculator(cap,ai,cai,ma,cma,ic,ia){
   ai=ai/100; // Turn into decimal
   cai=cai/100; // Comparison
-  ma=Number(ma);
-  cma=Number(cma);
-  var ol = Number(cap); // Outstanding Loan
-  var col = Number(cap); // Comparison
+  var ol = cap; // Outstanding Loan
+  var col = cap; // Comparison
   //const ma = 4200;//prompt('What are your monthly annuities(without the currency symbol)?');
   //const cma = 4200;//prompt('What are the monthly annuities you want to compare to(without the currency symbol)?')
   var N = 0; // Month
@@ -67,15 +65,15 @@ function loancalculator(cap,ai,cai,ma,cma,ic,ia){
 </head>
 <body>
 <p>How much of the loan is still outstanding(No currency and only US decimals)?</p>
-<input type="text" id="oulo" value=850000>
+<input type="number" id="oulo" value=850000>
 <p>What is your current interest-rate(No % and only US decimals)?</p>
-<input type="text" id="cir" value=3.45>
+<input type="number" id="cir" value=3.45>
 <p>What is your new interest-rate?</p>
-<input type="text" id="nir" value=2.95>
+<input type="number" id="nir" value=2.95>
 <p>What is your monthly payment?</p>
-<input type="text" id="mp" value=4200>
+<input type="number" id="mp" value=4200>
 <p>What is your new monthly payment?</p>
-<input type="text" id="nmp" value=4200>
+<input type="number" id="nmp" value=4200>
 <p>Please select how often interests are calculated:</p>
 <input type="radio" id="cDaily" name="inca" value=1>
 <label for="Daily">Daily</label><br>
