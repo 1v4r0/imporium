@@ -4,22 +4,18 @@
 <script>
 function loancalculator(cap,ai,cai,ma,cma,ic,ia){
   ai=ai/100; // Turn into decimal
-  alert(ai)
   cai=cai/100; // Comparison
-  alert(cai)
-  var ol = cap; // Outstanding Loan
-  var col = cap; // Comparison
-  //const ma = 4200;//prompt('What are your monthly annuities(without the currency symbol)?');
-  //const cma = 4200;//prompt('What are the monthly annuities you want to compare to(without the currency symbol)?')
+  var ol = Number(cap); // Outstanding Loan
+  var col = Number(cap); // Comparison
   var N = 0; // Month
   var ti = 0; // Temporary interests
   var p = 0; // Price
   var cp = 0; // Comparison
   const months = [31,28,31,30,31,30,31,31,30,31,30,31]; // Days in the months
-  const di = (ai/100+1)**(1/365)-1; // Daily interests
-  const cdi = (cai/100+1)**(1/365)-1; // Comparison
-  const mi = (ai/100+1)**(1/12)-1; // Monthly interests
-  const cmi = (cai/100+1)**(1/12)-1; // Comparison
+  const di = (ai+1)**(1/365)-1; // Daily interests
+  const cdi = (cai+1)**(1/365)-1; // Comparison
+  const mi = (ai+1)**(1/12)-1; // Monthly interests
+  const cmi = (cai+1)**(1/12)-1; // Comparison
   while (ol > ma-ti) { // Simulating the loan
     if(ic==1){
       if(N%ia==0){
@@ -38,10 +34,10 @@ function loancalculator(cap,ai,cai,ma,cma,ic,ia){
     }
     N++;
   }
-  p = (N+1)*ma+ol+ti-cap; // Calculating pricealert(p)
+  p = (N+1)*ma+ol+ti-cap; // Calculating price
   ti=0;
   N=0;
-  while (col > cma-ti) {
+  while (col > cma-ti) { // Comparison
     if(ic==1){
       if(N%ia==0){
         col += ti;
