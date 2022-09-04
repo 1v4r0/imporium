@@ -57,7 +57,7 @@ function loancalculator(cap,ai,cai,ic,ia){
   }
   cp = (N+1)*cma+col+ti-cap;
   var P = p-cp;
-  alert('The current price of the loan: '+Math.round(p)+'. The new price of the loan: '+Math.round(cp)+'. You will save: '+Math.round(P));
+  document.getElementById("price").innerHTML='The current price of the loan: '+Math.round(p)+'. The new price of the loan: '+Math.round(cp)+'. You will save: '+Math.round(P);
 }
 </script>
 </head>
