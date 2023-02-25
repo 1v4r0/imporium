@@ -17,13 +17,13 @@
      This can also be calculated algebraically as such
       $$\underline{v}+\underline{w}={v_1+w_1\choose v_2+w_2}$$
      You can also subtract vectors and this is just defined as such \(\underline{v}-\underline{w}=\underline{v}+(-\underline{w})\) where \(-\underline{w}\) is the vector that has the same magnitude
-     as \(\underline{w}\) but the opposite direction. These two processes will produce the diagonals of the parallellogram spanned by the two vectors, the sum will be the diagonal that goes from the
+     as \(\underline{w}\) but the opposite direction. These two processes will produce the diagonals of the parallelogram spanned by the two vectors, the sum will be the diagonal that goes from the
      start to the far end, while the two differences correspond to the the other diagonal as seen in the following image.<br>
      <img src="vsum.png" alt="Unit Circle." width="500"> <br>
      If you want to scale a vector by a factor k, this just changes the magnitude and is represented algebraically as
       $$k\underline{v}={kv_1\choose kv_2}$$
      If \(k < 0\) this represents flipping the vector and specifically \(k=-1\) is the opposite vector.<br>
-     We have two useful methods of "multiplying" two vectors togethr. One is the so-called scalar product
+     We have two useful methods to "multiply" two 2D vectors with each other. One is the so-called scalar product
       $$\underline{v}\bullet\underline{w}=v_1w_1+v_2w_2$$
      and the other is the determinant
       $$\det(\underline{v},\underline{w})=\hat{\underline{v}}\bullet\underline{w}=\begin{vmatrix}v_1 & w_1\\v_2 & w_2\end{vmatrix}=v_1w_2-v_2w_1$$
@@ -42,7 +42,7 @@
      and extend the vector so that it intersects the unit circle, we define the cosine of its angle \(\theta\) as the x-coordinate of the intersection point, similarly we define sine as the
      y-coordinate. Referring to the following image, the length of the green line represents the cosine of the angle and the length of the red line represents the sine.<br>
      <img src="unitc.png" alt="Unit Circle." width="500"> <br>
-     At this point we are ready to state and prove what I call the fundamental theorem of vectors.<br>
+     At this point we are ready to state and prove what I call the fundamental theorem of vector geometry.<br>
      <b>The Fundamental Theorem of Vector Geometry.</b> For two vectors \(\underline{v}\) and \(\underline{w}\) we have:<br>
       \begin{align}
         \text{1. }&&\underline{v}\bullet\underline{w}&=|\underline{v}||\underline{w}|\cos(\theta)\\
@@ -50,7 +50,7 @@
         \text{3. }&&\underline{v}_{\underline{w}}&=\frac{\underline{v}\bullet\underline{w}}{|\underline{w}|^2}\underline{w}=\frac{|\underline{v}|}{|\underline{w}|}\cos(\theta)\underline{w}\\
         \text{4. }&&\underline{v}_{\hat{\underline{w}}}&=\frac{\det(\underline{v},\underline{w})}{|\underline{w}|^2}\hat{\underline{w}}=\frac{|\underline{v}|}{|\underline{w}|}\sin(\theta)\underline{w}
       \end{align}
-      Where \(\theta\) is the angle between the vectors and \(A\) is the areal of the parallellogram spanned by the two vectors.<br>
+      Where \(\theta\) is the angle between the vectors and \(A\) is the areal of the parallelogram spanned by the two vectors.<br>
       <b> Proof. </b> First we take our two vectors and scale them down to unit vectors so they fit into the unit circle, such that
         $$\underline{v}^*=\frac{\underline{v}}{|\underline{v}|}\text{ and }\underline{w}^*=\frac{\underline{w}}{|\underline{w}|}$$
         <img src="angle.png" alt="Unit Circle." width="500"> <br>
@@ -70,7 +70,9 @@
         &=|\underline{v}||\underline{w}|\hat{\underline{v}}^*\bullet(\cancel{\cos(\theta)\underline{v}^*}+\sin(\theta)\hat{\underline{v}}^*)\\
         &=|\underline{v}||\underline{w}|\sin(\theta)\cancel{|\hat{\underline{v}}^*|^2}
       \end{align}
-      for the same reasons.<br>
+      for the same reasons. To see that this is the same as the area of the parallelogram, we can start by imagining the parallelogram with sides \(\underline{w}^*\) and \(\underline{v}\). This
+      obviously has area \(A^*=h\cdot b=|\sin(\theta)||\underline{v}|\), now we can scale up to the full parallelogram by multiplying by \(|\underline{w}|\) to yield
+      $$A=A^*\cdot|\underline{w}|=|\sin(\theta)||\underline{v}||\underline{w}|=|\det(\underline{v},\underline{w})|$$
       3 - 4. Now we take the key formula and multiply both sides by \(|\underline{w}|\) and expand the right hand side by \(|\underline{v}|^2\) to yield
       \begin{align}
         &&|\underline{w}|\underline{w}^*&=\frac{|\underline{v}||\underline{w}|\cos(\theta)}{|\underline{w}|^2}|\underline{v}|\underline{v}^*
