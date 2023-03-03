@@ -8,13 +8,15 @@
     </script>
   </head>
   <body>
-    This section is aimed at students in upper secondary education, some objects will be simplified and some terms will be restricted to that setting.<br>
+    This section is aimed at students in upper secondary education, some objects will be simplified and some terms will be restricted to that setting.
+    <h1> Coordinates and Magnitude </h1>
     A vector \(\underline{v}\) is an object that has a magnitude, denoted by \(|\underline{v}|\) and a direction which can be represented in several ways. You can denote it by its angle with the
     x-axis, \(\theta\), or you could denote it by specifying it's coordinates, in the current setting we will restrict ourselves to two dimensons denoted by x and y, as such
     $$\underline{v}={v_1\choose v_2}$$
     which means that the vector spans \(v_1\) units horizontally and \(v_2\) units vertically. The magnitude of the vector can be determined by these coordinates by applying the Pythagorean
     theorem as such
     $$|\underline{v}|=\sqrt{v_1^2+v_2^2}$$
+    <h1> Sum and Multiplication by a Scalar </h1>
     You can add two vectors by extending one by the other, and then the sum of the two vectors is the vector that goes from the start of the first vector to the end of the second.
     This can also be calculated algebraically as such
     $$\underline{v}+\underline{w}={v_1+w_1\choose v_2+w_2}$$
@@ -24,7 +26,8 @@
     <img src="vsum.png" alt="Unit Circle." width="500"> <br>
     If you want to scale a vector by a factor k, this just changes the magnitude and is represented algebraically as
     $$k\underline{v}={kv_1\choose kv_2}$$
-    If \(k < 0\) this represents flipping the vector and specifically \(k=-1\) is the opposite vector.<br>
+    If \(k < 0\) this represents flipping the vector and specifically \(k=-1\) is the opposite vector.
+    <h1> Scalar Product, Determinant and CO-vectors </h1>
     We have two useful methods to "multiply" two 2D vectors with each other. One is the so-called scalar product
     $$\underline{v}\bullet\underline{w}=v_1w_1+v_2w_2$$
     and the other is the determinant
@@ -33,7 +36,8 @@
     $$\hat{\underline{v}}={-v_2\choose v_1}$$
     the canonical orthogonal vector, or CO-vector, to \(\underline{v}\).<br>
     Vectors satisfy most of the rules of the rules that apply to scalars, such as commutativity, associativity and distributativity. Both with respect to the sum, scalar-multiple and scalar-product.
-    The determinant however, is anti-commutative.<br>
+    The determinant however, is anti-commutative.
+    <h1> Projections and Vector Division </h1>
     It is not exactly clear how one would be able to divide vectors, and this is not a widely recognized operation, but you can define what I will call the scalar-division as
     $$\frac{\underline{v}}{\underline{w}}=\frac{\underline{v}\bullet\underline{w}}{|\underline{w}|^2}$$
     This operation is very useful in conjunction with the concept of vector projections. We can write
@@ -44,16 +48,18 @@
     and extend the vector so that it intersects the unit circle, we define the cosine of its angle \(\theta\) as the x-coordinate of the intersection point, similarly we define sine as the
     y-coordinate. Referring to the following image, the length of the green line represents the cosine of the angle and the length of the red line represents the sine.<br>
     <img src="unitc.png" alt="Unit Circle." width="500"> <br>
-    At this point we are ready to state and prove what I call the fundamental theorem of vector geometry.<br>
-    <b>The Fundamental Theorem of Vector Geometry.</b> For two vectors \(\underline{v}\) and \(\underline{w}\) we have:<br>
+    At this point we are ready to state and prove what I call the fundamental theorem of vector geometry.
+    <h1>The Fundamental Theorem of Vector Geometry.</h1>
+    For two vectors \(\underline{v}\) and \(\underline{w}\) we have:<br>
     \begin{align}
       \text{1. }&&\underline{v}\bullet\underline{w}&=|\underline{v}||\underline{w}|\cos(\theta)\\
       \text{2. }&&\text{2. }\det(\underline{v},\underline{w})&=|\underline{v}||\underline{w}|\sin(\theta)=\pm A\\
       \text{3. }&&\underline{v}_{\underline{w}}&=\frac{\underline{v}\bullet\underline{w}}{|\underline{w}|^2}\underline{w}=\frac{|\underline{v}|}{|\underline{w}|}\cos(\theta)\underline{w}\\
       \text{4. }&&\underline{v}_{\hat{\underline{w}}}&=\frac{\det(\underline{v},\underline{w})}{|\underline{w}|^2}\hat{\underline{w}}=\frac{|\underline{v}|}{|\underline{w}|}\sin(\theta)\hat{\underline{w}}
     \end{align}
-    Where \(\theta\) is the angle between the vectors and \(A\) is the area of the parallelogram spanned by the two vectors.<br>
-    <b> Proof. </b> First we take our two vectors and scale them down to unit vectors so they fit into the unit circle, such that
+    Where \(\theta\) is the angle between the vectors and \(A\) is the area of the parallelogram spanned by the two vectors.
+    <h2> Proof. </h2>
+    First we take our two vectors and scale them down to unit vectors so they fit into the unit circle, such that
     $$\underline{v}^*=\frac{\underline{v}}{|\underline{v}|}\text{ and }\underline{w}^*=\frac{\underline{w}}{|\underline{w}|}$$
     <img src="angle.png" alt="Unit Circle." width="500"> <br>
     Then if we tilt our head to the left, we can immediately observe from the image that
@@ -81,5 +87,5 @@
       +\frac{|\underline{v}||\underline{w}|\sin(\theta)}{|\underline{w}|^2}|\underline{v}|\hat{\underline{v}}^*\\
       \iff&&\underline{w} &=\frac{\underline{v}\bullet\underline{w}}{|\underline{w}|^2}\underline{v}+\frac{\det(\underline{v},\underline{w})}{|\underline{w}|^2}\hat{\underline{v}}
     \end{align}
-    QED.
+    &#x220E;
 </body>
