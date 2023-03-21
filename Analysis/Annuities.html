@@ -1,0 +1,61 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Annuitites</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <h1> Annuities</h1>
+    In this section I will present what I will call annuities and specifically
+    annuity savings and loans.<br>
+    An annuity is a term-wise deposit of money into a capital, which then can
+    accrue or reduce interest depending on whether it's savings or a loan. I
+    will start with the most general case where we have an unknown initial
+    capital and annuity \(K_0,A\in\mathbb{R}\) which can be both negative and
+    positive representing loans and deposits and savings and payments
+    respectively.<br>
+    <h2> Lemma(Geometric Series) </h2>
+      The following result on the partial sum of a geometric series, which
+      technically holds only for \(x\neq1\) will be useful for the
+      derivation of the annuity formula.
+        $$\sum_{i=0}^nx^i=\frac{x^{n+1}-1}{x-1}$$
+      <h3> Proof </h3>
+        Let \(S=\sum_{i=0}^nx^i=1+x+x^2+\cdots+x^n\). Then
+        \begin{align}
+          &&xS=&x+x^2+\cdots+x^n+x^{n+1}\\
+          &&=&-1+1+x+x^2+\cdots+x^n+x^{n+1}\\
+          &&=&-1+S+x^{n+1}\\
+          \implies&& xS-S=&x^{n+1}-1\\
+          \implies&& S=&\frac{x^{n+1}-1}{x-1}
+        \end{align}
+    <h2> Theorem(The Annuity Formula) </h2> The capital after \(n\in\mathbb{N}\) terms
+      with a term-wise interest \(r\in[0,1]\) is
+      $$C_n=\left(C_0+\frac{A}{r}\right)(1+r)^n-\frac{A}{r}$$
+      <h3> Proof </h3>
+        At the start of the process, we just have the initial capital \(C_0\).
+        After one term we will have interest on that capital and one annuity,
+        \(C_1=C_0(1+r)+A\), after the second term we will have
+          $$C_2=(C_0(1+r)+A)(1+r)+A=C_0(1+r)^2+A(1+r)+A$$
+        and hopefully it will not be hard to imagine that after \(n\) terms we
+        will have
+        \begin{align}
+          C_n=&C_0(1+r)^n+A(1+r)^{n-1}+A(1+r)^{n-2}+\cdots+A(1+r)+A\\
+          =&C_0(1+r)^n+A(1+(1+r)+(1+r)^2+\cdots+(1+r)^{n-1})\\
+          =&C_0(1+r)^n+A\frac{(1+r)^{n-1+1}-1}{(1+r)-1}\\
+          =&C_0(1+r)^n+A\frac{(1+r)^n-1}{r}\\
+          =&C_0(1+r)^n+\frac{A}{r}((1+r)^n-1)\\
+          =&\left(C_0+\frac{A}{r}\right)(1+r)^n-\frac{A}{r}
+        \end{align}
+    <h3> Corollary(Savings) </h3>
+      You have annuity savings when \(A,C_0\geq0\) but lets assume that
+      \(C_0=0\) then we have the following formula
+        $$C_n=A\frac{(1+r)^n-1}{r}$$
+    <h3> Corollary(Loan) </h3>
+      You have an annuity loan when \(C_0< 0\) and \(A\geq0\). Lets assume that
+      your goal is to pay back the loan, then \(C_n=0\) and you can write the
+      formula as
+        $$A=C_0\frac{r}{1-(1+r)^{-n}}$$
+</body>
