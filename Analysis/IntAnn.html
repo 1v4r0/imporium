@@ -50,13 +50,15 @@
           =&C_0(1+r)^n+\frac{A}{r}((1+r)^n-1)\\
           =&\left(C_0+\frac{A}{r}\right)(1+r)^n-\frac{A}{r}
         \end{align}
-    <h3> Corollary(Savings) </h3>
-      You have annuity savings when \(A,C_0\geq0\) but lets assume that
-      \(C_0=0\) then we have the following formula
+    <h3> Corollaries </h3>
+      The first immidiate corollary is the compound interest formula
+        $$C_n=C_0(1+r)^n$$
+      if \(A=0\).<br>
+      The second is the annuity savings formula
         $$C_n=A\frac{(1+r)^n-1}{r}$$
-    <h3> Corollary(Loan) </h3>
-      You have an annuity loan when \(C_0< 0\) and \(A\geq0\). Lets assume that
-      your goal is to pay back the loan, then \(C_n=0\) and you can write the
-      formula as
-        $$A=C_0\frac{r}{1-(1+r)^{-n}}$$
+      if \(C_0\geq0\) and \(A>0\).
+      And the third is the annuity loan formula that can be used to determine
+      the annuity required to repay an initial capital, \(C_0<0\), back in a
+      certain number of terms
+        $$A=-C_0\frac{r}{1-(1+r)^{-n}}$$
 </body>
