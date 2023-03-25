@@ -1,0 +1,120 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Quantum Mechanics</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <h1> The Schrödinger Equation </h1>
+    The Schrödinger equation is a statement on realisable quantum states in the
+    real world. So a solution to the Schrödinger equation is a function that
+    describes the state of some quantum object.<br>
+    In order to make an analogy to classical mechanics lets consider
+    kinetic energy, i.e.
+      $$E_{kin}=\frac{1}{2}mv^2=\frac{p^2}{2m}$$
+    Is quantum mechanics the momentum operator is represented by the gradient
+    \(\hat{p}=-i\hbar\nabla\) which is just the partial derivative in one
+    dimension, i.e. \(\hat{p}=-i\hbar\frac{\partial}{\partial x}\). Now we are
+    ready to write the Schrödinger equation which is a statement on the
+    time development as it relates to the mechanical energy of the physical
+    system,
+    \begin{align}
+      i\hbar\frac{\partial}{\partial t}\Psi(x,t)=&E_{mec}\Psi(x,t)\\
+      =&(E_{kin}+E_{pot})\Psi(x,t)\\
+      =&\left[-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x,t)\right]
+        \Psi(x,t)
+    \end{align}
+    The thing then, that dictates our quantum state is the potential and I will
+    now investigate some simple potentials under the condition that the
+    potential not depend on time and that the states are seperable in time and
+    space.
+    <h2> Seperation of Variables </h2>
+      A state that is seperable can be written as
+        $$\Psi(x,t)=\psi(x)\varphi(t)$$
+      This has the consequence that I can investigate the time and space
+      components of the Schrödinger equation seperately because
+      \begin{align}
+        &&i\hbar\frac{\partial}{\partial t}\Psi(x,t)=&\left[-\frac{\hbar^2}{2m}
+        \frac{\partial^2}{\partial x^2}+V(x,t)\right]\Psi(x,t)\\
+        \implies&&i\hbar\frac{\partial\Psi}{\partial t}=&
+        \frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}+V\Psi\\
+        \implies&&\psi i\hbar\frac{d\varphi}{dt}=&\varphi\left(-\frac{\hbar^2}{2m}
+        \frac{d^2\psi}{dx^2}+V\psi\right)\\
+        \implies&&\frac{1}{\varphi}i\hbar\frac{d\varphi}{dt}=&\frac{1}{\psi}\left(
+        -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V\psi\right)\\
+        &&=&E
+      \end{align}
+      Since the variables are implied we disregard them as convenient and at
+      the very end we have an equation where each side only depends on a different
+      variable so they must both be equal to the same constant, which I will call
+      \(E\) for inexplicable reasons. This has two immediate consequences,
+        $$\frac{\varphi'}{\varphi}=\frac{E}{i\hbar}\implies\varphi(t)∝
+          e^{Et/i\hbar}=e^{-iEt/\hbar}$$
+      We will absorb the proportionality constant into the full state so it will
+      be omitted in the following sections. The second consequence is that
+        $$-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V\psi=E\psi$$
+      which is called the <b> the time independent Schrödinger equation </b> and
+      it's important to note that \(V\) is not simply some constant like \(E\),
+      but it's a function of \(x\).
+    <h2> Statistical Interpretation </h2>
+      Born's statistical interpretation of the wave function of a quantum state
+      states that the integral of the squared magnitude is the probability
+      distribution function for the location of the quantum object. This means
+      that
+        $$\int_R|\Psi(\underline{x},t)|^2d\underline{x}=P(X\in R)$$
+      where \(X\in R\) means that the quantum object is in that specific region.
+      This then implies that
+        $$\int_{\mathbb{R}^3}|\Psi(\underline{x},t)|^2d\underline{x}=1$$
+      which is often used to "normalize" wave functions, which often involves
+      determining the coefficient of the wave function, including the one from
+      the seperation of variables.
+    <h2> Infinite Square Well </h2>
+      The infinite square well is defined as the potential \(V(x,t)=0\) for \(x
+      \in[0,a]\) and \(V(x,t)=\infty\) for \(a\notin[0,a]\). This essentially
+      means that the quantum object cannot exsist outside the region bounded by
+      the interval. The time independent Schrödinger equation then becomes
+      \begin{align}
+        &&-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}=&E\psi\\
+        \implies&&\frac{d^2\psi}{dx^2}=&-\frac{2mE}{\hbar^2}\psi=-k^2\psi\\
+        \implies&&\psi(x)=&A\sin(kx)+B\cos(kx)
+      \end{align}
+      By imposing continuity restrictions on our states we know that \(\psi(0)=
+      \psi(a)=0\) so
+        $$0=A\sin(0)+B\cos(0)\implies B=0$$
+      and
+      \begin{align}
+        &&0=&A\sin(ka)\\
+        \implies&&k=&\frac{2\pi n}{a}\\
+        \implies&&\frac{2mE}{\hbar^2}=&\frac{4\pi^2n^2}{a^2}\\
+        \implies&&E=&\frac{2}{m}\left(\frac{\pi n\hbar}{a}\right)^2
+      \end{align}
+      for \(n\in\mathbb{N}\). Now I'll normalize the state to determine \(A\)
+      \begin{align}
+        1=&\int_\mathbb{R}|\Psi(x,t)|^2dx\\
+        =&\int_0^a|Ae^{-iEt/\hbar}\sin(kx)|^2dx\\
+        =&|A|^2\int_0^a\sin^2(kx)dx
+      \end{align}
+      To integrate \(\sin^2\) we use the fact that \(\sin^2+\cos^2=1\) and that
+      the area of \(\cos\) and \(\sin\) have the same magnitude on intervals
+      that are whole multiples of the half-period, which is exactly the case
+      here because the \(k\) was chosen to make \(x=a\) be a root of the sine
+      which happens at multiples of half-periods. This yield the following
+      calculation
+      \begin{align}
+        &&\int_0^a\sin^2=&\int_0^a\sin^2+\cos^2-\int_0^a\cos^2\\
+        \implies&&\int_0^a\sin^2+\int_0^a\cos^2=&\int_0^a\\
+        \implies&&2\int_0^a\sin^2=&a\\
+        \implies&&\int_0^a\sin^2=&\frac{a}{2}
+      \end{align}
+      which in turn means that
+      \begin{align}
+        &&|A|=&\sqrt{\frac{2}{a}}\\
+        \implies&&A=&\sqrt{\frac{2}{a}}e^{i\theta}\\
+        \implies&&\Psi(x,t)=&\sqrt{\frac{2}{a}}e^{i\left(\theta-\frac{2\hbar}{m}
+        \left(\frac{\pi n}{a}\right)^2t\right)}
+        \sin\left(\frac{2\pi n}{a}x\right)
+      \end{align}
+</body>
