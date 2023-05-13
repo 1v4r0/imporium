@@ -8,6 +8,8 @@
   </script>
 </head>
 <body>
+  Disclaimer: This section is heavily influenced by David J. Griffith's
+  international edition of "Introduction to Quantum Mechanics: Second Edition".
   <h1> The Schrödinger Equation </h1>
     The Schrödinger equation is a statement on realisable quantum states in the
     real world. So a solution to the Schrödinger equation is a function that
@@ -117,4 +119,89 @@
         \left(\frac{\pi n}{a}\right)^2t\right)}
         \sin\left(\frac{2\pi n}{a}x\right)
       \end{align}
+  <h2> The Harmonic Oscillator </h2>
+      The harmonic oscilattor is inspired by the classical spring, i.e.
+      \(F=-kx\), which then yields the potential \(V(x)=\frac{1}{2}kx^2\). We
+      will write k in terms of the angular frequency of the oscillation,
+      \(k=mω^2\) and this gives us the following Hamiltonian in the
+      Schrödinger equation, which is the spatial/right side of the equation,
+      \begin{align}
+        H=&-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+\frac{1}{2}mω^2x^2\\
+        =&\frac{p^2}{2m}+\frac{1}{2m}(mω x)^2\\
+        =&\frac{1}{2m}[p^2+(mω x)^2]
+      \end{align}
+      We might get inspired by complex numbers to consider the square rule
+        $$a^2+b^2=a^2-i^2b^2=(a+ib)(a-ib)$$
+      but there is an issue with this, it assumes that the numbers a and b are
+      commutative, i.e. that the order in which we multiply them is unimportant.
+      Since it's \(p\) and \(x\) we want to consider lets test this condition.
+      Lets take a test function \(f\) and apply \(xp\) and \(px\) to it
+      respectively
+        $$xpf=x\left(-i\hbar\frac{d}{dx}\right)f=-i\hbar x\frac{df}{dx}=-i\hbar
+        xf'$$
+      and
+        $$pxf=-i\hbar\frac{d}{dx}(xf)=-i\hbar(f+xf')=-i\hbar f-i\hbar xf'$$
+      by the product rule for derivatives. So \(x\) and \(p\) are not
+      commutative, but there are some similarities, namely if we subtract the
+      two expressions we get the "commutator"
+        $$[x,p]=xp-px=-i\hbar x\frac{d}{dx}+i\hbar+i\hbar x\frac{d}{dx}=i\hbar$$
+      This means that if we want to exchange the two terms, we need to add this
+      commutator. This inspires us to define the following "conjugate" operators
+        $$a_\pm=\frac{1}{\sqrt{2\hbar mω}}(mω x\mp ip)$$
+      called the "creation" and "annihilation" operators respectively. Lets see
+      what happens when we multiply them to each other in different orders
+      \begin{align}
+        a_\mp a_\pm=&\frac{1}{2\hbar mω}(mωx\pm ip)(mωx\mp ip)\\
+        =&\frac{1}{2\hbar mω}[(mωx)^2+p^2\mp imω(xp-px)]\\
+        =&\frac{1}{\hbar ω}H\mp\frac{1}{2\hbar}i(i\hbar)\\
+        =&\frac{1}{\hbar ω}H\pm\frac{1}{2}
+      \end{align}
+      This means that their commutator is
+        $$[a_-,a_+]=a_-a_+-a_+a_-=\cancel{\frac{1}{\hbar ω}H}+\frac{1}{2}-
+        \left(\cancel{\frac{1}{\hbar ω}H}-\frac{1}{2}\right)=1$$
+      and we can write our Hamiltonian in terms of them in the following way
+        $$H=\left(a_\pm a_\mp\pm\frac{1}{2}\right)\hbar ω$$
+      Lets assume we have some quantum state in the harmonic oscillator \(\psi\)
+      with energy \(E\) and apply \(a_+\) to it and see what happens in the
+      Hamiltonian
+      \begin{align}
+        H(a_+\psi)=&\hbar ω\left(a_+a_-+\frac{1}{2}\right)(a_+\psi)\\
+        =&\hbar ω\left(a_+a_-a_++\frac{1}{2}a_+\right)\psi\\
+        =&\hbar ωa_+\left(a_-a_++\frac{1}{2}\right)\psi\\
+        =&\hbar ωa_+\left(a_+a_-+1+\frac{1}{2}\right)\psi\\
+        =&a_+\left[\hbar ω\left(a_+a_-+\frac{1}{2}\right)+\hbar ω\right]\psi\\
+        =&a_+(H+\hbar ω)\psi=a_+(E+\hbar ω)\psi=(E+\hbar ω)a_+\psi
+      \end{align}
+      This means that if \(\psi\) is a solution to the Harmonic oscillator with
+      energy \(E\) then \(a_+\psi\) is a solution with energy \(E+\hbar ω\).
+      Something similar applies for the annihilation operator and we get that
+        $$H(a_\pm\psi)=(E\pm\hbar ω)(a_\pm\psi)$$
+      So applying these operators increases and decreases the energy of the
+      system by the set amount, or "quanta", \(\hbar ω\). It should be noted
+      that at no point did we attempt to actually ascertain actual quantum
+      states of the harmonic oscillator, but we have come up with a statement on
+      their energies. To estimate the ground state, \(\psi_0\), we assume that
+      applying the annihilator operator on it will yield nothing, i.e.
+      \begin{align}
+        &&a_-\psi_0&=0\\
+        \implies&&\frac{1}{\sqrt{2\hbar mω}}\left(mωx+\hbar\frac{d}{dx}\right)
+        \psi_0&=0\\
+        \implies&&\frac{d\psi_0}{dx}&=-\frac{mω}{\hbar}x\psi_0\\
+        \implies&&\psi_0&=Ae^{-\frac{mω}{2\hbar}x^2}
+      \end{align}
+      To normalize we square this and integrate
+        $$1=|A|^2\int_{-\infty}^\infty e^{-\frac{mω}{\hbar}x^2}dx=|A|^2
+        \sqrt{\frac{\pi\hbar}{mω}}$$
+      which yields
+        $$\psi_0=\left(\frac{mω}{\pi\hbar}\right)^{1/4}e^{-\frac{mω}{2\hbar}x^2}$$
+      To determine the ground state energy consider that
+      \begin{align}
+        H\psi_0=&\hbar ω\left(a_+a_-+\frac{1}{2}\right)\psi_0\\
+        =&\cancel{\hbar ωa_+a_-\psi_0}+\frac{\hbar ω}{2}\psi_0
+      \end{align}
+      since \(a_-\psi_0=0\), which means that \(E_0=\frac{\hbar ω}{2}\) and we
+      can obtain all the other energy levels by raising the energy by the
+      quantas \(\hbar ω\), i.e. \(E_n=\left(\frac{1}{2}+n\right)\hbar ω\), and
+      the higher quantum states by repeatedly applying the creation operator,
+      i.e. \(\psi_n=A_na_+\psi_0\).
 </body>
