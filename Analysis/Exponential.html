@@ -1,0 +1,195 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Exponential Functions</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <h1> Interests</h1>
+    To calculate the interests on a capital, \(C_0\), with an interest-rate, r,
+    we multiply them, \(I=C_0⋅r\). To then calculate the new capital we add the
+    interests to the initial capital,
+      $$C_1=C_0+I=C_0+C_0⋅r=C_0(1+r)$$
+    For the next term, we consider this the initial capital and to calculate the
+    next capital the same formula yields
+      $$C_2=C_1(1+r)=C_0(1+r)(1+r)=C_0(1+r)^2$$
+    and I hope it's not much of a stretch to imagine that the general formula
+    will become
+      $$C_n=C_0(1+r)^n$$
+    and this is called the compound interest formula, because the interests
+    accumulate additional interests.
+  <h1> Euler's Number </h1>
+    Usually interest-rates on loans and savings are given as a per annum, or
+    yearly, interest-rates but sometimes loans are calculated monthly or even
+    daily. This raises an immediate question, how do I calculate from one
+    term-length to another? Well, we have to consider the compound interest
+    formula, because if we have a p.a. interest-rate of \(r_y\) and a monthly
+    interest-rate of \(r_m\) the yearly interest should be identical, i.e.
+      $$C_0(1+r_y)=C_0(1+r_m)^{12}\implies r_m=\sqrt[12]{1+r_y}-1$$
+    so in general, going from one term-length to another with interest-rates
+    \(r_1,r_2\) respectively, we just have to solve the equation
+      $$(1+r_1)=(1+r_2)^n$$
+    where \(n\) is how many of the shorter term the longer term contains.<br>\
+    One thing that you might naively suggest is just to take the longer term
+    interest-rate and divide by \(n\), i.e. \(r_2=\frac{r_1}{n}\). If you do
+    this with \(r_1=1=100\%\), i.e. the capital should be doubled at the end of
+    the term, the compound interest formula will yield following expression
+      $$C_n=C_0(1+\frac{1}{n})^n$$
+    For \(n=1\) it does indeed double the initial capital, but at \(n=2\) we get
+    \(C_n=2.25C_0\) so we gain an extra 25%. If we decrease the term-length
+    further from bi-yearly, to quarterly, monthly, weekly, daily, hourly, and
+    so forth, this number will keep increasing but flattens out eventually. The
+    upper limit of this sequence is
+      $$e=2.71828182845904523536028747135266249775724709369995\ldots$$
+    and is called Euler's number. This naive approach to interests has actually
+    provided us with one of the most fundamental numbers in all of math, but
+    specifically exponential functions.
+    <h1> Exponential Functions </h1>
+      An exponential function is an object that is reminiscent of compound
+      interests, but in the spirit of generilization we will use more general
+      notation
+        $$f(x)=ba^x$$
+      where \(b\) represents the initial capital, but is called the
+      intial-value, while I will call \(a=1+r\) the growth-factor with \(r\)
+      representing the interest-rate, but called the growth-rate in this new
+      context. On first approach, we will only consider positive initial-value,
+      i.e. \(b>0\) but we will allow a broader range of growth-factors. The
+      benefit of this approach is that we can allow a broad range of
+      "term-values", fx. we can do \(f(0)=ba^0=b⋅1=b\) which explains why it's
+      called the initial value. We can go "back in time" by considering
+      \(x< 0\) and we can allow arbitrarily small "term-lengths".
+      <h2> Growth-Factor </h2>
+        There are some natural restrictions on the growth-factor, namely that
+        the growth-rate cannot be lower than -100%, you can't lose more than
+        all of your initial-value. In fact, we will not allow \(r=-1=-100\%\)
+        which means that \(a=1+r>0\). However there is no upper bound on the
+        growth-factor. There are two important distinct regions of values that
+        correspond to important distinct cases, namely positive and negative
+        growth-rates, the case where the growth-rate is zero is not interesting
+        and will also be discounted. These regions are \(0< a< 1\) and \(a>1\),
+        corresponding to negative and positive growth-rates respectively, and
+        therefore these two classes are the decreasing and increasing functions
+        respectively.<br>
+        One very common way to represent the growth-factor is with the
+        previously mentioned Euler's number in the following way
+        \(a=e^k\), which yields the following function \(f(x)=be^{kx}\). Physics
+        has several exponential models where the constant \(k\) has a specific
+        name, when modelling radioactive decay, it's called the decay-constant,
+        when modelling the absorption of radiation it's called the
+        absorption coefficient. The case where \(k=1\), i.e. \(a=e\) is called
+        the natural exponential function and is one of the most important
+        functions in math.
+      <h2> Logarithms </h2>
+        To continue our investigation of exponential functions, we will need to
+        consider their inverse functions, which are called logarithms. I will
+        use the following notation
+          $$\log_a(a^x)=a^{\log_a(x)}=x$$
+        where \(a\) is called the base. When \(a=e\) we call it the natural
+        logarithm and omit it from the notation, i.e. \(\log_e=\log\)
+        and call it the natural logarithm. It should be noted that engineers and
+        some computer technicians might consider \(\log=\log_10\), and use the
+        notation \(\log_e=\ln\) for the natural logarithm. For mathematicians
+        the function \(10^x\) is generally much less interesting than the
+        natural exponential function which is why we often do not follow this
+        tradition.<br>
+        Logarithms have inverse-properties compared to exponentials, i.e. when
+        exponentials move in the calculation-hierarchy, logarithms do the
+        oppasite, in particular, we have these important properties.
+        <h3> Theorem </h3>
+          1. \(\log(a⋅b)=\log(a)+\log(b)\)<br>
+          2. \(\log(a^x)=x\log(a)\)
+          <h4> Proof </h4>
+            Consider \(a=e^{\log(a)}\) and \(b=e^{\log(b)}\), then
+            \begin{align}
+              &&a⋅b=&e^{\log(a)}e^{\log(b)}\\
+              &&=&e^{\log(a)+\log(b)}\\
+              \implies&&\log(a⋅b)=&\cancel{\log}\left(
+              \cancel{e}^{\log(a)+\log(b)}\right)\\
+              &&=&\log(a)+\log(b)
+            \end{align}
+            which was the first statement, we can do something similar with the
+            second statement
+            \begin{align}
+              \log(a^x)=&\log\left(\left(e^{\log(a)}\right)^x\right)\\
+              =&\log\left(e^{x\log(a)}\right)\\
+              =&x\log(a)
+            \end{align}
+          It should be noted that we used the natural logarithm, but the same
+          applies to any base which you can confirm by modifying the proof.<br>
+          So where exponentials turn sums into products and products into
+          exponents, logarithms turn products into sums, and exponents into
+          products. Quotients and roots are just special cases of products and
+          exponents so they are also covered.
+      <h2> Doubling Constant </h2>
+        One very interesting property of exponential functions is that they
+        have a so-called doubling constant, which is defined as how much the
+        x-value needs to be changed to double the function-value, and can be
+        calculated as follows
+          $$T_2=\frac{\log(2)}{\log(a)}=\frac{\log(2)}{k}$$
+        <h3> Lemma(Exponential Growth) </h3>
+          To prove this statement, I will first state and prove a lemma on
+          the effect on the function-value by adding a constant to the x-value
+            $$f(x+h)=f(x)⋅a^h$$
+          so adding \(h\) has the effect of multiplying the function value by
+          \(a^h\).
+          <h4> Proof </h4>
+            \begin{align}
+              f(x+h)=&ba^{x+h}\\
+              =&ba^xa^h\\
+              =&f(x)a^h
+            \end{align}
+          <h3> Corollary(Doubling Constant) </h3>
+            In the case of the doubling constant, we want to figure out what to
+            add to double the function value, i.e.
+            \begin{align}
+              &&2=&a^{T_2}\\
+              \implies&&\log(2)=&T_2\log(a)\\
+              \implies&&T_2=&\frac{\log(2)}{\log(a)}=\frac{\log(2)}{\log(e^k)}=
+              \frac{\log(2)}{k}
+            \end{align}
+            For the first part of the formula, it can be any arbitrary
+            logarithm, but for the last part, it actually needs to be the
+            natural logarithm, or it's won't cancel the natural exponential
+            function.<br>
+            Many text-books will only allow doubling-constants for increasing
+            exponential functions, and consider a so-called "halving-constant"
+            for decreasing ones. But for decreasing ones, you will just get a
+            negative value, which corresponds to needing to decrease your
+            x-value to double the function-value, so it is an unecessary
+            distinction.<br>
+            In physics the doubling constants related to radioactive decay and
+            absorption of radiation are called half-life(like the video game)
+            and halving-width.
+        <h2> Two-Point Theorem </h2>
+          As is the case with linear functions, given two points, \((x_1,y_1)\)
+          and \((x_2,y_2)\) we can determine the exponential function which has
+          a graph that passes through those two points, and it has the
+          growth-factor and initial-value
+            $$a=\sqrt[x_2-x_1]{\frac{y_2}{y_1}}$$
+          and
+            $$b=\frac{y_i}{a^{x_i}}$$
+          <h3> Proof </h3>
+            Lets assume that the points lie on the graph, then we have
+              $$y_i=ba^{x_i}$$
+            by dividing one of these by the other we obtain
+            \begin{align}
+              &&\frac{y_2}{y_1}=&\frac{\cancel{b}a^{x_2}}{\cancel{b}a^{x_1}}\\
+              &&=&a^{x_2-x_1}\\
+              \implies&&\sqrt[x_2-x_1]{\frac{y_2}{y_1}}=&
+              \sqrt[x_2-x_1]{a^{x_2-x_1}}=a
+            \end{align}
+            The formula for the initial value is just trivial isolation in the
+            function expression.
+        <h2> Exponential Regression </h2>
+          To perform exponential regression on a dataset \((x_n,y_n)\) we simply
+          consider that
+            $$\log(y)=\log(ba^x)=x\log(a)+\log(b)$$
+          so we can simply do a linear regression on the dataset \((\log(x_n),
+          \log(y_n))\) and then to extract the growth factor and initial value
+          we simply take the natural exponential function of the slope and
+          y-intercept respectively.
+
+</body>
