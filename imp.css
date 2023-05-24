@@ -9,3 +9,6 @@ body{
 .column {
   flex: 50%;
 }
+a:visited {
+  color: yellow;
+}
