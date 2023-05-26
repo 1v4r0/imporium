@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <link href="../imp.css" rel="stylesheet">
+    <title>Binomial Distribution</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <body>
+    In this section I will state and prove a theorem on a formula for the
+    expected value for a binomial distribution.
+    <h1> Theorem(Expected Value) </h1>
+      For a binomially distributed random variable \(X\sim b(n,p)\) we can
+      calculate the expected value and variance as
+      \begin{align}
+        E(X)=&np\\
+        Var(X)=&E(x)(1-p)\\
+        =&np(1-p)
+      \end{align}
+      <h2> Lemma(Combinatorics) </h2>
+        In the proof, I will use the following statement on combinatorics
+          $$r{n\choose r}=n{n-1\choose r-1}$$
+        <h3> Proof </h3>
+          \begin{align}
+            r{n\choose r}=&\cancel{r}\frac{n!}{\cancel{r}!(n-r)!}\\
+            =&n\frac{(n-1)!}{(r-1)!(n-1-(r-1))!}\\
+            =&n{n-1\choose r-1}
+          \end{align}
+      <h2> Proof of Theorem </h2>
+        I will start by proving the statement for the expected value
+        \begin{align}
+          E(X)=&\sum_{r=0}^n r⋅P(X=r)\\
+          =&\sum_{r=0}^n r⋅{n\choose r}p^r(1-p)^{n-r}\\
+          =&p\sum_{r=1}^n n⋅{n-1\choose r-1}p^{r-1}(1-p)^{n-1-(r-1)}\\
+          =&np\sum_{k=0}^m {m\choose k}p^k(1-p)^{m-k}\\
+          =&np\sum_{k=0}^m P(Y=k)=np⋅1=np
+        \end{align}
+        where I start by using the definition of the expected value. Then I use
+        the formula for the probabability for a specific random value.
+        Afterwards I use the lemma, move one of the p's outside the sum and add
+        and subtract a 1 from the last exponent. Then I change the variables
+        into \(k=r-1\) and \(m=n-1\) and move the n outside the sum. If \(r\)
+        goes from 1 to \(n\) then \(k=r-1\) goes from 0 to \(n-1=m\). This
+        yields the sum of the probabilities of all the different random values
+        for the binomial distribution \(Y\sim b(m,p)\), which is 1 since
+        something has to happen. 
+  </body>
+</html>
