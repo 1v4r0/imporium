@@ -44,6 +44,36 @@
         goes from 1 to \(n\) then \(k=r-1\) goes from 0 to \(n-1=m\). This
         yields the sum of the probabilities of all the different random values
         for the binomial distribution \(Y\sim b(m,p)\), which is 1 since
-        something has to happen. 
+        "something has to happen".<br>
+        The proof of the variance formula is similar, but slightly more
+        involved.
+        \begin{align}
+          Var(X)=&\sum_{r=0}^n(r-μ)^2P(X=r)\\
+          =&\sum_{r=0}^n(r-np)^2{n\choose r}p^r(1-p)^{n-r}\\
+          =&\sum_{r=0}^n(r^2-2npr+n^2p^2){n\choose r}p^r(1-p)^{n-r}\\
+          =&n^2p^2\cancel{\sum_{r=0}^n{n\choose r}p^r(1-p)^{n-r}}\\
+          &-2np\sum_{r=1}^n r{n\choose r}p^r(1-p)^{n-r}\\
+          &+\sum_{r=1}^n r^2{n\choose r}p^r(1-p)^{n-r}\\
+          =&n^2p^2-2np⋅E(X)+\sum_{r=1}^n r^2{n\choose r}p^r(1-p)^{n-r}
+        \end{align}
+        The first two terms just reduce to \(-n^2p^2\) so we just need to figure
+        out the last sum. We start by using the lemma once to yield
+          $$\sum_{r=1}^n r^2{n\choose r}p^r(1-p)^{n-r}=\sum_{r=1}^n r
+          n{n-1\choose r-1}p^r(1-p)^{n-r}$$
+        We still have an \(r\) in the sum, so we do a classic math trick and
+        add and subtract a term that allows us to use the lemma again
+        \begin{align}
+          &n\sum_{r=1}^n {n-1\choose r-1}p^r(1-p)^{n-r}+
+          n\sum_{r=1}^n r{n-1\choose r-1}p^r(1-p)^{n-r}-n\sum_{r=1}^n
+          {n-1\choose r-1}p^r(1-p)^{n-r}\\
+          =&np\cancel{\sum_{r=1}^n{n-1\choose r-1}p^{r-1}(1-p)^{n-1-(r-1)}}
+          +n\sum_{r=2}^n (r-1){n-1\choose r-1}p^r(1-p)^{n-r}\\
+          =&np+n\sum_{r=2}^n (n-1){n-2\choose r-2}p^r(1-p)^{n-r}\\
+          =&np+n(n-1)p^2\cancel{\sum_{r=2}^n{n-2\choose r-2}p^{r-2}
+          (1-p)^{n-2-(r-2)}}
+        \end{align}
+        All in all, we end up with
+          $$Var(X)=-n^2p^2+np+n(n-1)p^2=\cancel{-n^2p^2}+np-np^2-
+          \cancel{n^2p^2}=np(1-p)$$
   </body>
 </html>
