@@ -8,13 +8,17 @@
   </script>
 </head>
 <body>
-  <h1> Power Functions </h1>
+  <div class="back"> <a href="Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified some details will be omitted.
+  <div class="def"><center><h1> Power Functions </h1></center>
     Power functions are similar to <a href="Exponential.html">exponential
     functions</a> in structure, but
     rather different in nature. The only difference in structure is that you
     "flip" the power, so that the variable becomes the base and the constant
     becomes the exponent, as such
       $$f(x)=bx^a$$
+    </div>
     The most immediate difference in nature is the interpretation of the
     constants, for rational \(a=\frac{n}{m}\) we have the interpretation that
     \(x^{a}=\sqrt[m]{x^n}\) which has some domain issues if \(m\) is even and
@@ -22,35 +26,31 @@
     numbers as results. If we extend it to \(a\in\mathbb{R}\) it only becomes
     more complicated, which together with the result that for any \(n< 0\),
     \(f(0)=\infty\) will motivate us to restrict ourselves to \(x>0\) on
-    first approach, i.e. \(dom(f)=\mathbb{R}_+\backslash\{0\}\). Under these
-    conditions, there will be three new classes of power functions, the
-    decreasing ones \(a<0\) and two increasing ones for \(a>0\). Like for the
-    exponential functions, the increasing power functions are further divided
-    into \(0<a<1\), which corresponds to graphs that are concave, or bending
-    downwards, and \(a>1\) which corresponds to graphs that are convex, or
-    bending upwards. The case \(a=1\) is uninteresting in this context, like
-    for exponential functions, since it just corresponds to proportionality.
-    <br>
+    first approach, i.e. \(dom(f)=\mathbb{R}_+\backslash\{0\}\).<br>
     For an interpretation of \(b\) consider that
       $$f(1)=b1^a=b⋅1=b$$
     so it's not the initial value as such, but the value at 1, which feels much
     less satisfactory than initial value for the exponential function, but such
     is life.
-    <h2>Proposition(Nature of Growth) </h2>
+    <div class="pro"><center><h2>Proposition(Nature of Growth) </h2></center>
       As with other function types, the nature of the growth of power functions
       is that if we increase the x-value by a specific percentage, then the
       y-value will increase by another percentage dependent on \(a\), more
       specifically do we have the following relation
         $$r_y=(1+r_x)^a-1$$
-      to observe this consider that
+      </div>
+      To observe this consider that
         $$f(x(1+r_x))=b(x(1+r_x))^a=bx^a(1+r_x)^a=f(x)(1+r_y)$$
-    <h2> Two-Point Theorem </h2>
       This may come as no surprise, but power functions also have its own
-      two-point theorem, since two points are enough to uniquely determine the
-      power-function who's graph they lie on. The formulas are
+      two-point theorem.
+    <div class="thm"><center><h2> Two-Point Theorem </h2></center>
+      Given two points \((x_1,y_1)\) and \((x_2,y_2\), there is a unique power
+      function who's graph passes through those two points and it has the
+      following constants
         $$a=\frac{\log(y_2)-\log(y_1)}{\log(x_2)-\log(x_1)}$$
       and
         $$b=\frac{y_i}{x_i^a}$$
+      </div>
         <h3> Proof </h3>
           The proof starts out pretty identical to the others, by removing \(b\)
           \begin{align}
@@ -62,12 +62,14 @@
             \log(y_1)}{\log(x_2)-\log(x_1)}
           \end{align}
           and reintroducing \(b\) we just find it by isolating it in the
-          function expression.
-      <h2> Derivative(Integer Powers) </h2>
+          function expression.<p style="text-align:right;">&#x220E;</p>
+      <div class="thm"><center><h2> Integer Power Derivative Theorem </h2>
+      </center>
         Assume than we have a power function with integer power, i.e.
         \(f(x)=x^n\), then its derivative is \(f'(x)=nx^{n-1}\). I've chosen
         \(b=1\) since all it does is scale the derivative and can be added
         afterwards.
+      </div>
         <h2> Proof </h2>
           We will per form a proof by induction, which entails confirming a
           base case and the induction step. So lets take as our base case
@@ -84,6 +86,7 @@
             =&(x+h)\frac{(x+h)^k-x^k}{h}+x^k\cancel{\frac{h}{h}}\\
             \to&xkx^{k-1}+x^k=(k+1)x^k=(k+1)x^k
           \end{align}
+          <p style="text-align:right;">&#x220E;</p>
         <h1> Real Powers </h1>
           Now assume the power is \(a\in\mathbb{R}\), then we can write the function
           as \(f(x)=x^a=e^{\ln(x^a)}=e^{a\ln(x)}\), which immediately yields the

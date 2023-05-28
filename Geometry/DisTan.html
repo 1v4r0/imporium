@@ -23,11 +23,9 @@
       where
         $$-c=\cos(\omega t)+\sin(\omega t)+r$$
       <h2> Proof. </h2>
-        Consider the following image for context<br>
-        <img src="DisTan.JPG" alt="Diagram"><br>
         The parametric vector of the parametric form will act as a normal
-        vector for our tangent line, without the radius, as it's orthogonal
-        to it. This immediately yields
+        vector for our tangent line, as it's orthogonal to it. This immediately
+        yields
           $$\cos(\omega t)x+\sin(\omega t)y+c=0$$
         The only thing that's left is showing the formula for \(c\) then. For a
         normal vector with coordinates \(a\) and \(b\), the general formula is
@@ -44,7 +42,11 @@
     <h1> Distance to the Tangent Line </h1>
       Then the distance from the tangent line to any arbitrary point \(P=
       (p_1,p_2)\) will then be
-        $$dist(P,l)=|\cos(\omega t)p_1+\sin(\omega t)p_2+c|$$
+      \begin{align}
+        dist(P,l)=&|\cos(\omega t)p_1+\sin(\omega t)p_2+c|\\
+        =&\begin{pmatrix\cos(\omega t)\\\sin(\omega t)\end{pmatrix}\bullet
+        \begin{pmatrix}p_1-x_0\\p_2-y_0\end{pmatrix}+r\\
+      \end{align}
       <h2> Proof 1.</h2>
         Consider the point on the tangent line that is closest to \(P\) and call
         it \(Q=(q_1,q_2)\), then the vector \(\underline{QP}\) is parallel with
@@ -70,8 +72,8 @@
           =&\left|\frac{\underline{CP}\bullet\underline{n}}{
             \cancel{|\underline{n}|^2}}\underline{n}-r\underline{n}\right|\\
           =&|(\underline{CP}\bullet\underline{n}-r)\cancel{\underline{n}}|\\
-          =&|(p_1-x_0)\cos(\omega t)+(p_2-y_0)\sin(\omega t)-r|\\
-          =&|p_1\cos(\omega t)+p_2\sin(\omega t)-x_0\cos(\omega t)-
+          =&|(p_1-x_0)\cos(\omega t)+(p_2-y_0)\sin(\omega t)-r\\
+          =&p_1\cos(\omega t)+p_2\sin(\omega t)-x_0\cos(\omega t)-
           y_0\sin(\omega t)-r|\\
           =&|p_1\cos(\omega t)+p_2\sin(\omega t)+c|
         \end{align}

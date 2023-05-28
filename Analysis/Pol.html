@@ -8,19 +8,31 @@
   </script>
 </head>
 <body>
+  <div class="back"><a href="Analysis.html">Back</a></div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified some details will be omitted.
   <h1> Polynomials </h1>
     A polynomial is probably the class of functions that has the most
-    interesting growth pattern so far. The most generalized version of a
+    interesting growth pattern so far.
+    <div class="def"><center><h2> Laurent Polynomials</h2></center>
+    The most generalized version of a
     polynomial in the current setting is the so-called Laurent polynomial. It is
     defined as the sum of power functions with integer exponents, i.e.
       $$p(x)=\sum_{i\in\mathbb{Z}}a_ix^i$$
-    where \(a_i\in\mathbb{C}\) are the coefficients. These are relatively
-    complex objects so I will restrict myself to real coefficients, i.e.
-    \(a_i\in\mathbb{R}\), with most of them being zero, including all the
-    negative index ones. In fact, what's left is
+    where \(a_i\in\mathbb{C}\) are the coefficients.
+  </div>
+  These are relatively
+    complex objects so I will restrict myself to real coefficients, with most of
+    them being zero, including all the negative index ones. In fact, what's left
+     is the "normal" polynomial
+    <div class="def"><center><h2> Polynomials</h2></center>
+    When a Laurent polynomial has \(a_i=0\) for \(i< 0\) and \(i>n\) and
+    \(a_i\in\mathbb{R}\) for \(0\leq i\leq n\) we omit
+    the "Laurent" and just call it a polynomial with the following expression
       $$p(x)=\sum_{i=0}^n a_ix^i=a_0+a_1x+\cdots+a_nx^n$$
     where some of these coefficients might still be zero, just not the last one.
     The so-called degree of this polynomial is the highest exponent, \(n\).
+  </div>
     There is an important theorem, named the fundamental theorem of algebra,
     that states that the polynomial always has \(n\) roots, with
     so-called "multiplicity". With respect to the roots the polynomial can
@@ -47,13 +59,14 @@
       which has the root \(x=-1\) with multiplicity \(n\). The expression
       comes from expanding the parenthesis, since a power \(x^i\) must take an
       \(x\) from \(i\) factors and a 1 from the rest. This in effect means
-      that we have to choose \(i\) out of \(n\) factors, which is done with
+      that we have to choose \(i\) out of \(n\) factors, which is done in
       \(n\choose i\) ways by combinatorics.
-    <h2> Quadratics </h2>
+    <div class="def"><center><h2> Quadratics </h2></center>
       The one class of polynomials we will spend most of our time investigating
       are the ones of degree 2, which are known as quadratics, with the
       convention of writing \(a_2=a\), \(a_1=b\) and \(a_0=c\), i.e.
         $$p(x)=ax^2+bx+c$$
+      </div>
       These three coefficients have interesting graphical interpretations but
       only the one for \(c\) is immediately obvious.
         $$f(0)=a⋅0^2+b⋅0+c=c$$
@@ -63,7 +76,7 @@
       which means that
         $$p'(0)=2a⋅0+b=b$$
       So the interpretation of \(b\) is that it is the slope of the graph at the
-      y-axis and the negative sum of the roots, \(b=-a(r_1+r_2)\). The last part
+      y-axis and related the sum of the roots, \(b=-a(r_1+r_2)\). The last part
       of that is the first half of Viète's formula for quadratics, the full
       formula following directly from the factorization form
         $$p(x)=a(x-r_1)(x-r_2)=ax^2-2a(r_1+r_2)x+r_1r_2$$
@@ -76,7 +89,8 @@
       is extremely easy in a number of important cases. For example let
         $$p(x)=x^2-6x-27=(x+3)(x-9)$$
       so the roots are \(r_1=-3\) and \(r_2=9\).
-      <h3> Theorem(Roots and Extremum) </h3>
+      <div class="thm">
+        <h3><center>The Roots and Vertex Theorem</center></h3>
         Every quadratic can be written as
           $$p(x)=a(x-r_-)(x-r_+)=a(x-V_x)^2+V_y$$
         where the first expression is just the factorized form and the second I
@@ -90,7 +104,8 @@
         \(V=(V_x,V_y)\) which is a minimum for positive \(a>0\), a maximum for
         negative \(a< 0\), and its coordinates can be calculated as follows
           $$V=\left(-\frac{b}{2a},-\frac{Δ}{4a}\right)$$
-        The graph is also symmetric about the line \(x=V_x\).<br>
+        The graph is also symmetric about the line \(x=V_x\).
+      </div>
         It may be weird to include so many things in the theorem, but all the
         statements follow from the same argument.<br>
         This theorem provides us with a graphical interpretation of \(a\) namely

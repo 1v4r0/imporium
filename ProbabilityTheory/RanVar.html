@@ -8,10 +8,11 @@
     </script>
   </head>
   <body>
-    This section is aimed at upper secondary students in the Danish school
-    system. It is recommended to be familiar with <a href="ProSpa.html">
-    probability spaces</a> before reading this section.
+    <div class="back"> <a href="ProbabilityTheory.html">Back</a> </div>
+    This section is aimed at students in upper secondary education in the Danish
+    school system, some objects will be simplified some details will be omitted.
     <h1> Random Variables </h1>
+    <div class="back"> <a href="ProbabilityTheory.html">Back</a> </div>
       A random variable is a function that assigns to each outcome in a
       probability space, \((Ω,P)\), a number
         $$X:Ω\to \mathbb{R}$$
@@ -25,8 +26,8 @@
       the lottery where what we're really interested in is how much we've won
       and not the actual result and in the following image you can see the table
       representation of the random variable that represents the US powerball
-      lottery.<br>
-      <img src="TMgIm.png" title="Lottery"><br>
+      lottery.
+      <center style="margin: 10px"><img src="Images/Lot.png" title="Lottery"></center>
       where \(X(5B)=99,999\) with \(P(X=99,999)=\frac{41}{120,526,770}\), where
       "5B" represents getting five balls with the correct numbers.
       <h2> Expected Value, Variance and Standard Deviation </h2>
@@ -66,11 +67,15 @@
         value, the expected value is useful in the sense that it expresses well
         your return on investment in the long-term, but there is a huge
         variation in the random values.
-        <h3> Theorem(Linearity of the Expected Value) </h3>
-          Let \(Y=aX+b\) be a random variable based on another \(X\), then its
-          expected value will be
-            $$E(Y)=aE(X)+b$$
-          to contextualize this, assume that you have a random variable that
+        <div class="thm">
+        <h3> <center>Theorem(Linearity of the Expected Value)</center> </h3>
+          For a discrete random variable \(X\), we can construct another
+          \(Y=aX+b\) and calculate its expected value and variance as follows
+            $$E(Y)=E(aX+b)=aE(X)+b$$
+          and
+            $$Var(Y)=Var(aX+b)=a^2Var(X)$$
+        </div>
+          To contextualize this, assume that you have a random variable that
           describes temperatures in Fahrenheit and you need the results in
           centigrade, then you can simply translate the expected value into
           centigrade. The same is not true for the variance or standard
@@ -101,9 +106,5 @@
             =&a^2(E(X^2)-E(X)^2)\\
             =&a^2Var(X)
           \end{align}
-    For further reading on the topic I suggest reading the section on the
-    <a href="BinDis.html"> binomial distribution</a>. Click
-    <a href="ProbabilityTheory.html"> here</a> to return to to the probability
-    page.
   </body>
 </html>

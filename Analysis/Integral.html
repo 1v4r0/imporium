@@ -1,0 +1,64 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Integration</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified some details will be omitted.
+  <h1> Integrals </h1>
+    The so called definite integral of a function f on an interval \([a,b]\) is
+    defined as the area under the graph of f in that interval. There are several
+    ways to define this and one is to divide the interval into sub-intervals
+    \(a=x_0< x_1< x_2 < \cdots< x_N=b\) and then add up the areas of the
+    rectangles that have the function value \(f(t_n)\) as its height and the
+    width \(\Delta x_n=x_n-x_{n-1}\). If we then make the sub-intervals narrower
+    and narrower, we will approach the true area under the graph. This yields
+    the following definition for the definite integral
+      $$\int_a^b f(x)dx=\lim_{N\to\infty}\sum_{n=1}^Nf(t_n)\Delta x_n$$
+    <h2> The Fundamental Theorem of Calculus </h2>
+      The theorem has two seperate parts, the first part states that for a
+      suitably nice function \(f(x)\), the following function
+        $$F(x)=\int_a^xf(x)dx$$
+      is an antiderivate to \(f(x)\), i.e. that \(F'(x)=f(x)\).<br>
+      The second part states that for any antiderivate \(F(x)\) of \(f(x)\) we
+      have that
+        $$\int_a^bf(x)dx=F(b)-F(a)$$
+      <h3> Proposition(The Mean Value Theorems) </h3>
+        We will need two versions of the mean value theorem for our proof. The
+        first states that if \(f(x)\) is differentiable in the interval
+        \(]a,b[\) then there exists a \(c\in]a,b[\) such that
+          $$f'(c)=\frac{f(b)-f(a)}{b-a}$$
+        which in essence means that there is a value in the interval where
+        the slope is the same as the average slope on the entire interval.<br>
+        The second theorem states that if \(f(x)\) is continuous on \([a,b]\),
+        then we can find a \(c\in[a,b]\) such that
+          $$f(c)=\frac{1}{b-a}\int_a^bf(x)dx$$
+        which means that the area under the graph is equal to the area of a
+        rectangle with the interval length as its width and height corresponding
+        to the function value at some point in the interval.
+      <h3> Proof </h3>
+        For the first part we want to differentiate \(F(x)\) so lets consider
+        \begin{align}
+          &&F(x+h)-F(x)=&\int_a^{x+h}f(x)dx-\int_a^xf(x)dx\\
+          &&=&\int_x^{x+h}f(x)dx\\
+          &&=&(x+h-x)\frac{1}{x+h-x}\int_x^{x+h}f(x)dx\\
+          &&=&hf(t)\\
+          \implies&&\frac{F(x+h)-F(x)}{h}\to&f(x)
+        \end{align}
+        since \(t\in[x,x+h]\).<br>
+        Now consider the following
+        \begin{align}
+          F(b)-F(a)=&F(x_N)-F(x_{N-1})+F(x_{N-1})-F(x_{n-2})+\\
+          \cdots&+F(x_2)-F(x_{1})+F(x_1)-F(x_0)\\
+          =&\sum_{n=1}^N F(x_n)-F(x_{n-1})\\
+          =&\sum_{n=1}^N \frac{F(x_n)-F(x_{n-1})}{x_n-x_{n-1}}(x_n-x_{n-1})\\
+          =&\sum_{n=1}^N F'(t_n)\Delta x_n\\
+          \to&\int_a^bf(x)dx
+        \end{align}
+</body>
