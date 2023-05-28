@@ -1,0 +1,157 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Polynomials</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <h1> Polynomials </h1>
+    A polynomial is probably the class of functions that has the most
+    interesting growth pattern so far. The most generalized version of a
+    polynomial in the current setting is the so-called Laurent polynomial. It is
+    defined as the sum of power functions with integer exponents, i.e.
+      $$p(x)=\sum_{i\in\mathbb{Z}}a_ix^i$$
+    where \(a_i\in\mathbb{C}\) are the coefficients. These are relatively
+    complex objects so I will restrict myself to real coefficients, i.e.
+    \(a_i\in\mathbb{R}\), with most of them being zero, including all the
+    negative index ones. In fact, what's left is
+      $$p(x)=\sum_{i=0}^n a_ix^i=a_0+a_1x+\cdots+a_nx^n$$
+    where some of these coefficients might still be zero, just not the last one.
+    The so-called degree of this polynomial is the highest exponent, \(n\).
+    There is an important theorem, named the fundamental theorem of algebra,
+    that states that the polynomial always has \(n\) roots, with
+    so-called "multiplicity". With respect to the roots the polynomial can
+    always be written in a factorized form as
+      $$p(x)=a_n\prod_{i=0}^n(x-r_i)$$
+    where
+      $$p(0)=a_0=a_n\prod_{i=1}^nr_i$$
+    where \(r_i\) are all the roots, and their multiplicity is how many times
+    they appear in this product. If a polynomial has more than one real root
+    then its graph must intersect the x-axis at least twice, which means that
+    the slope of the graph must change sign at least once. This means that there
+    are polynomials that are not strictly monotonous unlike power- and
+    exponential functions.
+    <h2> Derivatives </h2>
+      We can differentiate the polynomial term-wise and get
+        $$p'(x)=\sum_{i\in Z}ia_ix^{i-1}$$
+      We can also use the product rule on the factorized form
+        $$p'(x)=a_n\sum_{i=1}^n\prod_{j\neq i}(x-r_j)$$
+      with
+        $$p'(0)=a_1=(-1)^{n-1}a_n\sum_{i=1}^n\prod_{j\neq i}r_j$$
+    <h2> Binomial Coefficients </h2>
+      Consider the polynomial
+        $$p(x)=(x+1)^n=\sum_{i=0}^n{n\choose i}x^i$$
+      which has the root \(x=-1\) with multiplicity \(n\). The expression
+      comes from expanding the parenthesis, since a power \(x^i\) must take an
+      \(x\) from \(i\) factors and a 1 from the rest. This in effect means
+      that we have to choose \(i\) out of \(n\) factors, which is done with
+      \(n\choose i\) ways by combinatorics. I can also do a simple proof for
+      good measure
+      <h3> Proof </h3>
+        I'll do a proof by induction. I have the base case
+          $$x+1={1\choose 1}x+{0\choose 1}$$
+        so lets assume that "\(n=k\implies n=k+1\)", then
+        \begin{align}
+          (x+1)^{k+1}=&(x+1)^k(x+1)\\
+          =&(x+1)\sum_{i=0}^k{k\choose i}x^i
+        \end{align}
+    <h2> Quadratics </h2>
+      The one class of polynomials we will spend most of our time investigating
+      are the ones of degree 2, which are known as quadratics, with the
+      convention of writing \(a_2=a\), \(a_1=b\) and \(a_0=c\), i.e.
+        $$p(x)=ax^2+bx+c$$
+      These three coefficients have interesting graphical interpretations but
+      only the one for \(c\) is immediately obvious.
+        $$f(0)=a⋅0^2+b⋅0+c=c$$
+      so it's simply the initial value or the y-intercept. For \(b\) consider
+      the derivative of both the normal and factorized form
+        $$\boxed{p'(x)=2ax+b}=a(x-r_2+x-r_1)=\boxed{2ax-(r_1+r_2)}$$
+      which means that
+        $$p'(0)=2a⋅0+b=b$$
+      So the interpretation of \(b\) is that it is the slope of the graph at the
+      y-axis and the negative sum of the roots, \(b=-a(r_1+r_2)\). The last part
+      of that is the first half of Viète's formula for quadratics, the full
+      formula following directly from the factorization form
+        $$p(x)=a(x-r_1)(x-r_2)=ax^2-2a(r_1+r_2)x+r_1r_2$$
+      so
+        $$-\frac{b}{a}=r_1+r_2$$
+      and
+        $$\frac{c}{a}=r_1r_2$$
+      This is extremely useful for finding roots, especially when \(a=1\) since
+      finding two whole numbers who's product is one number and sum is another
+      is extremely easy in a number of important cases. For example let
+        $$p(x)=x^2-6x-27=(x+3)(x-9)$$
+      so the roots are \(r_1=-3\) and \(r_2=9\).
+      <h3> Theorem(Roots and Extremum) </h3>
+        Every quadratic can be written as
+          $$p(x)=a(x-r_-)(x-r_+)=a(x-V_x)^2+V_y$$
+        where the first expression is just the factorized form and the second I
+        will call the vertex form, which represents parallel-shifting the
+        function \(ax^2\) by \(V_x\) horizontally and \(V_y\) vertically.
+        Furthermore the roots can be calculated as
+          $$r_\pm=\frac{-b\pm\sqrt{Δ}}{2a}$$
+        with the so-called "discriminant"
+          $$Δ=b^2-4ac$$
+        Additionally the graph has an extremum, or vertex, at
+        \(V=(V_x,V_y)\) which is a minimum for positive \(a>0\), a maximum for
+        negative \(a< 0\), and its coordinates can be calculated as follows
+          $$V=\left(-\frac{b}{2a},-\frac{Δ}{4a}\right)$$
+        The graph is also symmetric about the line \(x=V_x\).<br>
+        It may be weird to include so many things in the theorem, but all the
+        statements follow from the same argument.<br>
+        This theorem provides us with a graphical interpretation of \(a\) namely
+        that its sign determines whether the graph branches upwards, \(a>0\),
+        or downwards, \(a< 0\), and how "steep" the "branches" are.
+        <h4> Proof </h4>
+          First off, we start by diving both sides by \(a\) and complete the
+          square
+          \begin{align}
+            &&p(x)=&ax^2+bx+c\\
+            \implies&&\frac{p(x)}{a}=&x^2+\frac{b}{a}x+\frac{c}{a}\\
+            &&=&x^2+2\frac{b}{2a}x+\left(\frac{b}{2a}\right)^2
+            -\left(\frac{b}{2a}\right)^2+\frac{4ac}{4a^2}\\
+            &&=&\left(x+\frac{b}{2a}\right)^2+\frac{4ac-b^2}{4a^2}\\
+            \implies&&p(x)=&a\left(x+\frac{b}{2a}\right)^2-\frac{Δ}{4a}
+          \end{align}
+          From this point, I will branch the proof into two directions, starting
+          with the vertex.<br>
+          <h5> Vertex </h5>
+            The x-value is only present in the square, so the polynomial only
+            varies with the square term. The square is always positive, so the
+            sign on the square term is determined by the sign of the a-value.
+            For \(a< 0\) the first term is negative, which means that for any
+            non-zero value of the square, the value of the polynomial
+            decreases, which makes the x-value that makes the square zero a
+            maximum. Similarly, for \(a>0\) the same value is a minimum. In
+            other words
+              $$V_x+\frac{b}{2a}=0\implies V_x=-\frac{b}{2a}$$
+            and
+              $$V_y=p(V_x)=\cancel{a\left(-\frac{b}{2a}+\frac{b}{2a}\right)}
+              -\frac{Δ}{4a}$$
+          <h5> Roots </h5>
+            A root is an x-value, \(r\) such that \(p(r)=0\), i.e.
+            \begin{align}
+              &&a\left(r+\frac{b}{2a}\right)^2=&\frac{Δ}{4a}\\
+              \implies&&r+\frac{b}{2a}=&\pm\sqrt{\frac{Δ}{4a^2}}\\
+              \implies&&r=&-\frac{b}{2a}+\pm\frac{\sqrt{Δ}}{2a}
+            \end{align}
+            now lets see what happens if we put them into the factorized form
+            \begin{align}
+              a(x-r_-)(x+r_+)=&a\left(x-\frac{-b-\sqrt{Δ}}{2a}\right)^2
+              \left(x-\frac{-b+\sqrt{Δ}}{2a}\right)^2\\
+              =&\frac{1}{4a}(2ax+b-\sqrt{Δ}))^2
+              (2ax+b-\sqrt{Δ}))^2\\
+              =&\frac{1}{4a}((2ax+b)^2-\sqrt{Δ}^2)\\
+              =&\frac{1}{4a}(4a^2x^2+4abx+b^2-b^2+4ac)\\
+              =&ax^2+bx+c=p(x)
+            \end{align}
+          <p style="text-align:right;">&#x220E;</p>
+        There is a slight issue with these roots. If we want real roots, which
+        is what we can usually reasonably interpret, we have to require the
+        discriminant to be nonnegative, i.e. \(Δ\geq0\), since we're taking the
+        square root. If the determinant is \(Δ=0\) then we have only one root
+        with multiplicity 2.
+</body>
