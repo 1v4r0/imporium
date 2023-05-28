@@ -48,16 +48,7 @@
       comes from expanding the parenthesis, since a power \(x^i\) must take an
       \(x\) from \(i\) factors and a 1 from the rest. This in effect means
       that we have to choose \(i\) out of \(n\) factors, which is done with
-      \(n\choose i\) ways by combinatorics. I can also do a simple proof for
-      good measure
-      <h3> Proof </h3>
-        I'll do a proof by induction. I have the base case
-          $$x+1={1\choose 1}x+{0\choose 1}$$
-        so lets assume that "\(n=k\implies n=k+1\)", then
-        \begin{align}
-          (x+1)^{k+1}=&(x+1)^k(x+1)\\
-          =&(x+1)\sum_{i=0}^k{k\choose i}x^i
-        \end{align}
+      \(n\choose i\) ways by combinatorics.
     <h2> Quadratics </h2>
       The one class of polynomials we will spend most of our time investigating
       are the ones of degree 2, which are known as quadratics, with the
