@@ -40,7 +40,7 @@
     interest-rate and divide by \(n\), i.e. \(r_2=\frac{r_1}{n}\). If you do
     this with \(r_1=1=100\%\), i.e. the capital should be doubled at the end of
     the term, the compound interest formula will yield following expression
-      $$C_n=C_0(1+\frac{1}{n})^n$$
+      $$C_n=C_0\left(1+\frac{1}{n}\right)^n$$
     For \(n=1\) it does indeed double the initial capital, but at \(n=2\) we get
     \(C_n=2.25C_0\) so we gain an extra 25%. If we decrease the term-length
     further from bi-yearly, to quarterly, monthly, weekly, daily, hourly, and
@@ -190,7 +190,7 @@
           To perform exponential regression on a dataset \((x_n,y_n)\) we simply
           consider that
             $$\log(y)=\log(ba^x)=x\log(a)+\log(b)$$
-          so we can simply do a linear regression on the dataset \((x_n,
+          so we can simply do a linear regression on the dataset \((\log(x_n),
           \log(y_n))\) and then to extract the growth factor and initial value
           we simply take the natural exponential function of the slope and
           y-intercept respectively.

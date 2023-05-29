@@ -6,7 +6,9 @@ body{
 .row {
   display: flex;
 }
-
+img{
+  border: 1px solid white;
+}
 .column {
   flex: 50%;
 }
