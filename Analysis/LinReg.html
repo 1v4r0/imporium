@@ -11,22 +11,22 @@
   <div class="back"> <a href="Analysis.html">Back</a> </div>
   This section is aimed at students in upper secondary education in the Danish
   school system, some objects will be simplified some details will be omitted.
-  <h1> Regression Analysis</h1>
+  <div class="def"><center><h1> Regression Analysis</h1></center>
     Lets consider a dataset consisting of a series of points \((x_i,y_i)\),
     then we can perform a regression to a specific function f by considering
     the corresponding residuals
       $$r_i=f(x_i)-y_i$$
-    squaring them and then minimizing the sum of these squared residuals.
-    <h2> Theorem(Linear Regression) </h2>
+    squaring them and then minimizing the sum of these squared residuals.</div>
+    <div class="thm"><center><h2> Theorem(Linear Regression) </h2></center>
       The linear function that minimizes the squared residuals for a given
       dataset, for which not all the x-coordinates are equal, has the following
       properties:
         $$a=\frac{n\Sigma xy-\Sigma x\Sigma y}{n\Sigma x^2-(\Sigma x)^2}$$
-        $$b=\frac{\Sigma x^2\Sigma y-\Sigma x\Sigma xy}{n\Sigma x^2-(\Sigma x)^2}$$
-      <h3> Proposition </h3>
+        $$b=\frac{\Sigma x^2\Sigma y-\Sigma x\Sigma xy}{n\Sigma x^2-(\Sigma x)^2}$$</div>
+      <div class="pro"><center><h3> Proposition </h3></center>
         For a sequence of numbers \(x_i\) we have
           $$\left(\sum_{i=1}^n x_i\right)^2\leq n\sum_{i=1}^n x_i^2$$
-        with equality only if all the \(x_i\) are identical.
+        with equality only if all the \(x_i\) are identical.</div>
       <h3> Proof </h3>
         Consider the two-variable function
           $$K(a,b)=\sum_{i=1}^n(ax_i+b-y_i)^2$$
