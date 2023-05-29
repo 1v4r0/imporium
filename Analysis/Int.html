@@ -11,7 +11,7 @@
   <div class="back"> <a href="Analysis.html">Back</a> </div>
   This section is aimed at students in upper secondary education in the Danish
   school system, some objects will be simplified some details will be omitted.
-  <h1> Integrals </h1>
+  <div class="def"><center><h1> Integrals </h1></center>
     The so called definite integral of a function f on an interval \([a,b]\) is
     defined as the area under the graph of f in that interval. There are several
     ways to define this and one is to divide the interval into sub-intervals
@@ -20,28 +20,31 @@
     width \(\Delta x_n=x_n-x_{n-1}\). If we then make the sub-intervals narrower
     and narrower, we will approach the true area under the graph. This yields
     the following definition for the definite integral
-      $$\int_a^b f(x)dx=\lim_{N\to\infty}\sum_{n=1}^Nf(t_n)\Delta x_n$$
-    <h2> The Fundamental Theorem of Calculus </h2>
+      $$\int_a^b f(x)dx=\lim_{N\to\infty}\sum_{n=1}^Nf(t_n)\Delta x_n$$</div>
+    <div class="thm"><center><h2>The Fundamental Theorem of Calculus</h2></center>
       The theorem has two seperate parts, the first part states that for a
       suitably nice function \(f(x)\), the following function
         $$F(x)=\int_a^xf(x)dx$$
       is an antiderivate to \(f(x)\), i.e. that \(F'(x)=f(x)\).<br>
       The second part states that for any antiderivate \(F(x)\) of \(f(x)\) we
       have that
-        $$\int_a^bf(x)dx=F(b)-F(a)$$
-      <h3> Proposition(The Mean Value Theorems) </h3>
-        We will need two versions of the mean value theorem for our proof. The
+        $$\int_a^bf(x)dx=F(b)-F(a)$$</div>
+      We will need two versions of the so-called mean value theorem for our proof.
+      <div class="pro"><center><h3> The Mean Value Propositions </h3></center>
+        The
         first states that if \(f(x)\) is differentiable in the interval
         \(]a,b[\) then there exists a \(c\in]a,b[\) such that
           $$f'(c)=\frac{f(b)-f(a)}{b-a}$$
-        which in essence means that there is a value in the interval where
+        which in essence means that there is a value in the domain where
         the slope is the same as the average slope on the entire interval.<br>
         The second theorem states that if \(f(x)\) is continuous on \([a,b]\),
         then we can find a \(c\in[a,b]\) such that
           $$f(c)=\frac{1}{b-a}\int_a^bf(x)dx$$
         which means that the area under the graph is equal to the area of a
         rectangle with the interval length as its width and height corresponding
-        to the function value at some point in the interval.
+        to the function value at some point in the interval.</div>
+        Being propositions, I will not prove these, but go straight to the
+        proof of the fundamental theorem.
       <h3> Proof </h3>
         For the first part we want to differentiate \(F(x)\) so lets consider
         \begin{align}
