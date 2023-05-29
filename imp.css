@@ -7,7 +7,7 @@ body{
   display: flex;
 }
 img{
-  border: 1px solid grey;
+  border: 1px solid rgb(50,50,50);
 }
 .column {
   flex: 50%;
