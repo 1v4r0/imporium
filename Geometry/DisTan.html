@@ -11,20 +11,23 @@
   <div class="back"> <a href="Geometry.html">Back</a> </div>
   This section is aimed at students in upper secondary education in the Danish
   school system, some objects will be simplified and some details omitted.
-  <h1> Tangent Line for Circular Motion</h1>
+  <div class="thm"><center><h1> Tangent Line Theorem for Circular Motion</h1></center>
     Consider the circular motion represented by its parametric form
-      $$\begin{pmatrix} x\\y\end{pmatrix}=\begin{pmatrix}x_0\\y_0\end{pmatrix}+r
+      $$\begin{pmatrix} x\\y\end{pmatrix}=\begin{pmatrix}x_0\\y_0\end{pmatrix}+
       \begin{pmatrix} \cos(\omega t)\\\sin(\omega t)\end{pmatrix}$$
     Then the tangent line can be represented in parametric form as
         $$\begin{pmatrix} x\\y\end{pmatrix}=\begin{pmatrix}x_0\\y_0\end{pmatrix}+
-        r\begin{pmatrix} \cos(\omega t)-\omega t\sin(\omega t)\\\sin(\omega t)+
+        \begin{pmatrix} \cos(\omega t)-\omega t\sin(\omega t)\\\sin(\omega t)+
         \omega t\cos(\omega t)\end{pmatrix}$$
       which is a result of differentiating the parametric form to gain the
       tangent vector which becomes the directional vector for our line. The
       normal form of the tangent line is
         $$\cos(\omega t)x+\sin(\omega t)y+c=0$$
       where
-        $$-c=\cos(\omega t)+\sin(\omega t)+r$$
+        $$-c=\cos(\omega t)+\sin(\omega t)+r$$</div>
+      The following image will be a nice reference for all proofs.
+      <center><img src="Images/DisTan.JPG" title="Distance to Tangent Line
+        for Circular Motion"></center>
       <h2> Proof. </h2>
         The parametric vector of the parametric form will act as a normal
         vector for our tangent line, as it's orthogonal to it. This immediately
@@ -42,14 +45,14 @@
         \end{align}
         by the idiot rule, where \((x_1,y_1)\) is a point on the line, in this
         case the intersection point of the tangent line and circle.
-    <h1> Distance to the Tangent Line </h1>
+    <div class="thm"><center><h1> Distance to the Tangent Line </h1></center>
       Then the distance from the tangent line to any arbitrary point \(P=
       (p_1,p_2)\) will then be
       \begin{align}
         dist(P,l)=&|\cos(\omega t)p_1+\sin(\omega t)p_2+c|\\
-        =&\begin{pmatrix}\cos(\omega t)\\\sin(\omega t)\end{pmatrix}\bullet
-        \begin{pmatrix}p_1-x_0\\p_2-y_0\end{pmatrix}+r\\
-      \end{align}
+        =&\left|\begin{pmatrix}\cos(\omega t)\\\sin(\omega t)\end{pmatrix}\bullet
+        \begin{pmatrix}p_1-x_0\\p_2-y_0\end{pmatrix}-r\right|\\
+      \end{align}</div>
       <h2> Proof 1.</h2>
         Consider the point on the tangent line that is closest to \(P\) and call
         it \(Q=(q_1,q_2)\), then the vector \(\underline{QP}\) is parallel with
