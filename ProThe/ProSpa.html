@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <link href="../imp.css" rel="stylesheet">
+    <title>Probability Spaces and Random Variables</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <body>
+    <div class="back"> <a href="ProThe.html">Back</a> </div>
+    This section is aimed at students in upper secondary education in the Danish
+    school system, some objects will be simplified some details will be omitted.
+    <h1> Probability Space </h1>
+    <div class="back"> <a href="ProbabilityTheory.html">Back</a> </div>
+      A probability space is a mathematical construct associated with a random
+      process that consists of two objects:<br>
+      1. A sample space Ω of the possible outcomes of the process.<br>
+      2. A probability function
+        $$P:Ω\to[0,1]$$
+        that associates to each outcome
+      a probability.<br>
+      <h2> Events </h2>
+        Events are sets of outcomes, so an event can be denoted as
+          $$A=\{ω_1,ω_2,\dots\}⊂Ω$$
+        and this allows us to extend the probability function from outcomes to
+        sets of outcomes in the following way
+          $$P(A)=\sum_{ω\in A}P(ω)=P(ω_1)+P(ω_2)+\cdots$$
+        This is actually why probability spaces usually include a third object,
+        the set of all the events, which the probability function is defined on.
+        This is an unnecessary abstraction in this setting.<br>
+        This formula allows us to consider three interesting events, the empty
+        event, \(Ø\) inspired by the danish letter Ø, which has the property
+        that
+          $$P(Ø)=0$$
+        the whole sample space, with
+          $$P(Ω)=1$$
+        and the complementary event,
+          $$A^c=Ω\backslash A=\{ω\in Ω:ω\notin A\}$$
+        which are all the outcomes that are not in \(A\).
+        <h3> Set Theory </h3>
+          Events have several interesting properties that follow from set
+          theory. For starters, for two events \(A\) and \(B\) we can define
+          their union
+            $$A\cup B=\{ω\in Ω:ω\in A\vee ω\in B\}$$
+          i.e. all the outcomes that are in either \(A\) or \(B\), or both for that matter. We can also define
+          their intersection
+            $$A\cap B=\{ω\in Ω:ω\in A \wedge ω\in B\}$$
+          which are all the outcomes that are in both. We say that two events
+          are mutually exclusive if their intersection is empty, i.e.
+          \(A\cap B=Ø\) and \(P(A\cap B)=0\).
+          There are two sets that are always mutually exclusive, namely \(A\)
+          and its complementary event, \(A^c\). Lets consider two events that
+          are not mutually exclusive, then the probability of their union can be
+          expressed in the following terms
+            $$P(A\cup B)=P(A)+P(B)-P(A\cap B)$$
+          The explanation is that when we calculate the probability of \(A\) and
+          \(B\) seperately, we've counted their intersection twice, once for
+          each event. If the events are mutually exclusive, the last term is
+          just 0, so it's still valid, and the restriction is unnecessary. There
+          are two events that are mutually exclusive by construction, namely
+          \(A\) and its complementary event \(A^c\), which means that
+            $$1=P(Ω)=P(A)+P(A^c)⇒\boxed{P(A^c)=1-P(A)}$$
+          <h3> Uniform Probability Spaces</h3>
+            In a probability space where each outcome is equally likely, i.e.
+            they all have the same probability, consider that
+            \begin{align}
+              &&1=&P(Ω)=\sum_{ω\in Ω}P(ω)=|Ω|p\\
+              \implies
+            \end{align}
+              $$P(ω)=\frac{1}{|Ω|}$$
+            and
+              $$P(A)=\frac{|A|}{|Ω|}$$
+            where \(|A|\) denotes the "size", sometimes called the
+            "cardinality", of the event.
+            <h4> Proof </h4>
+              Assume that all the outcomes have the same probability \(p\).
+              Then I use the fundamental property of the probability function,
+              namely that something has to happen
+
+              which yields the formula by isolating \(p\). For the second part
+              I do something similar
+                $$\boxed{P(A)}=\sum_{ω\in A}P(ω)=|A|\frac{1}{|Ω|}
+                \boxed{=\frac{|A|}{|Ω|}}$$
+          <h3> Conditional Probability </h3>
+            If we consider the last result, you can actually extend that to
+            arbitrary probability spaces. Imagine having a geometric shape that
+            has area 1 that represents whe whole sample space, then you can
+            colour in the different outcomes corresponding to their
+            probabilities. Then the probability of an event is the total area
+            of the outcomes that it consists of. In this case we can consider
+            the size \(|A|\) to be its area in the diagram and when we divide
+            by \(|Ω|\) we're just dividing by 1. This the setting for
+            conditional probabilities.<br>
+            The probability of an event on the condition of another event is
+            denoted as
+              $$P(A|B)=\frac{P(A\cap B)}{P(B)}$$
+            where what we've done is replaced the whole sample space with the
+            conditional event. So the conditional probability is the fraction
+            of the event that is "within" the conditional event.
+            <h4> Bayes' Theorem </h4>
+            We can isolate the intersection in the last equation to yield
+              $$P(A\cap B)=P(A|B)P(B)=P(B|A)P(A)$$
+            which is the basis for the relatively simple, but powerful, Bayes'
+            theorem, that states that
+              $$P(A|B)=P(B|A)\frac{P(A)}{P(B)}$$
+            A classic situation where we can apply Bayes' theorem is testing
+            for infectious disease. Within this context there is a concept
+            called sensitivity, which is the ability to correctly identify
+            infected people, this is \(P(I|+)\), the conditional probability
+            of being infected given a positive test. This number is usually
+            obtained experimentally, so this can be used to calculate the
+            probability of testing positive, given that you are infected by
+            Bayes' theorem
+              $$P(+|I)=P(I|+)\frac{P(I)}{P(+)}$$
+            where the probability of being infected can be estimated by several
+            parameters including the spread in the community and some health
+            parameters, and the probability of testing positive can potentially
+            be estimated by the number of people who actually test positive
+            with similar parameters to yours. There is another concept in the
+            field of testing for infectious disease which is specificity, which
+            is how likely you are to identify a non-infectious person, i.e.
+            \(P(I^c|-)\). This can then be used to estimate the probability of
+            testing negative without the disease
+              $$P(-|I^c)=P(I^c|-)\frac{P(I^c)}{P(-)}=P(I^c|-)
+              \frac{1-P(I)}{1-P(+)}$$
+  </body>
+</html>
