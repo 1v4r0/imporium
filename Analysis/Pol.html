@@ -3,8 +3,7 @@
   <link href="../imp.css" rel="stylesheet">
   <title>Polynomials</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  <script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">
   </script>
 </head>
 <body>
@@ -60,7 +59,17 @@
       comes from expanding the parenthesis, since a power \(x^i\) must take an
       \(x\) from \(i\) factors and a 1 from the rest. This in effect means
       that we have to choose \(i\) out of \(n\) factors, which is done in
-      \(n\choose i\) ways by combinatorics.
+      \(n\choose i\) ways by combinatorics. If we subtract an \(x\) from the
+      left hand parenthesis, we get
+        $$(x+1-x)^n=1^n=1=\sum_{i=0}^n{n\choose i}x^i(1-x)^{n-p}$$
+      which verifies that the <a href="../ProThe/BinDis.html">binomial
+      distribution</a> is in fact a probability distribution, since this
+      expression calculates the probability of all the random values for \(x=p\).
+      If we consider
+        $$(1-1)^n=0^n=0=\sum_{i=0}^n{n\choose i}1^i(-1)^{n-i}=\sum_{i=0}^n
+        {n\choose i}(-1)^{n-i}$$
+      we can observe that if we alternately add and subtract a line in Pascal's
+      triangle, the result adds up to 0. 
     <div class="def"><center><h2> Quadratics </h2></center>
       The one class of polynomials we will spend most of our time investigating
       are the ones of degree 2, which are known as quadratics, with the

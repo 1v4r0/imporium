@@ -3,8 +3,7 @@
   <link href="../imp.css" rel="stylesheet">
   <title>Derivative of Power Functions</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  <script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">
   </script>
 </head>
 <body>
@@ -26,9 +25,9 @@
     numbers as results. If we extend it to \(a\in\mathbb{R}\) it only becomes
     more complicated, which together with the result that for any \(n< 0\),
     \(f(0)=\infty\) will motivate us to restrict ourselves to \(x>0\) on
-    first approach, i.e. \(dom(f)=\mathbb{R}_+\backslash\{0\}\).<br>
+    first approach, i.e. \(dom(f)=\mathbb{R}_+^*=\{x\in\mathbb{R}:x>0\).<br>
     For an interpretation of \(b\) consider that
-      $$f(1)=b1^a=b⋅1=b$$
+      $$f(1)=b⋅1^a=b⋅1=b$$
     so it's not the initial value as such, but the value at 1, which feels much
     less satisfactory than initial value for the exponential function, but such
     is life.
@@ -62,7 +61,7 @@
             \log(y_1)}{\log(x_2)-\log(x_1)}
           \end{align}
           and reintroducing \(b\) we just find it by isolating it in the
-          function expression.<p style="text-align:right;">&#x220E;</p>
+          function expression.<p style="text-align:center;">&#x220E;</p>
       <div class="thm"><center><h2> Integer Power Derivative Theorem </h2>
       </center>
         Assume than we have a power function with integer power, i.e.
@@ -86,7 +85,7 @@
             =&(x+h)\frac{(x+h)^k-x^k}{h}+x^k\cancel{\frac{h}{h}}\\
             \to&xkx^{k-1}+x^k=(k+1)x^k=(k+1)x^k
           \end{align}
-          <p style="text-align:right;">&#x220E;</p>
+          <p style="text-align:center;">&#x220E;</p>
         <h1> Real Powers </h1>
           Now assume the power is \(a\in\mathbb{R}\), then we can write the function
           as \(f(x)=x^a=e^{\ln(x^a)}=e^{a\ln(x)}\), which immediately yields the

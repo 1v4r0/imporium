@@ -3,36 +3,149 @@
   <link href="../imp.css" rel="stylesheet">
   <title>Function</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  <script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">
   </script>
 </head>
 <body>
   <div class="back"> <a href="Analysis.html">Back</a> </div>
   This section is aimed at students in upper secondary education in the Danish
-  school system, some objects will be simplified some details will be omitted.
+  school system, some objects will be simplified and some details will be omitted.
   <h1> Definition of a Function</h1>
-
-    Consider the composite function \(p(x)=f(g(x))\), its derivative is
-    \(p'(x)=f'(g(x))g'(x)\).
-    <h2> Proof. </h2>
-      Lets start with the secant slope
-      \begin{align}
-        \frac{p(x+h)-p(x)}{h}=&\frac{f(g(x+h))-f(g(x))}{h}\\
-        =&\frac{f(g(x+h))-f(g(x))}{h}\frac{g(x+h)-g(x)}{g(x+h)-g(x)}\\
-        =&\frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}\frac{g(x+h)-g(x)}{h}\\
-        =&\frac{f(g(x)+k)}{k}\frac{g(x+h)-g(x)}{h}\to f'(g(x))g'(x)
-      \end{align}
-      where \(k=g(x+h)-g(x)\to0\) for \(h\to0\) since \(g\) is continuous.
-    <h1> Derivative of the Natural Logarithm </h1>
-      An immediate consequence of this formula is that the derivative of the
-      natural logarithm is \(1/x\).
-      <h2> Proof. </h2>
-        Consider that \(p(x)=x=e^{\ln(x)}\) where \(f(x)=e^x\) and \(g(x)=
-        \ln(x)\) then we get that
-        \begin{align}
-          1=p'(x)=&f'((g(x))g'(x)\\
-          =&e^{\ln(x)}g'(x)\\
-          =&xg'(x)\implies g'(x)=\frac{1}{x}
-        \end{align}
+    A function is a mathematical object that relates pairs of other objects.
+    This can be done in multiple ways but the most immediately obvious way, that
+    even young children could do, is to simply place those two objects near
+    each other. You can also connect those two objects by a string or by some
+    description. Since we will mostly be working with mathematical abstractions,
+    most of our relations will be described mathematically. As an example,
+    consider the following sets of objects
+      $$X=(car_1, car_2)$$
+    and
+      $$Y=(car_3,car_4)$$
+    and
+      $$Z=(red,green,blue)$$
+    We could make a function that related the car to its colour, examples of
+    such functions could be the following
+      $$f:X\mapsto Z\text{, and }g:X\cup Y\mapsto Z$$
+    where we call \(X=dom(f)\) and \(Z=ran(f)\) the
+    "domain" and "range" of \(f\) respectively.
+    Let these functions be defined as follows
+      $$f(car_1)=green, f(car_2)=blue$$
+    and
+      $$g(car_1)=red,g(car_2)=green,g(car_3)=blue,g(car_4)=red$$
+    where the first function represents the car's interior and the second
+    represents the exterior paint. The first function is called
+    "injective", since each car, in the domain, is assigned a
+    seperate colour in the range. This is not true for the second function,
+    since two cars are red, but it has another property, namely that for each
+    colour in the range, there is a car with that colour. This property is
+    called being "surjective", which the first function is not since
+    neither of the cars are red. If a function is both injective and surjective
+    it is really nice, since each object in the domain and range is assigned
+    a unique object in the other, and is called "bijective".
+    <div class="def">These can be skipped on first approach <center><h2>
+      Rigorous Definitions of<br>Injectivity, Surjectivity and Bijectivity </h2></center>
+      For a function \(g:X\mapsto Z\) and \(Y\subset X\) we define
+        $$g(Y)=\{z\in Z:z=f(y)\text{ for }y\in Y\}$$
+      In relation to our example, its all the colours that are used as
+      exterior colours for the last two cars.
+      A function \(f:X\mapsto Z\) is injective if
+        $$f(x_i)=f(x_j)\implies x_i=x_j$$
+      It's surjective if
+        $$f(X)=Z$$
+      and it's bijective if it's both.</div>
+      This property has some consequences for the so-called inverse function.
+    <div class="def"><center><h2> Inverse Functions</h2></center>
+      Relating pairs of objects is theoretically a symmetric process but it
+      is very useful, and common practice, to consider functions as directed
+      relations, going from one object to the other. The opposite direction
+      is then called the "inverse" function. The function \(f:X\mapsto Y\)
+      will then have the inverse function \(f^{-1}:Y\mapsto X\) with the
+      property that
+        $$f^{-1}(y)=\{x\in X:f(x)=y\}$$</div>
+      This can lead to the uncomfortable situation where the inverse function
+      can have multiple values for each object in its domain. To be honest,
+      this is not unique to the inverse function, if you consider our
+      example from previously, we could imagine a car having two colours, i.e.
+        $$g(car_1)=\{red,blue\}$$
+      which could represent it being purple, or simply that it's not
+      monochromatic. These types of functions are called "multi-valued"
+      functions and you may encounter them again in the future, but for the
+      current treatment I will try to avoid them at all costs. One way to do
+      that is to only consider single-valued inverse functions, and this can
+      be accomplished by making sure that the original function is injective.
+      <div class="thm"><center><h3> Inverse functions</h3></center>
+        An injective function \(f:X\mapsto Y\) will have a single-valued
+        inverse function, and the property that
+          $$x=f^{-1}(f(x))$$
+        for all \(x\in X\). If it's bijective we also have that
+          $$y=f(f^{-1}(y))$$
+        for all \(y\in Y\).</div>
+        <h4> Proof</h4>
+          Let \(y\in ran(f)\), and assume that we have two values, \(x_1\) and
+          \(x_2\) that get mapped to it. Then we have
+          \begin{align}
+            &&f^{-1}(y)=&\{x\in X:f(x)=y\}\\
+            &&\supset&\{x_1,x_2\}\\
+            \implies&&f(x_1)=&f(x_2)=y\\
+            \implies&&x_1=&x_2
+          \end{align}
+          by injectivity, which shows the inverse is single valued. Lets drop
+          the subscript since they are equal, then we get
+            $$f^{-1}(y)=f^{-1}(f(x))=x$$
+          For the second identity, we just use surjectivety, i.e. that
+          \(ran(f)=Y\), to allow us to choose any \(y\in Y\) to perform the
+          following argument
+            $$y=f(x)=f(f^{-1}(y))$$<p style="text-align:center;">&#x220E;</p>
+        Examples of bijective functions are non-constant linear functions
+        \(f(x)=ax+b\) with \(X=Y=\mathbb{R}\) and inverse
+          $$x=f^{-1}(y)=\frac{y-b}{a}$$
+        <a href="Exp.html">Exponential
+        functions</a> \(f(x)=ba^x\) with \(X=\mathbb{R}\),
+        \(Y=\mathbb{R}_+\), and
+          $$x=f^{-1}(y)=\frac{\log(y)-\log(b)}{\log(a)}$$
+        specifically, if \(b=1\) and \(a=e\) then we get that \(\log(y)\) is
+        the inverse function to the natural exponential function. We also
+        have <a href="Pow.html">power functions</a> \(f(x)=bx^a\) with
+        \(X=Y=\mathbb{R}_+\) and
+          $$x=f^{-1}(y)=\sqrt[a]{\frac{y}{b}}$$
+        which is why we choose both \(y,b>0\) so we don't get complex
+        numbers for now.
+    <h2> Real Domains </h2>
+      So far I have allowed functions to act on arbitrary(non-mathematical)
+      objects, which will be useful for <a href="../ProThe/ProThe.html">
+      probability theory</a> since you can consider random processes with all
+      sorts of weird objects, and have the probability function relate them to
+      a number, namely it's probability. But in most other settings, including
+      <a href="../ProThe/RanVar.html">random variables</a>, it will
+      be more useful to consider domains that are real numbers, since it will
+      allow for us to perform calculations on them, you can't add cars, but you
+      can add numbers. When the domain and range have similar numbers, we don't
+      really make the distinction of which is which, so that \(x\) is
+      always considered to be in the domain and \(y\) in the range. With this
+      convention, we will write
+        $$x=f(f^{-1}(x))=f^{-1}(f(x))$$
+      <h3> Vector Functions </h3>
+        Sometimes we are interested in relating pairs, and even sets, of numbers
+        to another. An example is the ideal gas law from physics
+          $$PV=nRT$$
+        where we can calculate the pressure if we know the other variables by
+        the following function
+          $$P(V,n,T)=R\frac{nT}{V}$$
+        To avoid having to deal with infinities we can restrict the variables to
+        be strictly positive
+          $$dom(P)=\mathbb{R}_+\times\mathbb{R}_+\times\mathbb{R}_+=\mathbb{R}_+^3$$
+        This is pretty much the same thing as three dimensional vectors with
+        positive coordinates. In general, the most common domains are the
+        so-called Euclidean Spaces,
+          $$X=\mathbb{R}\times\cdots\times\mathbb{R}=\mathbb{R}^n$$
+        where \(n\in\mathbb{N}\) is called the dimension. It might not be clear
+        how any vectors higher than 3 or 4 might be useful, but in AI research
+        you often deal with functions with domains that have dimensions in the
+        dozens, hundreds or higher. In the case of the ideal gas law function,
+        the domain consisted of three dimensional vectors while the range was
+        just a single number, i.e.
+          $$P:\mathbb{R}_+^3\mapsto\mathbb{R}_+$$
+        In general a vector function will defined as
+          $$f:\mathbb{R}^n\mapsto\mathbb{R}^m$$
+        where \(n,m\in\mathbb{N}\).
 </body>
