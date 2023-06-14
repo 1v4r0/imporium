@@ -23,6 +23,15 @@
       vertically. The magnitude of the vector can be determined by these coordinates
       by applying the Pythagorean theorem as such
         $$|\underline{v}|=\sqrt{v_1^2+v_2^2}$$</div>
+    <div style="border: 1px solid white">
+    <button type="button" class="collapse">
+        Example 1
+    </button>
+    <div class="exa">
+      Consider the following vector
+        $$\underline{v}={4\choose-3}$$
+      Its length can be calculated as follows
+        $$|\underline{v}|=\sqrt{4^2+(-3)^2}=\sqrt{16+9}=\sqrt{25}=5$$</div></div>
     <div class="def"><center><h1> Sum and Multiplication by a Scalar </h1></center>
       You can add two vectors by extending one by the other, and then the sum of the
       two vectors is the vector that goes from the start of the first vector to the
@@ -41,18 +50,52 @@
       is represented algebraically as
         $$k\underline{v}={kv_1\choose kv_2}$$
       If \(k < 0\) this represents flipping the vector and specifically \(k=-1\) is the
-      opposite vector.
+      opposite vector.</div>
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 2
+      </button>
+      <div class="exa">
+        Lets continue with the vector from example 1
+          $$\underline{v}={4\choose-3}$$
+        and add and subtract the following vector
+          $$\underline{w}={4\choose3}$$
+        Then we get
+          $$\underline{v}±\underline{w}={4\choose-3}±{4\choose3}={4±4\choose-3±3}
+            ={8\choose0}\vee{0\choose-6}$$
+          Since these two vectors are symmetric about the x-axis, the sum diagonal
+          will obviously lay on the x-axis, and the difference diagonal will
+          lay parallel to the y-axis as observed. If we multiply one of them by -1
+          and the other by 2 we get
+            $$(-1)⋅\underline{v}+2\underline{w}={-4\choose3}+{8\choose 6}={4\choose9}$$
+          If I hadn't multiplied the second vector by 2, they would still have been
+          symmetric, about the y-axis, but that 2 moved the diagonal off the axis.
+        </div></div>
     <div class="def"><center><h1> Scalar Product, Determinant and CO-vectors </h1></center>
       We have two useful methods to "multiply" two 2D vectors with each other. One is
       the so-called scalar product
-        $$\underline{v}\bullet\underline{w}=v_1w_1+v_2w_2$$
+        $$\underline{v}\bullet\underline{w}=\begin{matrix}{v_1w_1}\\+\\v_2w_2\end{matrix}$$
       and the other is the determinant
         $$\det(\underline{v},\underline{w})=\hat{\underline{v}}\bullet\underline{w}=
           \begin{vmatrix}v_1 & w_1\\v_2 & w_2\end{vmatrix}=v_1w_2-v_2w_1$$
       where I will call
         $$\hat{\underline{v}}={-v_2\choose v_1}$$
-      the canonical orthogonal vector, or CO-vector, to \(\underline{v}\).</div>
-      Vectors satisfy most of the rules of the rules that apply to scalars, such as
+      the canonical orthogonal vector, or CO-vector, to \(\underline{v}\), which
+    is just the vector rotated \(90^\circ\) anti-clockwise.</div>
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 3
+      </button>
+      <div class="exa">
+        Lets continue with the vectors from the previous examples
+          $$\underline{v}={4\choose-3},\underline{w}={4\choose3}$$
+        Then their scalar product is
+          $$\underline{v}\bullet\underline{w}=4⋅4+(-3)⋅3=16-9=7$$
+        and the determinant is
+          $$\det(\underline{v},\underline{w})=\hat{\underline{v}}\bullet\underline{w}
+          ={3\choose4}\bullet{4\choose3}=3⋅4+4⋅3=12+12=24$$
+        </div></div>
+      Vectors satisfy most of the rules that apply to scalars, such as
       commutativity, associativity and distributativity. Both with respect to the sum,
       scalar-multiple and scalar-product. The determinant however, is anti-commutative.
     <div class="def"><center><h1> Projections and Vector Division </h1></center>
@@ -62,7 +105,8 @@
         $$\frac{\underline{v}}{\underline{w}}=
           \frac{\underline{v}\bullet\underline{w}}{|\underline{w}|^2}$$
       This operation is very useful in conjunction with the concept of vector
-      projections. We can write
+      projections. We can write what I will call \(\underline{v}\)'s decomposition
+      by \(\underline{w}\) as
         $$\underline{v}=\frac{\underline{v}}{\underline{w}}\underline{w}+
           \frac{\underline{v}}{\hat{\underline{w}}}\hat{\underline{w}}=
           \underline{v}_{\underline{w}}+\underline{v}_{\hat{\underline{w}}}$$
@@ -71,6 +115,53 @@
       vectors are then called the projectons of \(\underline{v}\) onto
       \(\underline{w}\) and its CO-vector and it's denoted by the notation on the
       rightmost side.</div>
+      If we take the vector decomposition and take its product by the decomposing
+      vector, I get
+      \begin{align}
+        \underline{v}\bullet\underline{w}=&\frac{\underline{v}}{\underline{w}}\underline{w}
+        \bullet\underline{w}+\cancel{\frac{\underline{v}}{\hat{\underline{w}}}\hat{\underline{w}}
+        \bullet\underline{w}}\\
+        =&\frac{\underline{v}\bullet\underline{w}}{\cancel{|\underline{w}|^2}}\cancel{
+          |\underline{w}|^2}
+      \end{align}
+      and if I do the same thing with the vector itself I get
+      \begin{align}
+        |\underline{v}|^2=\underline{v}\bullet\underline{v}=&\frac{\underline{v}
+      }{\underline{w}}\underline{v}
+        \bullet\underline{w}+\frac{\underline{v}}{\hat{\underline{w}}}\underline{v}\bullet
+        \hat{\underline{w}}\\
+        =&\frac{|\underline{v}\bullet\underline{w}|^2}{|\underline{w}|^2}+\frac{
+          |\underline{v}\bullet\hat{\underline{w}}|^2}{|\hat{\underline{w}}|^2}\\
+        =&\frac{|\underline{v}|^2\cancel{|\underline{w}|^2(\cos^2(\theta)+\sin^2
+        (\theta))}}{\cancel{|\underline{w}|^2}}
+      \end{align}
+      by the following theorem. I don't know if I'm making something very simple
+      overly complicated, but this seems like a very beautiful construction.
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 4
+      </button>
+      <div class="exa">
+        Lets continue with the vectors from the previous examples
+          $$\underline{v}={4\choose-3},\underline{w}={4\choose3}$$
+        Then the scalar divisions of \(\underline{v}\) with \(\underline{w}\) is
+          $$\frac{\underline{v}}{\underline{w}}=\frac{\underline{v}\bullet\underline{w}
+            }{|\underline{w}|^2}=\frac{7}{25}$$
+        and with the CO-vector is
+          $$\frac{\underline{v}}{\hat{\underline{w}}}=\frac{\underline{v}\bullet
+          \hat{\underline{w}}}{|\hat{\underline{w}}|^2}=\frac{-\det(\underline{v},
+          \underline{w})}{|\hat{\underline{w}}|^2}=\frac{-24}{25}$$
+        This yields the following decomposition of \(\underline{v}\) into its projection
+        onto the other vector and it's CO-vector
+        \begin{align}
+          \underline{v}=&\frac{\underline{v}}{\underline{w}}\underline{w}+
+          \frac{\underline{v}}{\hat{\underline{w}}}\hat{\underline{w}}\\
+          =&\frac{7}{25}{4\choose3}-\frac{24}{25}{-3\choose4}\\
+          =&\frac{1}{25}{28+72\choose21-96}\\
+          =&\frac{1}{25}{100\choose-75}={4\choose-3}=\underline{v}
+        \end{align}
+        I've just added them up to show that they are actually equal to the original
+        vector.</div></div>
       Before we can state our main result, we need to define the unit circle and
       associated objects. The unit circle is a circle with radius 1 about the origin.
       If we consider a vector \(\underline{v}\) and extend the vector so that it
@@ -89,7 +180,7 @@
       \begin{align}
         \text{1. }&&\underline{v}\bullet\underline{w}&=|\underline{v}||\underline{w}
           |\cos(\theta)\\
-        \text{2. }&&\text{2. }\det(\underline{v},\underline{w})&=|\underline{v}|
+        \text{2. }&&\det(\underline{v},\underline{w})&=|\underline{v}|
           |\underline{w}|\sin(\theta)=\pm A\\
         \text{3. }&&\underline{v}_{\underline{w}}&=\frac{\underline{v}\bullet
           \underline{w}}{|\underline{w}|^2}\underline{w}=
@@ -101,6 +192,23 @@
       \end{align}
       Where \(\theta\) is the angle between the vectors and \(A\) is the area of
       the parallelogram spanned by the two vectors.</div>
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 5
+      </button>
+      <div class="exa">
+        Lets continue with the vectors from the previous examples
+          $$\underline{v}={4\choose-3},\underline{w}={4\choose3}$$
+        Then we can calculate the sine and cosine of the angle between them by using
+        the first formula
+          $$\cos(\theta)=\frac{\underline{v}\bullet\underline{w}}{|\underline{v}|
+            |\underline{w}|}=\frac{7}{5^2}$$
+        and the second
+          $$\sin(\theta)=\frac{\det(\underline{v},\underline{w})}{|\underline{v}|
+            |\underline{w}|}=\frac{24}{5^2}$$
+        This means we can calculate the angle by isolating \(\theta\)
+          $$\theta=\arccos\left(\frac{7}{25}\right)=\arcsin\left(\frac{24}{25}\right)
+            \approx74^\circ$$</div></div>
     <h2> Proof. </h2>
       First we take our two vectors and scale them down to unit vectors so they fit
       into the unit circle, such that
@@ -144,8 +252,8 @@
           \theta)}{|\underline{w}|^2}|\underline{v}|\underline{v}^*+
           \frac{|\underline{v}||\underline{w}|\sin(\theta)}{|\underline{w}|^2}|
           \underline{v}|\hat{\underline{v}}^*\\
-        \iff&&\underline{w} &=\frac{\underline{v}\bullet\underline{w}}{|\underline{w}|^2}
-          \underline{v}+\frac{\det(\underline{v},\underline{w})}{|\underline{w}|^2}
+        \iff&&\underline{w} &=\frac{\underline{v}\bullet\underline{w}}{|\underline{v}|^2}
+          \underline{v}+\frac{\det(\underline{v},\underline{w})}{|\underline{v}|^2}
           \hat{\underline{v}}
       \end{align}
       &#x220E;<br>
@@ -153,4 +261,5 @@
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;
                    picture-in-picture; web-share" allowfullscreen></iframe>
+  <script src="../js/cbut.js"></script>
 </body>
