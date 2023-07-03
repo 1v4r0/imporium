@@ -22,6 +22,18 @@
       $$p(x)=\sum_{i\in\mathbb{Z}}a_ix^i$$
     where \(a_i\in\mathbb{C}\) are the coefficients.
   </div>
+  <div style="border: 1px solid white">
+  <button type="button" class="collapse">
+      Example 1
+  </button>
+  <div class="exa">
+    Consider the following Laurent polynomial
+      $$p(x)=2+2x^{-1}+\sum_{i=-2}^{-\infty}\frac{x^i}{(-i)!}+\sum_{i=1}^{\infty}
+      \frac{x^i}{(i+1)!}$$
+    It has a nasty singularity at \(x=0\) since it has infinite terms that blow up
+    there, but everywhere else, it will be equal to the function
+      $$p(x)=\frac{e^x}{x}+e^{1/x}$$
+  </div></div>
   These are relatively
     complex objects so I will restrict myself to real coefficients, with most of
     them being zero, including all the negative index ones. In fact, what's left
@@ -47,6 +59,18 @@
     the slope of the graph must change sign at least once. This means that there
     are polynomials that are not strictly monotonous unlike power- and
     exponential functions.
+    <div style="border: 1px solid white">
+    <button type="button" class="collapse">
+        Example 2
+    </button>
+    <div class="exa">
+      Now consider the following polynomial
+        $$p(x)=1+5x+10x^2+10x^3+5x^4+x^5$$
+      It can actually be factorized into
+        $$p(x)=(x+1)^5$$
+      with
+        $$a_5\prod_{i=1}^5 r_i=1\prod_{i=1}^5 1=1\cdot1^5=1=a_0=p(0)$$
+    </div></div>
     <h2> Derivatives </h2>
       We can differentiate the polynomial term-wise and get
         $$p'(x)=\sum_{i\in Z}ia_ix^{i-1}$$
@@ -54,8 +78,25 @@
         $$p'(x)=a_n\sum_{i=1}^n\prod_{j\neq i}(x-r_j)$$
       with
         $$p'(0)=a_1=(-1)^{n-1}a_n\sum_{i=1}^n\prod_{j\neq i}r_j$$
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 3
+      </button>
+      <div class="exa">
+        Lets continue with the polynomial from the previous example
+          $$p(x)=1+5x+10x^2+10x^3+5x^4+x^5$$
+        Then differentiating it would yield
+        \begin{align}
+          p'(x)=&5+20x+30x^2+20x^3+5x^4\\
+          =&5(1+4x+6x^2+4x^3+x^4)\\
+          =&a_5\sum_{i=1}^5\prod_{j\neq i}(x+1)\\
+          =&1\sum_{i=1}^5(x+1)^4=5(x+1)^4
+        \end{align}
+        which means that
+          $$(x+1)^4=1+4x+6x^2+4x^3+x^4$$
+      </div></div>
     <h2> Binomial Coefficients </h2>
-      Consider the polynomial
+      The two polynomials from the previous example can be generalized as
         $$p(x)=(x+1)^n=\sum_{i=0}^n{n\choose i}x^i$$
       which has the root \(x=-1\) with multiplicity \(n\). The expression
       comes from expanding the parenthesis, since a power \(x^i\) must take an
@@ -71,7 +112,8 @@
         $$(1-1)^n=0^n=0=\sum_{i=0}^n{n\choose i}1^i(-1)^{n-i}=\sum_{i=0}^n
         {n\choose i}(-1)^{n-i}$$
       we can observe that if we alternately add and subtract a line in Pascal's
-      triangle, the result adds up to 0.
+      triangle, the result adds up to 0. This is obvious for the rows with an even
+      number of numbers, by symmetry, but not equally obvious for the odd rows.
     <div class="def"><center><h2> Quadratics </h2></center>
       The one class of polynomials we will spend most of our time investigating
       are the ones of degree 2, which are known as quadratics, with the
@@ -97,9 +139,16 @@
         $$\frac{c}{a}=r_1r_2$$
       This is extremely useful for finding roots, especially when \(a=1\) since
       finding two whole numbers who's product is one number and sum is another
-      is extremely easy in a number of important cases. For example let
+      is extremely easy in a number of important cases.
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 4
+      </button>
+      <div class="exa">
+      An example of this is the following polynomial and it's immediate factorization
         $$p(x)=x^2-6x-27=(x+3)(x-9)$$
-      so the roots are \(r_1=-3\) and \(r_2=9\).
+      by Viete's method, so the roots are \(r_1=-3\) and \(r_2=9\).
+      </div></div>For example let
       <div class="thm">
         <h3><center>The Roots and Vertex Theorem</center></h3>
         Every quadratic can be written as
@@ -122,6 +171,37 @@
         This theorem provides us with a graphical interpretation of \(a\) namely
         that its sign determines whether the graph branches upwards, \(a>0\),
         or downwards, \(a< 0\), and how "steep" the "branches" are.
+        <div style="border: 1px solid white">
+        <button type="button" class="collapse">
+            Example 5
+        </button>
+        <div class="exa">
+          Lets take the polynomial from the previous example
+            $$p(x)=x^2-6x-27$$
+          and assume we don't know Viète's method and apply the theorem. Let's start
+          by calculating the discriminant
+            $$\Delta=(-6)^2-4⋅1⋅(-27)=36+108=144$$
+          followed by the roots
+          \begin{align}
+            r_\pm=&\frac{-(-6)\pm\sqrt{\Delta}}{2⋅1}\\
+            =&\frac{6\pm12}{2}=3\pm6\\
+            =&-3\vee9
+          \end{align}
+          yielding the factorization
+            $$p(x)=1⋅(x-(-3))(x-9)$$
+          as previously noted. Lets now calculate the vertex
+          \begin{align}
+            V=&\left(-\frac{b}{2a},-\frac{\Delta}{4a}\right)\\
+            =&\left(-\frac{-6}{2⋅1},-\frac{144}{4⋅1}\right)\\
+            =&(3,-36)
+          \end{align}
+          with
+            $$p(x)=1⋅(x-3)^2-36$$
+          This makes sense since the the parabola is symmetric about the vertex,
+          and 3 is halfway between -3 and 9, and since \(b< 0\) we know that it is
+          going downward at the y-axis while intercepting it at \(y=-27\) so it makes
+          sense that it might reach \(y=-36\) at the vertex.
+        </div></div>
         <h4> Proof </h4>
           First off, we start by diving both sides by \(a\) and complete the
           square
@@ -157,10 +237,9 @@
             \end{align}
             now lets see what happens if we put them into the factorized form
             \begin{align}
-              a(x-r_-)(x+r_+)=&a\left(x-\frac{-b-\sqrt{Δ}}{2a}\right)^2
-              \left(x-\frac{-b+\sqrt{Δ}}{2a}\right)^2\\
-              =&\frac{1}{4a}(2ax+b-\sqrt{Δ}))^2
-              (2ax+b-\sqrt{Δ}))^2\\
+              a(x-r_-)(x-r_+)=&a\left(x-\frac{-b-\sqrt{Δ}}{2a}\right)
+              \left(x-\frac{-b+\sqrt{Δ}}{2a}\right)\\
+              =&\frac{1}{4a}(2ax+b+\sqrt{Δ}))(2ax+b-\sqrt{Δ}))\\
               =&\frac{1}{4a}((2ax+b)^2-\sqrt{Δ}^2)\\
               =&\frac{1}{4a}(4a^2x^2+4abx+b^2-b^2+4ac)\\
               =&ax^2+bx+c=p(x)
@@ -171,4 +250,52 @@
         discriminant to be nonnegative, i.e. \(Δ\geq0\), since we're taking the
         square root. If the determinant is \(Δ=0\) then we have only one root
         with multiplicity 2.
+    <h3> Ballistics </h3>
+      One application of quadratics is the ballistics of projectiles, i.e. the path
+      they take through the air, ironically assuming there is no air for simplicity.
+      Although the gravitational force varies slightly with height, and position
+      for that matter, on the scale of most projectiles it is a reasonable approximation
+      to assume that it is constant. The same goes for the associated accelleration,
+      named the gravitational accelleration
+        $$a(t)=g≈10\frac{m}{s^2}$$
+      This number tells us that any object that is only acted on my the gravitational
+      force will have its velocity increased by \(10\frac{m}{s}\) each second towards
+      the ground, i.e.
+        $$v(t)=gt+v_0≈10t+v_0$$
+      This in turn describes the rate at which the position changes towards the
+      ground. Since the velocity is not constant, we have to consider the following
+      relation
+      \begin{align}
+        &&v(t)=&s'(t)\\
+        \implies&&s(t)=&\int v(t)dt\\
+        &&≈&\int 10t+v_0dt\\
+        &&=&\frac{10}{2}t^2+v_0t+s_0
+      \end{align}
+      which tells us how to calculate the vertical position using the gravitational
+      acceleration, time, and initial vertical velocity and position. Not only that
+      but it turns out to be a quadratic in time, which means we can quickly calculate
+      roots, which are the times where the vertical position is zero, i.e. when the
+      object is on the ground. Often an object is launched off the ground so that
+      \(s_0=0\), and in the opposite direction of the acceleration, so \(v_0< 0\),
+      which leaves us with
+        $$s(t)=5t^2-v_0t=(5t-v_0)t$$
+      where \(v_0\) now represents the speed and not the velocity. This obviously
+      has the roots \(t=0\vee\frac{v_0}{5}\) which in turn gives us the vertex \(V_t=\frac{v_0}{10}\),
+      since the vertex is halfway between the roots. This makes sense since the
+      projectile loses \(10\frac{m}{s}\) per second, so after \(V_t\) seconds, it
+      has lost all it's vertical velocity and is starting to fall down. If we draw
+      the graph of this quadratic it will have time on the first axis, but often
+      we would be interested in the actual path the projectile takes, i.e. in a
+      traditional coordinate system. To do this, I use the <a href="VecFun.html">
+      parametric function</a> which represents a vector quadratic
+      \begin{align}
+        \underline{r}(t)=&\frac{1}{2}\underline{a}t^2-\underline{v}_0t+\underline{s}_0\\
+        =&\frac{1}{2}\begin{pmatrix}a_x\\a_y\end{pmatrix}t^2-\begin{pmatrix}
+        {v_0}_x\\{v_0}_y\end{pmatrix}t+\begin{pmatrix}x_0\\y_0\end{pmatrix}\\
+        =&\begin{pmatrix}
+        v_xt+x_0\\5t^2-v_yt+y_0\end{pmatrix}
+      \end{align}
+      where the x-function is the previously mentioned quadtratic with \(a_x=0\)
+      and the y-function has \(a_y=10≈g\).
+      <script src="../js/cbut.js"></script>
 </body>
