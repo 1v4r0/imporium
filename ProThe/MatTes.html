@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <link href="../imp.css" rel="stylesheet">
+    <title>Expected Score in Matching Test by Random Guessing</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <body>
+    <div class="back"> <a href="ProThe.html">Back</a> </div>
+    This section is aimed at students in upper secondary education in the Danish
+    school system, some objects will be simplified some details will be omitted.
+    <h1> Matching Test </h1>
+      I will define a matching test as a test where you have some number of answers
+      that have to be matched to the same number of questions where each answer only
+      fits one question. I will denote by \(Y\) the discrete random variable that
+      describes how many questions were answered correctly, but since I find it easier
+      to calculate how not to answer questions correctly, I will denote by \(X\)
+      the discrete random variable that describes how many points we did not get.
+      That way, we have \(Y=k-X\) where \(k\) is the number of questions. Since I
+      will be focusing on how not to get correct answers, I need a mechanism that
+      describes that process, known as a "derangement".
+    <h1> Subfactorial </h1>
+      A derangement of a sequence is a permutation that has no fixed point, which
+      means that no element of the sequence stays in place. The object that counts
+      the number of derangements of a sequence is called the subfactorial and has
+      a few common notations, of which I will use the inverted exclamation mark \(n¡\).
+      We immediately obtain that
+        $$1¡=0$$
+      since you can't scramble a single element, and
+        $$2¡=1$$
+      since you can only scramble to elements by flipping them. For convenience,
+      I will also define
+        $$0¡=1$$
+      <div class="thm"><center><h2> Iterative Formulas </h2></center>
+        I will define the formulas for \(n+1\) for convenience
+        \begin{align}
+        (n+1)¡=&n!\sum_{k=0}^{n-1}\frac{k¡}{k!}\\
+        =&k(k¡+(k-1)¡)
+        \end{align}</div>
+        <h3> Proof </h3>
+        Denote a "correct" answer to the matching test with \(n+1\) questions, or
+        any finite sequence of the same length, as
+          $$ABCDE\dots$$
+        where each letter represents an answer to individual questions in order.
+        If I have more than 26 questions, just use any process to add unique letters.
+        Now I want to calculate in how many ways I can scramble this sequence, which
+        can be done by first mis-placing the \(A\). This can be done in \(n\) ways
+        by placing it in any of the other places, and all these choices are totally
+        symmetric, so I can just place it in \(B\)'s spot WLOG(without loss of generality).
+        This yields the following configuration
+          $$-A---...$$
+        Now I want to place \(B\) and I can place it anywhere since it's spot is
+        already occupied. There are two unique cases, either I place it in \(A\)'s
+        spot or I place it in one of the others. In the former case, I have the following
+        configuration
+          $$BA---...$$
+        where I still have to scramble the last \(n-2\) letters, but this can be
+        done in \((n-2)¡\) ways by definition. In the latter case, I have \(n-2\)
+        choices of where to place the \(B\) and they are all symmetric so I can just
+        choose \(C\) with the following configuration
+          $$-AB--...$$
+        now I have to place \(C\) but the process for this is completely analogous
+        to the placement of \(B\) just with one lesser options. You can follow this
+        argument throughout the entire sequence and we end up with the following
+        formula
+        \begin{align}
+          (n+1)¡=n(&(n-1)¡+(n-1)(\\
+          &(n-2)¡+(n-2)(\\
+          &(n-3)¡+\cdots+3(\\
+          &2¡+2(1¡+1)\cdots)))
+        \end{align}
+        These are a bunch of layered parentheses, and if we expand them, what we
+        get is
+        \begin{align}
+          (n+1)¡=&n(n-1)¡+n(n-1)(n-2)¡\\
+          &+\cdots+\frac{n!}{2!}2¡+n!1¡+n!\\
+          =&\sum_{k=0}^{n-1}\frac{n!}{k!}k¡\\
+          =&n!\sum_{k=0}^{n-1}\frac{k¡}{k!}
+        \end{align}
+        which is the first formula. Now we can use this formula to confirm the second.
+        \begin{align}
+          (n+1)¡=&n!\sum_{k=0}^{n-1}\frac{k¡}{k!}\\
+          =&n!\frac{(n-1)¡}{(n-1)!}+n!\sum_{k=0}^{n-2}\frac{k¡}{k!}\\
+          =&n(n-1)¡+n(n-1)!\sum_{k=0}^{n-2}\frac{k¡}{k!}\\
+          =&n(n-1)¡+nn¡\\
+          =&n(n¡+(n-1)¡)
+        \end{align}
+        <center><p style="text-align:center;">&#x220E;</p></center>
+      I will state and prove a closed form formula for later
+      <div class="thm"><center><h2> Closed Form </h2></center>
+        $$n¡=n!\sum_{k=0}^n\frac{(-1)^k}{k!}$$</div>
+      What is slightly amazing is that these are just the partial sums for the MacLaurin
+      series for \(f(x)=e^{-x}\), which means that you can actually calculate these
+      by rounding the number \(\frac{n!}{e}\) to the nearest integer.
+      <h3> Proof </h3>
+        I will make a proof by induction and it's obviously true for \(0\leq n\leq2\),
+        so assume it's true for all \(n\leq N\), and I will show it's true for \(
+        n=N+1\).
+        \begin{align}
+          (N+1)!\sum_{k=0}^{N+1}\frac{(-1)^k}{k!}=&(N+1)!\left(\frac{(-1)^{N+1}}
+          {(N+1)!}+\sum_{k=0}^N\frac{(-1)^k}{k!}\right)\\
+          =&(-1)^{N+1}+(N+1)N!\sum_{k=0}^N\frac{(-1)^k}{k!}\\
+          =&(-1)^{N+1}+(N+1)N¡
+        \end{align}
+        By the induction assumption. Now I will focus on the last term.
+        \begin{align}
+          (N+1)N¡=&NN¡+N¡\\
+          =&NN¡+(N-1)((N-1)¡+(N-2)¡)\\
+          =&NN¡+N(N-1)¡-(N-1)¡+(N-1)(N-2)¡\\
+          =&N(N¡+(N-1)¡)\\
+          &-(N-1)!\sum_{k=0}^{N-1}\frac{(-1)^k}{k!}+(N-1)(N-2)!\sum_{k=0}^{N-2}
+          \frac{(-1)^k}{k!}\\
+          =&(N+1)¡-\cancel{(N-1)!}\frac{(-1)^{N-1}}{\cancel{(N-1)!}}
+        \end{align}
+        since all the terms in the two sums cancel except for the highest term in
+        the first one. This means that
+        \begin{align}
+          (N+1)!\sum_{k=0}^{N+1}\frac{(-1)^k}{k!}=&(-1)^{N+1}+(N+1)N¡\\
+          =&\cancel{(-1)^{N+1}}+(N+1)¡-\cancel{(-1)^{N-1}}
+        \end{align}
+        since every other power of \(-1\) is equal.
+        <center><p style="text-align:center;">&#x220E;</p></center>
+    <h1> Main Result </h1>
+      Before I state the main results, I need a lemma
+      <div class="lem"><center><h2> Lemma </h2></center>
+        $$g(n)=\sum_{r=0}^n\frac{1}{(n-r)!}\sum_{k=0}^r\frac{(-1)^k}{k!}=1$$</div>
+        <h3> Proof </h3>
+          I will show that \(g(n+1)=g(n)\) and then it follows from the fact that
+          \(g(0)=1\).
+          \begin{align}
+            g(n+1)=&\sum_{r=0}^{n+1}\frac{1}{(n+1-r)!}\sum_{k=0}^r\frac{(-1)^k}{k!}\\
+            =&\sum_{r=-1}^n\frac{1}{(n-r)!}\sum_{k=0}^{r+1}\frac{
+              (-1)^k}{k!}\\
+            =&\sum_{r=-1}^n\frac{1}{(n-r)!}\left(\frac{(-1)^{r+1}}{(r+1)!}+\sum_{k=0}^r
+              \frac{(-1)^k}{k!}\right)\\
+            =&g(n)+\frac{1}{(n+1)!}\sum_{r=0}^n\frac{(-1)^{r+1}(n+1)!}{(r+1)!(n+1
+              -(r+1))!}\\
+            =&g(n)+\sum_{r=-1}^n(-1)^{r+1}{n+1\choose r+1}\\
+            =&g(n)+\cancel{\sum_{r=0}^{n+1}(-1)^r{n+1\choose r}}
+          \end{align}
+          since alternately adding and subtracting every element in a row in Pascal's
+          triangle always yields 0.
+      Now I'm ready to state the main result
+      <div class="thm"><center><h2> Fixed Points of a Random Permutation </h2></center>
+        Consider a finite sequence of unique elements, and choose a permutation of
+        this sequence by random. Then the discrete random variable \(Y\), that describes
+        the number of fixed points of this permutation, has an expected value of
+        \(E(Y)=1\).</div>
+      The fixed points correspond to the correct answers on the test, so this also
+      represents the average number of points on the test by random guessing.
+      <h2> Proof </h2>
+        Lets focus on the discrete random variable \(X\) that describes the number
+        of elements that are not fixed points, then \(X=n-Y\). We can calculate its
+        probability function by
+        \begin{align}
+          P(X=r)=&\frac{|X=r|}{|\Omega|}\\
+          =&\frac{{n\choose r}r¡}{n!}
+        \end{align}
+        since we have to select \(r\) of the \(n\) points, and then derange them.
+        Now we can calculate the expected value
+        \begin{align}
+          E(Y)=&\sum_{r=0}^nrP(Y=r)\\
+          =&\sum_{r=0}^n(n-r)P(Y=n-r)\\
+          =&\sum_{r=0}^{n-1}(n-r)P(X=r)\\
+          =&\sum_{r=0}^{n-1}(n-r)\frac{{n\choose r}r¡}{n!}\\
+          =&\sum_{r=0}^{n-1}\frac{(n-r)\cancel{n!}}{\cancel{r!}(n-r)!\cancel{n!}}\cancel{
+            r!}\sum_{k=0}^r\frac{(-1)^k}{k!}\\
+          =&\sum_{r=0}^{n-1}\frac{1}{(n-r-1)!}\sum_{k=0}^r\frac{(-1)^k}{k!}\\
+          =&1
+        \end{align}
+        by the lemma.
+  </body>
+</html>
