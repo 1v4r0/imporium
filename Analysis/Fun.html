@@ -113,27 +113,38 @@
           $$x=f^{-1}(y)=\sqrt[a]{\frac{y}{b}}$$
         which is why we choose both \(y,b>0\) so we don't get complex
         numbers for now.
-  <center><iframe width="560" height="315" src="https://www.youtube.com/embed/qaryu0vIknI"
-            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
-            clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe></center>
-  <center><iframe width="560" height="315" src="https://www.youtube.com/embed/IDGATnPiUzA"
-            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
-            clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe></center>
-    <h2> Real Domains </h2>
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/qaryu0vIknI"
+          title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+          clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe></center>
+      <h2> Discrete Functions </h2>
       So far I have allowed functions to act on arbitrary(non-mathematical)
       objects, which will be useful for <a href="../ProThe/ProThe.html">
       probability theory</a> since you can consider random processes with all
       sorts of weird objects, and have the probability function relate them to
-      a number, namely it's probability. But in most other settings, including
-      <a href="../ProThe/RanVar.html">random variables</a>, it will
-      be more useful to consider domains that are real numbers, since it will
-      allow for us to perform calculations on them, you can't add cars, but you
-      can add numbers. When the domain and range have similar numbers, we don't
-      really make the distinction of which is which, so that \(x\) is
-      always considered to be in the domain and \(y\) in the range. With this
-      convention, we will write
+      a number, namely it's probability. On first approach, you will probably start
+      an analysis of probabilities by counting the size of events, and this will
+      produce so-called "discrete" functions, where the function values are seperated
+      by some non-zero value, which will also produce a discrete probability function.
+      These discrete functions are arguably the simplest class of functions where
+      we can start doing actual mathematical analysis.
+      <center><iframe width="560" height="315" src="https://www.youtube.com/embed/IDGATnPiUzA"
+        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+        clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe></center>
+      <h2> Real Functions</h2>
+      On further analysis, we introduce <a href="../ProThe/RanVar.html">random variables
+      </a> where discrete probability functions will eventually be replaced by probability
+      density functions, which allow both the domain and co-domain to be real intervals,
+      with the latter usually being the unit interval \([0,1]\). These real functions
+      are generally much more powerful than discrete functions and allow for much
+      broader and powerful analysis. In fact, when you collect a discrete data-set
+      of the relationship between two quantities, the first analysis you perform
+      is often a <a href="LinReg.html">regression</a> which creates a real function
+      that interpolates the data-set into all the intermediary points. With the domain
+      and co-domain being such similar objects, it's often not necessary to distinguish
+      between the two, so that we denote by \(x\) the value being related, regardless
+      whether it is by the function or its inverse. With this convention we can write
         $$x=f(f^{-1}(x))=f^{-1}(f(x))$$
       <h3> Vector Functions </h3>
         Sometimes we are interested in relating pairs, and even sets, of numbers
