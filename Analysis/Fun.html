@@ -155,8 +155,29 @@
        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
        clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
        allowfullscreen></iframe></center>
+       <h3> Integrals </h3>
+         The arguably most immediate characteristic is the area under the graph,
+         which we call the definite integral, with the following notation
+           $$\int_a^b f(x)dx$$
+         which denotes the area between the graph of \(f\) and the x-axis in the interval
+         \([a,b]\). The wavy symbol is an old version of the letter "S" and the "dx"
+         is just a delimiter that indicates where the function ends and which letter
+         is the variable of our function. There are multiple ways to define this area
+         but the simplest procedure is to split the interval into sub-intervals
+           $$a=x_0< x_1< x_2<\cdots< x_n< x_{n+1}=b$$
+         and calculating the area of the rectangles that have these sub-intervals
+         as bases and some function value, in the interval, as the height. For low
+         values of \(n\) this will often deviate greatly from the true area, depending
+         on the choice of the function value, but by decreasing the width of the
+         sub-intervals, the estimates becomes better. I.e.
+           $$\int_a^bf(x)dx=\lim_{n\to\infty}\sum_{k=0}^nf(t_k)\Delta x_k$$
+         where \(t_k\in[x_k,x_{k+1}]\) and \(\lim\) stands for the latin word "limes",
+         which reperesents the value of the expression under the condition indicated
+         underneath, in this case as \(n\) increases to infinity, and the width of
+         all the intervals approaching 0. This is a pretty vague and limited definition,
+         but it will be sufficient for our current purposes.
       <h3>Continuity</h3>
-        One characteristic that is novel to real functions, is continuity, which
+        The next characteristic that is novel to real functions, is continuity, which
         in common terms refers to the "connectedness" of the graph. At university
         you will eventually define continuity in a much different manner, namely
         in terms of topologies, but this will suffice for now.
@@ -169,15 +190,15 @@
           This just means that you can make two function values arbitrarily close
           to each other by making the two variables sufficiently close to each other,
           which is exactly the same as the graph being connected.
-      <h3>Differentiability</h3>
-        Another novel characteristic is the slope of the graph, which requires a
-        connected graph to be meaningfully defined, and a real function with this
-        characteristic is called "differentiable". As opposed to linear functions,
-        most functions don't have constant slope, so we will need another way to
-        define the slope of an arbitrary function. To achieve this we do draw inspiration
-        from linear functions, by choosing two points on the graph and drawing the
-        line through these two points. This line is called the secant line and we
-        can calculate its slope by the two-point theorem
+      <h3>Derivative</h3>
+        The last novel characteristic is the slope of the graph, which requires the
+        graph to be connected at that point to be meaningfully defined, and a real
+        function with this characteristic is called "differentiable". As opposed
+        to linear functions, most functions don't have constant slope, so we will
+        need another way to define the slope of an arbitrary function. To achieve
+        this we do draw inspiration from linear functions, by choosing two points
+        on the graph and drawing the line through these two points. This line is
+        called the secant line and we can calculate its slope by the two-point theorem
           $$a=\frac{\Delta y}{\Delta x}=\frac{f(x_2)-f(x_1)}{x_2-x_1}=\frac{f(x+h)
             -f(x)}{h}$$
         where we've written the horizontal distance \(\Delta x=x_2-x_1=h\), and omitted
@@ -190,10 +211,9 @@
         of the graph in that point, also known as the derivative. We use the following
         notation
           $$f'(x)=\lim_{h\to0}\frac{f(x+h)-f(x)}{h}$$
-        where \(f'(x)\) denotes the slope, or derivative, of \(f\) at the point \(x\),
-        the \(\lim\) is an abbreviation of the latin word "limes" and indicates the
-        value of the following expression, under the condition indicated underneath,
-        in this case, the distance between the points vanishing to 0.<br>
+        where \(f'(x)\) denotes the slope, or derivative, of \(f\) at the point \(x\).
+        This time the limit is for a vanishing value of \(h\), i.e. the vertical
+        distance between the points.<br>
         The Danish school system teaches the so-called three step rule, that I
         personally find rather rigid and restrictive, so I will try to formulate
         a more robust rule with the same name:
@@ -209,25 +229,10 @@
         The main difference is that the Danish rule merges steps 1. and 2. and
         adds the reductions as the second step, but it's much more convenient not
         to divide by \(h\) until you've reduced the numerator.
-      <h3> Integrability </h3>
-        The last immediate characteristic is the area under the graph, which we call
-        the definite integral, with the following notation
-          $$\int_a^b f(x)dx$$
-        which denotes the area between the graph of \(f\) and the x-axis in the interval
-        \([a,b]\). The wavy symbol is an old version of the letter "S" and the "dx"
-        is just a delimiter that indicates where the function ends and which letter
-        is the variable of our function. There are multiple ways to define this area
-        but the simplest procedure is to split the interval into sub-intervals
-          $$a=x_0< x_1< x_2<\cdots< x_n< x_{n+1}=b$$
-        and calculating the area of the rectangles that have these sub-intervals
-        as bases and some function value, in the interval as the height. For low values
-        of \(n\) this will often deviate greatly from the true area, just as with
-        the slope of the secant for the derivative, but with a decreasing width of
-        sub-intervals, the estimates becomes better. I.e.
-          $$\int_a^bf(x)dx=\lim_{n\to\infty}\sum_{k=0}^nf(t_k)\Delta x_k$$
-        where \(t_k\in[x_k,x_{k+1}]\) and as \(n\) increases, the width of all the
-        intervals approach 0. This is a pretty vague and limited definition, but
-        it will be sufficient for our current purposes.
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/2d79iY8At48"
+          title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+          clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe></center>
       <h3> Vector Functions </h3>
         Sometimes we are interested in relating pairs, and even sets, of numbers
         to another. An example is the ideal gas law from physics
