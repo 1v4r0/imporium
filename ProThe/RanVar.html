@@ -69,7 +69,7 @@
         variation in the random values.
         <div class="thm">
         <h3> <center>Theorem(Linearity of the Expected Value)</center> </h3>
-          For a discrete random variable \(X\), we can construct another
+          For a random variable \(X\), we can construct another
           \(Y=aX+b\) and calculate its expected value and variance as follows
             $$E(Y)=E(aX+b)=aE(X)+b$$
           and
@@ -90,8 +90,8 @@
               =&a\sum_{k\in X(Ω)}kP(X=k)+b\cancel{\sum_{k\in X(Ω)}P(X=k)}\\
               =&aE(X)+b⋅1
             \end{align}
-            where \(k=\frac{r-b}{a}\). <p style="text-align:center;">&#x220E;</p>
-          With this in hand, we can actually define the variance as
+            where \(k=\frac{r-b}{a}\). With this in hand, we can actually define
+            the variance as
           \begin{align}
             Var(X)=&E((X-μ)^2)\\
             =&E(X^2-2μX+μ^2)\\
@@ -106,5 +106,9 @@
             =&a^2(E(X^2)-E(X)^2)\\
             =&a^2Var(X)
           \end{align}
+          <p style="text-align:center;">&#x220E;</p>
+          An identical argument can be performed with continuous variables, with
+          the sum and probability exchanged for an integral and a <a href="NorDis.html">
+          probability density function</a> respectively.
   </body>
 </html>
