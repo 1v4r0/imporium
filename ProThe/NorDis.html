@@ -85,7 +85,7 @@
         Now to see that the variance of the standard normal distribution is actually
         1, consider that.
         \begin{align}
-          E(Z^2)=&\int x^2\phi(x)dx\\
+          E(Z^2)=&\int x^2\varphi(x)dx\\
           =&-\int x(-x\varphi(x))dx\\
           =&-\int x\varphi'(x)dx\\
           =&\cancel{-[x\varphi(x)]_{-\infty}^\infty}+\int \varphi(x)dx\\
@@ -93,6 +93,10 @@
         \end{align}
         by integration by parts, and therefore
           $$Var(Z)=E(Z^2)-\cancel{E(Z)^2}=1$$
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/zB9w-SDrhr4"
+                  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+                  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe></center>
       <h2> Binomial Approximation </h2>
         Let \(X\sim B(n,p)\) be a binomially distributed discrete random variable.
         For appropriate values of \(n\) and \(p\), it is approximately normal, with
