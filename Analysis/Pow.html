@@ -66,7 +66,7 @@
           function expression.<p style="text-align:center;">&#x220E;</p>
       <div class="thm"><center><h2> Integer Power Derivative Theorem </h2>
       </center>
-        Assume than we have a power function with integer power, i.e.
+        Assume than we have a power function with non-zero integer exponent, i.e.
         \(f(x)=x^n\), then its derivative is \(f'(x)=nx^{n-1}\). I've chosen
         \(b=1\) since all it does is scale the derivative and can be added
         afterwards.
@@ -77,17 +77,33 @@
           \(n=1\), which yields \(f(x)=x\implies f'(x)=1=nx^{n-1}\) which
           comforms to our statement. Now assume some integer
           \(k\in\mathbb{N}\) also conforms to the statement and investigate
-          its successor \(n=k+1\). We start by writing the secant slope and
-          then rewriting it into something that depends on the secant slope
-          for \(n=k\) and using our induction assumption.
+          its successor \(n=k+1\). We start by writing the "rise" of the secant line
+          and then transitioning into the slope and then rewriting it into something
+          that depends on the secant slope for \(n=k\) and using our induction assumption.
           \begin{align}
-            \frac{(x+h)^{k+1}-x^{k+1}}{h}=&\frac{(x+h)^k(x+h)-x^kx}{h}\\
-            =&\frac{(x+h)^k(x+h)-(x+h)x^k+(x+h)x^k-x^kx}{h}\\
-            =&\frac{(x+h)((x+h)^k+x^k(x+h-x)}{h}\\
-            =&(x+h)\frac{(x+h)^k-x^k}{h}+x^k\cancel{\frac{h}{h}}\\
-            \to&xkx^{k-1}+x^k=(k+1)x^k=(k+1)x^k
+            &&(x+h)^{k+1}-x^{k+1}=&(x+h)^k(x+h)-x^kx\\
+            &&=&(x+h)^kx+(x+h)^kh-x^kx\\
+            &&=&x((x+h)^k-x^k)+(x+h)^kh\\
+            \implies&&a=&x\frac{(x+h)^k-x^k}{h}+\frac{(x+h)^k\cancel{h}}{\cancel{h}}\\
+            &&\to&xkx^{k-1}+x^k\\
+            &&=&(k+1)x^k
           \end{align}
-          <p style="text-align:center;">&#x220E;</p>
+          if \(n< 0\) then we can perform a similar argument with \(n=-k\)
+          \begin{align}
+            &&(x+h)^{-k-1}-x^{-k-1}=&(x+h)^{-k}(x+h)^{-1}-x^{-k}x^{-1}\\
+            &&=&(x+h)^{-k}(x+h)^{-1}-x^{-k}(x+h)^{-1}+x^{-k}(x+h)^{-1}-x^{-k}x^{-1}\\
+            &&=&(x+h)^{-1}((x+h)^{-k}-x^{-k})+x^{-k}\left(\frac{1}{x+h}-\frac{1}{x}\right)\\
+            &&=&(x+h)^{-1}((x+h)^{-k}-x^{-k})+x^{-k}\left(\frac{\cancel{x}-(\cancel{x}+h)}{x(x+h)}\right)\\
+            \implies&&a=&(x+h)^{-1}\frac{((x+h)^{-k}-x^{-k}}{h}+x^{-k}\left(\frac{-\cancel{h}}{\cancel{h}x(x+h)}\right)\\
+            &&\to&x^{-1}(-kx^{k-1})-x^{-k}x^{-2}\\
+            &&=&(-k-1)x^{k-2}
+          \end{align}
+
+          <center><p style="text-align:center;">&#x220E;</p>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/uXRtXk6tzN4?si=n1V2JEj0GtUoYwLm"
+          title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+          clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+           allowfullscreen></iframe></center>
         <h1> Real Powers </h1>
           Now assume the power is \(a\in\mathbb{R}\), then we can write the function
           as \(f(x)=x^a=e^{\ln(x^a)}=e^{a\ln(x)}\), which immediately yields the
