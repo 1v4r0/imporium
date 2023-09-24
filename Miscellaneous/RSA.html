@@ -1,0 +1,50 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>RSA Cryptography</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified and some details will be omitted.
+  <div class="def"><center><h1> Prime Numbers </h1></center>
+  <center>The prime numbers are the non-units of the natural numbers that are not divisible
+  by other non-units.</center>
+  </div>
+  In this case, the numbers 0 and 1 are the additive and multiplicative "units".
+  <div class="pro"><center><h2>Prime Factorization </h2></center>
+  <center>Each non-unit can be uniquely be represented by the product of primes.</center>
+  </div>
+  This in effect means that for any non-unit \(n\in\mathbb{N}\) can be written as
+    $$n=\prod_{p\text{ prime}}p^{k_p}$$
+  for example
+    $$120=2^3⋅3⋅5$$
+  so \(k_2=3\) and \(k_3=k_5=1\) and \(k_p=0\) for all other primes.
+  <div class="def"><center><h1> Euler's Totient Function </h1></center>
+  <center>Euler's totient function of a number \(\phi(n)\), counts the numbers
+  \(m< n\) that are co-prime with the original number.</center>
+  </div>
+  The totient function of a prime is always one lower than its value, since
+  the only numbers it's not co-prime with are numbers which have it in its
+  prime factorization, which will be larger than the prime, i.e. \(\phi(p)
+  =p-1\). For the product of two primes, then the totient function of the product
+  is the product of the totient functions, i.e. \(\phi(pq)=(p-1)(q-1)\).
+  <div class="def"><center><h1> Remainders </h1></center>
+  <center>For two numbers \(a\) and \(n\), they can be written in terms of
+  each other as
+    $$n=qa+r$$
+  where \(q\in\mathbb{N}\) is called the quotient and \(r< a\) is called
+  the remainder. The mathematical notation for this is
+    $$a\equiv r\mod n$$</center>
+  </div>
+  <div class="thm"><center><h2>Euler's Theorem </h2></center>
+  <center>For two co-prime integers \(a\) and \(n\), then
+    $$a^{\phi(n)}\equiv1\mod n$$</center>
+  </div>
+  <h1>
+</body>
