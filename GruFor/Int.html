@@ -1,0 +1,130 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Introduktion til Lineære Modeller</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="GruFor.html">Back</a> </div>
+    Forestil dig taxaselskab, A, der har en prismodel, dvs. en sammenhæng der bestemmer
+    prisen på en bestemt rejse. Det vil nok ikke overraske den opmærksomme læser
+    at sådan en prismodel vil afhænge af længden på rejsen, dvs. at vi får en funktion
+    \(A(x)\) der beskriver prisen på en rejse, hvor \(x\) svarer til hvor langt man
+    skal køre. For at bestemme denne prismodel lad os tage et par rejser med <a href=
+    "https://taxa123.nu/prisberegner/">prisberegner</a>. Jeg taster ind Ballerup
+    og Bagsværd og får at det er en rejse på 9km til en pris på 230kr. Nu laver jeg
+    en rejse mere fra Ballerup til Albertslund på 10km til en pris på 248kr. Det
+    jeg har fået nu er to punkter, det første er \(BB=(9,230)\) og det andet er
+    \(BA=(10,248)\) som vi kan sætte ind i et såkaldt koordinatsystem, dvs. hvor vi
+    har to "akser" der er vinkelrette på hindanden. Den første akse lægger vi vandret
+    og kalder x-aksen og den anden bliver så lodret og hedder y-aksen. Det første
+    tal i et punkt fortæller os hvor langt til højre punktet skal ligge fra y-aksen
+    og det andet tal fortæller os langt over x-aksen det skal ligge. Negative tal
+    betyder så at vi går hhv ned og til venstre. Nu har de fleste læsere nok prøvet
+    at tegne en linje mellem to punkter, så lad os prøve at se om vi kan gøre det
+    her.
+    <img src="Images/BBBA.png" alt="Rejser fra Ballerup" width=100% style="margin:10px">
+    Som i kan se forslår mit program at linjen, der er vores forslag til prismodel
+    kan beskrives ved regnestykket
+      $$y=A(x)=18x+68$$
+    (den bruger godt nok bogstavet "f", men vi kan kalde det hvad der passer os).
+    De to tal der indgår i regnestykket beskriver henholdsvis kilometer-prisen, dvs.
+    at det koster 18kr. for hver kørt kilometer og at startgebyret er 68 kr., dvs.
+    hvor meget vi skal betale for at sætte os ind i taxaen.
+    <div class="def"><center><h1> Lineær Funktion </h1></center>
+    En sammenhæng mellem to størrelser, \(x\) og \(y\), der kan beskrives ved følgende
+    regnestykke, også kaldt dens "forskrift",
+      $$y=f(x)=ax+b$$
+    kaldes en lineær funktion og de to tal \(a\) og \(b\) kaldes hhv. funktionens
+    "hældningskoefficient" og "begyndelsesværdi" eller skæring med y-aksen.</div>
+    Nu kan vi gå ind på prisberegneren igen og se om prismodellen passer til et tredje
+    punkt, så jeg prøver at lave en rejse til Stenløse på 13km til 307kr. For at
+    se om det passer med vores prismodel laver jeg en geometrisk analyse ved at tegne
+    den lodrette linje \(x=13\) og finde skæringen med vores linje<br>
+    <center><img src="Images/Sten1.png" alt="Prisen til Stenløse" style="margin:10px"></center>
+    Det viser sig at den rigtige pris er 5 kr. højere end det min prismodel forudsiger.
+    Jeg kan også bestemme prisen algebraisk ved at sætte den ind i min funktionsforskrift
+      $$A(13)=18⋅13+68=234+68=302$$
+    Da den tredje rejse ikke passer, er vores prismodel så totalt ubrugelig? Det er
+    vel en fortolkningssag, men personligt ville jeg sige at prismodellen giver et
+    fornuftigt estimat på prisen. Når vi har fået det tredje punkt på synes jeg dog
+    at vi kan gøre linjen lidt bedre og det kan man gøre ved at lave en såkaldt
+    "lineær regression", der faktisk finder den bedste linje igennem flere punkter.
+    I mit værktøj vælger jeg punkterne og vælger "Best Fit Line", og den giver mig
+    funktionen
+      $$A(x)=19.35x+55.31$$
+    Man kan også bruge "kommandoen", "fitline({BB,BA,BS})"", eller lave regressionen
+    i et regneark. Som i kan se på de følgende billeder ligger linjen meget tættere
+    på vores tre punkter
+    <img src="Images/reg1.png" alt="Regression 1" width=100% style="margin:10px">
+    <img src="Images/reg2.png" alt="Regression 2" width=100% style="margin:10px">
+    og den går faktisk imellem vores to første punkter, så nu ligger ingen af vores
+    punkter på linjen. Men spørgsmålet er, hvor meget afviger hvert af punkterne?
+    Lad os prøve at beregne forskellen mellem prismodellens værdi og den faktiske
+    pris.
+      $$230-A(9)=230-(19.35⋅9+55.31)=0.54$$
+    dvs. at turen til Bagsværd koster 54 øre mere end forventet.
+      $$248-A(10)=248-(19.35⋅10+55.31)=-0.81$$
+    dvs. at turen til Albertslund koster 81 øre mindre end forventet.
+      $$307-A(13)=307-(19.35⋅13+55.31)=0.14$$
+    dvs. at turen til Stenløse er gået fra at være 5 kr. dyrere end forventet til
+    kun at være 14 øre dyrere. Alt i alt har vores "bedste linje" gjort at vi rammer
+    lidt ved siden af ved de to første rejser, men den har markant forbedret den
+    tredje. Det vi lige har beregnet er de såkalde "residualer", som er afvigelserne
+    mellem modellen og vores punkter.
+    <div class="def"><center><h1> Lineær Regression og Residualer </h1></center>
+      Lineær regression er den process der finder den bedste linje, \(f(x)=ax+b\)
+      igennem nogle punkter. For at bestemme den rigtige hældningskoefficient og
+      begyndelsesværdi kan man finde formlen <a href="LinReg.html">her</a>, men lige
+      nu nøjes vi med at få computeren til at lave regnestykket for os. Residualerne
+      er så de enkelte punkters lodrette afvigelse fra linjen, dvs. at
+        $$r_i=y_i-f(x_i)$$
+      hvor \(i=1,2,3,\ldots\) angiver hvilket punkt der er tale om.</div>
+    Lad os nu forestille os at det den sidste model er nogenlunde pålidelig for at
+    bestemme prisen for taxeselskabet. Nu skal vi til fest og vi er så ansvarsbevidste
+    at vi vælger at tage kontanter med til taxaturen hjem. Vi tager 100kr. med men
+    kommer til at overveje om det egentlig er nok. For at undersøge dette problem
+    kan vi tage vores model fra tidligere og finde ud af hvornår prisen kommer op
+    på 100 kr. fx. ved at tegne en lodret linje ved \(y=100\) og finde skæringen
+    med linjen
+    <img src="Images/Lig.png" alt="Løsning af Ligning" width=100% style="margin:10px">
+    Skæringspunktet \(A=(2.31,100)\) betyder at vi kan køre 2.31 km for de 100 kr.
+    og hvis vi skal videre må vi gå eller tage flere penge med. Nogle gange er det
+    upraktisk at løse ligningen geometrisk, og man skal også kunne løse ligninger
+    i hånden, så derfor kan man også opstille ligningen algebraisk som
+      $$100=A(x)=19.35x+55.31$$
+    Løsningen forgår ved at finde de x'er der opfylder den og det sker i praksis
+    ved at manipulere ligningen indtil at x står alene.
+    \begin{align}
+      &&100=&19.35x+55.31\\
+      \iff&&100-55.31=&19.35x\cancel{+55.31-55.31}\\
+      \iff&&\frac{44.69}{19.35}=&\frac{\cancel{19.35}x}{\cancel{19.35}}\\
+      \iff&&x=&\frac{44.69}{19.35}\approx2.31
+    \end{align}
+    her kan vi igen se at vi kan køre 2.31 km for de 100 kr. Hvis det viser sig at
+    vi ikke har råd til vores tur kan det være at vi skal vælge et andet taxaselskab.
+    Jeg har fundet et andet selskab der hedder Drivr, hvor kilometerprisen er 15
+    kr. og startgebyret er 70 kr. og for at sammenligne dem finder skæringspunktet
+    mellem deres grafer. Det er ret oplagt at gøre geometrisk hvor vi tegner graferne
+    for de to selskaber og bruger vores matematikværktøj til at finde det for os
+    <center><img src="Images/Skæring.png" alt="Sammenligning" style="margin:10px"></center>
+    Det viser sig at skæringspunktet er \((3.38,120.71)\) hvilket betyder at de to
+    taxaselskaber koster 120.71 kr. ved 3.38 km og at hvis man kører kortere er Taxa
+    4x35 billigere, ellers er Drivr. Igen kan man bestemme skæringspunktet algebraisk,
+    ved at sætte deres prismodeller lig med hinanden
+    \begin{align}
+      &&19.35x+55.31=&15x+70\\
+      \iff&&19.35x+\cancel{55.31-55.31}-15x=&\cancel{15x}+70-55.31-\cancel{15x}\\
+      \iff&&\frac{\cancel{4.35}x}{\cancel{4.35}}=&\frac{14.69}{4.35}\\
+      \iff&&x=&\frac{14.69}{4.35}\approx3.38
+    \end{align}
+    Det bekræfter igen vores geometriske løsning og hvis vi er interesseret i prisen
+    ved den rejse skal vi sætte værdien ind i en af de to prismodeller.<br>
+    For at undersøge teorien bag lineære modeller mere grundigt kan du læse videre
+    <a href="Teo.html">her</a>. Hvis du vil undersøge en mere geometrisk tolkning
+    af linjer kan du læse videre <a href="Geo.html">her</a>.
+</body>
