@@ -81,40 +81,26 @@
         yields the sum of the probabilities of all the different random values
         for the binomial distribution \(Y\sim b(n-1,p)\), which is the whole
         sample space so the probability is 1 since "something has to happen".
-        The proof of the variance formula is similar, but slightly more
-        involved.
+        For the proof of the variance, we just need to calculate
         \begin{align}
-          Var(X)=&\sum_{r=0}^n(r-μ)^2P(X=r)\\
-          =&\sum_{r=0}^n(r-np)^2{n\choose r}p^r(1-p)^{n-r}\\
-          =&\sum_{r=0}^n(r^2-2npr+n^2p^2){n\choose r}p^r(1-p)^{n-r}\\
-          =&n^2p^2\cancel{\sum_{r=0}^n{n\choose r}p^r(1-p)^{n-r}}\\
-          &-2np\sum_{r=1}^n r{n\choose r}p^r(1-p)^{n-r}\\
-          &+\sum_{r=1}^n r^2{n\choose r}p^r(1-p)^{n-r}\\
-          =&n^2p^2-2np⋅E(X)+\sum_{r=1}^n r^2{n\choose r}p^r(1-p)^{n-r}
-        \end{align}
-        The first two terms just reduce to \(-n^2p^2\) so we just need to figure
-        out the last sum. We start by using the lemma once to yield
-          $$\sum_{r=1}^n r^2{n\choose r}p^r(1-p)^{n-r}=\sum_{r=1}^n r
-          n{n-1\choose r-1}p^r(1-p)^{n-r}$$
-        We still have an \(r\) in the sum, so we do a classic math trick and
-        add and subtract a term that allows us to use the lemma again
-        \begin{align}
-          &n\sum_{r=1}^n {n-1\choose r-1}p^r(1-p)^{n-r}+
-          n\sum_{r=1}^n r{n-1\choose r-1}p^r(1-p)^{n-r}-n\sum_{r=1}^n
+          E(X^2)=&\sum_{r=0}^nr^2P(X=r)\\
+          =&\sum_{r=1}^n r^2{n\choose r}p^r(1-p)^{n-r}\\
+          =&\sum_{r=1}^n rn{n-1\choose r-1}p^r(1-p)^{n-r}\\
+          =&n\sum_{r=1}^n r{n-1\choose r-1}p^r(1-p)^{n-r}-n\sum_{r=1}^n
           {n-1\choose r-1}p^r(1-p)^{n-r}\\
-          =&np\cancel{\sum_{r=1}^n{n-1\choose r-1}p^{r-1}(1-p)^{n-1-(r-1)}}
-          +n\sum_{r=2}^n (r-1){n-1\choose r-1}p^r(1-p)^{n-r}\\
-          =&np+n\sum_{r=2}^n (n-1){n-2\choose r-2}p^r(1-p)^{n-r}\\
-          =&np+n(n-1)p^2\cancel{\sum_{r=2}^n{n-2\choose r-2}p^{r-2}
-          (1-p)^{n-2-(r-2)}}
+          &+n\sum_{r=1}^n {n-1\choose r-1}p^r(1-p)^{n-r}\\
+          =&n\sum_{r=2}^n (r-1){n-1\choose r-1}p^r(1-p)^{n-r}+np\cancel{
+            \sum_{r=1}^n{n-1\choose r-1}p^{r-1}(1-p)^{n-1-(r-1)}}\\
+          =&n\sum_{r=2}^n (n-1){n-2\choose r-2}p^r(1-p)^{n-r}+np\\
+          =&n(n-1)p^2\cancel{\sum_{r=2}^n{n-2\choose r-2}p^{r-2}
+          (1-p)^{n-2-(r-2)}}+np
         \end{align}
         All in all, we end up with
-          $$Var(X)=-n^2p^2+np+n(n-1)p^2=\cancel{-n^2p^2}+np-np^2-
-          \cancel{n^2p^2}=np(1-p)$$
+        \begin{align}
+          Var(X)=&E(X)^2-E(X^2)\\
+          =&n^2p^2+np+n(n-1)p^2\\
+          =&\cancel{n^2p^2}-np^2-\cancel{n^2p^2}+np=np(1-p)
+        \end{align}
           <p style="text-align:center;">&#x220E;</p>
-    <center> <iframe width="560" height="315" src="https://www.youtube.com/embed/pTtnmLVjDNw"
-                     title="YouTube video player" frameborder="0" allow="accelerometer;
-      autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
-      web-share" allowfullscreen></iframe></center>
   </body>
 </html>
