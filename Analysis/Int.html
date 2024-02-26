@@ -42,8 +42,24 @@
         which means that the area under the graph is equal to the area of a
         rectangle with the interval length as its width and height corresponding
         to the function value at some point in the interval.</div>
-        Being propositions, I will not prove these, but go straight to the
-        proof of the fundamental theorem.
+        Being propositions, I will not prove these, but here is an example of their
+        direct use, before I delve into the proof of the FToC.
+        <div style="border: 1px solid white">
+        <button type="button" class="collapse">
+          Gustav's Law
+        </button>
+        <div class="exa">
+          In this example I will investigate the so-called Gustav's law, which states
+          that the constants from the two versions of the mean value propositions
+          is actually the same constant for exponential functions. Consider the
+          function \(f(x)=de^{kx}\) then the first proposition says that
+            $$dke^{kc}=\frac{de^{kb}-de^{ka}}{b-a}$$
+          and the second states that
+            $$de^{kc}(b-a)=\frac{de^{kb}-de^{ka}}{k}$$
+          Which are equivalent expressions by swapping the \(b-a\) and \(k\). The
+          value of the constant turns out to be
+            $$c=\frac{1}{k}\log\left(\frac{e^{kb}-e^{ka}}{dk(b-a)}\right)$$
+        </div></div>
       <h3> Proof </h3>
         For the first part we want to differentiate the integral, so lets write it
         as the function
