@@ -45,24 +45,24 @@
         boundaries of the accepted regions, i.e. \(P(X_- > r)=2.5\%\) and
         \(P(X_+ < r)=2.5\%\).
         \begin{align}
-          &&P(X_->r)=1-P(X_-< r)&=1-\Phi\left(\frac{\mu_--r}{\sigma_-}\right)=
+          &&P(X_->r)=1-P(X_-< r)&=1-\Phi\left(\frac{r-\mu_-}{\sigma_-}\right)=
           2.5\%\\
-          \implies&&\Phi\left(\frac{\mu_--r}{\sigma_-}\right)&=1-2.5\%=97.5\%\\
-          \implies&&\frac{\mu_--r}{\sigma_-}&=\Phi^{-1}(97.5\%)\approx 2
+          \implies&&\Phi\left(\frac{r-\mu_-}{\sigma_-}\right)&=1-2.5\%=97.5\%\\
+          \implies&&\frac{r-\mu_-}{\sigma_-}&=\Phi^{-1}(97.5\%)\approx 2
         \end{align}
         and
         \begin{align}
-          &&P(X_+< r)&=\Phi\left(\frac{\mu_+-r}{\sigma_+}\right)=2.5\%\\
-          \implies&&\frac{\mu_+-r}{\sigma_+}&=\Phi^{-1}(2.5\%)\approx-2
+          &&P(X_+< r)&=\Phi\left(\frac{r-\mu_+}{\sigma_+}\right)=2.5\%\\
+          \implies&&\frac{r-\mu_+}{\sigma_+}&=\Phi^{-1}(2.5\%)\approx-2
         \end{align}
         Now we can take the inverse standard cumulative distribution function
         (CDF) on both sides of the equations to yield
         \begin{align}
-          &&\frac{\mu-r}{\sigma}=&\approx\pm2\\
-          \implies&&\frac{np-r}{\sqrt{np(1-p)}}&\approx\pm2\\
-          \implies&&np-r&\approx\pm2\sqrt{np(1-p)}\\
-          \implies&&(np-r)^2&\approx4np(1-p)\\
-          \implies&&n^2p^2-2npr+r^2&\approx4np-4np^2\\
+          &&\frac{r-\mu}{\sigma}=&\approx\pm2\\
+          \implies&&\frac{r-np}{\sqrt{np(1-p)}}&\approx\pm2\\
+          \implies&&r-np&\approx\pm2\sqrt{np(1-p)}\\
+          \implies&&(r-np)^2&\approx4np(1-p)\\
+          \implies&&r^2-2npr+n^2p^2&\approx4np-4np^2\\
           \implies&&n(n+4)p^2-2n(r+2)p+r^2&\approx0\\
         \end{align}
         I dropped the \(\pm\) as soon as the formulas became identical and I
