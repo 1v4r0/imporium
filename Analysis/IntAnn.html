@@ -45,8 +45,15 @@
         After one term we will have interest on that capital and one annuity,
         \(C_1=C_0(1+r)+A\), after the second term we will have
           $$C_2=(C_0(1+r)+A)(1+r)+A=C_0(1+r)^2+A(1+r)+A$$
-        and hopefully it will not be hard to imagine that after \(n\) terms we
-        will have
+        I will now show that by induction we have:
+        $$C_n=&C_0(1+r)^n+A(1+r)^{n-1}+A(1+r)^{n-2}+\cdots+A(1+r)+A$$
+        First off, assume that it works for \(C_k\) and lets investigate \(C_{k+1}\).
+        \begin{align}
+          C_{k+1}=&C_k\cdot(1+r)+A\\
+                  =&(C_0(1+r)^k+A(1+r)^{k-1}+A(1+r)^{k-2}+\cdots+A(1+r)+A)(1+r)+A\\
+                  =&C_0(1+r)^{k+1}+A(1+r)^k+A(1+r)^{k-1}+\cdots+A(1+r)+A\\
+        \end{align}
+  Therefore, we have:
         \begin{align}
           C_n=&C_0(1+r)^n+A(1+r)^{n-1}+A(1+r)^{n-2}+\cdots+A(1+r)+A\\
           =&C_0(1+r)^n+A(1+(1+r)+(1+r)^2+\cdots+(1+r)^{n-1})\\
