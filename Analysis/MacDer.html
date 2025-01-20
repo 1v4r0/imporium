@@ -28,7 +28,8 @@
   and as well we know, the only function with this property is the natural
   exponential function so \(f(x)=ce^x\) but \(c=f(0)=1\) so \(f(x)=e^x\).<br>
   <h2> Trigonometric Functions </h2>
-  Now we know that
+  We can use Euler's formula to express the trigonometric functions as their
+  Maclaurin series:
   \begin{align}
     \cos(x)+i\sin(x)=&e^{ix}=\sum_{n=0}^\infty\frac{(ix)^{n}}{n!}=
     \sum_{n=0}^\infty\frac{i^nx^n}{n!}\\
@@ -45,6 +46,31 @@
     \sin(x)=&x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\\
     =&\sum_{n=0}^\infty(-1)^n\frac{x^{2n+1}}{(2n+1)!}
   \end{align}
+  Euler's formula also provides another way to express the trigonometric functions,
+  by considering that
+  \begin{align}
+    e^{ix}\pm e^{-ix}=&\cos(x)+i\sin(x)\pm\cos(-x)+i\sin(-x)\\
+    =&\cos(x)\pm\cos(x)+i(\sin(x)\mp\sin(x))
+  \end{align}
+  if we take the top sign, the sines will cancel, and if we take the bottom signs,
+  the cosines cancel. This yields the following formulas:
+  \begin{align}
+    \cos(x)=&\frac{e^{ix}+e^{-ix}}{2}\\
+    \sin(x)=&\frac{e^{ix}-e^{-ix}}{2i}
+  \end{align}
+  An application to this definition is that
+  <div class="lem"><center> <h2> Lemma</h2></center>
+    $$\sin(a)-\sin(b)=2\cos\left(\frac{a+b}{2}\right)\sin\left(\frac{a-b}{2}\right)$$
+  </div>
+  <h3>Proof</h3>
+  We start by rewriting the right hand side
+  \begin{align}
+  2\cos\left(\frac{a+b}{2}\right)\sin\left(\frac{a-b}{2}\right)=&\cancel{2}\frac{e^{i\frac{a+b}{2}}+e^{-i\frac{a+b}{2}}}{\cancel{2}}\frac{e^{i\frac{a-b}{2}}-e^{-i\frac{a-b}{2}}}{2i}\\
+  =&\frac{e^{i\frac{a\cancel{+b}}{2}+i\frac{a\cancel{-b}}{2}}-e^{i\frac{\cancel{a}+b}{2}-i\frac{\cancel{a}-b}{2}}+e^{-i\frac{\cancel{a}+b}{2}+i\frac{\cancel{a}-b}{2}}-e^{-i\frac{a\cancel{+b}}{2}-i\frac{a\cancel{-b}}{2}}}{2i}\\
+  =&\frac{e^{ia}-e^{ib}+e^{-ib}-e^{-ia}}{2i}\\
+  =&\frac{e^{ia}-e^{-ia}}{2i}-\frac{e^{ib}-e^{-ib}}{2i}\\
+  =&\sin(a)-\sin(b)
+  \end{align}<p style="text-align:center;">&#x220E;</p>
   <div class="thm"><center> <h2> Derivatives Theorem</h2></center>
   \begin{align}
     \cos'(x)=&-\sin(x)\\
@@ -86,12 +112,7 @@ trigonometric functions which yields
     \frac{\sin(h)}{h}=&\left(h-\frac{h^3}{3!}+\frac{h^5}{5!}-\cdots\right)/h\\
     =&1-\frac{h^2}{3!}+\frac{h^4}{5!}-\cdots\\
     \to&1
-  \end{align}
-  <center><p style="text-align:center;">&#x220E;</p>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/Ax9h3qVyDZM?si=XqwimCKRWzAol8pJ"
-    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
-    encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
+  \end{align}<p style="text-align:center;">&#x220E;</p>
   <div class="cor"><center><h2> Corollary </h2></center>
   This means that if we take the second derivative we get that
   \begin{align}
