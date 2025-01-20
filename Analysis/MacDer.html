@@ -90,8 +90,8 @@ trigonometric functions which yields
     \sin'(x)=&\sum_{n=0}^\infty(-1)^n\frac{(2n+1)x^{2n}}{(2n+1)!}\\
     =&\sum_{n=0}^\infty(-1)^n\frac{x^{2n}}{(2n)!}\\
     =&\cos(x)
-  \end{align}
-  <h3>Proof from First Principles </h3>
+  \end{align}<p style="text-align:center;">&#x220E;</p>
+  <h3>Proof 1 from First Principles </h3>
   We can also use the Maclaurin series to differentiate them from first
   principles
   \begin{align}
@@ -112,6 +112,13 @@ trigonometric functions which yields
     \frac{\sin(h)}{h}=&\left(h-\frac{h^3}{3!}+\frac{h^5}{5!}-\cdots\right)/h\\
     =&1-\frac{h^2}{3!}+\frac{h^4}{5!}-\cdots\\
     \to&1
+  \end{align}<p style="text-align:center;">&#x220E;</p>
+  <h3>Proof 2 from First Principles </h3>
+  \begin{align}
+    \frac{\sin(x+h)-\sin(x)}{h}=&2\cos\left(\frac{x+h+x}{2}\right)\sin\left(\frac{x+h-x}{2}\right)/h\\
+    =&\frac{2}{h}\cos(x+h/2)\sin(h/2)\\
+    =&\cos(x+k)\frac{\sin(k)}{k}\\
+    \to&\cos(x)\cdot1
   \end{align}<p style="text-align:center;">&#x220E;</p>
   <div class="cor"><center><h2> Corollary </h2></center>
   This means that if we take the second derivative we get that
