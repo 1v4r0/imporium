@@ -78,7 +78,9 @@
       and the other is the cross-product
         $$\underline{v}\times\underline{w}=\begin{vmatrix}1 & v_1 & w_1\\1&v_2 & w_2\\1&v_3&w_3\end{vmatrix}=\begin{pmatrix}v_2w_3-v_3w_2\\v_3w_1-v_1w_3\\v_1w_2-v_2w_1\end{pmatrix}$$
       It turns out that the cross-product is orthogonal to both of the other vectors. This
-      means that if I have a 2D vector, i.e. one where I ignore the z-value, or the value is 0,
+      means that if I take the cross-product again, I will get a vector that is orthogonal to that vector in their common plane.
+        $$\hat{\underline{v}}=(\underline{v}\times\underline{w})\times\underline{v}$$
+      have a 2D vector, i.e. one where I ignore the z-value, or the value is 0,
       then I have a canonical-orthogonal(CO) vector
         $$\hat{\underline{v}}=\underline{e}_3\times\underline{v}=\begin{pmatrix}-v_2\\v_1\end{pmatrix}$$
       </div>
