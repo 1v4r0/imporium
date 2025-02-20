@@ -22,7 +22,7 @@
       which means that the vector spans \(v_1\) units horizontally and \(v_2\) units
       vertically. The magnitude of the vector can be determined by these coordinates
       by applying the Pythagorean theorem as such
-        $$|\underline{v}|=\sqrt{v_1^2+v_2^2}$$</div>
+        $$|\underline{v}|=\sqrt{v_1^2+v_2^2+v_3^2}$$</div>
     <div style="border: 1px solid white">
     <button type="button" class="collapse">
         Example 1
@@ -48,7 +48,7 @@
          width="500"style="margin:10px"></center>
       If you want to scale a vector by a factor k, this just changes the magnitude and
       is represented algebraically as
-        $$k\underline{v}={kv_1\choose kv_2}$$
+        $$k\underline{v}=\begin{pmatrix}kv_1\\kv_2\\kv_3\end{pmatrix}$$
       If \(k < 0\) this represents flipping the vector and specifically \(k=-1\) is the
       opposite vector.</div>
       <div style="border: 1px solid white">
@@ -57,12 +57,12 @@
       </button>
       <div class="exa">
         Lets continue with the vector from example 1
-          $$\underline{v}={4\choose-3}$$
+          $$\underline{v}=\begin{pmatrix}3\\-4\\12\end{pmatrix}$$
         and add and subtract the following vector
-          $$\underline{w}={4\choose3}$$
+          $$\underline{w}=\begin{pmatrix}3\\4\\12\end{pmatrix}$$
         Then we get
-          $$\underline{v}±\underline{w}={4\choose-3}±{4\choose3}={4±4\choose-3±3}
-            ={8\choose0}\vee{0\choose-6}$$
+          $$\underline{v}±\underline{w}=\begin{pmatrix}3\\-4\\12\end{pmatrix}±\begin{pmatrix}3\\4\\12\end{pmatrix}
+            =\begin{pmatrix}6\\-4\mp4\\12\end{pmatrix}=\begin{pmatrix}6\\0\\24\end{pmatrix}\vee\begin{pmatrix}6\\0\\24\end{pmatrix}$$
           Since these two vectors are symmetric about the x-axis, the sum diagonal
           will obviously lay on the x-axis, and the difference diagonal will
           lay parallel to the y-axis as observed. If we multiply one of them by -1
