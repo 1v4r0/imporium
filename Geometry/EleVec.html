@@ -72,15 +72,16 @@
           symmetric, about the y-axis, but that 2 moved the diagonal off the axis.
         </div></div>
     <div class="def"><center><h1> Scalar Product, Determinant and CO-vectors </h1></center>
-      We have two useful methods to "multiply" two 2D vectors with each other. One is
+      We have two useful methods to "multiply" two 3D vectors with each other. One is
       the so-called scalar product
         $$\underline{v}\bullet\underline{w}=\begin{matrix}{v_1w_1}\\+v_2w_2\\+v_3w_3\end{matrix}$$
-      and the other is the determinant
-        $$\underline{v}\cross\underline{w}=\begin{vmatrix}1 & v_1 & w_1\\1&v_2 & w_2\\1&v_3&w_3\end{vmatrix}=\begin{pmatrix}v_2w_3-v_3w_2\\v_3w_1-v_1w_3\\v_1w_2-v_2w_1\end{pmatrix}$$
-      where I will call
-        $$\hat{\underline{v}}={-v_2\choose v_1}$$
-      the canonical orthogonal vector, or CO-vector, to \(\underline{v}\), which
-    is just the vector rotated \(90^\circ\) anti-clockwise.</div>
+      and the other is the cross-product
+        $$\underline{v}\times\underline{w}=\begin{vmatrix}1 & v_1 & w_1\\1&v_2 & w_2\\1&v_3&w_3\end{vmatrix}=\begin{pmatrix}v_2w_3-v_3w_2\\v_3w_1-v_1w_3\\v_1w_2-v_2w_1\end{pmatrix}$$
+      It turns out that the cross-product is orthogonal to both of the other vectors. This
+      means that if I have a 2D vector, i.e. one where I ignore the z-value, or the value is 0,
+      then I have a canonical-orthogonal(CO) vector
+        $$\hat{\underline{v}}=\underline{e}_3\times\underline{v}=\begin{pmatrix}-v_2\\v_1\end{pmatrix}$$
+      </div>
       <div style="border: 1px solid white">
       <button type="button" class="collapse">
           Example 3
