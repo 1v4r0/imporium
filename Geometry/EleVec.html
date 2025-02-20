@@ -74,10 +74,9 @@
     <div class="def"><center><h1> Scalar Product, Determinant and CO-vectors </h1></center>
       We have two useful methods to "multiply" two 2D vectors with each other. One is
       the so-called scalar product
-        $$\underline{v}\bullet\underline{w}=\begin{matrix}{v_1w_1}\\+\\v_2w_2\end{matrix}$$
+        $$\underline{v}\bullet\underline{w}=\begin{matrix}{v_1w_1}\\+v_2w_2\\+v_3w_3\end{matrix}$$
       and the other is the determinant
-        $$\det(\underline{v},\underline{w})=\hat{\underline{v}}\bullet\underline{w}=
-          \begin{vmatrix}v_1 & w_1\\v_2 & w_2\end{vmatrix}=v_1w_2-v_2w_1$$
+        $$\underline{v}\cross\underline{w}=\begin{vmatrix}1 & v_1 & w_1\\1&v_2 & w_2\\1&v_3&w_3\end{vmatrix}=\begin{pmatrix}v_2w_3-v_3w_2\\v_3w_1-v_1w_3\\v_1w_2-v_2w_1\end{pmatrix}$$
       where I will call
         $$\hat{\underline{v}}={-v_2\choose v_1}$$
       the canonical orthogonal vector, or CO-vector, to \(\underline{v}\), which
