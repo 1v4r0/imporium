@@ -29,6 +29,36 @@
         $$f(x)=\frac{d}{dx}\int_a^xf(t)dt$$
       and
         $$\int_a^x\frac{d}{dt}f(t)dt=f(x)-f(a)$$</div>
+        The second of these is immediately useful for integrating a broad class of functions, namely functions that are
+            the derivative of another. This other function \(F(x)\) is called an antiderivative of \(f(x)=F'(x)\) and every other
+            antiderivative will differ from it by a constant. 
+        <div class="def"><center><h1> Indefinite Integrals </h1></center>
+        The class of antiderivatives for a function \(f(x)\) is called the indefinite integral and is written as a definite integral
+        without the limits, i.e.
+          $$\int f(x)dx=F(x)+C$$</div>
+        <div style="border: 1px solid white">
+          <button type="button" class="collapse">
+            Fence Optimization
+          </button>
+          <div class="exa">
+            The first result of the main theorem is traditionally a bit more technical, but I've tried coming up with a practical
+            use-case. Imagine you are building a "rectangular" fence along a river bank that can be described by the graph of some
+            function \(f(x)\), and you have a limited amount of fencing materials, lets say enough for \(l\) m. The fenced-in area can
+            then be described by
+              $$A(h)=b\cdot h-\int_x^{x+h}f(t)dt$$
+            where b is the "width" of the area, from the "x-axis" to the horizontal section, which can be determined by
+              $$l=h+b-f(x)+b-f(x+h)\implies b=(l-h+f(x)+f(x+h))/2$$
+            This yields
+              $$A(h)=(l-h+f(x)+f(x+h))\cdot h/2-\int_x^{x+h}f(t)dt$$
+            To maximize this function we find the stationary point by differentiating with respect to h and setting it to zero. I.e.
+            \begin{align}
+              0=&(l-h+f(x)+f(x+h)+h\cdot(f'(x+h)-1))/2-f(x+h)\\
+              0=&l-2h+f(x)-f(x+h)+hf'(x+h)
+            \end{align}
+            Here the derivative and integral cancel and if I divide by \(h\) we get that 
+              $$f'(x+h)-\frac{f(x+h)-f(x)}{h}=2-\frac{l}{h}$$
+            which means that the difference between the tangent- and secant slope at the end-point, needs to have the value \(2-l/h\).
+          </div></div> 
       We will need two versions of the so-called mean value theorem for our proof.
       <div class="pro"><center><h3> The Mean Value Propositions </h3></center>
         The first states that if \(f(x)\) is differentiable in the interval \(]a,b[\)
@@ -81,7 +111,7 @@
           =&\sum_{n=0}^n f(x_{k+1})-f(x_k)\\
           =&\sum_{n=0}^n \frac{f(x_{k+1})-f(x_k)}{x_{k+1}-x_k}(x_{k+1}-x_k)\\
           =&\sum_{n=1}^N f'(c_k)\Delta x_k\\
-          \to&\int_a^bf'(x)dx
+          \to&\int_a^bf(x)dx
         \end{align}
         where \(\Delta x_k=x_{k+1}-x_k\). Since the left-hand-side is a constant,
         the limit must be that same constant.
