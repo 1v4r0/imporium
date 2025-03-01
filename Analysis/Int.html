@@ -46,7 +46,9 @@
             function \(f(x)\), and you have a limited amount of fencing materials, lets say enough for \(l\) m. The fenced-in area can
             then be described by
               $$A(h)=b\cdot h-\int_x^{x+h}f(t)dt$$
-            where b is the "width" of the area, from the "x-axis" to the horizontal section, which can be determined by
+            where b is the "width" of the area, from the "x-axis" to the horizontal section, \(x\) and \(h\) the horizontal position
+            and distance along the river-bank, respectively. The task is then to determine the optimal dimensions, to this end lets
+            relate them to one-another by
               $$l=h+b-f(x)+b-f(x+h)\implies b=(l-h+f(x)+f(x+h))/2$$
             This yields
               $$A(h)=(l-h+f(x)+f(x+h))\cdot h/2-\int_x^{x+h}f(t)dt$$
