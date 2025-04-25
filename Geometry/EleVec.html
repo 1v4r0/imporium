@@ -1,0 +1,315 @@
+<html>
+  <head>
+    <link href="../imp.css" rel="stylesheet">
+    <title>Vectors</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+  </head>
+  <body>
+    \(\newcommand{\ul}[1]{\underline{#1}}\)
+    <div class="back"> <a href="Geometry.html">Back</a> </div>
+    This section is aimed at students in upper secondary education in the Danish
+    school system, some objects will be simplified and some details omitted.
+    <div class="def"><center><h1> Coordinates and Magnitude </h1></center>
+      A vector \(\ul{v}\) is an object that has a magnitude, denoted by
+      \(|\ul{v}|\) and a direction which can be represented in several ways.
+      You can denote it by its angle with the x-axis, \(\theta\), or you could denote
+      it by specifying it's coordinates, in the current setting we will restrict
+      ourselves to two dimensons denoted by x and y, as such
+        $$\ul{v}=\begin{pmatrix}v_1\\v_2\\v_3\end{pmatrix}$$
+      which means that the vector spans \(v_1\) units horizontally and \(v_2\) units
+      vertically. The magnitude of the vector can be determined by these coordinates
+      by applying the Pythagorean theorem as such
+        $$|\ul{v}|=\sqrt{v_1^2+v_2^2+v_3^2}$$</div>
+    <div style="border: 1px solid white">
+    <button type="button" class="collapse">
+        Example 1
+    </button>
+    <div class="exa">
+      Consider the following vector
+        $$\ul{v}=\begin{pmatrix}=3\\-4\\12\end{pmatrix}$$
+      Its length can be calculated as follows
+        $$|\ul{v}|=\sqrt{3^2+(-4)^2+(12)^2}=\sqrt{9+16+144}=\sqrt{269}=13$$</div></div>
+    <div class="def"><center><h1> Sum and Multiplication by a Scalar </h1></center>
+      You can add two vectors by extending one by the other, and then the sum of the
+      two vectors is the vector that goes from the start of the first vector to the
+      end of the second. This can also be calculated algebraically as such
+        $$\ul{v}+\ul{w}=\begin{pmatrix}v_1+w_1\\v_2+w_2\\v_3+w_3\end{pmatrix}$$
+      You can also subtract vectors and this is just defined as such
+      \(\ul{v}-\ul{w}=\ul{v}+(-\ul{w})\) where
+      \(-\ul{w}\) is the vector that has the same magnitude as
+      \(\ul{w}\) but the opposite direction. These two processes will produce
+      the diagonals of the parallelogram spanned by the two vectors, the sum will be
+      the diagonal that goes from the start to the far end, while the two differences
+      correspond to the the other diagonal as seen in the following image.<br>
+      <center><img src="Images/VecPar.png" alt="Sum in Parallelogram"
+         width="500"style="margin:10px"></center>
+      If you want to scale a vector by a factor k, this just changes the magnitude and
+      is represented algebraically as
+        $$k\ul{v}=\begin{pmatrix}kv_1\\kv_2\\kv_3\end{pmatrix}$$
+      If \(k < 0\) this represents flipping the vector and specifically \(k=-1\) is the
+      opposite vector.</div>
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 2
+      </button>
+      <div class="exa">
+        Lets continue with the vector from example 1
+          $$\ul{v}=\begin{pmatrix}3\\-4\\12\end{pmatrix}$$
+        and add and subtract the following vector
+          $$\ul{w}=\begin{pmatrix}-3\\-4\\12\end{pmatrix}$$
+        Then we get
+          $$\ul{v}±\ul{w}=\begin{pmatrix}3\\-4\\12\end{pmatrix}\pm\begin{pmatrix}-3\\-4\\12\end{pmatrix}
+            =\begin{pmatrix}3\mp3\\-4\pm4\\12\pm12\end{pmatrix}=\begin{pmatrix}0\\-8\\24\end{pmatrix}\vee\begin{pmatrix}6\\0\\0\end{pmatrix}$$
+          Since these two vectors are symmetric about the x-axis, the sum diagonal
+          will obviously lay on the x-axis, and the difference diagonal will
+          lay orthogonal to it as observed. If we multiply one of them by -1
+          and the other by 2 we get
+            $$(-1)⋅\ul{v}+2\ul{w}=\begin{pmatrix}-3\\+4\\-12\end{pmatrix}+\begin{pmatrix}-6\\-8\\24\end{pmatrix}=\begin{pmatrix}-9\\-4\\12\end{pmatrix}$$
+          If I hadn't multiplied the second vector by 2, they would still have been
+          symmetric, about the y-axis, but that 2 moved the diagonal off the axis.
+        </div></div>
+    <div class="def"><center><h1> Scalar Product, Determinant and CO-vectors </h1></center>
+      We have two useful methods to "multiply" two 3D vectors with each other. One is
+      the so-called scalar product
+        $$\ul{v}\bullet\ul{w}=v_1w_1+v_2w_2+v_3w_3$$
+      and the other is the cross-product
+        $$\ul{v}\times\ul{w}=\begin{vmatrix}1 & v_1 & w_1\\1&v_2 & w_2\\1&v_3&w_3\end{vmatrix}=\begin{pmatrix}v_2w_3-v_3w_2\\v_3w_1-v_1w_3\\v_1w_2-v_2w_1\end{pmatrix}$$
+      It turns out that the cross-product is orthogonal to both of the other vectors. This
+      means that if I take the cross-product again, I will get a vector that is orthogonal to that vector in their common plane.
+        $$\hat{\ul{v}}=\frac{\ul{v}\times\ul{w}}{|\ul{v}\times\ul{w}|}\times\ul{v}$$
+      If i then take the scalar product with \(\ul{v}\) I get the so called determinant
+        $$\det(\ul{v},\ul{w})=\hat{\ul{v}}\bullet\ul{w}=|\ul{v}\times\ul{w}|$$
+      This property will follow from the following proposition. If I have a 2D vector, i.e. one where I ignore the z-value, or the value is 0,
+      then I have a canonical-orthogonal(CO) vector
+        $$\hat{\ul{v}}=\ul{e}_3\times\ul{v}=\begin{pmatrix}-v_2\\v_1\end{pmatrix}$$
+      </div>
+      These have several properties I will state in the following proposition.
+      <div class="pro"><center><h2> Proposition </h2></center>
+        \begin{align}
+        \ul{v}\bullet\ul{v}=&|\ul{v}|^2\\
+        |\ul{v}\times\ul{w}|^2=&|\ul{v}|^2|\ul{w}|^2-(\ul{v}\bullet\ul{w})^2\\
+        (\ul{v}\times\ul{w})\bullet\ul{u}=&\ul{v}\bullet(\ul{w}\times\ul{u})        
+        \end{align}
+        </div>
+        <h3>Proof</h3>
+        The first I will leave as an exercise to the reader. The second can be observed from the first:
+        \begin{align}
+          |\ul{v}\times\ul{w}|^2=&(\ul{v}\times\ul{w})\bullet(\ul{v}\times\ul{w})\\
+          =&(v_2w_3-v_3w_2)^2+(v_3w_1-v_1w_3)^2+(v_1w_2-v_2w_1)^2\\
+          =&v_2^2w_3^2+v_3^2w_2^2+v_3^2w_1^2+v_1^2w_3^2+v_1^2w_2^2+v_2^2w_1^2\\
+          &-2v_2v_3w_2w_3-2v_1v_3w_1w_3-2v_1v_2w_1w_2\\
+          =&v_1^2(w_2^2+w_3^2)+v_2^2(w_1^2+w_3^2)+v_3^2(w_1^2+w_2^2)\fbox{$+v_1^2w_1^2+v_2^2w_2^2+v_3^2w_3^2$}\\
+          &-2v_2v_3w_2w_3-2v_1v_3w_1w_3-2v_1v_2w_1w_2\fbox{$-v_1^2w_1^2-v_2^2w_2^2-v_3^2w_3^2$}\\
+          =&v_1^2(w_1^2+w_2^2+w_3^2)+v_2^2(w_1^2+w_2^2+w_3^2)+v_3^2(w_1^2+w_2^2+w_3^2)-(v_1w_1+v_2w_2+v_3w_3)^2\\
+          =&|\ul{v}|^2|\ul{w}|^2-(\ul{v}\bullet\ul{w})^2
+        \end{align}
+        where I add and subtract the terms in the box, which does not change the expression, and join all the positive and negative
+        terms respectively. For the positive terms I observe that all three terms have a common factor in the magnitude of the second
+        vector, and when i factorize, the other factors become the magnitude of the first. The negative terms are reduced by the square
+        rule for three terms.<br>
+        The last formula is relatively straightforward, but a bit tedious.
+        \begin{align}
+          (\ul{v}\times\ul{w})\bullet\ul{u}=&(v_2w_3-v_3w_2)u_1+(v_3w_1-v_1w_3)u_2+(v_1w_2-v_2w_1)u_3\\
+          =&u_1v_2w_3+w_1u_2v_3+v_1w_2u_3-u_1w_2v_3-v_1u_2w_3-w_1v_2u_3\\
+          \ul{v}\bullet(\ul{w}\times\ul{u})=&v_1(w_2u_3-w_3u_2)+v_2(w_3u_1-w_1u_3)+v_3(w_1u_2-w_2u_1)\\
+          =&v_1w_2u_3+u_1v_2w_3+w_1u_2v_3-v_1u_2w_3-w_1v_2u_3-u_1w_2v_3
+        \end{align}
+        by comparing terms.<center>&#x220E;</center>
+      It then follows that
+      $$\det(\ul{v},\ul{w})=\left(\frac{\ul{v}\times\ul{w}}{|\ul{v}\times\ul{w}|}\times\ul{v}\right)\bullet\ul{w}
+      =\frac{\ul{v}\times\ul{w}}{|\ul{v}\times\ul{w}|}\bullet(\ul{v}\times\ul{w})
+      =\frac{|\ul{v}\times\ul{w}|^2}{|\ul{v}\times\ul{w}|}=|\ul{v}\times\ul{w}|$$
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 3
+      </button>
+      <div class="exa">
+        Lets continue with the vectors from the previous examples
+          $$\ul{v}=\begin{pmatrix}3\\-4\\12\end{pmatrix},\ul{w}=\begin{pmatrix}-3\\-4\\12\end{pmatrix}$$
+        Then their scalar product is
+          $$\ul{v}\bullet\ul{w}=3\cdot(-3)+(-4)^2+12^2=-9+16+144=151$$
+        and the cross-product is
+          $$\ul{v}\times\ul{w}=\begin{pmatrix}-4\cdot12-(-4)\cdot12\\12\cdot(-3)-3\cdot12\\3\cdot(-4)-(-3)\cdot(-4)\end{pmatrix}
+        =\begin{pmatrix}0\\-72\\-24\end{pmatrix}=-24\begin{pmatrix}0\\3\\1\end{pmatrix}$$
+        with magnitude
+          $$|\ul{v}\times\ul{w}|^2=24^2\cdot10=5760$$
+        which means that
+          $$|\ul{v}\times\ul{w}|=\sqrt{5760}=24\sqrt{10}$$
+        and
+          $$|\ul{v}|^2|\ul{w}|^2-(\ul{v}\bullet\ul{w})^2=13^2\cdot13^2-151^2=28561-22801=5760$$
+        and the CO-vector is
+          $$\hat{\ul{v}}=-\frac{1}{\sqrt{10}}\begin{pmatrix}0\\3\\1\end{pmatrix}\times\begin{pmatrix}3\\-4\\12\end{pmatrix}
+          =-\frac{1}{\sqrt{10}}\begin{pmatrix}3\cdot12-1\cdot(-4)\\1\cdot3-0\cdot12\\0\cdot(-4)-3^2\end{pmatrix}=-\frac{1}{\sqrt{10}}
+          \begin{pmatrix}40\\3\\-9\end{pmatrix}$$
+        with
+          $$\det(\ul{v},\ul{w})=\hat{\ul{v}}\bullet\ul{w}=-\frac{1}{\sqrt{10}}\begin{pmatrix}40\\3\\-9\end{pmatrix}\bullet
+          \begin{pmatrix}-3\\-4\\12\end{pmatrix}=-\frac{-120-12-108}{\sqrt{10}}=24\sqrt{10}=|\ul{v}\times\ul{w}|$$
+        </div></div>
+      Vectors satisfy most of the rules that apply to scalars, such as
+      commutativity, associativity and distributativity. Both with respect to the sum,
+      scalar-multiple and scalar-product. The cross-product however, is anti-commutative.
+    <div class="def"><center><h1> Projections and Vector Division </h1></center>
+      It is not exactly clear how one would be able to divide vectors, and this is not
+      a widely recognized operation, but you can define what I will call the
+      scalar-division as
+        $$\frac{\ul{v}}{\ul{w}}=
+          \frac{\ul{v}\bullet\ul{w}}{|\ul{w}|^2}$$
+      This operation is very useful in conjunction with the concept of vector
+      projections. We can write what I will call \(\ul{v}\)'s decomposition
+      by \(\ul{w}\) as
+        $$\ul{v}=\frac{\ul{v}}{\ul{w}}\ul{w}+
+          \frac{\ul{v}}{\hat{\ul{w}}}\hat{\ul{w}}=
+          \ul{v}_{\ul{w}}+\ul{v}_{\hat{\ul{w}}}$$
+      where we write \(\ul{v}\) as the sum of two vectors, one of which is
+      parallel with \(\ul{w}\) and one that's orthogonal to it. These two
+      vectors are then called the projectons of \(\ul{v}\) onto
+      \(\ul{w}\) and its CO-vector and it's denoted by the notation on the
+      rightmost side.</div>
+      If we take the vector decomposition and take its product by the decomposing
+      vector, I get
+      \begin{align}
+        \ul{v}\bullet\ul{w}=&\frac{\ul{v}}{\ul{w}}\ul{w}
+        \bullet\ul{w}+\cancel{\frac{\ul{v}}{\hat{\ul{w}}}\hat{\ul{w}}
+        \bullet\ul{w}}\\
+        =&\frac{\ul{v}\bullet\ul{w}}{\cancel{|\ul{w}|^2}}\cancel{
+          |\ul{w}|^2}
+      \end{align}
+      and if I do the same thing with the vector itself I get
+      \begin{align}
+        |\ul{v}|^2=\ul{v}\bullet\ul{v}=&\frac{\ul{v}
+      }{\ul{w}}\ul{v}
+        \bullet\ul{w}+\frac{\ul{v}}{\hat{\ul{w}}}\ul{v}\bullet
+        \hat{\ul{w}}\\
+        =&\frac{|\ul{v}\bullet\ul{w}|^2}{|\ul{w}|^2}+\frac{
+          |\ul{v}\bullet\hat{\ul{w}}|^2}{|\hat{\ul{w}}|^2}\\
+        =&\frac{|\ul{v}|^2\cancel{|\ul{w}|^2(\cos^2\theta+\sin^2
+        \theta)}}{\cancel{|\ul{w}|^2}}
+      \end{align}
+      by the following theorem. I don't know if I'm making something very simple
+      overly complicated, but this seems like a very beautiful construction.
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 4
+      </button>
+      <div class="exa">
+        Lets continue with the vectors from the previous examples
+          $$\ul{v}=\begin{pmatrix}3\\-4\\12\end{pmatrix},\ul{w}=\begin{pmatrix}-3\\-4\\12\end{pmatrix}$$
+        Then the scalar divisions of \(\ul{v}\) with \(\ul{w}\) is
+          $$\frac{\ul{w}}{\ul{v}}=\frac{\ul{w}\bullet\ul{v}
+            }{|\ul{v}|^2}=\frac{151}{169}$$
+        and with the CO-vector is
+          $$\frac{\ul{w}}{\hat{\ul{v}}}=\frac{\ul{w}\bullet
+          \hat{\ul{v}}}{|\hat{\ul{v}}|^2}=\frac{\det(\ul{w},
+          \ul{v})}{|\hat{\ul{v}}|^2}=\frac{24\sqrt{10}}{169}$$
+        This yields the following decomposition of \(\ul{w}\) into its projection
+        onto the other vector and it's CO-vector
+        \begin{align}
+          \ul{w}=&\frac{\ul{w}}{\ul{v}}\ul{v}+
+          \frac{\ul{w}}{\hat{\ul{v}}}\hat{\ul{v}}\\
+          =&\frac{151}{169}\begin{pmatrix}3\\-4\\12\end{pmatrix}-\frac{24\cancel{\sqrt{10}}}{169}\frac{1}{\cancel{\sqrt{10}}}
+          \begin{pmatrix}40\\3\\-9\end{pmatrix}\\
+          =&\frac{1}{169}\begin{pmatrix}453-960\\-604-72\\1812+216\end{pmatrix}\\
+          =&\frac{1}{169}\begin{pmatrix}-507\\-676\\2028\end{pmatrix}=\ul{w}
+        \end{align}
+        I've just added them up to show that they are actually equal to the original
+        vector.</div></div>
+      Before we can state our main result, we need to define the unit circle and
+      associated objects. The unit circle is a circle with radius 1 about the origin.
+      If we consider a vector \(\ul{v}\) and extend the vector so that it
+      intersects the unit circle, we define the cosine of its angle \(\theta\) as the
+      x-coordinate of the intersection point, similarly we define sine as the
+      y-coordinate. Referring to the following image, the length of the green line
+      represents the cosine of the angle and the length of the red line represents
+      the sine.<br>
+      <center><img src="Images/UniCir.png" alt="Unit Circle"
+         width="500" style="margin:10px"></center>
+      At this point we are ready to state and prove what I call the fundamental
+      theorem of vector geometry.
+    <div class="thm"><center><h1>The Fundamental Theorem of Vector Geometry.
+    </h1></center>
+      For two vectors \(\ul{v}\) and \(\ul{w}\) we have:<br>
+      \begin{align}
+        \text{1. }&&\ul{v}\bullet\ul{w}&=|\ul{v}||\ul{w}
+          |\cos\theta\\
+        \text{2. }&&\det(\ul{v},\ul{w})&=|\ul{v}|
+          |\ul{w}|\sin(\theta)\\
+        \text{3. }&&\ul{v}_{\ul{w}}&=\frac{\ul{v}\bullet
+          \ul{w}}{|\ul{w}|^2}\ul{w}=
+          \frac{|\ul{v}|}{|\ul{w}|}\cos\theta\ul{w}\\
+        \text{4. }&&\ul{v}_{\hat{\ul{w}}}&=
+          \frac{\det(\ul{v},\ul{w})}{|\ul{w}|^2}
+          \hat{\ul{w}}=\frac{|\ul{v}|}{|\ul{w}|}\sin(\theta)
+          \hat{\ul{w}}
+      \end{align}
+      Where \(\theta\) is the angle between the vectors and \(A\) is the area of
+      the parallelogram spanned by the two vectors.</div>
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+          Example 5
+      </button>
+      <div class="exa">
+        Lets continue with the vectors from the previous examples
+          $$\ul{v}=\begin{pmatrix}3\\-4\\12\end{pmatrix},\ul{w}=\begin{pmatrix}-3\\-4\\12\end{pmatrix}$$
+        Then we can calculate the sine and cosine of the angle between them by using
+        the first formula
+          $$\cos\theta=\frac{\ul{v}\bullet\ul{w}}{|\ul{v}|
+            |\ul{w}|}=\frac{151}{13^2}$$
+        and the second
+          $$\sin\theta=\frac{\det(\ul{v},\ul{w})}{|\ul{v}|
+            |\ul{w}|}=\frac{24\sqrt{10}}{13^2}$$
+        This means we can calculate the angle by isolating \(\theta\)
+          $$\theta=\arccos\left(\frac{151}{169}\right)=\arcsin\left(\frac{24\sqrt{10}}{169}\right)
+            \approx27^\circ$$</div></div>
+    <h2> Proof. </h2>
+      First we take our two vectors and scale them down to unit vectors so they fit
+      into the unit circle, such that
+        $$\ul{v}^*=\frac{\ul{v}}{|\ul{v}|}\text{ and }
+          \ul{w}^*=\frac{\ul{w}}{|\ul{w}|}$$
+      <center><img src="Images/VecAng.png" alt="Angle between Vectors"
+         width="500" style="margin:10px"> </center>
+      Then if we tilt our head to the left, we can immediately observe from the image
+      that
+        $$\ul{w}^*=\cos\theta\ul{v}^*+\sin\theta\hat{\ul{v}}^*$$
+      this will be key to proving the statements in the theorem.<br>
+      1. First we consider the scalar product:
+      \begin{align}
+        \ul{v}\bullet\ul{w}&=|\ul{v}|\ul{v}^*\bullet|
+          \ul{w}|\ul{w}^*\\
+        &=|\ul{v}||\ul{w}|\ul{v}^*\bullet(\cos\theta
+          \ul{v}^*+\cancel{\sin(\theta)\hat{\ul{v}}^*})\\
+        &=|\ul{v}||\ul{w}|\cos\theta\cancel{|\ul{v}^*|^2}
+      \end{align}
+      since the scalar product between orthogonal vectors is 0 and the * vectors are unit
+      vectors.<br>
+      2. Now we can find the determinant by taking the scalar product with the CO-vector:
+      \begin{align}
+        \det(\ul{v},\ul{w})&=\hat{\ul{v}}\bullet\ul{w}=
+          |\ul{v}|\hat{\ul{v}}^*\bullet|\ul{w}|\ul{w}^*\\
+        &=|\ul{v}||\ul{w}|\hat{\ul{v}}^*\bullet(\cancel{\cos\theta
+          \ul{v}^*}+\sin\theta\hat{\ul{v}}^*)\\
+        &=|\ul{v}||\ul{w}|\sin\theta\cancel{|\hat{\ul{v}}^*|^2}
+      \end{align}
+      for the same reasons. This is exactly double the formula for the area of the
+      triangle, and the parallellogram is exactly composed of two identical triangles.<br>
+      3 - 4. Now we take the key formula and multiply both sides by \(|\ul{w}|\)
+      and expand the right hand side by \(|\ul{v}|^2\) to yield
+      \begin{align}
+        &&|\ul{w}|\ul{w}^*&=\frac{|\ul{v}||\ul{w}|\cos
+          \theta}{|\ul{w}|^2}|\ul{v}|\ul{v}^*+
+          \frac{|\ul{v}||\ul{w}|\sin\theta}{|\ul{w}|^2}|
+          \ul{v}|\hat{\ul{v}}^*\\
+        \iff&&\ul{w} &=\frac{\ul{v}\bullet\ul{w}}{|\ul{v}|^2}
+          \ul{v}+\frac{\det(\ul{v},\ul{w})}{|\ul{v}|^2}
+          \hat{\ul{v}}
+      \end{align}
+      <center>&#x220E;</center><br>
+    <center><iframe width="560" height="315" src="https://www.youtube.com/embed/jvGi1TQ9JsM"
+              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+              clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe></center>
+  <script src="../js/cbut.js"></script>
+</body>

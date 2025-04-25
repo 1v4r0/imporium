@@ -1,0 +1,134 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Maclaurin Series and Derivatives</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified some details will be omitted.
+  <h1> Maclaurin Series</h1>
+  In this section I will present some familiar functions as so-called Maclaurin
+  series and it's application to derivatives.
+  <h2> Exponential Function </h2>
+  Consider the following function, represented as a sum
+  $$f(x)=\sum_{n=0}^\infty\frac{x^n}{n!}=1+x+\frac{x^2}{2}+\frac{x^3}{3!}+\cdots$$
+  If we differentiate term-wise we get
+  \begin{align}
+    f'(x)=&\sum_{n=0}^\infty\frac{nx^{n-1}}{n!}\\
+    =&\sum_{n=1}^\infty\frac{x^{n-1}}{(n-1)!}\\
+    =&\sum_{n=0}^\infty\frac{x^n}{n!}\\
+    =&f(x)
+  \end{align}
+  and as well we know, the only function with this property is the natural
+  exponential function so \(f(x)=ce^x\) but \(c=f(0)=1\) so \(f(x)=e^x\).<br>
+  <h2> Trigonometric Functions </h2>
+  We can use Euler's formula to express the trigonometric functions as their
+  Maclaurin series:
+  \begin{align}
+    \cos(x)+i\sin(x)=&e^{ix}=\sum_{n=0}^\infty\frac{(ix)^{n}}{n!}=
+    \sum_{n=0}^\infty\frac{i^nx^n}{n!}\\
+    =&1+ix+i^2\frac{x^2}{2}+i^3\frac{x^3}{3!}+i^4\frac{x^4}{4!}+i^5
+    \frac{x^5}{5!}+\cdots\\
+    =&1+ix-\frac{x^2}{2}-i\frac{x^3}{3!}+\frac{x^4}{4!}+i\frac{x^5}{5!}\cdots\\
+    =&1-\frac{x^2}{2}+\frac{x^4}{4!}-\cdots\\
+    +i&\left(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\right)
+  \end{align}
+  This means that
+  \begin{align}
+    \cos(x)=&1-\frac{x^2}{2}+\frac{x^4}{4!}-\cdots\\
+    =&\sum_{n=0}^\infty(-1)^n\frac{x^{2n}}{(2n)!}\\
+    \sin(x)=&x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots\\
+    =&\sum_{n=0}^\infty(-1)^n\frac{x^{2n+1}}{(2n+1)!}
+  \end{align}
+  Euler's formula also provides another way to express the trigonometric functions,
+  by considering that
+  \begin{align}
+    e^{ix}\pm e^{-ix}=&\cos(x)+i\sin(x)\pm\cos(-x)+i\sin(-x)\\
+    =&\cos(x)\pm\cos(x)+i(\sin(x)\mp\sin(x))
+  \end{align}
+  if we take the top sign, the sines will cancel, and if we take the bottom signs,
+  the cosines cancel. This yields the following formulas:
+  \begin{align}
+    \cos(x)=&\frac{e^{ix}+e^{-ix}}{2}\\
+    \sin(x)=&\frac{e^{ix}-e^{-ix}}{2i}
+  \end{align}
+  An application to this definition is that
+  <div class="lem"><center> <h2> Lemma</h2></center>
+    $$\sin(a)-\sin(b)=2\cos\left(\frac{a+b}{2}\right)\sin\left(\frac{a-b}{2}\right)$$
+  </div>
+  <h3>Proof</h3>
+  We start by rewriting the right hand side
+  \begin{align}
+  2\cos\left(\frac{a+b}{2}\right)\sin\left(\frac{a-b}{2}\right)=&\cancel{2}\frac{e^{i\frac{a+b}{2}}+e^{-i\frac{a+b}{2}}}{\cancel{2}}\frac{e^{i\frac{a-b}{2}}-e^{-i\frac{a-b}{2}}}{2i}\\
+  =&\frac{e^{i\frac{a\cancel{+b}}{2}+i\frac{a\cancel{-b}}{2}}-e^{i\frac{\cancel{a}+b}{2}-i\frac{\cancel{a}-b}{2}}+e^{-i\frac{\cancel{a}+b}{2}+i\frac{\cancel{a}-b}{2}}-e^{-i\frac{a\cancel{+b}}{2}-i\frac{a\cancel{-b}}{2}}}{2i}\\
+  =&\frac{e^{ia}-e^{ib}+e^{-ib}-e^{-ia}}{2i}\\
+  =&\frac{e^{ia}-e^{-ia}}{2i}-\frac{e^{ib}-e^{-ib}}{2i}\\
+  =&\sin(a)-\sin(b)
+  \end{align}<p style="text-align:center;">&#x220E;</p>
+  <div class="thm"><center> <h2> Derivatives Theorem</h2></center>
+  \begin{align}
+    \cos'(x)=&-\sin(x)\\
+    \sin'(x)=&\cos(x)
+  \end{align}
+</div>
+I will use two approaches to differentiate the two aforementioned
+trigonometric functions which yields
+  <h3>Proof by Linearity</h3>
+  Using the linearity of the derivative we can differentiate the Maclaurin
+  series for the trigonometric functions term-wise
+  \begin{align}
+    \cos'(x)=&\sum_{n=0}^\infty(-1)^n\frac{2nx^{2n-1}}{(2n)!}\\
+    =&\sum_{n=1}^\infty(-1)^n\frac{x^{2n-1}}{(2n-1)!}\\
+    =&\sum_{n=0}^\infty(-1)^{n+1}\frac{x^{2n+1}}{(2n+1)!}\\
+    =&-\sin(x)\\
+    \sin'(x)=&\sum_{n=0}^\infty(-1)^n\frac{(2n+1)x^{2n}}{(2n+1)!}\\
+    =&\sum_{n=0}^\infty(-1)^n\frac{x^{2n}}{(2n)!}\\
+    =&\cos(x)
+  \end{align}<p style="text-align:center;">&#x220E;</p>
+  <h3>Proof 1 from First Principles </h3>
+  We can also use the Maclaurin series to differentiate them from first
+  principles
+  \begin{align}
+    (\cos(x+h)-\cos(x))/h=&(\cos(x)\cos(h)-\sin(x)\sin(h)-cos(x))/h\\
+    =&\cos(x)\frac{\cos(h)-1}{h}-\sin(x)\frac{\sin(h)}{h}\\
+    \to&\cancel{\cos(x)\frac{\cos(h)-1}{h}}-\sin(x)\cancel{\frac{\sin(h)}{h}}\\
+    =&-\sin(x)\\
+    (\sin(x+h)-\sin(x))/h=&(\cos(x)\sin(h)+\sin(x)\cos(h)-\sin(x))/h\\
+    =&\cos(x)\frac{\sin(h)}{h}+\sin(x)\frac{\cos(h)-1}{h}\\
+    \to&\cos(x)\cancel{\frac{\sin(h)}{h}}+\cancel{\sin(x)\frac{\cos(h)-1}{h}}\\
+    =&\cos(x)
+  \end{align}
+  since
+  \begin{align}
+    \frac{\cos(h)-1}{h}=&\left(1-\frac{h^2}{2}+\frac{h^4}{4!}-\cdots-1\right)/h\\
+    =&-\frac{h}{2}+\frac{h^3}{4!}-\cdots\\
+    \to&0\\
+    \frac{\sin(h)}{h}=&\left(h-\frac{h^3}{3!}+\frac{h^5}{5!}-\cdots\right)/h\\
+    =&1-\frac{h^2}{3!}+\frac{h^4}{5!}-\cdots\\
+    \to&1
+  \end{align}<p style="text-align:center;">&#x220E;</p>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/Ax9h3qVyDZM?si=2fLjQQ2l5Zmy6gKY" title="YouTube video
+    player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
+    web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <h3>Proof 2 from First Principles </h3>
+  \begin{align}
+    \frac{\sin(x+h)-\sin(x)}{h}=&2\cos\left(\frac{x+h+x}{2}\right)\sin\left(\frac{x+h-x}{2}\right)/h\\
+    =&\frac{2}{h}\cos(x+h/2)\sin(h/2)\\
+    =&\cos(x+k)\frac{\sin(k)}{k}\\
+    \to&\cos(x)\cdot1
+  \end{align}<p style="text-align:center;">&#x220E;</p>
+  This means that if we take the second derivative we get that
+  <div class="cor"><center><h2> Corollary </h2></center>
+  \begin{align}
+    \cos''(x)=&-\cos(x)\\
+    \sin''(x)=&-\sin(x)
+  \end{align}
+</div>
+  In fact, these are the only functions, up to multiplication by a constant, that have this property of \(f''(x)=-f(x)\).
+</body>

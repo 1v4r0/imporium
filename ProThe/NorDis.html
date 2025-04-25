@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <link href="../imp.css" rel="stylesheet">
+    <title>Normal Distribution</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+    <script id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+  </head>
+  <body>
+    <div class="back"> <a href="ProThe.html">Back</a> </div>
+    This section is aimed at students in upper secondary education in the Danish
+    school system, some objects will be simplified some details will be omitted.
+    <h1> Continuous Random Variables </h1>
+      Some random processes do not have discrete sample spaces, e.g. if we take
+      accurate enough measurements of almost anything, no two objects will have
+      the same. One classic approach is to group the data which in effect removes
+      the accuracy, but another approach is to consider it a continuous random variable
+      and do that analysis instead. In this case you describe the probability of
+      of the process with a so-called probability density function(pdf), \(f(x)\).
+      In the discrete case you can make histograms such that the area of each "bin",
+      or pillar, represents the probability of each outcome. In the continuous case,
+      this is also true, but the probability of each outcome is the area of a line
+      segment with height \(f(x)\) and 0 width, which obviously has an area
+      of 0. This makes sense since the probability of catching a fish that weighs
+      exactly 2,0001 kg is practically 0, even more-so if you add decimals. The
+      way we use the pdf to calculate probabilities then, is by integrating it,
+      and interpreting the area under the graph as the probability of getting outcomes
+      in that range, i.e.
+      <div class="def"><center><h2> Probability Density Function &<br>Cumulative Distribution
+      Function </h2></center>
+        For a continuous random variable X, its probability density function(pdf),
+        \(f(x)\), and its corresponding "canonical" antiderivative and area function,
+        called the cumulative distribution function(cdf), \(F(x)\), describe the
+        probability of getting an outcome in the range \([a,b]\) by the following
+        formulas
+          $$P(a< X< b)=\int_a^b f(x)dx=F(b)-F(a)$$
+        where
+          $$F(x)=P(X< x)=\int_{-\infty}^xf(t)dt$$
+      </div>
+      In the continuous case, we can always use strict inequalities since specific
+      values have 0 probability.
+      <div class="def"><center><h2> The Standard Normal Distribution </h2></center>
+        The continuous random variable is standardly normally distributed, \(Z\sim
+        N(0,1)\), if it has the following pdf
+          $$\varphi(x)=\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}$$
+        and cdf
+          $$\Phi(x)=\int_{-\infty}^x\varphi(t)dt$$
+      </div>
+      It's "standard" because the pdf is symmetric about \(x=0\), which is the expected
+      value while the standard deviation is 1, which is why we write \(Z\sim N(0,1)\).
+      It also has the beautiful property that
+        $$\varphi'(x)=-x\varphi(x)$$
+      <div class="thm"><center><h2> Normal Distribution </h2></center>
+        An arbitrary normal distribution, \(X\sim N(\mu,\sigma)\), does obviously
+        not have this property in general but we can always shift and squish it into
+        a standard normal distribution by the following relation \(X=\sigma Z+\mu
+        \implies Z=\frac{X-\mu}{\sigma}\). Then it will have the following pdf
+          $$f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}
+          \right)^2}$$</div>
+        <h3> Proof </h3>
+          \begin{align}
+            &&F(x)=&P(X< x)\\
+            &&=&P(\sigma Z+\mu< x)\\
+            &&=&P\left(Z<\frac{x-\mu}{\sigma}\right)\\
+            &&=&\Phi\left(\frac{x-\mu}{\sigma}\right)\\
+            \implies&&f(x)=&\frac{d}{dx}F(x)\\
+            &&=&\frac{d}{dx}\left(\Phi\left(\frac{x-\mu}{\sigma}\right)\right)\\
+            &&=&\Phi'\left(\frac{x-\mu}{\sigma}\right)\frac{d}{dx}\frac{x-\mu}{\sigma}\\
+            &&=&\varphi\left(\frac{x-\mu}{\sigma}\right)\frac{1}{\sigma}\\
+            &&=&\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+          \end{align}
+          <p style="text-align:center;">&#x220E;</p>
+      The cdf does not have a closed form and is always calculated numerically, but
+      since every normal distribution can be related to the standard normal distribution,
+      it has historically allowed us to calculate them from tables of values, but
+      these days they are mostly calculated by machines.
+      <h2> The Mean and Standard Deviation </h2></center>
+        To see that \(\mu\) and \(\sigma\) are actually the mean and standard deviation
+        respectively, we can use the formulas from <a href="RanVar.html">random variables</a>
+          $$E(X)=E(\sigma Z+\mu)=\cancel{\sigma E(Z)}+\mu$$
+        and
+          $$Var(X)=\sigma^2\cancel{Var(Z)}$$
+        Now to see that the variance of the standard normal distribution is actually
+        1, consider that.
+        \begin{align}
+          E(Z^2)=&\int x^2\varphi(x)dx\\
+          =&-\int x(-x\varphi(x))dx\\
+          =&-\int x\varphi'(x)dx\\
+          =&\cancel{-[x\varphi(x)]_{-\infty}^\infty}+\int \varphi(x)dx\\
+          =&1
+        \end{align}
+        by integration by parts, and therefore
+          $$Var(Z)=E(Z^2)-\cancel{E(Z)^2}=1$$
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/zB9w-SDrhr4"
+                  title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+                  clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe></center>
+      <h2> Binomial Approximation </h2>
+        Let \(X\sim B(n,p)\) be a binomially distributed discrete random variable.
+        For appropriate values of \(n\) and \(p\), it is approximately normal, with
+        mean \(\mu=np\) and SD \(\sigma=\sqrt{np(1-p)}\), i.e. \(X\sim N(np,\sqrt{
+        np(1-p)})\). The only question is what constitutes "appropriate values",
+        and I will present no mathematical criteria for this, but the ideal values
+        are high values of \(n\) and \(p=0.5\). Some statisticians use the criteria
+        that \(np\geq5\) and \(n(1-p)\geq5\).
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Curve Length </title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="Geometry.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified and some details omitted.
+  <h1> Curve Length</h1>
+    To determine the curve length of the graph of a (vector)function we can
+    make the following observation
+      $$v(t)=s'(t)\implies s(t)\in\int s'(t)dt=\int v(t)dt$$
+    so if I want to determine distances, I can integrate its derivative.<br>
+    This yields the following result
+    <h2> Curve Length of a Vector Function </h2>
+      For a vector function
+        $$\underline{r}(t)=\begin{pmatrix}x(t)\\y(t)\end{pmatrix}$$
+      its curve length from \(t=a\) to \(t=b\) is calculated as such
+        $$L_{\underline{r}}(a,b)=\int_a^b\sqrt{x'(t)^2+y'(t)^2}dt$$
+      <h3> Proof. </h3>
+        Consider moving along the curve of this vector function, and denote by
+        \(s(t)\) the distance you've moved from some point \(\underline{r}(a)\).
+        Then we just need to find the speed at which we're moving, but this can
+        be achieved by finding the tangent vector to the vector function. So
+        \begin{align}
+          v(t)=&|\underline{v}(t)|=|\underline{r}'(t)|\\
+          =&\left|\begin{pmatrix}x'(t)\\y'(t)\end{pmatrix}\right|\\
+          =&\sqrt{x'(t)^2+y'(t)^2}
+        \end{align}
+        This immediately yields
+          $$L_{\underline{r}}(a,b)=\int_a^b\sqrt{x'(t)^2+y'(t)^2}dt$$
+      <h3> Single Valued Functions </h3>
+        If we consider a real function \(f\) that is appropriately
+        differentiable, then we can find its curve length by
+          $$L_f(a,b)=\int_a^b\sqrt{1+f'(x)^2}dx$$
+        which is just a consequence of taking
+          $$\underline{r}(t)=\begin{pmatrix}t\\f(t)\end{pmatrix}$$
+        and "substituting" the variable \(t\) for \(x\).
+  </body>

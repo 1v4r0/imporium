@@ -1,0 +1,390 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Grundforløbet</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="GruFor.html">Back</a> </div>
+  <h1>Introduktion</h1>
+    Forestil dig taxaselskab, A, der har en prismodel, dvs. en sammenhæng der bestemmer
+    prisen på en bestemt rejse. Det vil nok ikke overraske den opmærksomme læser
+    at sådan en prismodel vil afhænge af længden på rejsen, dvs. at vi får en funktion
+    \(A(x)\) der beskriver prisen på en rejse, hvor \(x\) svarer til hvor langt man
+    skal køre. For at bestemme denne prismodel lad os tage et par rejser med <a href=
+    "https://taxa123.nu/prisberegner/">prisberegner</a>. Jeg taster ind Ballerup
+    og Bagsværd og får at det er en rejse på 9km til en pris på 230kr. Nu laver jeg
+    en rejse mere fra Ballerup til Albertslund på 10km til en pris på 248kr. Det
+    jeg har fået nu er to punkter, det første er \(BB=(9,230)\) og det andet er
+    \(BA=(10,248)\) som vi kan sætte ind i et såkaldt koordinatsystem, dvs. hvor vi
+    har to "akser" der er vinkelrette på hindanden. Den første akse lægger vi vandret
+    og kalder x-aksen og den anden bliver så lodret og hedder y-aksen. Det første
+    tal i et punkt fortæller os hvor langt til højre punktet skal ligge fra y-aksen
+    og det andet tal fortæller os langt over x-aksen det skal ligge. Negative tal
+    betyder så at vi går hhv ned og til venstre. Nu har de fleste læsere nok prøvet
+    at tegne en linje mellem to punkter, så lad os prøve at se om vi kan gøre det
+    her.
+    <img src="Images/BBBA.PNG" alt="Rejser fra Ballerup" width=100% style="margin:10px">
+    Som i kan se forslår mit program at linjen, der er vores forslag til prismodel
+    kan beskrives ved regnestykket
+      $$y=A(x)=18x+68$$
+    (den bruger godt nok bogstavet "f", men vi kan kalde det hvad der passer os).
+    De to tal der indgår i regnestykket beskriver henholdsvis kilometer-prisen, dvs.
+    at det koster 18kr. for hver kørt kilometer og at startgebyret er 68 kr., dvs.
+    hvor meget vi skal betale for at sætte os ind i taxaen.
+    <div class="def"><center><h1> Lineær Funktion </h1></center>
+    En sammenhæng mellem to størrelser, \(x\) og \(y\), der kan beskrives ved følgende
+    regnestykke, også kaldt dens "forskrift",
+      $$y=f(x)=ax+b$$
+    kaldes en lineær funktion og de to tal \(a\) og \(b\) kaldes hhv. funktionens
+    "hældningskoefficient" og "begyndelsesværdi" eller skæring med y-aksen.</div>
+    Nu kan vi gå ind på prisberegneren igen og se om prismodellen passer til et tredje
+    punkt, så jeg prøver at lave en rejse til Stenløse på 13km til 307kr. For at
+    se om det passer med vores prismodel laver jeg en geometrisk analyse ved at tegne
+    den lodrette linje \(x=13\) og finde skæringen med vores linje<br>
+    <center><img src="Images/Sten1.PNG" alt="Prisen til Stenløse" style="margin:10px"></center>
+    Det viser sig at den rigtige pris er 5 kr. højere end det min prismodel forudsiger.
+    Jeg kan også bestemme prisen algebraisk ved at sætte den ind i min funktionsforskrift
+      $$A(13)=18⋅13+68=234+68=302$$
+    Da den tredje rejse ikke passer, er vores prismodel så totalt ubrugelig? Det er
+    vel en fortolkningssag, men personligt ville jeg sige at prismodellen giver et
+    fornuftigt estimat på prisen. Når vi har fået det tredje punkt på synes jeg dog
+    at vi kan gøre linjen lidt bedre og det kan man gøre ved at lave en såkaldt
+    "lineær regression", der faktisk finder den bedste linje igennem flere punkter.
+    I mit værktøj vælger jeg punkterne og vælger "Best Fit Line", og den giver mig
+    funktionen
+      $$A(x)=19.35x+55.31$$
+    Man kan også bruge "kommandoen", "fitline({BB,BA,BS})"", eller lave regressionen
+    i et regneark. Som i kan se på de følgende billeder ligger linjen meget tættere
+    på vores tre punkter
+    <img src="Images/reg1.PNG" alt="Regression 1" width=100% style="margin:10px">
+    <img src="Images/reg2.PNG" alt="Regression 2" width=100% style="margin:10px">
+    og den går faktisk imellem vores to første punkter, så nu ligger ingen af vores
+    punkter på linjen. Men spørgsmålet er, hvor meget afviger hvert af punkterne?
+    Lad os prøve at beregne forskellen mellem prismodellens værdi og den faktiske
+    pris.
+      $$230-A(9)=230-(19.35⋅9+55.31)=0.54$$
+    dvs. at turen til Bagsværd koster 54 øre mere end forventet.
+      $$248-A(10)=248-(19.35⋅10+55.31)=-0.81$$
+    dvs. at turen til Albertslund koster 81 øre mindre end forventet.
+      $$307-A(13)=307-(19.35⋅13+55.31)=0.14$$
+    dvs. at turen til Stenløse er gået fra at være 5 kr. dyrere end forventet til
+    kun at være 14 øre dyrere. Alt i alt har vores "bedste linje" gjort at vi rammer
+    lidt ved siden af ved de to første rejser, men den har markant forbedret den
+    tredje. Det vi lige har beregnet er de såkalde "residualer", som er afvigelserne
+    mellem modellen og vores punkter.
+    <div class="def"><center><h1> Lineær Regression og Residualer </h1></center>
+      Lineær regression er den process der finder den bedste linje, \(f(x)=ax+b\)
+      igennem nogle punkter. For at bestemme den rigtige hældningskoefficient og
+      begyndelsesværdi kan man finde formlen <a href="LinReg.html">her</a>, men lige
+      nu nøjes vi med at få computeren til at lave regnestykket for os. Residualerne
+      er så de enkelte punkters lodrette afvigelse fra linjen, dvs. at
+        $$r_i=y_i-f(x_i)$$
+      hvor \(i=1,2,3,\ldots\) angiver hvilket punkt der er tale om.</div>
+    Lad os nu forestille os at det den sidste model er nogenlunde pålidelig for at
+    bestemme prisen for taxeselskabet. Nu skal vi til fest og vi er så ansvarsbevidste
+    at vi vælger at tage kontanter med til taxaturen hjem. Vi tager 100kr. med men
+    kommer til at overveje om det egentlig er nok. For at undersøge dette problem
+    kan vi tage vores model fra tidligere og finde ud af hvornår prisen kommer op
+    på 100 kr. fx. ved at tegne en lodret linje ved \(y=100\) og finde skæringen
+    med linjen
+    <img src="Images/Lig.PNG" alt="Løsning af Ligning" width=100% style="margin:10px">
+    Skæringspunktet \(A=(2.31,100)\) betyder at vi kan køre 2.31 km for de 100 kr.
+    og hvis vi skal videre må vi gå eller tage flere penge med. Nogle gange er det
+    upraktisk at løse ligningen geometrisk, og man skal også kunne løse ligninger
+    i hånden, så derfor kan man også opstille ligningen algebraisk som
+      $$100=A(x)=19.35x+55.31$$
+    Løsningen forgår ved at finde de x'er der opfylder den og det sker i praksis
+    ved at manipulere ligningen indtil at x står alene.
+    \begin{align}
+      &&100=&19.35x+55.31\\
+      \iff&&100-55.31=&19.35x\cancel{+55.31-55.31}\\
+      \iff&&\frac{44.69}{19.35}=&\frac{\cancel{19.35}x}{\cancel{19.35}}\\
+      \iff&&x=&\frac{44.69}{19.35}\approx2.31
+    \end{align}
+    her kan vi igen se at vi kan køre 2.31 km for de 100 kr. Hvis det viser sig at
+    vi ikke har råd til vores tur kan det være at vi skal vælge et andet taxaselskab.
+    Jeg har fundet et andet selskab der hedder Drivr, hvor kilometerprisen er 15
+    kr. og startgebyret er 70 kr. og for at sammenligne dem finder skæringspunktet
+    mellem deres grafer. Det er ret oplagt at gøre geometrisk hvor vi tegner graferne
+    for de to selskaber og bruger vores matematikværktøj til at finde det for os
+    <center><img src="Images/Skæring.PNG" alt="Sammenligning" style="margin:10px"></center>
+    Det viser sig at skæringspunktet er \((3.38,120.71)\) hvilket betyder at de to
+    taxaselskaber koster 120.71 kr. ved 3.38 km og at hvis man kører kortere er Taxa
+    4x35 billigere, ellers er Drivr. Igen kan man bestemme skæringspunktet algebraisk,
+    ved at sætte deres prismodeller lig med hinanden
+    \begin{align}
+      &&19.35x+55.31=&15x+70\\
+      \iff&&19.35x+\cancel{55.31-55.31}-15x=&\cancel{15x}+70-55.31-\cancel{15x}\\
+      \iff&&\frac{\cancel{4.35}x}{\cancel{4.35}}=&\frac{14.69}{4.35}\\
+      \iff&&x=&\frac{14.69}{4.35}\approx3.38
+    \end{align}
+    Det bekræfter igen vores geometriske løsning og hvis vi er interesseret i prisen
+    ved den rejse skal vi sætte værdien ind i en af de to prismodeller.
+    <h1> Teori </h1>
+      Undervejs i anvendelsesafsnittet har vi antaget at tingene forholder sig som
+      forventet. Vi har funktionsforskriften for en lineær funktion og den ene konstant
+      bestemmer hvor meget funktionsværdien stiger når x-værdien stiger med 1 og
+      at den anden konstant beskriver begyndelsesværdien. Vi har også fået computeren
+      til at bestemme linjen igennem to punkter. Nu vil jeg fremlægge et par sætninger
+      der beviser hvordan tingene forholder sig, så vi kan være sikre på det og at
+      det også forholder sig sådan ved andre lineære funktioner.
+      <div class="thm"><center><h2> Vækstegenskaber </h2></center>
+        For en lineær funktion \(f(x)=ax+b\) gælder der at \(a\) bestemmer hvor meget
+        funktionsværdien stiger med hvis x-værdien stiger med 1, dvs. at
+          $$f(x+1)=f(x)+a$$
+        Hvis x-værdien stiger med et andet tal, h, så skal hældningskoefficienten
+        ganges med det tal, dvs.
+          $$f(x+h)=f(x)+ah$$
+        Den anden konstant \(b\) bestemmer hvor grafen skærer y-aksen.</div>
+        <h3>Bevis</h3>
+          Lad os starte med at sætte \(x+h\) ind i funktionsforskriften
+          \begin{align}
+            f(x+h)=&a(x+h)+b\\
+            =&ax+ah+b\\
+            =&ax+b+ah\\
+            =&f(x)+ah
+          \end{align}
+          Dernæst ganger vi \(a\) ind i parentesen. Så rykker vi rundt på \(a\) og
+          \(b\) og slår de første par led sammen til funktionsforskriften. Jeg sprang
+          den første formel over, men beviset er identisk med \(h=1\). For at vise
+          at \(b\) er skæringen med y-aksen, observerer jeg at y-aksen har x-værdien
+          \(x=0\) og derfor gælder der at
+            $$f(0)=\cancel{a⋅0}+b=b$$
+          <center><p style="text-align:center;">&#x220E;</p></center>
+          Det lille kvadrat betyder at nu er beviset færdigt. Disse vækstegenskaber
+          kan også formuleres som
+            $$\Delta y=a\Delta x$$
+          hvor trekanten er det græske tegn store "delta" og betyder forskel, ændring
+          eller vækst. Altså findes væksten i y-værdien ved at gange væksten i
+          x-værdien med hældningskoefficienten. Dette fører os til den teoretiske
+          bestemmelse af linjnen der går igennem to punkter.
+      <div class="thm"><center><h2> To-punktssætningen </h2></center>
+        For to punkter \(P=(x_1,y_1)\) og \(Q=(x_2,y_2)\) kan man finde den linje
+        det krydser de to punkter ved først at bestemme hældningskoefficienten med
+        følgende formel
+          $$a=\frac{\Delta y}{\Delta x}=\frac{y_1-y_2}{x_1-x_2}=\frac{y_2-y_1}{x_2-x_1}$$
+        Dernæst kan man bestemme begyndelsesværdien ved at sætte et af punkterne
+        ind i
+          $$b=y-ax$$</div>
+        <h3>Bevis</h3>
+          Den første del af formlen følger oplagt fra den forrige formel, altså
+            $$\frac{\Delta y}{\Delta x}=\frac{a\cancel{\Delta x}}{\cancel{\Delta x}}
+            \implies a=\frac{\Delta y}{\Delta x}$$
+          men lad os lave et forskelligt argument for at træne bevisførelse. Det
+          at de to punkter ligger på linjen betyder at
+          \begin{align}
+            &&y_1=&ax_1+b\\
+            &&y_2=&ax_2+b\\
+            \implies&&y_1-y_2=&ax_1+b-(ax_2+b)\\
+            &&=&ax_1+\cancel{b}-ax_2-\cancel{b}\\
+            &&=&a(x_1-x_2)\\
+            \iff&&\frac{y_1-y_2}{x_1-x_2}=&\frac{a\cancel{(x_1-x_2)}}{\cancel{x_1-x_2}}
+          \end{align}
+          Vi kunne lige så godt have trukket det første punkt fra det andet hvilket
+          havde bare byttet rundt på 1-tallene og 2-tallene. Formlen for \(b\) er
+          en oplagt omskrivning af funktionsforskriften
+            $$y=ax+b\iff y-ax=\cancel{ax-ax}+b=b$$
+          <center><p style="text-align:center;">&#x220E;</p></center>
+  <center><iframe src="https://bagkost.sharepoint.com/sites/23DTMa/_layouts/15/embed.aspx?UniqueId=e2655f88-367e-4936-b845-2d97660c28d3&embed=%7B%22hvm%22%3Atrue%2C%22ust%22%3Atrue%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create"
+           width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="Min film.mov"></iframe></center>
+      Der er en lineær funktion der har særlig status, kaldt proportionalitet.
+      <div class="def"><center><h2> Proportionalitet </h2></center>
+        Proportionalitet er en lineær funktion med begyndelsesværdien \(b=0\), dvs.
+        funktionsforskriften
+          $$f(x)=kx$$
+        hvor \(k\) kaldes proportionalitetskonstanten, og
+          $$k=\frac{y}{x}$$
+        Dvs. at forholdet mellem de to størrelser, x og y, er konstant og man skriver
+        \(y∝x\).</div>
+        Proportionalitetens særlige status skyldes blandt andet at der er rigtig
+        mange sammenhænge i fysik der er proportionale, et objekt der ikke har nogen
+        hastighed har heller ingen kinetisk energi, samme med højde og gravitationel
+        potentiel energi. Hvis man ikke har det ene har man tit heller ikke det andet.
+      <h2> Regression</h2>
+        For at bestemme hvor "god" en regression er har man et par begreber og metoder.
+        <h3>Residualplot</h3>
+          Det første er residualplottet hvor vi laver punkter der består af deres
+          x-værdier og det tilhørende residual, dvs. \((x_i,r_i)\) for \(i=1,2,3,\ldots\).
+          For de tre rejser fra tidligere bliver det \((9,0.54)\), \((10,-0.81)\)
+          og \((13,0.14)\). Det vi så kan gøre er lave et plot ud fra disse residualer
+          <img src="Images/Res.PNG" alt="Residualer" width=100% style="margin:10px">
+          Når vi laver målinger i virkeligheden bliver der altid små afvigelser fra
+          modellen, og det vi bruger residualplottet til er at se om afvigelserne
+          er tilfældige eller ej. Fordi hvis afvigelserne er tilfældige tyder det
+          bare på at det er manglende præcision i vores målinger, evt. sjusk, men
+          hvis der er systematiske afvigelser i residualplottet tyder det på at det
+          er matematikken der er på afveje, evt. at vi har valgt den forkerte model.
+        <h3>\(r^2\)</h3>
+          \(r^2\)-værdien giver et mål for punkternes afstand til modellen. Først
+          beregner man gennemsnittet af y-værdierne fra datasættet
+            $$\bar{y}=\frac{1}{n}\sum_{i=1}^n y_i$$
+          Det mærkelige tegn er det græske tegn store "sigma" hvilket svarer til "S"
+          og står for "sum". Derfor læses regnestykket som at vi lægger alle y-værdierne
+          sammen, fra det første \(i=1\) op til det sidste \(i=n\), og dividerer med
+          antal punkter, \(n\). Dernæst beregner vi residualerne til gennemsnitslinjen,
+          kvadrerer dem, lægger det hele sammen og får
+            $$A_g=\sum_{i=1}^n (y_i-\bar{y})^2$$
+          hvilket bliver et mål for hvor langt fra gennemsnittet de forskellige punkter
+          ligger. Nu gør vi præcis det samme for vores regressionslinje og får
+            $$A_r=\sum_{i=1}^n (y_i-f(x_i))^2$$
+          Nu sammenligner vi de to tal ved trække deres forhold fra 1, dvs.
+            $$r^2=1-\frac{A_r}{A_g}$$
+          Dette tal er derfor et mål for hvor godt punkterne ligger i forhold vores
+          sammenhæng(regression) i modsætning til ingen sammenhæng(gennemsnittet)
+          og jo bedre sammenhængen er, jo tættere er forholdet på 0 og \(r^2\)-værdien
+          på 1.
+    <h1>Geometri</h1>
+      Grunden til at vi var nødt til at bruge lineær regression for at bestemme vores
+      model er at vi havde ikke taget højde for alle de variabler der indår i prisbestemmelsen
+      for et taxaselskab. Den anden variabel er den tid rejsen tager, men den kan
+      være meget vanskelig at bestemme alene ud fra rejsens længde, da den afhænger
+      af lokale forhold som fartgrænsen og trafik generelt. Lad os nu prøve at lave
+      en mere fuldstændig prismodel for nogle taxaselskaber ved at kigge <a href=
+      "https://taxipriser.dk/">her</a>. Jeg vælger Drivr og taster følgende ind i
+      mit matematikprogram
+        $$15x+4y+70$$
+      hvor 15 svarer til kilometer-prisen, x svarer til antal kørte kilometer, 4
+      svarer til minutprisen og y til antal kørte minutter, og 70 er startgebyret.
+      Det jeg får er
+      <img src="Images/3D.PNG" alt="Flade" width=100% style="margin:10px">
+      Det er en såkaldt flade og det kommer i nok ikke til at se igen indtil i 3g.
+      Men hvad viser fladen egentlig? Den viser prisen på enhver rejse når vi kender
+      både afstanden og tiden. Lad os nu tilføje Taxa 4x35, som får en lyserød flade
+      <img src="Images/3D2.PNG" alt="Skæring Mellem Flader" width=100% style="margin:10px">
+      og det vi kan se er at de to flader skærer hinanden i en linje, repræsenteret
+      ved den grå "skygge", som angiver de rejser hvor de to taxaselskaber har den
+      samme pris. Vi kan finde den algebraisk ved at sætte de to modeller lig med
+      hinanden, dvs.
+      \begin{align}
+        &&15x+4y+70=&10x+6.75y+39\\
+        \iff&&(15-10)x+(4-6.75)y+70-39=&0\\
+        \iff&&5x-2.75y+31=&0
+      \end{align}
+      Nu glemmer jeg de der flader hvor ligningen kom fra, og tegner den i et helt
+      almindeligt koordinatsystem.
+      <center><img src="Images/Skæring2.PNG" alt="Sammenligning" style="margin:10px"></center>
+      Hvis vi kigger på skæringen med x-aksen svarer det til hvor langt vi kan køre
+      i de to taxaselskaber til den samme pris hvis det ikke tager nogen tid, dvs.
+      hvis vi teleporterer. Vi kan gøre det algebraisk ved at sætte \(y=0\)
+        $$5x-2.75⋅0+31=0\iff x=-\frac{31}{5}=-6.2$$
+      Det er det samme som vi har fået på computeren(punkt A) men er svært at fortolke
+      da man ikke kan have negative afstande. Men skæringen med y kan vi finde ved
+      at sætte \(x=0\)
+        $$5⋅0-2.75y+31=0\iff y=\frac{31}{2.75}\approx11.27$$
+      hvilket kan fortolkes som at man kan sidde i taxaen i 11.27 minutter til den
+      samme pris for de to taxaselskaber hvis man ikke kører, hvilket kan være nyttigt
+      at vide hvis man har været til fest og lige skal slappe lidt af. Den sidste
+      geometriske fortolkning opnås ved at kigge på <a href"../Geometry/EleVecy.html">
+      vektoren</a>
+        $$\underline{n}={5\choose-2.75}$$
+      der består af "koefficienterne" for x og y, og repræsenteres ved en pil der
+      går 5 til højre og 2.75 ned. Denne vektor kaldes normalvektoren til linjen
+      og står vinkelret på linjen.
+      <div class="def"><center><h2> Linjens Ligning </h2></center>
+        Punkterne \((x,y)\) der opfylder følgende ligning
+          $$ax+by+c=0$$
+        ligger på en linje der står vinkelret på vektoren
+          $$\underline{n}={a\choose b}$$
+        der kaldes normalvektoren for linjen. Værdien for c kan bestemmes ved
+          $$-c=ax_1+by_1$$
+        hvor \((x_1,y_1)\) svarer til et vilkårligt punkt på linjen.</div>
+        Hvis vi gerne vil finde skæringen mellem to ligninger algebraisk er der
+        et lille problem, nemlig at der er to ubekendte frem for en. De to metoder
+        vi bruger for at finde skæringen handler derfor om at fjerne den ene ubekendte.
+        <h3>Lige Store Koefficienter</h3>
+          Lad os sige at vi har to linjer, \(2x+3y+4=0\) og \(3x-4y+5=0\), navnet
+          kommer fra at vi gør ligningernes koefficienter lige store, ved at gange
+          ligningerne med hvert sit tal, hvorefter vi trækker dem fra hinanden
+          \begin{align}
+            &&(2x+3y+4=&0)⋅3\iff6x+9y+12=0\\
+            &&(3x+4y+5=&0)⋅2\iff6x+8y+10=0\\
+            &&(6-6)x+(9-8)y+12-10=&0\\
+            \iff&&y+2=&0\\
+            \iff&&y=-2
+          \end{align}
+          Her gangede vi den første ligning med 3, den anden med 2 og x-koefficienten
+          blev 6. Det gjorde at vi kunne trække de to ligninger fra hinanden for
+          at fjerne x-leddene hvilket gjorde at vi kunne isolere y. For så at finde
+          x sætter vi den fundne y-værdi ind i en af ligningerne, fx.
+            $$0=2x+3⋅(-2)+4=2x-2\iff x=1$$
+          derfor er skæringen mellem de to linjer i \((1,-2)\).
+        <h3>Substitution</h3>
+          Den anden metode er lidt mere vanskelig generelt, men kan anvendes noget
+          bredere. Den hedder substitution fordi vi isolerer den ene variabel i den
+          ene ligning
+            $$2x+3y+4=0\iff x=-\frac{3y+4}{2}$$
+          og så indsætter(substituerer) den i den anden,
+          \begin{align}
+            &&2⋅(0=&3⋅\left(-\frac{3y+4}{2}\right)+4y+5)\\
+            \iff&&0=&-9y-12+8y+10\\
+            &&=&-y-2\\
+            \iff&& y=&-2
+          \end{align}
+          Til sidst kan vi beregne
+            $$x=-\frac{3⋅(-2)+4}{2}=-\frac{-2}{2}=1$$
+          Hvis du føler at den metode var lidt mere vanskelig er du slet ikke alene,
+          men den er som sagt anvendelig i flere tilfælde end lige store koefficienter.
+      <h2>Parameterfremstillingen</h2>
+        Det at beskrive en linje ved at sige at den skal være vinkelret på en bestemt
+        retning er ikke den mest oplagte måde at beskrive en linje. De fleste af
+        os vil nok mene at det er mere oplagt simpelthen at pege i linjens retning
+        og det er der at parameterfremstillingen kommer ind i billedet.
+        <div class="def"><center><h2> Parameterfremstilling </h2></center>
+          Parameterfremstillingen for en linje er den følgende vektorrelation
+            $$\underline{r}(t)=\underline{a}t+\underline{b}$$
+          hvor
+            $$\underline{r}(t)={x(t)\choose y(t)}$$
+          svarer til et punkt på linjen,
+            $$\underline{a}={r_1\choose r_2}$$
+          kaldes retningsvektoren for linjen,
+            $$\underline{b}={x_0\choose y_0}$$
+          svarer til et begyndelsespunkt, og \(t\) er den såkaldte parameter der
+          skalerer retningsvektoren, dvs. forlænger eller forkorter den, samt evt.
+          at vende den om. Ved at lægge en skaleret retningsvektor til et punkt på
+          linjen kan vi nemlig ramme alle punkterne på linjen.
+          </div>
+          <u>b</u> kaldes begyndelsesværdien fordi
+            $$\underline{r}(0)=\cancel{\underline{a}⋅0}+\underline{b}$$
+          dvs. at den svarer til punktet hvor (tiden) \(t=0\). For at undersøge parameterfremstillingen
+          yderligere tager jeg vores linje fra tidligere
+            $$5x-2.75y+31=0$$
+          som skærer x-aksen i \(x=6.2\). Jeg kender kun en normalvektor, men jeg
+          kan lave den om til en <a href="../Geometry/EleVec.html">tværvektor</a>
+          ved at bytte om på koordinaterne og skifte fortegnet på den første, derfor
+          er
+            $$\underline{a}=\underline{\hat{n}}=\hat{5\choose-2.75}={2.75\choose5}$$
+          Så er jeg klar til at skrive min parameterfremstilling som
+            $${x(t)\choose y(t)}={2.75\choose 5}t+{6.2\choose0}$$
+          Hvis jeg vælger \(t=1\) får jeg
+            $${x(1)\choose y(1)}={2.75+6.2\choose5+0}={8.95\choose 5}$$
+          Hvis \(t=-1\) bliver det
+            $${x(-1)\choose y(-1)}={-2.75+6.2\choose-5+0}={3.45\choose-5}$$
+          På følgende billede kan man se retningsvektoren, begyndelsespunktet, linjen
+          og de to punkter jeg lige har beregnet.
+          <center><img src="Images/Para.PNG" alt="Sammenligning" style="margin:10px"></center>
+          <h3>Skæring</h3>
+            Hvis vi har to parameterfremstillinger kan vi finde deres skæringspunkt
+            ved at anvende noget jeg kalder Fridas metode, hvor man sætter de to
+            parameterfremstillinger lig med hinanden og tager <a href="../Geometry/EleVec.html">
+            skalarproduktet</a> med tværvektoren til en af retningsvektorerne. Dvs.
+            For
+              $$\underline{r}_1(t)=\underline{a}_1t+\underline{b}_1$$
+            og
+              $$\underline{r}_2(s)=\underline{a}_2s+\underline{b}_2$$
+            finder jeg
+            \begin{align}
+              &&\cancel{\underline{a}_1⋅\hat{\underline{a}}_1t}+\underline{b}_1⋅\hat{\underline{a}}_1
+              =&\underline{a}_2⋅\hat{\underline{a}}_1s+\underline{b_2}⋅\hat{\underline{a}}_1\\
+              \iff&&s=&\frac{\underline{b}_1⋅\hat{\underline{a}}_1-\underline{b_2}
+              ⋅\hat{\underline{a}}_1}{\underline{a}_2⋅\hat{\underline{a}}_1}
+            \end{align}
+            Hvis jeg derimod har en parameterfremstilling og en linjens ligning kan
+            jeg sætte \(x(t)\) ind på x's plads, og \(y(t)\) på y's plads hvilket
+            fører til at vi får
+              $$a(r_1t+x_0)+b(r_2t+y_0)+c=0\iff t=-\frac{ax_0+by_0+c}{ar_1+br_2}$$
+</body>

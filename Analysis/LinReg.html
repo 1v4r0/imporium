@@ -1,0 +1,79 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Linear Regression</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified some details will be omitted.
+  <div class="def"><center><h1> Regression Analysis</h1></center>
+    Lets consider a dataset consisting of a series of points \((x_i,y_i)\),
+    then we can perform a regression to a specific function f by considering
+    the corresponding residuals
+      $$r_i=f(x_i)-y_i$$
+    squaring them and then minimizing the sum of these squared residuals.</div>
+    <div class="thm"><center><h2> Theorem(Linear Regression) </h2></center>
+      The linear function that minimizes the squared residuals for a given
+      dataset, for which not all the x-coordinates are equal, has the following
+      properties:
+        $$a=\frac{n\Sigma xy-\Sigma x\Sigma y}{n\Sigma x^2-(\Sigma x)^2}$$
+        $$b=\frac{\Sigma x^2\Sigma y-\Sigma x\Sigma xy}{n\Sigma x^2-(\Sigma x)^2}$$</div>
+      <div class="pro"><center><h3> Proposition </h3></center>
+        For a sequence of numbers \(x_i\) we have
+          $$\left(\sum_{i=1}^n x_i\right)^2\leq n\sum_{i=1}^n x_i^2$$
+        with equality only if all the \(x_i\) are identical.</div>
+      <h3> Proof </h3>
+        Consider the two-variable function
+          $$K(a,b)=\sum_{i=1}^n(ax_i+b-y_i)^2$$
+        which represents the sum of the squared residuals for the linear function
+        with slope \(a\) and initial value \(b\). Then we can minimize this by
+        finding the gradient and setting it to 0. Then we can verify that it
+        is indeed a minimum by taking the second derivatives.
+        \begin{align}
+          0=\frac{\partial K}{\partial a}(a,b)=&\sum_{i=1}^n2(ax_i+b-y_i)x_i\\
+          =&2a\Sigma x^2+2b\Sigma x-2\Sigma xy\\
+          0=\frac{\partial K}{\partial b}(a,b)=&\sum_{i=1}^n2(ax_i+b-y_i)\\
+          =&2a\Sigma x+2nb-2\Sigma y
+        \end{align}
+        Now we use elimination of variables to solve this system of equations
+        \begin{align}
+          \frac{K_a'n-K_b'\Sigma x}{2}:&&0=&an\Sigma x^2+\cancel{bn\Sigma x}-
+          n\Sigma xy\\
+          &&-&(a(\Sigma x)^2+\cancel{nb\Sigma x}-\Sigma y\Sigma x)\\
+          \implies&& a(n\Sigma x^2-(\Sigma x)^2)=&n\Sigma xy-\Sigma y\Sigma x\\
+          \implies&& a=&\frac{n\Sigma xy-\Sigma x\Sigma y}{n\Sigma x^2-(
+            \Sigma x)^2}\\
+          \frac{K_a'\Sigma x-K_b'\Sigma x^2}{2}:&&0=&\cancel{a\Sigma x^2\Sigma
+            x}+b(\Sigma x)^2-\Sigma xy\Sigma x\\
+          &&-&(\cancel{a\Sigma x\Sigma x^2}+2nb\Sigma x^2-\Sigma y\Sigma x^2)\\
+          \implies&& b(n\Sigma x^2-(\Sigma x)^2)=&\Sigma y\Sigma x^2-\Sigma xy
+          \Sigma x\\
+          \implies&& b=&\frac{\Sigma x^2\Sigma y-\Sigma x\Sigma xy}{n\Sigma x^2
+            -(\Sigma x)^2}
+        \end{align}
+        Now we take the second derivatives
+        \begin{align}
+          \frac{\partial^2K}{\partial a^2}(a,b)=&2\Sigma x^2\\
+          \frac{\partial^2K}{\partial b^2}(a,b)=&2n\\
+          \frac{\partial^2K}{\partial a\partial b}(a,b)=&2\Sigma x
+        \end{align}
+        Then we consider the Hesse determinant
+          $$\begin{vmatrix}
+              K_{aa}^{\prime\prime} & K_{ab}^{\prime\prime}\\
+              K_{ba}^{\prime\prime} & K_{bb}^{\prime\prime}
+            \end{vmatrix}
+            =4n\Sigma x^2-4(\Sigma x)^2>0$$
+        By the previous lemma which means that it is an extremum and it's a
+        minimum since \(K_a'',K_b''>0\).
+        <center><p style="text-align:center;">&#x220E;</p>
+        <center><iframe width="560" height="315" src="https://www.youtube.com/embed/kgI7wfHRhA0?si=tLjLezos2Wiw95Pw"
+           title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+           clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+           allowfullscreen></iframe></center>
+</body>

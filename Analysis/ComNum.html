@@ -1,0 +1,99 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Complex Numbers</title>
+  <script src="ahttps://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified some details will be omitted.
+  <h1> Real Numbers \(\mathbb{R}\)</h1>
+    Some of the first numbers discovered were the "counting" numbers, or the
+    non-negative whole numbers, denoted by \(\mathbb{N}\) and with these we can add
+    numbers and we can multiply numbers without issues.<br>
+    At some point in history, people wanted to be able to denote negative numbers
+    also so we added the negative whole numbers yielding all the whole numbers,
+    denoted by \(\mathbb{Z}\supset\mathbb{N}\) and this allowed us to do the
+    opposite of addition and subtract numbers without running into issues.<br>
+    As you may have guessed, at some point it became necessary to be able to do the
+    opposite thing of multiplication, division, and the rational numbers were born,
+    denoted by \(\mathbb{Q}\supset\mathbb{Z}\supset\mathbb{N}\). These numbers can be
+    represented as two whole numbers divided by each other or as decimal numbers with
+    repeating digits, i.e. at some point the same sequence of digits will
+    repeat infinitely.<br>
+    Now this is a powerful set and you can pretty much do anything with these numbers,
+    but being notorious sticklers for details, mathematicians required more precision,
+    in fact infinite precision, and the real numbers emerged, denoted by
+    \(\mathbb{R}\supset\mathbb{Q}\supset\mathbb{Z}\supset\mathbb{N}\). These are
+    represented by decimal numbers with any number of non-repeating digits, also infinitely many,
+    and some examples of real numbers that have infinitely many non-repeating digits are \(\pi\),
+    Euler's number and the golden ratio, impractically precise numbers with extremely
+    beautiful and useful properties.
+  <h1> Complex Numbers \(\mathbb{C}\)</h1>
+    Now many of you probably thought the story ended there, but it did in fact not. New
+    problems emerged, one being that some polynomials didn't have any roots, e.g.
+    \(p(x)=x^2+1\). If it did have a root it would have the property that \(x^2=-1\)
+    which is not true for any real number. These issues caused mathematicians to
+    consider the complex numbers, denoted by
+    \(\mathbb{C}\supset\mathbb{R}\supset\mathbb{Q}\supset\mathbb{Z}\supset\mathbb{N}\).
+  <h2> Cartesian Form </h2>
+    These numbers can be represented in the so called "Cartesian" form \(a+ib\), where
+    \(a,b\in\mathbb{R}\). We say that a is the "real part" and b is the "imaginary part"
+    which is recognizable by that weird "i" which is called the "imaginary unit" which
+    is the solution to our previous polynomial since it has the property that \(i^2=-1\).
+    This can be represented visually as a point in 2D space with a as the "x-coordinate"
+    and b as the "y-coordinate" which in effect means that we have two coordinate axes
+    where one of them is "real" and the other is "imaginary". Note that these are just
+    names and not properties, imaginary numbers have multiple properties that suggest
+    they are just as real as any other number.
+  <h2> Multiplication </h2>
+    These numbers have every property of real numbers, so we can do the exact same
+    operations on these as the real numbers, the only difference is that we have the
+    imaginary unit which squares to -1. This means that we can multiply complex numbers
+    and get a new complex numbers, which is a benefit over vectors since the canonical
+    "multiplication" of vectors yields a scalar, i.e. changes the object type. So lets
+    demonstrate how you multiply two complex numbers by using the normal rules of
+    multiplication:
+      $$(a+ib)(c+id)=ac+aid+ibc+ibid=ac+iad+ibc+i^2bd=ac-bd+i(ad+bc)$$
+  <h2> Unit Circle </h2>
+    Lets pull back and restrict ourselves to the unit circle, i.e. we will consider
+    complex numbers of the form \(f(x)=\cos(x)+i\sin(x)\) where x is the arc length from
+    the real axis. This in fact is a function of arc length which allows us to
+    differentiate it,
+      $$f'(x)=-\sin(x)+i\cos(x)=i^2\sin(x)+i\cos(x)=i(\cos(x)+i\sin(x)=if(x)$$
+    This means that f has the property that \(f'=cf\) where \(c=i\) and there is only one
+    function that has this property, namely the natural exponential function
+    \(f(x)=ce^{ix}\) but \(c=f(0)=cos(0)+i\sin(0)=1\) which means that
+      $$e^{ix}=\cos(x)+i\sin(x)$$
+    which in turn yields arguably the most beautiful formula in all of math
+      $$e^{i\pi}=\cos(\pi)+i\sin(\pi)=-1+i\cdot0\implies e^{i\pi}+1=0$$
+    This is not the only immediately interesting consequence of that result, another is that
+    if we take two numbers on the unit circle and multiply them we get
+    \begin{align}
+      e^{i\theta}e^{i\varphi}&=(\cos(\theta)+i\sin(\theta))(cos(\varphi)+i\sin(\varphi))\\
+      e^{i(\theta+\varphi)}&=\cos(\theta)\cos(\varphi)-\sin(\theta)\sin(\varphi)
+        +i(\cos(\theta)\sin(\varphi)+\sin(\theta)\cos(\varphi))\\
+      &=\cos(\theta+\varphi)+i\sin(\theta+\varphi)
+    \end{align}
+    which means that
+      $$\cos(\theta+\varphi)=\cos(\theta)\cos(\varphi)-\sin(\theta)\sin(\varphi)$$
+    and
+      $$\sin(\theta+\varphi)=\cos(\theta)\sin(\varphi)+\sin(\theta)\cos(\varphi)$$
+  <h2> Polar Form </h2>
+    Any complex number, \(z=a+ib\), can then be written as a unit number
+    \(e^{i\theta}\) multiplied by its magnitude \(|z|=r=\sqrt{a^2+b^2}\), i.e.
+    \(z=|z|e^{i\theta}=re^{i\theta}\) and this is called the "polar form".
+  <h2> Complex Conjugate and Division </h2>
+    For every complex number \(z=a+ib\) there is another complex number called it's
+    conjugate \(\bar{z}=a-ib\) which is just \(z\) reflected by the real axis. We can use the
+    conjugate to define complex division in the following way. We consider the product
+    \(z\bar{z}=(a+ib)(a-ib)=a^2-(ib)^2=a^2+b^2=|z|^2\) which means that
+      $$z\frac{\bar{z}}{|z|^2}=1\implies z^{-1}=\frac{\bar{z}}{|z|^2}$$
+    This means that in order to "divide" by the complex number \(z\) we need to multiply by
+    \(\frac{\bar{z}}{|z|^2}\)
+</body>

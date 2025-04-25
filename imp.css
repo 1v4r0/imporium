@@ -1,0 +1,79 @@
+body{
+  background-color: black;
+  color: white;
+  padding-right: 30px;
+}
+.row {
+  display: flex;
+}
+img{
+  border: 1px solid rgb(50,50,50);
+}
+.column {
+  flex: 50%;
+}
+a:visited{
+  color: yellow;
+}
+a{
+  color: orange;
+}
+.def{
+  border: 1px solid LightGoldenRodYellow;
+  margin: 10px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+.pro{
+  border: 3px solid palegoldenrod;
+  margin: 10px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+.lem{
+  border: 3px solid palegoldenrod;
+  margin: 10px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+.thm{
+  border: 5px solid gold;
+  margin: 10px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+.cor{
+  border: 3px solid goldenrod;
+  margin: 10px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}
+.back{
+  position: fixed;
+  top: 5;
+  right: 5;
+}
+.collapse {
+  background-color: black;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: white;
+}
+.active,
+.collapse:hover {
+    background-color: grey;
+}
+.exa{
+  border: none;
+  margin: 10px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+  display: none;
+}

@@ -1,0 +1,106 @@
+<html>
+<head>
+<link href="../../imp.css" rel="stylesheet">
+<title>Monotoniprojekt</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  function AnsCheck(){
+    if(document.getElementById("pd").value=="2x-3"){
+      document.getElementById("pd").style.backgroundColor='green'
+    }else{
+      document.getElementById("pd").style.backgroundColor='red'
+    }
+    if(document.getElementById("qd").value=="2x+1"){
+      document.getElementById("qd").style.backgroundColor='green'
+    }else{
+      document.getElementById("qd").style.backgroundColor='red'
+    }
+    if(document.getElementById("pqd").value=="4x^3-6x^2-26x+14"){
+      document.getElementById("pqd").style.backgroundColor='green'
+    }else{
+      document.getElementById("pqd").style.backgroundColor='red'
+    }
+    if(document.getElementById("pqr").value=="-3,-1,2,4"){
+      document.getElementById("pqr").style.backgroundColor='green'
+    }else{
+      document.getElementById("pqr").style.backgroundColor='red'
+    }
+    if(document.getElementById("rdr").value=="-2,19;0,50;3,19"){
+      document.getElementById("rdr").style.backgroundColor='green'
+    }else{
+      document.getElementById("rdr").style.backgroundColor='red'
+    }
+    if(document.getElementById("mt").value=="-+-+"){
+      document.getElementById("mt").style.backgroundColor='green'
+    }else{
+      document.getElementById("mt").style.backgroundColor='red'
+    }
+    if(document.getElementById("pqdd").value=="12x^2-12x-26"){
+      document.getElementById("pqdd").style.backgroundColor='green'
+    }else{
+      document.getElementById("pqdd").style.backgroundColor='red'
+    }
+    if(document.getElementById("eks").value=="mMm"){
+      document.getElementById("eks").style.backgroundColor='green'
+    }else{
+      document.getElementById("eks").style.backgroundColor='red'
+    }
+    if(document.getElementById("vie").value=="-3,-1,2,4"){
+      document.getElementById("vie").style.backgroundColor='green'
+    }else{
+      document.getElementById("vie").style.backgroundColor='red'
+    }
+  }
+</script>
+</head>
+<body>
+<h1> Opgave 1 </h1>
+<span style="background-color:green">a) Find formler 131-133 i formelsamlingen og
+brug dem til at differentiere følgende
+polynomier og taste resultatet ind i tekstboksen </span>
+$$p(x)=x^2-3x-4$$
+<center>\(p'(x)=\)<input type="text" id="pd" value="ax^2+bx+c"></center>
+og
+$$q(x)=x^2+x-6$$
+<center>\(q'(x)=\)<input type="text" id="qd" value="ax^2+bx+c"></center>
+<span style="background-color:green">b) Brug formel 134 for at differentiere følgende
+funktion</span>
+$$r(x)=p(x)q(x)$$
+<center>\(r'(x)=\)<input type="text" id="pqd" value="ax^2+bx+c"></center>
+c) Brug <a href="../Pol.html">Viete's metode</a> for at finde rødderne for hhv. p og q(adskil tallene med komma)
+<center><input type="text" id="pqr" value=""></center>
+<h1> Opgave 2 </h2>
+<span style="background-color:green">a) Brug GeoGebra for at finde rødderne for r
+'(brug 2 decimaler og adskil tallene
+med semikolon).</span>
+<center><input type="text" id="rdr" value=""></center>
+<span style="background-color:green">b) Bestem fortegnet på hældningen mellem rødderne
+fra a).(Skriv - eller +, fra venstre
+mod højre uden mellemrum).</span>
+<center><input type="text" id="mt" value=""></center>
+<span style="background-color:green">c) Bestem monotoniforholdene for r.</span>
+<h1> Opgave 3</h1>
+a) Differentiér resultatet fra 1b) igen.
+<center>\(r''(x)=\)<input type="text" id="pqdd" value="ax^2+bx+c"></center>
+b) Brug resultatet fra 3a) for at bestemme arten af ekstremaerne fra 2a). (Skriv
+"m" for minimum, og "M" for maksimum, fra venstre mod højre uden mellemrum).
+<center><input type="text" id="eks" value=""></center>
+c) Brug GeoGebra for at bestemme hvor r har den største lokale hældning.
+<h1>Bonus Opgave</h1>
+Brug <a href="../Pol.html">Viete's metode</a> for at finde rødderne for
+$$f(x)=x^4-2x^3-13x^2+14x+24$$
+Adskil rødderne med komma.
+<center><input type="text" id="vie" value=""></center>
+<p><button id="check" value="Kontrolér Svar"> Kontrolér </button></p>
+<script>
+check.addEventListener("click", () => {
+  AnsCheck()
+ });
+</script>
+<p id="price"></p>
+<!--<a href="index.html"> Back to homepage </a>-->
+</body>

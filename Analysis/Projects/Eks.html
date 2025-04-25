@@ -1,0 +1,112 @@
+<html>
+<head>
+<link href="../../imp.css" rel="stylesheet">
+<title>Eksponentielle Funktioner</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<script>
+  function AnsCheck(){
+    if(document.getElementById("aA").value=="lN0e^(-lt)"){
+      document.getElementById("aA").style.backgroundColor='green'
+    }else{
+      document.getElementById("aA").style.backgroundColor='red'
+    }
+    if(document.getElementById("A").value=="lN0e^(-lt)"){
+      document.getElementById("A").style.backgroundColor='green'
+    }else{
+      document.getElementById("A").style.backgroundColor='red'
+    }
+    if(document.getElementById("a").value=="0.996"){
+      document.getElementById("a").style.backgroundColor='green'
+    }else{
+      document.getElementById("a").style.backgroundColor='red'
+    }
+    if(document.getElementById("b").value=="270000"){
+      document.getElementById("b").style.backgroundColor='green'
+    }else{
+      document.getElementById("b").style.backgroundColor='red'
+    }
+    if(document.getElementById("l").value=="0.00442"){
+      document.getElementById("l").style.backgroundColor='green'
+    }else{
+      document.getElementById("l").style.backgroundColor='red'
+    }
+    if(document.getElementById("hl").value=="157"){
+      document.getElementById("hl").style.backgroundColor='green'
+    }else{
+      document.getElementById("hl").style.backgroundColor='red'
+    }
+    if(document.getElementById("N").value=="61100000"){
+      document.getElementById("N").style.backgroundColor='green'
+    }else{
+      document.getElementById("N").style.backgroundColor='red'
+    }
+    if(document.getElementById("2hl").value=="15300000"){
+      document.getElementById("2hl").style.backgroundColor='green'
+    }else{
+      document.getElementById("dN").style.backgroundColor='red'
+    }
+    if(document.getElementById("dN").value=="21600000"){
+      document.getElementById("dN").style.backgroundColor='green'
+    }else{
+      document.getElementById("dN").style.backgroundColor='red'
+    }
+    if(document.getElementById("Nt").value=="61100000e^(-0.00442t)"){
+      document.getElementById("Nt").style.backgroundColor='green'
+    }else{
+      document.getElementById("Nt").style.backgroundColor='red'
+    }
+    if(document.getElementById("t").value=="3540"){
+      document.getElementById("t").style.backgroundColor='green'
+    }else{
+      document.getElementById("t").style.backgroundColor='red'
+    }
+  }
+</script>
+</head>
+<body>
+Antal radioaktive kerner kan modelleres med den eksponentielle funktion
+  $$N(t)=N_0e^{-\lambda t}$$
+og den såkaldte aktivitet defineres så som
+  $$A(t)=-N'(t)$$
+<h1> Opgave 1 </h1>
+a) Brug \(N(t)\) til at bestemme en funktionsforskrift for \(A(t)\), brug gerne
+"l" i stedet for \(\lambda\) og N0 istedet for \(N_0\).
+<center>\(A(t)=\)<input type="text" id="aA" value=""></center>
+<span style="background-color:green">b) Bestem funktionsforskriften for \(A(t)\)
+   ved regression</span>
+<center>\(A(t)=\)<input type="text" id="A" value=""></center>
+<span style="background-color:green">c) Angiv begyndelsesværdien, fremskrivningsfaktoren
+   og henfaldskonstanten(med 3 betydende chifre), samt deres fysiske fortolkninger.</span>
+<center>b=<input type="text" id="b" value="b"></center>
+<center>a=<input type="text" id="a" value="a"></center>
+<center>l=<input type="text" id="l" value='l'></center>
+<h1> Opgave 2 </h1>
+<span style="background-color:green">a) Bestem halveringstiden for kernerne i hele
+  sekunder</span>
+<center>\(t_{1/2}=\)<input type="text" id="hl" value=""></center>
+b) Bestem hvor mange kerner der var i starten af eksperimentet.
+<center>\(N_0=\)<input type="text" id="N" value=""></center>
+<span style="background-color:green">c) Bestem hvor mange kerner der ca henfalder
+   i løbet af 5,2 minutter.</span>
+<center>\(\Delta N=\)<input type="text" id="2hl" value=""></center>
+<h1> Opgave 3</h1>
+<h2>Arealet under grafen for aktiviteten angiver hvor mange kerner der er henfaldet</h2>
+a) Bestem hvor mange kerner der henfalder i løbet af eksperimentet
+<center>\(\Delta N=\)<input type="text" id="dN" value=""></center>
+b) Bestem funktionsforskriften for \(N(t)\)
+<center>\(N(t)=\)<input type="text" id="Nt" value=""></center>
+<span style="background-color:green">c) Bestem hvornår der er 1 kerne tilbage.</span>
+<center>\(t=\)<input type="text" id="t" value=""></center>
+<p><button id="check" value="Kontrolér Svar"> Kontrolér </button></p>
+<script>
+check.addEventListener("click", () => {
+  AnsCheck()
+ });
+</script>
+<p id="price"></p>
+<!--<a href="index.html"> Back to homepage </a>-->
+</body>

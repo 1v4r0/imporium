@@ -1,110 +1,20 @@
 <html>
-<head>
-<title>Loan Calculator</title>
-<script>
-function loancalculator(cap,ai,cai,ma,cma,ic,ia){
-  ai=ai/100; // Turn into decimal
-  cai=cai/100; // Comparison
-  var ol = Number(cap); // Outstanding Loan
-  var col = Number(cap); // Comparison
-  var N = 0; // Month
-  var ti = 0; // Temporary interests
-  var p = 0; // Price
-  var cp = 0; // Comparison
-  const months = [31,28,31,30,31,30,31,31,30,31,30,31]; // Days in the months
-  const di = (ai+1)**(1/365)-1; // Daily interests
-  const cdi = (cai+1)**(1/365)-1; // Comparison
-  const mi = (ai+1)**(1/12)-1; // Monthly interests
-  const cmi = (cai+1)**(1/12)-1; // Comparison
-  while (ol > ma-ti) { // Simulating the loan
-    if(ic==1){
-      if(N%ia==0){
-        ol += ti; // Adding interests
-        ti = 0; // Resetting temporary interests
-      }
-      ti += ol*di*months[N%12]; // Increasing temporary interests
-      ol -= ma; // Paying annuity
-    } else if(ic==3){
-      if(N%ia==0){
-        ol += ti; // Adding interests
-        ti = 0; // Resetting temporary interests
-      }
-      ti += ol*mi; // Increasing temporary interests
-      ol -= ma; // Paying annuity
-    }
-    N++;
-  }
-  p = (N+1)*ma+ol+ti-cap; // Calculating price
-  ti=0;
-  N=0;
-  while (col > cma-ti) { // Comparison
-    if(ic==1){
-      if(N%ia==0){
-        col += ti;
-        ti = 0;
-      }
-      ti += col*cdi*months[N%12];
-      col -= cma;
-    } else if(ic==3) {
-      if(N%ia==0){
-        col += ti;
-        ti = 0;
-      }
-      ti += col*cmi;
-      col -= cma;
-    }
-    N++;
-  }
-  cp = (N+1)*cma+col+ti-cap;
-  var P = p-cp;
-  document.getElementById("price").innerHTML='The current price of the loan: '+Math.round(p)+'. The new price of the loan: '+Math.round(cp)+'. You will save: '+Math.round(P);
-}
-</script>
-</head>
-<body>
-  <p> Use no symbols other than numbers and US decimal indicators.</p>
-  <p>How much of the loan is still outstanding?</p>
-  <input type="number" id="oulo" value=850000>
-  <p>What is your current interest-rate?</p>
-  <input type="number" id="cir" value=3.45>
-  <p>What is your new interest-rate?</p>
-  <input type="number" id="nir" value=2.95>
-  <p>What is your monthly payment?</p>
-  <input type="number" id="mp" value=4200>
-  <p>What is your new monthly payment?</p>
-  <input type="number" id="nmp" value=4200>
-  <p>Please select how often interests are calculated:</p>
-  <input type="radio" id="cDaily" name="inca" value=1>
-  <label for="Daily">Daily</label><br>
-  <input type="radio" id="cMonthly" name="inca" value=3>
-  <label for="Monthly">Monthly</label>
-  <p>Please select how often interests are added to the loan:</p>
-  <input type="radio" id="aMonthly" name="inad" value=1>
-  <label for="Monthly">Monthly</label><br>
-  <input type="radio" id="aAnnually" name="inad" value=3>
-  <label for="Quarterly">Quarterly</label><br>
-  <p><button id="calc" value="Calculate"> Calculate </button></p>
-  <p id="price"></p>
-<script>
-  const calc = document.querySelector('#calc');
-  const cFreqs = document.querySelectorAll('input[name="inca"]');
-  const aFreqs = document.querySelectorAll('input[name="inad"]');
-  calc.addEventListener("click", () => {
-    let cFreq;
-    let aFreq
-    for (const freq of cFreqs) {
-      if (freq.checked) {
-        scFreq = freq.value;
-        break;
-      }
-    }
-    for (const freq of aFreqs) {
-      if (freq.checked) {
-        saFreq = freq.value;
-        break;
-      }
-    }
-    loancalculator(document.getElementById("oulo").value,document.getElementById("cir").value,document.getElementById("nir").value,document.getElementById("mp").value,document.getElementById("nmp").value,scFreq,saFreq);
-   });
-</script>
-</body>
+  <head>
+    <title>Ivar's Imporium</title>
+    <link href="imp.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="row">
+      <div class="column">
+        <a href="Analysis/Analysis.html"><img src="Images/Ana.jpg" width=100% title="Analysis"> </a>
+        <a href="Geometry/Geometry.html"><img src="Images/Geo.avif" width=100% title="Geometry"></a>
+        <a href="Miscellaneous/Misc.html"><img src="Images/Mis.jpg" width=100% title="Miscellaneous Files"</a>
+      </div>
+      <div class="column">
+        <a href="ProThe/ProThe.html"><img src="Images/ProThe.jpg" width=100% title="Probability Theory"></a>
+        <a href="GeoGebra/GeoGebra.html"><img src="Images/GeoGeb.png" width=100% title="GeoGebra"></a>
+        <a href="GruFor/GruFor.html"><img src="Images/brain.jpg" width=100% title="Grundforløbet"></a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Composite Function</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified some details will be omitted.
+  <h1> Derivative of a Composite Function</h1>
+    Consider the composite function \(p(x)=f(g(x))\), its derivative is
+    \(p'(x)=f'(g(x))g'(x)\).
+    <h2> Proof. </h2>
+      Lets start with the secant slope
+      \begin{align}
+        \frac{p(x+h)-p(x)}{h}=&\frac{f(g(x+h))-f(g(x))}{h}\\
+        =&\frac{f(g(x+h))-f(g(x))}{h}\frac{g(x+h)-g(x)}{g(x+h)-g(x)}\\
+        =&\frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}\frac{g(x+h)-g(x)}{h}\\
+        =&\frac{f(g(x)+k)}{k}\frac{g(x+h)-g(x)}{h}\to f'(g(x))g'(x)
+      \end{align}
+      where \(k=g(x+h)-g(x)\to0\) for \(h\to0\) since \(g\) is continuous.
+    <h1> Derivative of the Natural Logarithm </h1>
+      An immediate consequence of this formula is that the derivative of the
+      natural logarithm is \(1/x\).
+      <h2> Proof. </h2>
+        Consider that \(p(x)=x=e^{\ln(x)}\) where \(f(x)=e^x\) and \(g(x)=
+        \ln(x)\) then we get that
+        \begin{align}
+          1=p'(x)=&f'((g(x))g'(x)\\
+          =&e^{\ln(x)}g'(x)\\
+          =&xg'(x)\implies g'(x)=\frac{1}{x}
+        \end{align}
+</body>

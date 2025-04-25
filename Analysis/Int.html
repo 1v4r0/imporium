@@ -1,0 +1,126 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Integration</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <div class="back"> <a href="Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified some details will be omitted.
+  <div class="def"><center><h1> Integrals </h1></center>
+    The so called definite integral of a function f on an interval \([a,b]\) is
+    defined as the area under the graph of f in that interval. There are several
+    ways to define this and one is to divide the interval into sub-intervals
+    \(a=x_0< x_1< x_2 < \cdots< x_N=b\) and then add up the areas of the
+    rectangles that have the function value \(f(t_n)\) as its height and the
+    width \(\Delta x_n=x_n-x_{n-1}\). If we then make the sub-intervals narrower
+    and narrower, we will approach the true area under the graph. This yields
+    the following definition for the definite integral
+      $$\int_a^b f(x)dx=\lim_{N\to\infty}\sum_{n=1}^Nf(t_n)\Delta x_n$$</div>
+    <div class="thm"><center><h2>The Fundamental Theorem of Calculus</h2></center>
+      The importance of the theorem is that it relates derivatives and integrals
+      in the sense that they are somehow "inverse" operations, i.e. for functions
+      with the necessary characteristics, we have
+        $$f(x)=\frac{d}{dx}\int_a^xf(t)dt$$
+      and
+        $$\int_a^x\frac{d}{dt}f(t)dt=f(x)-f(a)$$</div>
+        The second of these is immediately useful for integrating a broad class of functions, namely functions that are
+            the derivative of another. This other function \(F(x)\) is called an antiderivative of \(f(x)=F'(x)\) and every other
+            antiderivative will differ from it by a constant. 
+        <div class="def"><center><h1> Indefinite Integrals </h1></center>
+        The class of antiderivatives for a function \(f(x)\) is called the indefinite integral and is written as a definite integral
+        without the limits, i.e.
+          $$\int f(x)dx=F(x)+C$$</div>
+        <div style="border: 1px solid white">
+          <button type="button" class="collapse">
+            Fence Optimization
+          </button>
+          <div class="exa">
+            The first result of the main theorem is traditionally a bit more technical, but I've tried coming up with a practical
+            use-case. Imagine you are building a "rectangular" fence along a river bank that can be described by the graph of some
+            function \(f(x)\), and you have a limited amount of fencing materials, lets say enough for \(l\) m. The fenced-in area can
+            then be described by
+              $$A(h)=b\cdot h-\int_x^{x+h}f(t)dt$$
+            where b is the "width" of the area, from the "x-axis" to the horizontal section, \(x\) and \(h\) the horizontal position
+            and distance along the river-bank, respectively. The task is then to determine the optimal dimensions, to this end lets
+            relate them to one-another by
+              $$l=h+b-f(x)+b-f(x+h)\implies b=(l-h+f(x)+f(x+h))/2$$
+            This yields
+              $$A(h)=(l-h+f(x)+f(x+h))\cdot h/2-\int_x^{x+h}f(t)dt$$
+            To maximize this function we find the stationary point by differentiating with respect to h and setting it to zero. I.e.
+            \begin{align}
+              0=&(l-h+f(x)+f(x+h)+h\cdot(f'(x+h)-1))/2-f(x+h)\\
+              0=&l-2h+f(x)-f(x+h)+hf'(x+h)
+            \end{align}
+            Here the derivative and integral cancel and if I divide by \(h\) we get that 
+              $$f'(x+h)-\frac{f(x+h)-f(x)}{h}=2-\frac{l}{h}$$
+            which means that the difference between the tangent- and secant slope at the end-point, needs to have the value \(2-l/h\).
+          </div></div> 
+      We will need two versions of the so-called mean value theorem for our proof.
+      <div class="pro"><center><h3> The Mean Value Propositions </h3></center>
+        The first states that if \(f(x)\) is differentiable in the interval \(]a,b[\)
+        then there exists a \(c\in]a,b[\) such that
+          $$f'(c)=\frac{f(b)-f(a)}{b-a}$$
+        which in essence means that there is a value in the domain where the slope
+        is the same as the average slope on the entire interval.<br>
+        The second theorem states that if \(f(x)\) is continuous on \([a,b]\),
+        then we can find a \(c\in[a,b]\) such that
+          $$f(c)(b-a)=\int_a^bf(x)dx$$
+        which means that the area under the graph is equal to the area of a
+        rectangle with the interval length as its width and height corresponding
+        to the function value at some point in the interval.</div>
+        Being propositions, I will not prove these, but here is an example of their
+        direct use, before I delve into the proof of the FToC.
+        <div style="border: 1px solid white">
+        <button type="button" class="collapse">
+          Gustav's Law
+        </button>
+        <div class="exa">
+          In this example I will investigate the so-called Gustav's law, which states
+          that the constants from the two versions of the mean value propositions
+          is actually the same constant for exponential functions. Consider the
+          function \(f(x)=de^{kx}\) then the first proposition says that
+            $$dke^{kc}=\frac{de^{kb}-de^{ka}}{b-a}$$
+          and the second states that
+            $$de^{kc}(b-a)=\frac{de^{kb}-de^{ka}}{k}$$
+          Which are equivalent expressions by swapping the \(b-a\) and \(k\). The
+          value of the constant turns out to be
+            $$c=\frac{1}{k}\log\left(\frac{e^{kb}-e^{ka}}{dk(b-a)}\right)$$
+        </div></div>
+      <h3> Proof </h3>
+        For the first part we want to differentiate the integral, so lets write it
+        as the function
+          $$F_a(x)=\int_a^xf(x)dx$$
+        and start by considering the rise of the secant
+        \begin{align}
+          &&F_a(x+h)-F_a(x)=&\int_a^{x+h}f(x)dx-\int_a^xf(x)dx\\
+          &&=&\int_x^{x+h}f(x)dx\\
+          &&=&(\cancel{x}+h\cancel{-x})f(c)\\
+          \implies&&\frac{F(x+h)-F(x)}{h}\to&f(x)
+        \end{align}
+        since \(c\in[x,x+h]\to[x,x]\) by the second mean-value proposition.<br>
+        For the second statement, lets seperate the interval \([a,x]=[x_0,x_1]\cup
+        [x_1,x_2]\cup\cdots\cup[x_n,x_{n+1}]\) where \(a=x_0\) and \(x=x_{n+1}\).
+        Then I can create the following telescopic sum
+        \begin{align}
+          f(x)-f(a)=&f(x_{n+1})-f(x_n)+f(x_n)-f(x_{n-1})+\\
+          &\cdots+f(x_2)-f(x_1)+f(x_1)-f(x_0)\\
+          =&\sum_{k=0}^n f(x_{k+1})-f(x_k)\\
+          =&\sum_{k=0}^n \frac{f(x_{k+1})-f(x_k)}{x_{k+1}-x_k}(x_{k+1}-x_k)\\
+          =&\sum_{k=0}^n f'(c_k)\Delta x_k\\
+          \to&\int_a^bf'(x)dx
+        \end{align}
+        where \(\Delta x_k=x_{k+1}-x_k\). Since the left-hand-side is a constant,
+        the limit must be that same constant.
+        <p style="text-align:center;">&#x220E;</p>
+      <center><iframe width="560" height="315" src="https://www.youtube.com/embed/cqlIXMxLYL8"
+                title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+                clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe></center>
+      <script src="../js/cbut.js"></script>
+</body>
