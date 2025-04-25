@@ -249,6 +249,30 @@
         discriminant to be nonnegative, i.e. \(Δ\geq0\), since we're taking the
         square root. If the determinant is \(Δ=0\) then we have only one root
         with multiplicity 2.
+    <div class="thm">
+      <h3><center>The Cubic</center></h3>
+        To determine the local extrema and the point of extremal growth for the cubic, i.e.
+          $$q(x)=ax^3+bx^2+cx+d$$
+        we can use the following formulas
+          $$m_\pm=\frac{-b\pm\sqrt{\Delta_3}}{3a}$$
+        where \(\Delta_3=b^2-3ac\) and
+          $$M=\left(-\frac{b}{3a},-\frac{\Delta_3}{3a}\right)$$
+      </div>
+      <h4>Proof.</h4>
+        First we need to take the derivative of the cubic which yields
+          $$q'(x)=3ax^2+2bx+c$$
+        Then we find the roots and vertex of this quadratic, by first observing that
+          $$\Delta=(2b)^2-4\cdot3ac=4b^2-4\cdot3ac=4(b^2-3ac)=4\Delta_3$$
+        \begin{align}
+          m_\pm=&\frac{-2b\pm\sqrt{\Delta}}{2\cdot3a}\\
+          =&\frac{-2b\pm\sqrt{4\Delta_3}}{2\cdot3a}\\
+          =&\frac{-\cancel{2}b\pm\cancel{2}\sqrt{\Delta_3}}{\cancel{2}\cdot3a}
+        \end{align
+        To show the vertex we observe that
+          $$M=\left(-\frac{\cancel{2}b}{\cancel{2}a},-\frac{\cancel{4}(b^2-3ac)}{\cancel{4}\cdot3a}}\right)$$
+        <p style="text-align:right;">&#x220E;</p><br>
+        Personally, I find this formula more beautiful than the one for the quadratic,
+        although arguably less useful.
     <h3> Ballistics </h3>
       One application of quadratics is the ballistics of projectiles, i.e. the path
       they take through the air, ironically assuming there is no air for simplicity.
