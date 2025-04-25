@@ -1,0 +1,53 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Derivative of Power Functions</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <h3>Random Variable:</h3>
+  Betragt følgende tredjegradspolynomium, find dets ekstrema, og højeste vækst
+  <div id="math-container"></div>
+  <input type="text" id="userInput1" placeholder="Lokalt minimum:">
+  <input type="text" id="userInput2" placeholder="Lokalt maksimum:">
+  <input type="text" id="userInput3" placeholder="Her er højeste vækst:">
+  <input type="text" id="userInput4" placeholder="Højste vækst:">
+  <button onclick="checkAnswer()">Check</button>
+  <div id="result"></div>
+  <script>
+    function reset(){
+        do{
+            a = Math.round(20*Math.random())-10; // Generate a random number between 0 and 1
+        }while(a==0)
+        b = Math.round(20*Math.random())-10; // Generate a random number between 0 and 1
+        c = Math.round(20*Math.random())-10; // Generate a random number between 0 and 1
+        d = Math.round(20*Math.random())-10; // Generate a random number between 0 and 1
+        delta=Math.pow(2*b,2)-4*3*a*c;
+        delta2=Math.pow(b,2)-3*a*c
+        Vx=-b/3/a
+        Vy=-delta2/3/a
+        min=(-2*b-Math.sqrt(delta))/6/a;
+        max=(-2*b+Math.sqrt(delta))/6/a;
+        math = `\\( p(x) = ${a}x^3+${b}x^2+${c}x+${d} \\)`;
+        document.getElementById('math-container').innerHTML = math;
+        MathJax.typesetPromise(); // Render MathJax
+    }
+    reset()
+    function checkAnswer() {
+      const userVal1 = parseFloat(document.getElementById('userInput1').value).toFixed(2);
+      const userVal2 = parseFloat(document.getElementById('userInput2').value).toFixed(2);
+      const userVal3 = parseFloat(document.getElementById('userInput3').value).toFixed(2);
+      const userVal4 = parseFloat(document.getElementById('userInput4').value).toFixed(2);
+      const result1 = document.getElementById('userInput1').value=min;
+      const result2 = document.getElementById('userInput2').value=max;
+      const result3 = document.getElementById('userInput3').value=Vx;
+      const result4 = document.getElementById('userInput4').value=Vy;
+      result.textContent = String(parseInt(min.toFixed(2)==userVal1)+parseInt(max.toFixed(2)==userVal2)+parseInt(Vx.toFixed(2)==userVal3)+parseInt(Vy.toFixed(2)==userVal4));
+      reset();
+    }
+  </script>
+</body>
