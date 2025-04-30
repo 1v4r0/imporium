@@ -338,6 +338,28 @@
         v_xt+x_0\\5t^2-v_yt+y_0\end{pmatrix}
       \end{align}
       where the x-function is the previously mentioned quadtratic with \(a_x=0\)
-      and the y-function has \(a_y=10≈g\).
+      and the y-function has \(a_y=10≈g\).<br>
+      <div class="thm">
+        <h3><center>Angle of projectile</center></h3>
+          Given an initial velocity v, and target position \((x,y)\), the angle
+          with which you should launch an unassisted projectile can be calculated as
+            $$\theta=\left(\arcsin\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)+\arctan\left(\frac{y}{x}\right)\right)/2$$
+      </div>
+      <h4> Proof </h4>
+        Lets start by isolating the time in the first coordinate function
+          $$v\cos\theta t=x\iff x=\frac{x}{v\cos\theta}$$
+        Now i put that into the second coordinate function
+        \begin{align}
+          &&y=&\frac{1}{2}at^2+v\cos\theta t\\
+          \iff&&2y=&a\left(\frac{x}{v\cos\theta}\right)^2+2\cancel{v}\cos\theta\frac{x}{\cancel{v}\cos\theta}\\
+          \iff&&2y\cos^2\theta=&a\frac{x^2}{v^2}+2x\cos\theta\sin\theta\\
+          \iff&&y(\cos(2\theta)+1)=&a\frac{x^2}{v^2}+x\sin(2\theta)\\
+          \iff&&y-a\frac{x^2}{v^2}=&x\sin(2\theta)-y\cos(2\theta)\\
+          &&=&\det\left(\begin{pmatrix}x\\y\end{pmatrix},\begin{pmatrix}\cos(2\theta)\\\sin(2\theta)\end{pmatrix}\right)\\
+          &&=&\left|\begin{pmatrix}x\\y\end{pmatrix}\right|\cdot1\sin\phi\\
+          \iff&&2\theta-\arctan\left(\frac{y}{x}\right)=\phi=&\arcsin\left(\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)\right)\\
+        \end{align}
+        where I use the two trigonometric identities \(2\cos\theta\sin\theta=\sin(2\theta)\) and \(\cos^2\theta=\cos(2\theta)+1\) and
+        \(\phi\) is the angle between the vector from the origin to the target point.
       <script src="../js/cbut.js"></script>
 </body>
