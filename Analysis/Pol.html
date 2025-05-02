@@ -341,9 +341,13 @@
       and the y-function has \(a_y=10≈g\).<br>
       <div class="thm">
         <h3><center>Angle of projectile</center></h3>
-          Given an initial velocity v, and target position \((x,y)\), the angle
-          with which you should launch an unassisted projectile can be calculated as
-            $$\theta=\left(\arcsin\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)+\arctan\left(\frac{y}{x}\right)\right)/2$$
+          
+        Given an initial velocity v, and target position \((x,y)\), the angle
+        with which you should launch an unassisted projectile can be calculated with
+        Cartesian coordinates as
+          $$2\theta=\left(\arcsin\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)+\arctan\left(\frac{y}{x}\right)\right)/2$$
+        and in polar coordinates as
+          $$\theta=\left(\arcsin\left(\sin\varphi-\cos^2\varphi\frac{ar}{v^2}\right)+\varphi\right)/2$$
       </div>
       <h4> Proof </h4>
         Lets start by isolating the time in the first coordinate function
@@ -356,10 +360,14 @@
           \iff&&y(\cos(2\theta)+1)=&a\frac{x^2}{v^2}+x\sin(2\theta)\\
           \iff&&y-a\frac{x^2}{v^2}=&x\sin(2\theta)-y\cos(2\theta)\\
           &&=&\det\left(\begin{pmatrix}x\\y\end{pmatrix},\begin{pmatrix}\cos(2\theta)\\\sin(2\theta)\end{pmatrix}\right)\\
-          &&=&\left|\begin{pmatrix}x\\y\end{pmatrix}\right|\cdot1\sin\phi\\
-          \iff&&2\theta-\arctan\left(\frac{y}{x}\right)=\phi=&\arcsin\left(\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)\right)\\
+          &&=&\left|\begin{pmatrix}x\\y\end{pmatrix}\right|\cdot1\sin\varphi\\
+          \iff&&2\theta-\arctan\left(\frac{y}{x}\right)=\varphi=&\arcsin\left(\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)\right)\\
         \end{align}
         where I use the two trigonometric identities \(2\cos\theta\sin\theta=\sin(2\theta)\) and \(\cos^2\theta=\cos(2\theta)+1\) and
-        \(\phi\) is the angle between the vector from the origin to the target point.
+        \(\phi\) is the angle between the vector from the origin to the target point.<p style="text-align:right;">&#x220E;</p><br>
+        The sine obviously yields two values, and the second value can be calculated by the less stylish formulas
+          $$\theta=\left(\pi+\arctan\left(\frac{y}{x}\right)-\arcsin\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)\right)/2$$
+        and
+          $$\theta=\left(\pi+\varphi-\arcsin\left(\sin\varphi-\cos^2\varphi\frac{ar}{v^2}\right)\right)/2$$
       <script src="../js/cbut.js"></script>
 </body>
