@@ -345,9 +345,9 @@
         Given an initial velocity v, and target position \((x,y)\), the angle
         with which you should launch an unassisted projectile can be calculated with
         Cartesian coordinates as
-          $$2\theta=\left(\arcsin\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)+\arctan\left(\frac{y}{x}\right)\right)/2$$
+          $$2\theta=\arcsin\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)+\arctan\left(\frac{y}{x}\right)$$
         and in polar coordinates as
-          $$\theta=\left(\arcsin\left(\sin\varphi-\cos^2\varphi\frac{ar}{v^2}\right)+\varphi\right)/2$$
+          $$2\theta=\arcsin\left(\sin\varphi-\cos^2\varphi\frac{ar}{v^2}\right)+\varphi$$
       </div>
       <h4> Proof </h4>
         Lets start by isolating the time in the first coordinate function
@@ -366,8 +366,8 @@
         where I use the two trigonometric identities \(2\cos\theta\sin\theta=\sin(2\theta)\) and \(\cos^2\theta=\cos(2\theta)+1\) and
         \(\phi\) is the angle between the vector from the origin to the target point.<p style="text-align:right;">&#x220E;</p><br>
         The sine obviously yields two values, and the second value can be calculated by the less stylish formulas
-          $$\theta=\left(\pi+\arctan\left(\frac{y}{x}\right)-\arcsin\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)\right)/2$$
+          $$2\theta=\pi+\arctan\left(\frac{y}{x}\right)-\arcsin\left(\frac{v^2y-ax^2}{v^2\sqrt{x^2+y^2}}\right)$$
         and
-          $$\theta=\left(\pi+\varphi-\arcsin\left(\sin\varphi-\cos^2\varphi\frac{ar}{v^2}\right)\right)/2$$
+          $$2\theta=\pi+\varphi-\arcsin\left(\sin\varphi-\cos^2\varphi\frac{ar}{v^2}\right)$$
       <script src="../js/cbut.js"></script>
 </body>
