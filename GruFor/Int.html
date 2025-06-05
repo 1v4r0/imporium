@@ -9,7 +9,7 @@
   </script>
 </head>
 <body>
-  <div class="back"> <a href="GruFor.html">Back</a> </div>
+  <div class="back"> <a href="../GruFor.html">Back</a> </div>
     Forestil dig taxaselskab, A, der har en prismodel, dvs. en sammenhæng der bestemmer
     prisen på en bestemt rejse. Det vil nok ikke overraske den opmærksomme læser
     at sådan en prismodel vil afhænge af længden på rejsen, dvs. at vi får en funktion
@@ -27,7 +27,7 @@
     betyder så at vi går hhv ned og til venstre. Nu har de fleste læsere nok prøvet
     at tegne en linje mellem to punkter, så lad os prøve at se om vi kan gøre det
     her.
-    <img src="Images/BBBA.png" alt="Rejser fra Ballerup" width=100% style="margin:10px">
+    <img src="../Images/BBBA.png" alt="Rejser fra Ballerup" width=100% style="margin:10px">
     Som i kan se forslår mit program at linjen, der er vores forslag til prismodel
     kan beskrives ved regnestykket
       $$y=A(x)=18x+68$$
@@ -45,7 +45,7 @@
     punkt, så jeg prøver at lave en rejse til Stenløse på 13km til 307kr. For at
     se om det passer med vores prismodel laver jeg en geometrisk analyse ved at tegne
     den lodrette linje \(x=13\) og finde skæringen med vores linje<br>
-    <center><img src="Images/Sten1.png" alt="Prisen til Stenløse" style="margin:10px"></center>
+    <center><img src="../Images/Sten1.png" alt="Prisen til Stenløse" style="margin:10px"></center>
     Det viser sig at den rigtige pris er 5 kr. højere end det min prismodel forudsiger.
     Jeg kan også bestemme prisen algebraisk ved at sætte den ind i min funktionsforskrift
       $$A(13)=18⋅13+68=234+68=302$$
@@ -60,8 +60,8 @@
     Man kan også bruge "kommandoen", "fitline({BB,BA,BS})"", eller lave regressionen
     i et regneark. Som i kan se på de følgende billeder ligger linjen meget tættere
     på vores tre punkter
-    <img src="Images/reg1.png" alt="Regression 1" width=100% style="margin:10px">
-    <img src="Images/reg2.png" alt="Regression 2" width=100% style="margin:10px">
+    <img src="../Images/reg1.png" alt="Regression 1" width=100% style="margin:10px">
+    <img src="../Images/reg2.png" alt="Regression 2" width=100% style="margin:10px">
     og den går faktisk imellem vores to første punkter, så nu ligger ingen af vores
     punkter på linjen. Men spørgsmålet er, hvor meget afviger hvert af punkterne?
     Lad os prøve at beregne forskellen mellem prismodellens værdi og den faktiske
@@ -79,7 +79,7 @@
     <div class="def"><center><h1> Lineær Regression og Residualer </h1></center>
       Lineær regression er den process der finder den bedste linje, \(f(x)=ax+b\)
       igennem nogle punkter. For at bestemme den rigtige hældningskoefficient og
-      begyndelsesværdi kan man finde formlen <a href="LinReg.html">her</a>, men lige
+      begyndelsesværdi kan man finde formlen <a href="../Analysis/LinReg.html">her</a>, men lige
       nu nøjes vi med at få computeren til at lave regnestykket for os. Residualerne
       er så de enkelte punkters lodrette afvigelse fra linjen, dvs. at
         $$r_i=y_i-f(x_i)$$
@@ -91,7 +91,7 @@
     kan vi tage vores model fra tidligere og finde ud af hvornår prisen kommer op
     på 100 kr. fx. ved at tegne en vandret linje ved \(y=100\) og finde skæringen
     med linjen
-    <img src="Images/Lig.png" alt="Løsning af Ligning" width=100% style="margin:10px">
+    <img src="../Images/Lig.png" alt="Løsning af Ligning" width=100% style="margin:10px">
     Skæringspunktet \(A=(2.31,100)\) betyder at vi kan køre 2.31 km for de 100 kr.
     og hvis vi skal videre må vi gå eller tage flere penge med. Nogle gange er det
     upraktisk at løse ligningen geometrisk, og man skal også kunne løse ligninger
@@ -111,7 +111,7 @@
     kr. og startgebyret er 70 kr. og for at sammenligne dem finder skæringspunktet
     mellem deres grafer. Det er ret oplagt at gøre geometrisk hvor vi tegner graferne
     for de to selskaber og bruger vores matematikværktøj til at finde det for os
-    <center><img src="Images/Skæring.png" alt="Sammenligning" style="margin:10px"></center>
+    <center><img src="../Images/Skæring.png" alt="Sammenligning" style="margin:10px"></center>
     Det viser sig at skæringspunktet er \((3.38,120.71)\) hvilket betyder at de to
     taxaselskaber koster 120.71 kr. ved 3.38 km og at hvis man kører kortere er Taxa
     4x35 billigere, ellers er Drivr. Igen kan man bestemme skæringspunktet algebraisk,
