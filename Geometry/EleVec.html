@@ -227,6 +227,40 @@
       the sine.<br>
       <center><img src="../Images/UniCir.png" alt="Unit Circle"
          width="500" style="margin:10px"></center>
+      Projections have a rather nice application in analysing the collision of objects.
+      Imagine two objects on linear paths,
+        $$s(t)=\ul{a}t+\ul{b},r(t)=v\begin{pmatrix}\cos\theta\\\sin\theta\end{pmatrix}t$$
+      this represents a particle with some velocity represented by \(\ul{a}\) and initial
+      position \(\ul{b}\). The other path is set at the origin with velocity v and angle
+      \(\theta\). The question now is which angle should the second object have to
+      intercept the first? Well, it turns out that the angle is
+        $$\theta=\arctan\left(\frac{b_2}{b_1}\right)+\arcsin\left(\frac{1}{v|\ul{b}|}\right)$$
+      To observe this, we can do this all relative to the first directional vector. In
+      this perspective the projection of our second particle onto the other needs to catch up
+      parallel and orthogonal to the other. This can be stated as follows
+      \begin{align}
+        &&\ul{v}_\hat{a}t&=\ul{b}_\hat{a}\\
+        \iff&&\ul{v}\bullet\hat{\ul{a}}t&=\ul{b}\bullet\hat{\ul{a}}\\
+        \iff&&v(a_1\sin\theta-a_2\cos\theta)t&=b_2a_1-b_1a_2\\
+        &&\ul{v}_at&=\ul{a}t+\ul{b}_a\\
+        &&\ul{v}\bullet\ul{a}t&=|\ul{a}|^2t+\ul{b}\bullet\ul{a}\\
+        \iff&&v(a_1\cos\theta+a_2\sin\theta)t&=|\ul{a}|^2t+b_1a_1+b_2a_2\\
+        \iff&&(a_1\sin\theta-a_2\cos\theta)[v(a_1\cos\theta+a_2\sin\theta)t&=|\ul{a}|^2t+b_1a_1+b_2a_2]\\
+        \iff&&(a_1\cos\theta+a_2\sin\theta)(b_2a_1-b_1a_2)&=\frac{|\ul{a}|^2}{v}+(a_1\sin\theta-a_2\cos\theta)(b_1a_1+b_2a_2)\\
+        \iff&&\frac{|\ul{a}|^2}{v}&=\cos\theta(a_1^2b_2-\cancel{a_1a_2b_1}+\cancel{a_2b_1a_1}+a_2^2b_2)\\
+        &&&+\sin\theta(\cancel{a_2a_1b_2}-a_2^2b_1-a_1^2b_1\cancel{-a_1b_2a_2})\\
+        &&&=|\ul{a}|^2(b_2\cos\theta-b_1\sin\theta)\\
+        \iff&&\frac{1}{v}&=\det\left(\begin{pmatrix}\cos\theta\\\sin\theta\end{pmatrix},\begin{pmatrix}b_1\\b_2\end{pmatrix}\right)\\
+        &&&=1|\ul{b}|\sin\varphi\\
+        \iff&&\theta&=\arctan\left(\frac{b_2}{b_1}\right)+\arcsin\left(\frac{1}{v|\ul{b}|}\right)
+      \end{align}
+      from the perspective of the second particle, we only have to use the scalar
+      projections(divisions) since we're just comparing distances on the second path. This
+      yields
+      \begin{align}
+        
+        
+      \end{align}
       At this point we are ready to state and prove what I call the fundamental
       theorem of vector geometry.
     <div class="thm"><center><h1>The Fundamental Theorem of Vector Geometry.

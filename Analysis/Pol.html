@@ -359,13 +359,12 @@
             <h3><center>Quadratic Regression</center></h3>
             For a dataset \((x_i,y_i)\) for \(i=0,1,2,\ldots,n\) the coefficients for the best fit quadratic are as follows
             \begin{align}
-              a=&\frac{x_{32}yx-x_{21}yx^2}{x_{32}^2-x_{21}x_{42}}\\
-              =&30\frac{\Sigma y(n^2-(6k+1)n+6k^2)}{\Delta x^2n(n+1)(n^3+4n^2+n-6)}\\
-              b=&\frac{yx-ax_{32}}{x_{21}}\\
-              =&\frac{yx}{x_{21}}-an\Delta x\\
-              =&6\frac{n\Sigma y-2\Sigma yk}{n(n+1)(n+2)}-30n\Delta x\frac{\Sigma y(n^2-(6k+1)n+6k^2)}{\Delta x^2n(n+1)(n^3+4n^2+n-6)}\\
-              =&\frac{6}{n(n+1)}\cdots\\
-              c=&\frac{\Sigma y-a\Sigma x^2-b\Sigma x}{x}
+              a=&\frac{x_{21}yx^2-x_{32}yx}{x_{32}^2-x_{21}x_{42}}\\
+              =&30\frac{n(n-1)\Sigma y-6n\Sigma yk+6\Sigma yk^2}{\Delta x^2(n-1)n(n+1)(n+2)(n+3)}\\
+              b=&\frac{yx}{x_{21}}-an\Delta x\\
+              =&6\frac{-3n(n-1)(2n+1)\Sigma y+2(2n+1)(8n-3)\Sigma yk-30n\Sigma yk^2}{\Delta x(n-1)n(n+1)(n+2)(n+3)}\\
+              c=&\frac{\Sigma y-a\Sigma x^2-b\Sigma x}{n}\\
+              =&3\frac{3(3n^2+3n+2)\Sigma y-6(2n+1)\Sigma yk+10\Sigma yk^2}{n(n+2)(n+3)}\\
             \end{align}
             where
               $$x_{ij}=n\sum_{k=0}^n x_k^i-\sum_{k=0}^nx_k^j\sum_{k=0}^nx_k^{i-j}$$
@@ -373,9 +372,9 @@
               $$yx^i=n\sum_{k=0}^ny_k\sum_{k=0}^nx_k^i-\sum_{k=0}^ny_kx_k^i$$
             If the x-values are equally spaced by \(\Delta x\) then
             \begin{align}
-              x_{21}=&\Delta x^2\frac{n(n+1)^2(n+2)}{2}\\
-              x_{32}=&x_{21}\Delta x n\\
-              x_{42}=&\Delta x^4\frac{n(n+1)^2(2n+1)(8n^2+13n-6)}{180}
+              x_{21}=&\Delta x^2\frac{n(n+1)^2(n+2)}{12}\\
+              x_{32}=&\Delta xx_{21}n\\
+              x_{42}=&\Delta x^2x_{21}\frac{(2n+1)(8n-3)}{15}\\
             \end{align}
           </div>
           <h4> Proof </h4>
@@ -398,7 +397,7 @@
             where
               $$x_{ij}=n\Sigma x^i-\Sigma x^j\Sigma x^{i-j}$$
             and
-              $$yx^k=n\Sigma y\Sigma x^k-\Sigma yx^k$$
+              $$yx^k=\Sigma yx^k-n\Sigma y\Sigma x^k$$
             We do it again to eliminate \(b\)
             \begin{align}
               &&0=&a(x_{32}^2-x_{21}x_{42})-x_{32}yx+x_{21}yx^2\\
@@ -432,17 +431,36 @@
           x_{42}=&\Delta x^4\left((n+1)\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}-\left(\frac{n(n+1)(2n+1)}{6}\right)^2\right)\\
           =&\Delta x^4\frac{n(n+1)^2(2n+1)}{6}\frac{18n^2+18n-6-10n^2-5n}{30}\\
           =&\Delta x^4\frac{n(n+1)^2(2n+1)}{180}(8n^2+13n-6)\\
-          x_{32}^2-x_{21}x_{42}=&x_{21}(x_{21}\Delta x^2n^2-x_{42})\\
-          =&x_{21}\Delta x^4\frac{n(n+1)^2}{12}\frac{15n^2(n+2)-(2n+1)(8n^2+13n-6)}{15}\\
-          =&x_{21}\Delta x^4\frac{n(n+1)^2}{12}\frac{15n^3-16n^3+30n^2-26n^2-8n^2-25n+6}{15}\\
-          =&x_{21}\Delta x^4\frac{n(n+1)^2}{12}\frac{-n^3-4n^2-n+6}{15}\\
-          =&-x_{21}\Delta x^4\frac{n(n+1)^2}{180}(n^3+4n^2+n-6)
+          =&\Delta x^4\frac{n(n+1)^2(n+2)(2n+1)(8n-3)}{180}\\
+          =&\Delta x^2x_{21}\frac{(2n+1)(8n-3)}{15}\\
+          x_{32}^2-x_{21}x_{42}=&\Delta x^2x_{21}^2\left(n^2-\frac{(2n+1)(8n-3)}{15}\right)\\
+          =&\frac{\Delta x^2x_{21}^2}{15}(15n^2-16n^2-2n+3)\\
+          =&\frac{\Delta x^2x_{21}^2}{15}(-n^2-2n+3)\\
+          =&\frac{\Delta x^2x_{21}^2}{15}(1-n)(n+3)
         \end{align}
         moreover
         \begin{align}
-          yx=\frac{\Delta xn(n+1)}{2}\Sigma y-(n+1)\Delta x\Sigma yk=&\frac{\Delta x(n+1)}{2}(n\Sigma y-2\Sigma yk)\\
-          yx^2=\frac{\Delta x^2n(n+1)(2n+1)}{6}\Sigma y-(n+1)\Delta x^2\Sigma yk^2=&\frac{\Delta x^2(n+1)}{6}(n(2n+1)\Sigma y-6\Sigma yk^2)\\
-          n\Delta xyx-yx^2=\frac{\Delta x^2(n+1)}{6}\left(\Sigma y(3n^2-2n^2-6kn-n+6k^2)\right)=&\frac{\Delta x^2(n+1)}{6}(n(n-1)\Sigma y+6(\Sigma yk^2-n\Sigma yk))
+          yx=(n+1)\Delta x\Sigma yk-\frac{\Delta xn(n+1)}{2}\Sigma y=&\frac{\Delta x(n+1)}{2}(2\Sigma yk-n\Sigma y)\\
+          yx^2=(n+1)\Delta x^2\Sigma yk^2-\frac{\Delta x^2n(n+1)(2n+1)}{6}\Sigma y=&\frac{\Delta x^2(n+1)}{6}(6\Sigma yk^2-n(2n+1)\Sigma y)\\
+          n\Delta xyx-yx^2=\frac{\Delta x^2(n+1)}{6}\left(\Sigma y(6kn-3n^2-6k^2+2n^2+n)\right)=&\frac{\Delta x^2(n+1)}{6}(n(1-n)\Sigma y+6n\Sigma yk-6\Sigma yk^2)
+        \end{align}
+        All-in-all, this means that
+        \begin{align}
+          a=&\frac{x_{32}yx-x_{21}yx^2}{x_{32}^2-x_{21}x_{42}}\\
+          =&15\frac{\cancel{x_{21}}}{x_{21}^\cancel{2}}\frac{\Delta xnyx-yx^2}{\Delta x^2(1-n)(n+3)}\\
+          =&15\frac{12\cancel{\Delta x^2}\cancel{(n+1)}(n(1-n)\Sigma y+6n\Sigma yk-6\Sigma yk^2)}{6\cancel{\Delta x^2}(1-n)n(n+1)^\cancel{2}(n+2)(n+3)}\\
+          =&30\frac{n(n-1)\Sigma y-6n\Sigma yk+6\Sigma yk^2}{(n-1)n(n+1)(n+2)(n+3)}\\
+          b=&\frac{yx-ax_{32}}{x_{21}}\\
+          =&\frac{yx}{x_{21}}-an\Delta x\\
+          =&6\frac{2\Sigma yk-n\Sigma y}{\Delta xn(n+1)(n+2)}-30n\Delta x\frac{n(1-n)\Sigma y+6n\Sigma yk-6\Sigma yk^2}{\Delta x^2(1-n)n(n+1)(n+2)(n+3)}\\
+          =&\frac{6}{\Delta x(1-n)n(n+1)(n+2)(n+3)}\Sigma y((2k-n)(1-n)(n+3)-5n^2(1-n)-30n^2k+30nk^2)\\
+          =&\frac{6}{\Delta x(1-n)n(n+1)(n+2)(n+3)}\Sigma y(3n(n-1)(2n+1)+2k(16n^2-2n+3)+30nk^2)\\
+          =&6\frac{-3n(n-1)(2n+1)\Sigma y+2(2n+1)(8n-3)\Sigma yk-30n\Sigma yk^2}{\Delta x(n-1)n(n+1)(n+2)(n+3)}\\
+          c=&\frac{\Sigma y-a\Sigma x^2-b\Sigma x}{n+1}\\
+          =&\frac{\Sigma y}{n+1}-5\frac{(2n+1)(n(n-1)\Sigma y-6n\Sigma yk+6\Sigma yk^2)}{\Delta x^2(n-1)(n+1)(n+2)(n+3)}-3\frac{-3n(n-1)(2n+1)\Sigma y+2(2n+1)(8n-3)\Sigma yk-30n\Sigma yk^2}{\Delta x(n-1)(n+1)(n+2)(n+3)}\\
+          =&\frac{(n-1)((n+2)(n+3)+4n(2n+1))\Sigma y+6(2n+1)(5n-8n+3)\Sigma yk+6(15n-10n-5)\Sigma yk^2}{(n-1)(n+1)(n+2)(n+3)}\\
+          =&\frac{(n-1)((n+2)(n+3)+4n(2n+1))\Sigma y+6(2n+1)(5n-8n+3)\Sigma yk+6(15n-10n-5)\Sigma yk^2}{(n-1)(n+1)(n+2)(n+3)}\\
+          =&3\frac{3(3n^2+3n+2)\Sigma y-6(2n+1)\Sigma yk+10\Sigma yk^2}{(n+1)(n+2)(n+3)}
         \end{align}
       <script src="../js/cbut.js"></script>
 </body>
