@@ -364,13 +364,13 @@
               b=&\frac{yx}{x_{21}}-an\Delta x\\
               =&6\frac{-3n(n-1)(2n+1)\Sigma y+2(2n+1)(8n-3)\Sigma yk-30n\Sigma yk^2}{\Delta x(n-1)n(n+1)(n+2)(n+3)}\\
               c=&\frac{\Sigma y-a\Sigma x^2-b\Sigma x}{n}\\
-              =&3\frac{3(3n^2+3n+2)\Sigma y-6(2n+1)\Sigma yk+10\Sigma yk^2}{n(n+2)(n+3)}\\
+              =&3\frac{3(3n^2+3n+2)\Sigma y-6(2n+1)\Sigma yk+10\Sigma yk^2}{(n+1)(n+2)(n+3)}\\
             \end{align}
             where
               $$x_{ij}=n\sum_{k=0}^n x_k^i-\sum_{k=0}^nx_k^j\sum_{k=0}^nx_k^{i-j}$$
             and
               $$yx^i=n\sum_{k=0}^ny_k\sum_{k=0}^nx_k^i-\sum_{k=0}^ny_kx_k^i$$
-            If the x-values are equally spaced by \(\Delta x\) then
+            The last equality in each coefficient assumes the x-values are equally spaced by \(\Delta x\), which also implies that
             \begin{align}
               x_{21}=&\Delta x^2\frac{n(n+1)^2(n+2)}{12}\\
               x_{32}=&\Delta xx_{21}n\\
@@ -462,5 +462,10 @@
           =&\frac{(n-1)((n+2)(n+3)+4n(2n+1))\Sigma y+6(2n+1)(5n-8n+3)\Sigma yk+6(15n-10n-5)\Sigma yk^2}{(n-1)(n+1)(n+2)(n+3)}\\
           =&3\frac{3(3n^2+3n+2)\Sigma y-6(2n+1)\Sigma yk+10\Sigma yk^2}{(n+1)(n+2)(n+3)}
         \end{align}
+      In the following p5.js program a cannon with an initial speed as indicated by the first text box, and
+      "scale" in the second box. The program tracks red objects by their center of mass and does a regression
+      on each of the coordinates. When you press space, the cannon will shoot towards the red object, if it can reach it, and
+      simultanuously starts gathering a new dataset after pressing space and displays the result from the last period.
+      <iframe src="https://editor.p5js.org/1v4r0/full/2svjLgKMy"></iframe>
       <script src="../js/cbut.js"></script>
 </body>
