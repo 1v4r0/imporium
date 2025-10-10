@@ -9,6 +9,7 @@
   </script>
 </head>
 <body>
+  \(\newcommand{\ul}[1]{\underline{#1}}\)
   <div class="back"><a href="../Analysis.html">Back</a></div>
   This section is aimed at students in upper secondary education in the Danish
   school system, some objects will be simplified some details will be omitted.
@@ -467,5 +468,23 @@
       on each of the coordinates. When you press space, the cannon will shoot towards the red object, if it can reach it, and
       simultanuously starts gathering a new dataset and displays the result from the last period.
       <center><iframe width = "640pt" height="550pt" src="https://editor.p5js.org/1v4r0/full/2svjLgKMy"></iframe></center>
+      Now imagine we have an object on a parabolic path, and we want the cannon to track and shoot it after a short period of time.
+      This problem can be formulated as
+        $$s(t)=r(t+\Delta t)$$
+      where \(s(t)\) is the vector-polynomial describing the movement of the cannonball, and \(r(t)\) is the vector-polynomial describing
+      the path of the object. This leads to the following equations
+      \begin{align}
+          &&\frac{1}{2}\ul{a}_1t^2+\ul{b}_1t+\ul{c}_1=&\frac{1}{2}\ul{a}_2(t+\Delta t)^2+\ul{b}_2(t+\Delta t)+\ul{c}_2\\
+          &&=&\frac{1}{2}\ul{a}_2t^2+\ul{a}_2t\Delta t+\frac{1}{2}\ul{a}_2\Delta t^2+\ul{b}_2t+\ul{b}_2\Delta t+\ul{c}_2\\
+          \iff&&0=&\Delta\ul{a}t^2+2(\ul{a}_2\Delta t+\Delta\ul{b})t+\ul{a}_2\Delta t^2+2\ul{b}_2\Delta t+2\Delta\ul{c}
+      \end{align}
+      Lets try taking the scalar product with the CO-vectors of the coefficients to the quadratic and constant term.
+      \begin{align}
+        0=&\begin{pmatrix}a_{1y}-a_{2y}\\a_{2x}-a_{1x}\end{pmatrix}\left(2\begin{pmatrix}b_{2x}-b_{1x}+a_{2x}\Delta t\\b_{2y}-b_{1y}+a_{2y}\Delta t\end{pmatrix}t
+        +\begin{pmatrix}+a_{2x}\Delta t^2+2b_{2x}\Delta t+2c_{2x}-2c_{1x}\\a_{2y}\Delta t^2+2b_{2y}\Delta t+2c_{2y}-2c_{1y}\end{pmatrix}\right)\\
+        =&2a_{1y}b_{2x}t-a_{1y}b_{1x}t+a_{1y}a_{2x}\Delta tt\\-2a_{2y}b_{2x}t+2a_{2y}b_{1x}t-a_{2y}a_2x\Delta tt
+        +a_{1y}a_{2x}\Delta t^2+2a_{1y}b_{2x}\Delta t+2a_{1y}c_{2x}-2a_{1y}c_{1x}-a_{2y}a_{2x}\Delta t^2
+        -2a_{2y}b_{2x}\Delta t-2a_{2y}c_{2x}+2a_{2y}c_{1x}+2a_{2x}
+      \end{align}
       <script src="../js/cbut.js"></script>
 </body>
