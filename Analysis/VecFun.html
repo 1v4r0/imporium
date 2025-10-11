@@ -125,7 +125,29 @@
              Furthermore, this also implies that the gradient being the zero vector implies
            that the slope is zero in any direction, which is a necessary and sufficient condition
      for a stationary point.</div>
-     <div class="thm"><center><h4>Derivative of composites</h4></center>
+     This allows us to state the well known theorem on stationary points which are
+     points where "action" halts, i.e. the slope is zero, which is to say that all
+     the directional derivatives are all zero, but all we need here is that the
+     gradient is zero by the previous theorem.
+    <div class="def"><center><h4>Stationary Points</h4></center>
+      A stationary point is a point on a surface where all derivatives are zero.
+      On a surface of a multivariable function, this specifically means that the
+      gradient is zero in that point, i.e.
+        $$\nabla f(\underline{x})=\underline{0}$$
+      </div>
+      These stationary points can have two clearly defined "types", depending on
+      how they are formed. If we have a stationary point which has different curves "differently"
+      in two different directions, we have a so-called saddle-point. If the curvatures
+      are similar in all directions, we will have an extremum, given that the torsion
+      isn't too great. This involves the second partial derivatives and can be stated as follows.
+      <div class="pro"><center><h4>Types of Stationary Points</h4></center>
+        We compare the curvature and torsion at the point, which can be expressed as
+        the determinant of the "Hesse matrix".
+        $$\begin{vmatrix}f_{xx}''&&f_{xy}''\\f_{yx}''&&f_{yy}''\end{vmatrix}=f_{xx}''f_{yy}''-f_{xy}''f_{yx}''$$
+        <center>1. If this number is positive, there is more curvature than there is torsion, and we have an extremum.</center>
+        <center>2. If this number is negative, the torsion is stronger than the curvature, and we have a saddle-point.</center>
+        <center>3. If they are equal, it is generally a more complicated shape, which would require further analysis.</center></div>
+     <div class="thm"><center><h3>Derivative of composites</h3></center>
       Let \(s:\mathbb{R}\to\mathbb{R}^2\) with \(s(t)=\begin{pmatrix}x(t)\\y(t)\end{pmatrix}\) and \(g:\mathbb{R}^2\to\mathbb{R}\)
       be differentiable in all variables, then the composite function \(f=g\circ s:\mathbb{R}\to\mathbb{R}\)
       is also differentiable and the derivative can be calculated as follows
