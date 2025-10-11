@@ -9,6 +9,7 @@
   </script>
 </head>
 <body>
+  \(\newcommand{\ul}[1]{\underline{#1}}\)
   <div class="back"> <a href="../Analysis.html">Back</a> </div>
   This section is aimed at students in upper secondary education in the Danish
   school system, some objects will be simplified and some details will be omitted.
@@ -26,23 +27,33 @@
       only cover the spatial parametric functions since the planar ones are
       completely analogous.<br>
       It is common to use the following nomenclature for a spatial vector
-      functions \(\underline{r}:\mathbb{R}\mapsto\mathbb{R}^3\) with
-        $$\underline{r}(t)=\begin{pmatrix}x(t)\\y(t)\\z(t)\end{pmatrix}$$
+      functions \(\ul{r}:\mathbb{R}\mapsto\mathbb{R}^3\) with
+        $$\ul{r}(t)=\begin{pmatrix}x(t)\\y(t)\\z(t)\end{pmatrix}$$
       where \(x,y,z:\mathbb{R}\mapsto\mathbb{R}\) are called its
       "coordinate-functions" for obvious reasons. Some people, especially
       engineers and technicians, may use an arrow above the r rather than the
       underline, but it becomes tedious to draw, conflicts with other notation
       and means the same thing, namely that the function value is a vector.
+      <div style="border: 1px solid white">
+    <button type="button" class="collapse">
+        Example 1
+    </button>
+    <div class="exa">
+      Consider the following parametric function
+        $$\ul{s}(t)=\begin{pmatrix}\sin(t)\\\cos(t)\\\tan(t)\end{pmatrix}$$
+      so
+        $$\ul{s}(\pi/6)=\begin{pmatrix}\sin(\pi/3)\\\cos(\pi/3)\\\tan(\pi/3)\end{pmatrix}=\begin{pmatrix}\sqrt{3}/2\\1/2\\\sqrt{3}\end{pmatrix}$$
+    </div></div>
       <h3> Derivatives </h3>
         To find the derivative of a parametric function, you just differentiate
         coordinate-wise, i.e. the coordinate-functions. The first derivative
         is called the velocity vector with the following notation
-          $$\underline{v}(t)=\underline{r}'(t)=\begin{pmatrix}x'(t)\\y'(t)\\z'(t)
+          $$\ul{v}(t)=\ul{r}'(t)=\begin{pmatrix}x'(t)\\y'(t)\\z'(t)
           \end{pmatrix}$$
-        In reality, we should calculate the tangent slope through the secant
-        slope, but we end up with the same thing
+        In reality, we should calculate the difference quotient through a secant
+        line, but we end up with the same thing
         \begin{align}
-          \frac{\underline{r}(t+h)-\underline{r}(t)}{h}=&\left(\begin{pmatrix}
+          \frac{\ul{r}(t+h)-\ul{r}(t)}{h}=&\left(\begin{pmatrix}
           x(t+h)\\y(t+h)\\z(t+h)\end{pmatrix}-\begin{pmatrix}x(t)\\y(t)\\z(t)
           \end{pmatrix}\right)/h\\
           =&\begin{pmatrix}(x(t+h)-x(t))/h\\(y(t+h)-y(t))/h\\(z(t+h)-z(t))/h
@@ -51,13 +62,44 @@
         The reason it's called the velocity vector is because it's represents
         the instantaneous change in position, and visually it is tangent to
         the graph. We can do this one more time to get the acceleration vector, i.e.
-          $$\underline{a}(t)=\underline{v}'(t)=\underline{r}''(t)=
+          $$\ul{a}(t)=\ul{v}'(t)=\ul{r}''(t)=
           \begin{pmatrix}x''(t)\\y''(t)\\z''(t)\end{pmatrix}$$
         where this vector represents the instantaneous acceleration and is
         represents visually which way the graph is "curving".
         We can take any of these parametric functions and turn them into a
         single dimensional function by taking the length of the vectors, i.e.
-          $$v(t)=|\underline{v}(t)|=\sqrt{x'(t)^2+y'(t)^2+z'(t)^2}$$
+          $$v(t)=|\ul{v}(t)|=\sqrt{x'(t)^2+y'(t)^2+z'(t)^2}$$
+        which represents the absolute speed and acceleration respectively.
+          <div style="border: 1px solid white">
+    <button type="button" class="collapse">
+        Example 2
+    </button>
+    <div class="exa">
+      Lets differentiate the parametric function from the previous example
+        $$\ul{v}(\pi/3)=\ul{s}'(\pi/3)=\begin{pmatrix}\cos(\pi/3)\\-\sin(\pi/3)\\(\cos(\pi/3))^{-2}\end{pmatrix}
+        =\begin{pmatrix}1/2\\-\sqrt{3}/2\\(1/2)^{-2}\end{pmatrix}=\begin{pmatrix}1/2\\-\sqrt{3}/2\\4\end{pmatrix}$$
+        $$\ul{a}(t)=\ul{v}'(t)=\ul{s}''(t)=\begin{pmatrix}-\sin(\pi/3)\\-\cos(\pi/3)\\\frac{2\sin(\pi/3)}{\cos^3(\pi/3)}\end{pmatrix}
+        =\begin{pmatrix}-\sqrt{3}/2\\-1/2\\\frac{2\sqrt{3}/2}{(1/2)^3}\end{pmatrix}=\begin{pmatrix}-\sqrt{3}/2\\-1/2\\8\sqrt{3}\end{pmatrix}$$
+        with
+        $$|v(\pi/3)|=\sqrt{\cos^2(\pi/3)+(-\sin(\pi/3))^2+((\cos(\pi/3))^{-2})^2}=\sqrt{1+4^2}=\sqrt{17}$$
+        and
+        $$|a(\pi/3)|=\sqrt{1+8^2\cdot3}=\sqrt{193}$$
+      </div></div>
+      <h3>Curve length</h3>
+      To calculate the curve length, we can integrate the "speed" in the interval, i.e.
+      <div class="def"><center><h4>Curve Length</h4></center>
+        Assume that the function \(s(t)\) represents a one dimensional position on the curve,
+        e.g. by assuming that \(s(0)=0\). Then the curve length \(L\) from \(t=t_0\)
+        to \(t=t_1\) is the distance covered in the same interval, i.e.
+            $$L=s(t_1)-s(t_0)=\int_{t_0}^{t_1}s'(t)dt=\int_{t_0}^{t_1}|\ul{s}'(t)|dt=\int_{t_0}^{t_1}\sqrt{x'(t)^2+y'(t)^2+z'(t)^2}dt$$</div>
+            <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+        Example 3
+    </button>
+    <div class="exa">
+      Lets find the curve length from \(t_0=\pi/6\) to \(t_1=\pi/3\)
+        $$L=\int_{\pi/6}^{\pi/3}\sqrt{1+(\cos(t))^{-4}}dt\approx1.28$$
+      </div></div>
     <h2> Functions of Multiplie Variables </h2>
       Another interesting use-case is the opposite of the parametric functions,
       where \(n=2,3\) and \(m=1\). This time I will choose the lower value for
@@ -66,6 +108,16 @@
         $$z=f(x,y)$$
       which has a graph that is a three dimensional surface, which can be used
       to represent a hillscape, among other things.
+      <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+        Example 4
+    </button>
+    <div class="exa">
+      As an example of a function of two variables is the following function
+      inspired by quantum mechanics
+        $$f(x,y)=2\sin(\pi x)\cos(y)$$
+      its graph is similar to the image below.
+      </div></div>
       <h3> Sectional Functions </h3>
         Just like with the parametric functions we can turn multivariate into
         a single variable function by relating \(x\) to \(y\). So for some
@@ -89,9 +141,26 @@
         In this case, it's not easy to consider one tangent, because it could
         go in any direction, so what we do is we create a so-called
         directional-derivative
-          $$f_v'(\underline{r})=\lim_{h\to0}\frac{f(\underline{r}
-          +h\underline{v}^*)-f(\underline{r})}{h}$$
-        where the * denotes a unit vector in the direction of v. But it turns out that it's
+          $$f_v'(\ul{r})=\lim_{h\to0}\frac{f(\ul{r}
+          +h\ul{v}^*)-f(\ul{r})}{h}$$
+        where the * denotes a unit vector in the direction of v.
+           <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+        Example 5
+    </button>
+    <div class="exa">
+      Lets find the derivative in the direction of \(\ul{v}=\begin{pmatrix}\cos(\pi/3)\\\sin(\pi/3)\end{pmatrix}\)
+        $$f_v'(x,y)=\lim_{h\to0}\frac{2\sin(\pi(x+h\cos(\pi/3)))\cos(y+h\sin(\pi/3))-2\sin(\pi x)\cos(y)}{h}$$
+        $$=\lim_{h\to0}\frac{2\sin(\pi x+h\pi/2)\cos(y+h\sqrt{3}/2)-2\sin(\pi x)\cos(y)}{h}$$
+        $$=2\pi\cos(\pi x)\cos(y)\cos(\pi/3)-2\sin(\pi x)\sin(y)\sin(\pi/3)$$
+        $$=\pi\cos(\pi x)\cos(y)-\sqrt{3}\sin(\pi x)\sin(y)$$
+      I will explain below how I did the last two calculations, but this function tells us the slope
+      of the graph in the direction of \(\ul{v}\). If we choose to section the graph by \(y=\pi x\) we get
+        $$f_v'(x,\pi x)=\pi\cos^2(\pi x)-\sqrt{3}\sin^2(\pi x)$$
+      One consequence of this is that along the line \(y=\pi x\) the slope in the
+      direction of \(\ul{v}\) alternates between \(\pi\) and \(-\sqrt{3}\).
+      </div></div>
+      But it turns out that it's
         unnecessary to consider all directions at once, we can focus on the
         horizontal and vertical tangents. These correspond to so-called
         partial-derivatives.
@@ -105,16 +174,28 @@
            and the corresponding "gradient" as
             $$\nabla f(x,y)=\begin{pmatrix}\frac{\partial f}{\partial x}(x,y)\\
             \frac{\partial f}{\partial y}(x,y)\end{pmatrix}$$</div>
+            <div style="border: 1px solid white">
+      <button type="button" class="collapse">
+        Example 6
+    </button>
+    <div class="exa">
+      Lets find the partial derivatives and gradient from the previous example
+        $$f_x'(x,y)=2\pi\cos(\pi x)\cos(y)$$
+        $$f_y'(x,y)=-2\sin(\pi x)\sin(y)$$
+        $$\nabla f(1/3,\pi/6)=\begin{pmatrix}2\pi\cos(\pi/3)\cos(\pi/6)\\-2\sin(\pi/3)\sin(\pi/6)\end{pmatrix}$$
+        $$=\begin{pmatrix}2\pi\frac{1}{2}\frac{\sqrt(3)}{2}\\-2\frac{\sqrt{3}}{2}\frac{1}{2}\end{pmatrix}$$
+        $$=\frac{\sqrt{3}}{2}\begin{pmatrix}\pi\\-1\end{pmatrix}$$
+      </div></div>
           We can relate this to the directional derivative by the following
           proposition
           <div class="thm"><center><h4>Theorem</h4></center>
-            $$f_v'(x,y)=\frac{\underline{v}}{|\underline{v}|}\bullet\nabla f(x,y)$$</div>
+            $$f_v'(x,y)=\frac{\ul{v}}{|\ul{v}|}\bullet\nabla f(x,y)$$</div>
           <h4>Proof.</h4>
-            $$f_v'(x,y)=\lim_{h\to0}\frac{f(\underline{x}+h\underline{v}^*)-f(\underline{x})}{h}$$
+            $$f_v'(x,y)=\lim_{h\to0}\frac{f(\ul{x}+h\ul{v}^*)-f(\ul{x})}{h}$$
             $$=\lim_{h\to0}\frac{f(x+hv_1,y+hv_2)-f(x,y)}{h}$$
             $$=\lim_{h\to0}\frac{f(x+hv_1,y+hv_2)-f(x,y+hv_2)+f(x,y+hv_2)-f(x,y)}{h}$$
             $$=\lim_{h\to0}v_1\frac{f(x+hv_1,y+hv_2)-f(x,y+hv_2)}{hv_1}+v_2\frac{f(x,y+hv_2)-f(x,y)}{hv_2}$$
-            $$=v_1f_x'(x,y)+v_2f_y'(x,y)=\underline{v}^*\bullet\nabla f(x,y)$$
+            $$=v_1f_x'(x,y)+v_2f_y'(x,y)=\ul{v}^*\bullet\nabla f(x,y)$$
             <p style="text-align:center;">&#x220E;</p>
    <div class="cor"><center><h4>Corollary</h4></center>
             The direction of the heighest growth is then the direction that
@@ -132,9 +213,14 @@
     <div class="def"><center><h4>Stationary Points</h4></center>
       A stationary point is a point on a surface where all derivatives are zero.
       On a surface of a multivariable function, this specifically means that the
-      gradient is zero in that point, i.e.
-        $$\nabla f(\underline{x})=\underline{0}$$
+      gradient is zero at that point, i.e.
+        $$\nabla f(\ul{x})=\ul{0}$$
       </div>
+      It should be noted that these points are technically the full dimensional object,
+      but if it lies on the graph of a function, it can be referred to by the domain
+      since last coordinate will be inferred from the function. For example, the
+      stationary point of \(f(x,y)=x^2+y^2\) is \((0,0,0)\) but you could also state
+      it as being \((0,0)\) where you can infer the full point as \((0,0,f(0,0))\).<br>
       These stationary points can have two clearly defined "types", depending on
       how they are formed. If we have a stationary point which curves "differently"
       in two different directions, we have a so-called saddle-point. If the curvatures
@@ -151,14 +237,15 @@
       Let \(s:\mathbb{R}\to\mathbb{R}^2\) with \(s(t)=\begin{pmatrix}x(t)\\y(t)\end{pmatrix}\) and \(g:\mathbb{R}^2\to\mathbb{R}\)
       be differentiable in all variables, then the composite function \(f=g\circ s:\mathbb{R}\to\mathbb{R}\)
       is also differentiable and the derivative can be calculated as follows
-        $$f'(t)=\nabla g(s(t))\bullet \underline{s}'(t)$$</div>
+        $$f'(t)=\nabla g(s(t))\bullet \ul{s}'(t)$$</div>
       <h4>Proof.</h4>
       $$f'(t)=\lim_{h\to 0}\frac{f(t+h)-f(t)}{h}$$
-      $$=\lim_{h\to 0}\frac{g(\underline{s}(t+h))-g(\underline{s}(t))}{h}$$
+      $$=\lim_{h\to 0}\frac{g(\ul{s}(t+h))-g(\ul{s}(t))}{h}$$
       $$=\lim_{h\to 0}\frac{g(x(t+h),y(t+h))-g(x(t),y(t))}{h}$$
       $$=\lim_{h\to 0}\frac{g(x(t+h),y(t+h))-g(x(t),y(t+h))+g(x(t),y(t+h))-g(x(t),y(t))}{h}$$
       $$=\lim_{h\to 0}\frac{g(x(t)+k_x,y(t+h))-g(x(t),y(t+h))}{k_x}\frac{x(t+h)-x(t)}{h}+\frac{g(x(t),y(t)+k_y)-g(x(t),y(t))}{k_y}\frac{y(t+h)-y(t)}{h}$$
-      $$=g_x'(\underline{s}(t))x'(t)+g_y'(\underline{s}(t))y'(t)=\nabla g(\underline{s}(t))\bullet \underline{s}'(t)$$
+      $$=g_x'(\ul{s}(t))x'(t)+g_y'(\ul{s}(t))y'(t)=\nabla g(\ul{s}(t))\bullet \ul{s}'(t)$$
       where \(k_x=x(t+h)-x(t)\) and \(k_y=y(t+h)-y(t)\)
        <p style="text-align:center;">&#x220E;</p>
+       <script src="../js/cbut.js"></script>
 </body>
