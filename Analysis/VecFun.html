@@ -237,7 +237,7 @@
       Let \(s:\mathbb{R}\to\mathbb{R}^2\) with \(s(t)=\begin{pmatrix}x(t)\\y(t)\end{pmatrix}\) and \(g:\mathbb{R}^2\to\mathbb{R}\)
       be differentiable in all variables, then the composite function \(f=g\circ s:\mathbb{R}\to\mathbb{R}\)
       is also differentiable and the derivative can be calculated as follows
-        $$f'(t)=\nabla g(s(t))\bullet \ul{s}'(t)$$</div>
+        $$f'(t)=\nabla g(\ul{s}(t))\bullet \ul{s}'(t)$$</div>
       <h4>Proof.</h4>
       $$f'(t)=\lim_{h\to 0}\frac{f(t+h)-f(t)}{h}$$
       $$=\lim_{h\to 0}\frac{g(\ul{s}(t+h))-g(\ul{s}(t))}{h}$$
@@ -247,5 +247,13 @@
       $$=g_x'(\ul{s}(t))x'(t)+g_y'(\ul{s}(t))y'(t)=\nabla g(\ul{s}(t))\bullet \ul{s}'(t)$$
       where \(k_x=x(t+h)-x(t)\) and \(k_y=y(t+h)-y(t)\)
        <p style="text-align:center;">&#x220E;</p>
+       This represents how "annoying" it is to traverse the graph of \(g\) by following the path of \(\ul{s}\) since
+        $$f'(t)=\nabla g(\ul{s}(t))\bullet \ul{s}'(t)=g_{s'(t)}'(\ul{s}(t))|\ul{s}'(t)|$$
+      so the derivative of \(f\) is the directional derivative of \(g\) in the direction of \(\ul{s}'\)
+      multiplied by the speed at \(\ul{s}(t)\). If there is no slope, then it's not annoying, and
+      if you're not moving, it's not annoying.
+      <center><iframe width="560" height="315" src="https://www.youtube.com/embed/9-i8-PhKYBs?si=ZkIEuZFxZx9iw8mS"
+      title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></center>
        <script src="../js/cbut.js"></script>
 </body>
