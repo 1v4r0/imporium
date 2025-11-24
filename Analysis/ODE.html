@@ -1,0 +1,74 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Logistic Growth</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  \(\newcommand{\ul}[1]{\underline{#1}}\)
+  <div class="back"> <a href="../Analysis.html">Back</a> </div>
+  This section is aimed at students in upper secondary education in the Danish
+  school system, some objects will be simplified and some details will be omitted.
+  <h1> Ordinary Differential Equations </h1>
+    Differential equations are equations that describe the development of some
+    system and often includes the derivatives of the parameters of the system.
+    <h2> Exponential Growth </h2>
+      The first equation we will work with is exponential growth, where the slope
+      at any point is proportional to the height, or the y-coordinate, i.e.
+        $$y'=ay$$
+      This equation is independent of \(x\) and horizontally constant and has an
+      asymptote at \(y=0\). The general solution to this equation is easily shown
+      to be
+        $$y=ce^{ax}$$
+      where \(c\in\mathbb{R}\) is some constant that is determined by some initial
+      or boundary condition. I will prove uniqueness below.
+    <h2> Translated Exponential Growth </h2>
+      The second equation is related to the first, where the slope is a linear function
+      in the height, or y-coordinate,
+        $$y'=b-ay$$
+      which is also independent of the x-coordinate and has an asymptote at \(y=b/a\),
+      with a solution which is that same translation of exponential growth, i.e.
+        $$y=\frac{b}{a}-ce^{ax}$$
+      where \(c\) again determines the initial/boundary conditions.
+    <div class="thm"><center><h2> Logistic Growth </h2></center>
+      In the third and final equation for now the slope is a quadractic in the
+      height(y-coordinate), and a product of the two previous slopes, i.e.
+        $$y'=y(b-ay)=ay(M-y)$$
+      It has inherited the two previous asymptotes, one at \(y=0\) and one at
+      \(y=M=b/a\). It has slightly exponential characteristics, but these are
+      mostly visual. The solution to this equation is either \(y=0\) or
+        $$y=\frac{M}{1-ce^{aMx}}$$
+      which includes the solution \(y=M\) if \(c=0\).</div>
+      <h3>Proof of Uniqueness</h3>
+        Lets start with exponential growth and assume we have a solution \(y\). Then
+        we multiply this solution by \(e^{-ax}\) and differentiate.
+          $$(ye^{-ax})'=y'e^{-ax}-aye^{-ax}=e^{-ax}(ay-ay)=0$$
+        The fact that the derivative is zero, means whatever we differentiated is a
+        constant, i.e.
+          $$c=ye^{-ax}\iff y=ce^{ax}$$
+        Now for the translated version, we assume a solution \(y\) and differentiate
+        the following
+          $$(b-ay)'=-ay'=-a(b-ay)$$
+        which means that when I differentiate it I get the same thing back multiplied
+        by some constant, i.e. it's exponential growth, so
+          $$b-ay=ce^{-ax}\iff y=\frac{b}{a}-\frac{c}{a}e^{-ax}$$
+        but the constant divided by \(a\) is just another constant. For logistic growth
+        consider one of its solutions \(y\) and the following derivative
+          $$\left(\frac{1}{y}\right)'=-\frac{y'}{y^2}=-\frac{ay(M-y)}{y^2}=a-aM\frac{1}{y}$$
+        So this function is a solution to translated exponential growth, i.e.
+          $$\frac{1}{y}=\frac{a}{aM}-ce^{-aM}\iff y=\frac{1}{\frac{1}{M}-ce^{-aMx}}=
+          \frac{M}{1-Mce^{-aMx}}$$
+        where again a constant multiplied by another, is just a new constant.<p style="text-align:center;">&#x220E;</p>
+      <h3>Proof of Existance</h3>
+        Now i will prove that the expression is a solution, first i differentiate
+          $$y'=-\frac{M}{(1-ce^{-aMx})^2}(-ce^{-aMx})(-aM)=-\frac{aM^2ce^{-aMx}}{(1-ce^{-aMx})^2}$$
+        Then I calculate the right side
+          $$ay(M-y)=\frac{aM}{1-ce^{-aMx}}\left(M-\frac{M}{1-ce^{-aMx}}\right)=
+            \frac{aM^2}{1-ce^{-aMx}}\frac{1-ce^{-aMx}-1}{1-ce^{-aMx}}=
+            -\frac{aM^2ce^{-aMx}}{(1-ce^{-aMx})^2}$$<p style="text-align:center;">&#x220E;</p>
+       <script src="../js/cbut.js"></script>
+</body>
