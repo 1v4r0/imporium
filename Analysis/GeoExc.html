@@ -24,7 +24,20 @@
   <br><br>
   <div id="math-container4"></div>
   <br><br>
+  Tangentplanen:
+  <br><br>
+  <div id="math-container8"></div>
+  <br><br>
   <button onclick="reset()">Nye</button>
+  <br><br>
+  Skæring mellem:
+  <br><br>
+  Linjen og planen:
+  <div id="math-container5"></div>
+  Linjen og cirklen:
+  <div id="math-container6"></div>
+  Vinklen mellem linjen og planen:
+  <div id="math-container7"></div>
   <div id="result"></div>
   <script>
     class Vector{
@@ -50,6 +63,20 @@
       cross(v){
         return new Vector([this.x[1]*v.x[2]-this.x[2]*v.x[1],this.x[2]*v.x[0]-this.x[0]*v.x[2],this.x[0]*v.x[1]-this.x[1]*v.x[0]])
       }
+      len(){
+        let S=0
+        for(let i=0;i<this.x.length;i++){
+          S+=this.x[i]**2
+        }
+        return Math.sqrt(S)
+      }
+      round(){
+        let S=[]
+        for(let i=0;i<this.x.length;i++){
+          S.push(Math.round(this.x[i]))
+        }
+        return new Vector(S)
+      }
       str(){
         return `\\begin{pmatrix}
      ${this.x[0]} \\\\
@@ -71,11 +98,23 @@
         b = new Vector([Math.round(20*Math.random())-10,Math.round(20*Math.random())-10,Math.round(20*Math.random())-10]);
         math = `\\( s(t) = ${a.str()}t+${b.str()} \\)`;
         document.getElementById('math-container1').innerHTML = math;
-        a= new Vector([Math.round(20*Math.random())-10,Math.round(20*Math.random())-10,Math.round(20*Math.random())-10]);
-        r=Math.ceil(10*Math.random());
-        math = `\\( ${r}^2 = (x${a.x[0]<0?"+":"-"}${Math.abs(a.x[0])})^2+(y${a.x[0]<0?"+":"-"}${Math.abs(a.x[1])})^2+(z${a.x[0]<0?"+":"-"}${Math.abs(a.x[2])})^2 \\)`;
+        math = `\\( P=${a.mult(-n.dot(b.sub(c))/n.dot(a)).add(b).str()}\\)`;
+        document.getElementById('math-container5').innerHTML = math;
+        math=`\\( v=${90*(1-2/Math.PI*Math.min(Math.abs(Math.acos(a.dot(n)/a.len()/n.len())),Math.abs(Math.acos(a.dot(n)/a.len()/n.len())-Math.PI)))}\\)`;
+        document.getElementById('math-container7').innerHTML = math;
+        temp=new Vector([2*Math.random()-1,2*Math.random()-1,2*Math.random()-1]).mult(10);
+        temp2=5*(2*Math.random()-1)
+        c=a.mult(temp2).add(b).add(temp).round();
+        r=Math.sqrt(Math.round(temp.len()**2));
+        math = `\\(${Math.round(r**2)}=(x${c.x[0]<0?"+":"-"}${Math.abs(c.x[0])})^2+(y${c.x[1]<0?"+":"-"}${Math.abs(c.x[1])})^2+(z${c.x[2]<0?"+":"-"}${Math.abs(c.x[2])})^2\\)`;
         document.getElementById('math-container4').innerHTML = math;
-                
+        temp=new Vector([2*Math.random()-1,2*Math.random()-1,0]).mult(r/Math.sqrt(2))
+        temp.x[2]=Math.sqrt(r**2-temp.x[0]**2-temp.x[1]**2)
+        math = `\\(0=${Math.round(temp.x[0]*100)/100}x${temp.x[1]<0?"":"+"}${Math.round(temp.x[1]*100)/100}y${temp.x[2]<0?"":"+"}${Math.round(temp.x[2]*100)/100}z${-temp.dot(c.add(temp))<0?"":"+"}${Math.round(-temp.dot(c.add(temp))*100)/100}\\text{ i punktet P=}${c.add(temp).str()}\\)`;
+        document.getElementById('math-container8').innerHTML = math;
+        d=a.dot(b.sub(c))**2-a.dot(a)*(b.sub(c).dot(b.sub(c))-r**2)
+        math = `\\(${a.mult((-a.dot(b.sub(c))+Math.sqrt(d))/a.dot(a)).add(b).str()}\\text{ og }${a.mult((-a.dot(b.sub(c))-Math.sqrt(d))/a.dot(a)).add(b).str()}\\)`
+        document.getElementById('math-container6').innerHTML = math;
         MathJax.typesetPromise(); // Render MathJax
     }
     reset()
