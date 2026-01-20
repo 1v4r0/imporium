@@ -31,7 +31,7 @@
         Vy=-delta2/3/a
         min=(-2*b-Math.sqrt(delta))/6/a;
         max=(-2*b+Math.sqrt(delta))/6/a;
-        math = `\\( p(x) = ${a}x^3+${b}x^2+${c}x+${d} \\)`;
+        math = `\\( p(x) = ${a}x^3${(b<0?"":"+"}${b}x^2${(c<0?"":"+"}${c}x${(d<0?"":"+"}${d} \\)`;
         document.getElementById('math-container').innerHTML = math;
         MathJax.typesetPromise(); // Render MathJax
     }
