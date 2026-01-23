@@ -1,62 +1,46 @@
-  <html>
+<html>
 <head>
   <link href="../imp.css" rel="stylesheet">
   <title>Space Geometry</title>
   <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
-  <script id="MathJax-script" defer
+  <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
 </head>
 <body>
   <h3>Rumlige objekter:</h3>
   Linjen:
-  <div id="math-container1"></div>
-  <br>
+  <br><br>
+  <div id="math-container1"></div> 
+  <br><br>
   Planen:
-  <div id="math-container2"></div>
-  <br>
-  Cirklen:
+  <br><br>
+  <div id="math-container2"></div> 
   <br><br>
   <div id="math-container3"></div>
   <br><br>
+  Cirklen:
+  <br><br>
+  <div id="math-container9"></div>
+  <br><br>
+  <div id="math-container4"></div>
+  <br><br>
+  Tangentplanen:
+  <br><br>
+  <div id="math-container8"></div>
+  <br><br>
   <button onclick="reset()">Nye</button>
   <br><br>
-  Opgaver:<br>
-  Bestem en ligning for planen(plan) uden hjælpemidler.<br>
-  Bestem skæringspunktet mellem linjen og planen(P), uden hjælpemidler til t-værdi.<br>
-  Bestem vinklen mellem linjen og planen(v1).<br>
-  Bestem ligningen for sfæren ved kvadratkomplettering(S) uden hjælpemidler.<br>
-  Bestem skæringspunkterne mellem linjen og sfæren(\(S_{\pm}\)) uden hjælpemidler til diskriminant.<br>
-  Vælg en af følgende opgaver:<br>
-  1. Undersøg om "tangentplan" beskriver en tangentplan til sfæren.<br>
-  2. Bestem tangentplanen til sfæren i punktet TP.<br>
-  Bestem vinklen mellem de to planer(v2).<br><br>
+  Skæring mellem:
+  <br><br>
+  Linjen og planen:
+  <div id="math-container5"></div>
+  Linjen og cirklen:
+  <div id="math-container6"></div>
+  Vinklen mellem linjen og planen:
+  <div id="math-container7"></div>
   <div id="result"></div>
-  <script defer src="https://www.geogebra.org/apps/deployggb.js"></script>
-  <div id="ggb" style="width:1600px; height:600px;"></div>
-
-  <script defer>
-
-
-   // 1) Create + inject ONCE
-
-
-     let ggb, q = [];
-     const cmd = s => ggb ? ggb.evalCommand(s) : q.push(s);
-
-     window.addEventListener("load", () => {
-       new GGBApplet({
-         appName: "3d",
-         appletOnLoad(api) {
-           ggb = api;
-           while (q.length) ggb.evalCommand(q.shift());
-         }
-       }, true).inject("ggb");
-     });
-
-
-
-
+  <script>
     class Vector{
       constructor(x){
         this.x=x
@@ -96,13 +80,10 @@
       }
       str(){
         return `\\begin{pmatrix}
-     ${Math.round(this.x[0]*100)/100} \\\\
-     ${Math.round(this.x[1]*100)/100} \\\\
-     ${Math.round(this.x[2]*100)/100}
+     ${this.x[0]} \\\\
+     ${this.x[1]} \\\\
+     ${this.x[2]}
    \\end{pmatrix}`;
-      }
-      gStr(){
-        return `(${Math.round(this.x[0]*100)/100},${Math.round(this.x[1]*100)/100},${Math.round(this.x[2]*100)/100})`
       }
     }
     function reset(){
@@ -112,34 +93,33 @@
         math = `\\( p(s,t) = ${a.str()}s+${b.str()}t+${c.str()} \\)`;
         document.getElementById('math-container2').innerHTML = math;
         n = a.cross(b)
-        cmd(`p(s,t)=${a.gStr()}s+${b.gStr()}t+${c.gStr()}`);
-        cmd(`plan:0=${n.x[0]}x+${n.x[1]}y+${n.x[2]}z+${-n.dot(c)}`);
+        math = `\\( 0 = ${n.x[0]}x${(n.x[1]<0?"":"+")}${n.x[1]}y${(n.x[2]<0?"":"+")}${n.x[2]}z${(-n.dot(c)<0?"":"+")}${-n.dot(c)} \\)`;
+        document.getElementById('math-container3').innerHTML = math;
         a= new Vector([Math.round(20*Math.random())-10,Math.round(20*Math.random())-10,Math.round(20*Math.random())-10]);
         b = new Vector([Math.round(20*Math.random())-10,Math.round(20*Math.random())-10,Math.round(20*Math.random())-10]);
         math = `\\( s(t) = ${a.str()}t+${b.str()} \\)`;
         document.getElementById('math-container1').innerHTML = math;
-        cmd(`s(t)=${a.gStr()}t+${b.gStr()}`);
-        cmd(`P=Intersect(s,plan)`);
-        cmd(`v1=Angle(s,plan)`);
+        math = `\\( P=${a.mult(-n.dot(b.sub(c))/n.dot(a)).add(b).str()}\\)`;
+        document.getElementById('math-container5').innerHTML = math;
+        math=`\\( v=${90*(1-2/Math.PI*Math.min(Math.abs(Math.acos(a.dot(n)/a.len()/n.len())),Math.abs(Math.acos(a.dot(n)/a.len()/n.len())-Math.PI)))}\\)`;
+        document.getElementById('math-container7').innerHTML = math;
         temp=new Vector([2*Math.random()-1,2*Math.random()-1,2*Math.random()-1]).mult(10);
         temp2=5*(2*Math.random()-1)
         c=a.mult(temp2).add(b).add(temp).round();
         r=Math.sqrt(Math.round(temp.len()**2));
         math = `\\(0=x^2${c.x[0]<0?"+":"-"}${2*Math.abs(c.x[0])}x+y^2${c.x[1]<0?"+":"-"}${2*Math.abs(c.x[1])}y+z^2${c.x[2]<0?"+":"-"}${2*Math.abs(c.x[2])}z${c.dot(c)-r**2<0?"":"+"}${Math.round(c.dot(c)-r**2)}\\)`;
-        document.getElementById('math-container3').innerHTML = math;
-        cmd(`S=Sphere(${c.gStr()},${r})`);
+        document.getElementById('math-container9').innerHTML = math;
+        math = `\\(${Math.round(r**2)}=(x${c.x[0]<0?"+":"-"}${Math.abs(c.x[0])})^2+(y${c.x[1]<0?"+":"-"}${Math.abs(c.x[1])})^2+(z${c.x[2]<0?"+":"-"}${Math.abs(c.x[2])})^2\\)`;
+        document.getElementById('math-container4').innerHTML = math;
         temp=new Vector([2*Math.random()-1,2*Math.random()-1,0]).mult(r/Math.sqrt(2))
         temp.x[2]=Math.sqrt(r**2-temp.x[0]**2-temp.x[1]**2)
+        math = `\\(0=${Math.round(temp.x[0]*100)/100}x${temp.x[1]<0?"":"+"}${Math.round(temp.x[1]*100)/100}y${temp.x[2]<0?"":"+"}${Math.round(temp.x[2]*100)/100}z${-temp.dot(c.add(temp))<0?"":"+"}${Math.round(-temp.dot(c.add(temp))*100)/100}\\text{ i punktet P=}${c.add(temp).str()}\\)`;
+        document.getElementById('math-container8').innerHTML = math;
         d=a.dot(b.sub(c))**2-a.dot(a)*(b.sub(c).dot(b.sub(c))-r**2)
-        cmd(`S_+=${a.mult((-a.dot(b.sub(c))+Math.sqrt(d))/a.dot(a)).add(b).gStr()}`);
-        cmd(`S_-=${a.mult((-a.dot(b.sub(c))-Math.sqrt(d))/a.dot(a)).add(b).gStr()}`);
-        cmd(`tangentplan:0=${temp.x[0]}x+${temp.x[1]}y+${temp.x[2]}z+${-temp.dot(c.add(temp))}`);
-        cmd(`TP=${c.add(temp).gStr()}`);
-        cmd(`v2=Angle(tangentplan,plan)`);
+        math = `\\(${a.mult((-a.dot(b.sub(c))+Math.sqrt(d))/a.dot(a)).add(b).str()}\\text{ og }${a.mult((-a.dot(b.sub(c))-Math.sqrt(d))/a.dot(a)).add(b).str()}\\)`
+        document.getElementById('math-container6').innerHTML = math;
         MathJax.typesetPromise(); // Render MathJax
     }
     reset()
   </script>
-
-
 </body>
