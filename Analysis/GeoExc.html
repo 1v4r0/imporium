@@ -112,15 +112,14 @@
         document.getElementById('math-container2').innerHTML = math;
         n = a.cross(b)
         cmd(`p(s,t)=${a.gStr()}s+${b.gStr()}t+${c.gStr()}`);
-        cmd(`0=${n.x[0]}x+${n.x[1]}y+${n.x[2]}z+${-n.dot(c)}`);
+        cmd(`plan:0=${n.x[0]}x+${n.x[1]}y+${n.x[2]}z+${-n.dot(c)}`);
         a= new Vector([Math.round(20*Math.random())-10,Math.round(20*Math.random())-10,Math.round(20*Math.random())-10]);
         b = new Vector([Math.round(20*Math.random())-10,Math.round(20*Math.random())-10,Math.round(20*Math.random())-10]);
         math = `\\( s(t) = ${a.str()}t+${b.str()} \\)`;
         document.getElementById('math-container1').innerHTML = math;
         cmd(`s(t)=${a.gStr()}t+${b.gStr()}`);
-        cmd(`P=${a.mult(-n.dot(b.sub(c))/n.dot(a)).add(b).gStr()}`);
-        cmd(`v=Angle(s,ligning1)`);
-        cmd(`P=${a.mult(-n.dot(b.sub(c))/n.dot(a)).add(b).gStr()}`);
+        cmd(`P=Intersect(s,plan)`);
+        cmd(`v=Angle(s,plan)`);
         cmd(`n=Vector(${c.gStr()},${c.gStr()}+${n.mult(1/n.len()).gStr()})`);
         temp=new Vector([2*Math.random()-1,2*Math.random()-1,2*Math.random()-1]).mult(10);
         temp2=5*(2*Math.random()-1)
@@ -131,7 +130,7 @@
         cmd(`S=Sphere(${c.gStr()},${r})`);
         temp=new Vector([2*Math.random()-1,2*Math.random()-1,0]).mult(r/Math.sqrt(2))
         temp.x[2]=Math.sqrt(r**2-temp.x[0]**2-temp.x[1]**2)
-        cmd(`0=${temp.x[0]}x+${temp.x[1]}y+${temp.x[2]}z+${-temp.dot(c.add(temp))}`);
+        cmd(`tangentplan:0=${temp.x[0]}x+${temp.x[1]}y+${temp.x[2]}z+${-temp.dot(c.add(temp))}`);
         cmd(`TP=${c.add(temp).gStr()}`);
         d=a.dot(b.sub(c))**2-a.dot(a)*(b.sub(c).dot(b.sub(c))-r**2)
         cmd(`S_+=${a.mult((-a.dot(b.sub(c))+Math.sqrt(d))/a.dot(a)).add(b).gStr()}`);
