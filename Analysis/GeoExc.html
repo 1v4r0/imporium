@@ -29,7 +29,8 @@
   Bestem skæringspunkterne mellem linjen og sfæren(\(S_{\pm}\)) uden hjælpemidler til diskriminant.<br>
   Vælg en af følgende opgaver:<br>
   1. Undersøg om "tangentplan" beskriver en tangentplan til sfæren.<br>
-  2. Bestem tangentplanen til sfæren i punktet TP.<br><br>
+  2. Bestem tangentplanen til sfæren i punktet TP.<br>
+  Bestem vinklen mellem de to planer.<br><br>
   <div id="result"></div>
   <script defer src="https://www.geogebra.org/apps/deployggb.js"></script>
   <div id="ggb" style="width:1600px; height:600px;"></div>
@@ -120,7 +121,6 @@
         cmd(`s(t)=${a.gStr()}t+${b.gStr()}`);
         cmd(`P=Intersect(s,plan)`);
         cmd(`v=Angle(s,plan)`);
-        cmd(`n=Vector(${c.gStr()},${c.gStr()}+${n.mult(1/n.len()).gStr()})`);
         temp=new Vector([2*Math.random()-1,2*Math.random()-1,2*Math.random()-1]).mult(10);
         temp2=5*(2*Math.random()-1)
         c=a.mult(temp2).add(b).add(temp).round();
@@ -130,11 +130,12 @@
         cmd(`S=Sphere(${c.gStr()},${r})`);
         temp=new Vector([2*Math.random()-1,2*Math.random()-1,0]).mult(r/Math.sqrt(2))
         temp.x[2]=Math.sqrt(r**2-temp.x[0]**2-temp.x[1]**2)
-        cmd(`tangentplan:0=${temp.x[0]}x+${temp.x[1]}y+${temp.x[2]}z+${-temp.dot(c.add(temp))}`);
-        cmd(`TP=${c.add(temp).gStr()}`);
         d=a.dot(b.sub(c))**2-a.dot(a)*(b.sub(c).dot(b.sub(c))-r**2)
         cmd(`S_+=${a.mult((-a.dot(b.sub(c))+Math.sqrt(d))/a.dot(a)).add(b).gStr()}`);
         cmd(`S_-=${a.mult((-a.dot(b.sub(c))-Math.sqrt(d))/a.dot(a)).add(b).gStr()}`);
+        cmd(`tangentplan:0=${temp.x[0]}x+${temp.x[1]}y+${temp.x[2]}z+${-temp.dot(c.add(temp))}`);
+        cmd(`TP=${c.add(temp).gStr()}`);
+        cmd(`v=Angle(tangentplan,plan)`);
         MathJax.typesetPromise(); // Render MathJax
     }
     reset()
