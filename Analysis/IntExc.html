@@ -136,7 +136,7 @@ document.getElementById('math-container1').innerHTML = math;
       g=new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1))
       a=Math.round(10*(Math.random()*(2-(g.der().type=="pot"&&g.der().a<0))-!(g.der().type=="pot"&&g.der().a<0)))
       b=Math.round(Math.random()*(10-a)+a)
-      res=ubes.checked?samsat.checked?f.str(g.str()):f.str():samsat.checked?f.val(g.val(b))-f.val(g.val(a)):g.val(b)-g.val(a)
+      res=ubes.checked?samsat.checked?f.str(g.str()):g.str():samsat.checked?f.val(g.val(b))-f.val(g.val(a)):g.val(b)-g.val(a)
       clicked=false
       limits=ubes.checked ? "" : `_{${a}}^{${b}}`
       samsat.checked?math = `$$\\int${limits}${f.der().str(g.str())}${g.der().str()}dx=${clicked?res:"?"}$$`
