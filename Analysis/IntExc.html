@@ -1,0 +1,148 @@
+<html>
+<head>
+  <link href="../imp.css" rel="stylesheet">
+  <title>Integralregning</title>
+  <!--<script id="MathJax-script" async src="../MathJax/es5/tex-mml-chtml.js">-->
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <h3>Rumlige objekter:</h3>
+  <br><br>
+  <div id="math-container1"></div> 
+  <label>
+  <input type="checkbox" id="samsat">
+  Sammensatte funktioner
+</label>
+<label>
+  <input type="checkbox" id="sum">
+  Sum af funktioner
+</label>
+<label>
+  <input type="checkbox" id="ubes">
+  Ubestemt
+</label>
+<button id="showBtn">Vis Resultat</button>
+
+  <button onclick="reset()">Nyt Integral</button>
+   <div id="math-container2"></div> 
+  <script>
+    class Funktion{
+        constructor(t,a,b){
+            this.a=a
+            this.b=b
+            this.type=t
+        }
+        der(){
+            if(this.type=="eksp"){
+                return new Funktion("eksp",this.a,this.a*this.b)
+            }else if(this.type=="pot"){
+                return new Funktion("pot",this.a-1,this.b*this.a)
+            }else if(this.type=="log"){
+                return new Funktion("pot",-1,this.b)
+            }
+        }
+        str(s){
+            if(this.type=="eksp"){
+                return `${this.b==1?"":this.b}${s!=undefined?"(":""}{e^{${this.a==1?"":this.a}${s!=undefined?"("+s+")":"x"}}}${s!=undefined?")":""}`
+            }else if(this.type=="pot"){
+                if(this.a<0){
+                    return `{\\frac{${this.b}}{${Math.abs(this.a)!=1?"(":""}${s!=undefined?s:"x"}${Math.abs(this.a)!=1?")":""}^{${this.a==-1?"":this.a}}}}`
+                }else if(this.a==0){
+                    return `{${this.b}}`
+                }else{
+                    return `{${this.b==1?"":this.b}${s!=undefined?"(":""}${s!=undefined?s:"x"}${s!=undefined?")":""}^{${this.a==1?"":this.a}}}`
+                }
+            }else if(this.type=="log"){
+                return `{${this.b!=1?this.b:""}\\log(${s!=undefined?s:"x"})}`
+            }
+        }
+        val(x){
+          if(this.type=="eksp"){
+            return this.b*Math.exp(this.a*x)
+          }else if(this.type=="pot"){
+            return this.b*x**(this.a)
+          }else if(this.type=="log"){
+            return Math.log(x)
+          }
+        }
+    }
+    const btn = document.getElementById("showBtn");
+    const checkbox = document.getElementById("samsat");
+    let clicked = false
+    btn.onclick = () => {
+      clicked = !clicked;
+samsat.checked?math = `$$\\int${limits}${f.der().str(g.str())}${g.der().str()}dx=${clicked?res:"?"}$$`
+:math = `$$\\int${limits}${g.der().str()}dx=${clicked?String(res)+(ubes.checked?"+c":""):"?"}$$`;
+document.getElementById('math-container1').innerHTML = math;
+      MathJax.typesetPromise(); // Render MathJax
+    }
+    let f
+    let g
+    let a
+    let b
+    let res
+    let limits
+    reset()
+    class Vector{
+      constructor(x){
+        this.x=x
+      }
+      add(v){
+        return new Vector([this.x[0]+v.x[0],this.x[1]+v.x[1],this.x[2]+v.x[2]])
+      }
+      mult(k){
+        return new Vector([this.x[0]*k,this.x[1]*k,this.x[2]*k])
+      }
+      sub(v){
+        return this.add(v.mult(-1))
+      }
+      dot(v){
+        let S=0
+        for(let i=0;i<v.x.length;i++){
+          S+=this.x[i]*v.x[i]
+        }
+        return S
+      }
+      cross(v){
+        return new Vector([this.x[1]*v.x[2]-this.x[2]*v.x[1],this.x[2]*v.x[0]-this.x[0]*v.x[2],this.x[0]*v.x[1]-this.x[1]*v.x[0]])
+      }
+      len(){
+        let S=0
+        for(let i=0;i<this.x.length;i++){
+          S+=this.x[i]**2
+        }
+        return Math.sqrt(S)
+      }
+      round(){
+        let S=[]
+        for(let i=0;i<this.x.length;i++){
+          S.push(Math.round(this.x[i]))
+        }
+        return new Vector(S)
+      }
+      str(){
+        return `\\begin{pmatrix}
+     ${this.x[0]} \\\\
+     ${this.x[1]} \\\\
+     ${this.x[2]}
+   \\end{pmatrix}`;
+      }
+    }
+    function reset(){
+      let funcs=["eksp","pot","log"]
+      f=new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1))
+      g=new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1))
+      a=Math.round(10*(Math.random()*(2-(g.der().type=="pot"&&g.der().a<0))-!(g.der().type=="pot"&&g.der().a<0)))
+      b=Math.round(Math.random()*(10-a)+a)
+      res=ubes.checked?samsat.checked?f.str(g.str()):f.str():samsat.checked?f.val(g.val(b))-f.val(g.val(a)):g.val(b)-g.val(a)
+      clicked=false
+      limits=ubes.checked ? "" : `_{${a}}^{${b}}`
+      samsat.checked?math = `$$\\int${limits}${f.der().str(g.str())}${g.der().str()}dx=${clicked?res:"?"}$$`
+      :math = `$$\\int${limits}${g.der().str()}dx=${clicked?res:"?"}$$`;
+      document.getElementById('math-container1').innerHTML = math;
+      MathJax.typesetPromise(); // Render MathJax
+    } 
+  </script>
+</body>
