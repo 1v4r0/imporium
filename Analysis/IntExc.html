@@ -8,7 +8,7 @@
   </script>
 </head>
 <body>
-  <h3>Rumlige objekter:</h3>
+  <h3>Integral:</h3>
   <br><br>
   <div id="math-container1"></div> 
   <label>
@@ -48,7 +48,7 @@
                 return `${this.b==1?"":this.b}${s!=undefined?"(":""}{e^{${this.a==1?"":this.a}${s!=undefined?"("+s+")":"x"}}}${s!=undefined?")":""}`
             }else if(this.type=="pot"){
                 if(this.a<0){
-                    return `{\\frac{${this.b}}{${Math.abs(this.a)!=1?"(":""}${s!=undefined?s:"x"}${Math.abs(this.a)!=1?")":""}^{${this.a==-1?"":this.a}}}}`
+                    return `{\\frac{${this.b}}{${Math.abs(this.a)!=1?"(":""}${s!=undefined?s:"x"}${Math.abs(this.a)!=1?")":""}^{${this.a==-1?"":-this.a}}}}`
                 }else if(this.a==0){
                     return `{${this.b}}`
                 }else{
@@ -73,10 +73,7 @@
     let clicked = false
     btn.onclick = () => {
       clicked = !clicked;
-samsat.checked?math = `$$\\int${limits}${f.der().str(g.str())}${g.der().str()}dx=${clicked?res:"?"}$$`
-:math = `$$\\int${limits}${g.der().str()}dx=${clicked?String(res)+(ubes.checked?"+c":""):"?"}$$`;
-document.getElementById('math-container1').innerHTML = math;
-      MathJax.typesetPromise(); // Render MathJax
+      update()
     }
     let f
     let g
@@ -130,19 +127,22 @@ document.getElementById('math-container1').innerHTML = math;
    \\end{pmatrix}`;
       }
     }
+    function update(){
+      res=ubes.checked?samsat.checked?f.str(g.str()):g.str():samsat.checked?f.val(g.val(b))-f.val(g.val(a)):g.val(b)-g.val(a)
+      limits=ubes.checked ? "" : `_{${a}}^{${b}}`
+      samsat.checked?math = `$$\\int${limits}${f.der().str(g.str())}${g.der().str()}dx=${clicked?res+(ubes.checked?"+c":""):"?"}$$`
+      :math = `$$\\int${limits}${g.der().str()}dx=${clicked?res+(ubes.checked?"+c":""):"?"}$$`;
+      document.getElementById('math-container1').innerHTML = math;
+      MathJax.typesetPromise(); // Render MathJax
+    }
     function reset(){
       let funcs=["eksp","pot","log"]
       f=new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1))
       g=new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1))
       a=Math.round(10*(Math.random()*(2-(g.der().type=="pot"&&g.der().a<0))-!(g.der().type=="pot"&&g.der().a<0)))
       b=Math.round(Math.random()*(10-a)+a)
-      res=ubes.checked?samsat.checked?f.str(g.str()):g.str():samsat.checked?f.val(g.val(b))-f.val(g.val(a)):g.val(b)-g.val(a)
       clicked=false
-      limits=ubes.checked ? "" : `_{${a}}^{${b}}`
-      samsat.checked?math = `$$\\int${limits}${f.der().str(g.str())}${g.der().str()}dx=${clicked?res:"?"}$$`
-      :math = `$$\\int${limits}${g.der().str()}dx=${clicked?res:"?"}$$`;
-      document.getElementById('math-container1').innerHTML = math;
-      MathJax.typesetPromise(); // Render MathJax
+      update()
     } 
   </script>
 </body>
