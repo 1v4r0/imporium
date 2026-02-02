@@ -45,17 +45,17 @@
         }
         str(s){
             if(this.type=="eksp"){
-                return `${this.b==1?"":this.b}${s!=undefined?"(":""}{e^{${this.a==1?"":this.a}${s!=undefined?"("+s+")":"x"}}}${s!=undefined?")":""}`
+                return `${this.b==1?"":this.b}${s!=undefined?"\left(":""}{e^{${this.a==1?"":this.a}${s!=undefined?"\left("+s+"\right)":"x"}}}${s!=undefined?"\right)":""}`
             }else if(this.type=="pot"){
                 if(this.a<0){
-                    return `{\\frac{${this.b}}{${Math.abs(this.a)!=1?"(":""}${s!=undefined?s:"x"}${Math.abs(this.a)!=1?")":""}^{${this.a==-1?"":-this.a}}}}`
+                    return `{\\frac{${this.b}}{${Math.abs(this.a)!=1&&s!=undefined?"(":""}${s!=undefined?s:"x"}${Math.abs(this.a)!=1&&s!=undefined?")":""}^{${this.a==-1?"":-this.a}}}}`
                 }else if(this.a==0){
                     return `{${this.b}}`
                 }else{
-                    return `{${this.b==1?"":this.b}${s!=undefined?"(":""}${s!=undefined?s:"x"}${s!=undefined?")":""}^{${this.a==1?"":this.a}}}`
+                    return `{${this.b==1?"":this.b}${s!=undefined?"\left(":""}${s!=undefined?s:"x"}${s!=undefined?"\right)":""}^{${this.a==1?"":this.a}}}`
                 }
             }else if(this.type=="log"){
-                return `{${this.b!=1?this.b:""}\\log(${s!=undefined?s:"x"})}`
+                return `{${this.b!=1?this.b:""}\\log\left(${s!=undefined?s:"x"}\right)}`
             }
         }
         val(x){
