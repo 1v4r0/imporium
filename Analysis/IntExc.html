@@ -45,17 +45,17 @@
         }
         str(s){
             if(this.type=="eksp"){
-                return `${this.b==1?"":this.b}${s!=undefined?"\\left(":""}{e^{${this.a==1?"":this.a}${s!=undefined?"\\left("+s+"\\right)":"x"}}}${s!=undefined?"\\right)":""}`
+                return `${this.b==1?"":this.b==-1?"-":this.b}${s!=undefined?"\\left(":""}{e^{${this.a==1?"":this.a==-1?"-":this.a}${s!=undefined?"\\left("+s+"\\right)":"x"}}}${s!=undefined?"\\right)":""}`
             }else if(this.type=="pot"){
                 if(this.a<0){
-                    return `{\\frac{${this.b}}{${Math.abs(this.a)!=1&&s!=undefined?"(":""}${s!=undefined?s:"x"}${Math.abs(this.a)!=1&&s!=undefined?")":""}^{${this.a==-1?"":-this.a}}}}`
+                    return `{${this.b<0?"-":""}\\frac{${Math.abs(this.b)}}{${(Math.abs(this.a)!=1&&s!=undefined)?"\\left(":""}${s!=undefined?s:"x"}${Math.abs(this.a)!=1&&s!=undefined?"\\right)":""}^{${this.a==-1?"":-this.a}}}}`
                 }else if(this.a==0){
                     return `{${this.b}}`
                 }else{
-                    return `{${this.b==1?"":this.b}${s!=undefined?"\\left(":""}${s!=undefined?s:"x"}${s!=undefined?"\\right)":""}^{${this.a==1?"":this.a}}}`
+                    return `{${this.b==1?"":this.b==-1?"-":this.b}${s!=undefined?"\\left(":""}${s!=undefined?s:"x"}${s!=undefined?"\\right)":""}^{${this.a==1?"":this.a}}}`
                 }
             }else if(this.type=="log"){
-                return `{${this.b!=1?this.b:""}\\log\\left(${s!=undefined?s:"x"}\\right)}`
+                return `{${this.b!=1?this.b:this.b==-1?"-":""}\\log\\left(${s!=undefined?s:"x"}\\right)}`
             }
         }
         val(x){
@@ -64,22 +64,22 @@
           }else if(this.type=="pot"){
             return this.b*x**(this.a)
           }else if(this.type=="log"){
-            return Math.log(x)
+            return this.b*Math.log(x)
           }
         }
     }
     const btn = document.getElementById("showBtn");
-    const checkbox = document.getElementById("samsat");
     let clicked = false
     btn.onclick = () => {
       clicked = !clicked;
       update()
     }
-    let f
-    let g
-    let a
-    let b
-    let res
+    let f=[]
+    let g=[]
+    let a=0
+    let b=0
+    let areal=[]
+    let stam=""
     let limits
     reset()
     class Vector{
@@ -128,19 +128,32 @@
       }
     }
     function update(){
-      res=ubes.checked?samsat.checked?f.str(g.str()):g.str():samsat.checked?f.val(g.val(b))-f.val(g.val(a)):g.val(b)-g.val(a)
       limits=ubes.checked ? "" : `_{${a}}^{${b}}`
-      samsat.checked?math = `$$\\int${limits}${f.der().str(g.str())}${g.der().str()}dx=${clicked?res+(ubes.checked?"+c":""):"?"}$$`
-      :math = `$$\\int${limits}${g.der().str()}dx=${clicked?res+(ubes.checked?"+c":""):"?"}$$`;
+      let stams=""
+      let opr=""
+      for(let i=0;i<1+sum.checked;i++){
+        stams+=(stams==""?"":"+")+(samsat.checked?f[i].str(g[i].str()):g[i].str())
+        opr+=(opr==""?"":"+")+(samsat.checked?f[i].der().str(g[i].str())+(g[i].der().b<0?"\\left(":"")+g[i].der().str()+(g[i].der().b<0?"\\right)":""):g[i].der().str())
+      }
+      math = `$$\\int${limits}${opr}dx=${clicked?ubes.checked?stams+"+c":"\\left["+stams+"\\right]"+limits+"="+areal[+samsat.checked]:"?"}$$`
       document.getElementById('math-container1').innerHTML = math;
       MathJax.typesetPromise(); // Render MathJax
     }
     function reset(){
       let funcs=["eksp","pot","log"]
-      f=new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1))
-      g=new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1))
-      a=Math.round(10*(Math.random()*(2-(g.der().type=="pot"&&g.der().a<0))-!(g.der().type=="pot"&&g.der().a<0)))
+      f=[]
+      g=[]
+      for(let i=0;i<2;i++){
+      f.push(new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1)))
+      g.push(new Funktion(funcs[Math.floor(Math.random()*funcs.length)],Math.ceil(4*Math.random())*(Math.random()<0.5&&f[i].type!="log"?-1:1),Math.ceil(4*Math.random())*(Math.random()<0.5?-1:1)))
+      }
+      a=Math.round(10*(Math.random()*(2-((g[0].der().type=="pot"&&g[0].der().a<0)||(g[1].der().type=="pot"&&g[1].der().a<0)))-!((g[0].der().type=="pot"&&g[0].der().a<0)||(g[1].der().type=="pot"&&g[1].der().a<0))))
       b=Math.round(Math.random()*(10-a)+a)
+      areal=[]
+      for(let i=0;i<2;i++){
+        areal.push(g[i].val(b)-g[i].val(a))
+        areal.push(f[i].val(g[i].val(b))-f[i].val(g[i].val(a)))
+      }
       clicked=false
       update()
     } 
