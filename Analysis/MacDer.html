@@ -59,18 +59,35 @@
     \sin(x)=&\frac{e^{ix}-e^{-ix}}{2i}
   \end{align}
   An application to this definition is that
-  <div class="lem"><center> <h2> Lemma</h2></center>
+  <div class="lem"><center> <h2> Lemmas</h2></center>
+    $$\sin(a+b)=\sin(a)\cos(b)+\cos(a)\sin(b)$$
     $$\sin(a)-\sin(b)=2\cos\left(\frac{a+b}{2}\right)\sin\left(\frac{a-b}{2}\right)$$
+    $$\lim_{x\to0}\frac{1-\cos(x)}{x}=0$$
+    $$\lim_{x\to0}\frac{\sin(x)}{x}=1$$
   </div>
   <h3>Proof</h3>
-  We start by rewriting the right hand side
+  We start by rewriting the right hand side of the first equation:
+  \begin{align}
+    \sin(a)\cos(b)+\cos(a)\sin(b)=&\frac{e^{ia}-e^{-ia}}{2i}\frac{e^{ib}+e^{-ib}}{2}+\frac{e^{ia}+e^{-ia}}{2}\frac{e^{ib}-e^{-ib}}{2i}\\
+    =&\frac{e^{i(a+b)}}{4i}+\cancel{\frac{e^{i(a-b)}}{4i}-\frac{e^{i(-a+b)}}{4i}}-\frac{e^{-i(a+b)}}{4i}+\frac{e^{i(a+b)}}{4i}-\cancel{\frac{e^{i(a-b)}}{4i}+\frac{e^{i(-a+b)}}{4i}}-\frac{e^{-i(a+b)}}{4i}\\
+    =&2\left(\frac{e^{i(a+b)}}{4i}-\frac{e^{-i(a+b)}}{4i}\right)=\frac{e^{i(a+b)}-e^{-i(a+b)}}{2i}\\
+    =&\sin(a+b)
+  \end{align}
+  and the second:
   \begin{align}
   2\cos\left(\frac{a+b}{2}\right)\sin\left(\frac{a-b}{2}\right)=&\cancel{2}\frac{e^{i\frac{a+b}{2}}+e^{-i\frac{a+b}{2}}}{\cancel{2}}\frac{e^{i\frac{a-b}{2}}-e^{-i\frac{a-b}{2}}}{2i}\\
   =&\frac{e^{i\frac{a\cancel{+b}}{2}+i\frac{a\cancel{-b}}{2}}-e^{i\frac{\cancel{a}+b}{2}-i\frac{\cancel{a}-b}{2}}+e^{-i\frac{\cancel{a}+b}{2}+i\frac{\cancel{a}-b}{2}}-e^{-i\frac{a\cancel{+b}}{2}-i\frac{a\cancel{-b}}{2}}}{2i}\\
   =&\frac{e^{ia}-e^{ib}+e^{-ib}-e^{-ia}}{2i}\\
   =&\frac{e^{ia}-e^{-ia}}{2i}-\frac{e^{ib}-e^{-ib}}{2i}\\
   =&\sin(a)-\sin(b)
-  \end{align}<p style="text-align:center;">&#x220E;</p>
+  \end{align}
+  For the last two I make a geometric argument. Consider the normal sine and cosine, it's the height and width of a right triangle in the unit circle. For \(1-\cos(x)\) we make another
+  right triangle that is adjacent to the first, but where the third vertex is at \((1,0)\) and call its angle \(\theta\), instead of at the origin. In this new triangle we have a hypotenuse
+  that approximately has the same length as the arc length \(x\) for small values of \(x\) and \(\lim_{x\to0}\theta=\frac{\pi}{2}\), which means that
+  $$\lim_{x\to0}\frac{1-\cos(x)}{x}=\lim_{x\to0}\cos(\theta)=\cos\left(\frac{\pi}{2}\right)=0$$
+  and
+  $$\lim_{x\to0}\frac{\sin(x)}{x}=\lim_{x\to0}\sin(\theta)=\sin\left(\frac{\pi}{2}\right)=1$$
+  <p style="text-align:center;">&#x220E;</p>
   <div class="thm"><center> <h2> Derivatives Theorem</h2></center>
   \begin{align}
     \cos'(x)=&-\sin(x)\\
@@ -118,11 +135,17 @@ trigonometric functions which yields
     web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   <h3>Proof 2 from First Principles </h3>
   \begin{align}
-    \frac{\sin(x+h)-\sin(x)}{h}=&2\cos\left(\frac{x+h+x}{2}\right)\sin\left(\frac{x+h-x}{2}\right)/h\\
-    =&\frac{2}{h}\cos(x+h/2)\sin(h/2)\\
-    =&\cos(x+k)\frac{\sin(k)}{k}\\
-    \to&\cos(x)\cdot1
+    \lim_{h\to0}\frac{\sin(x+h)-\sin(x)}{h}=&\lim_{h\to0}2\cos\left(\frac{x+h+x}{2}\right)\sin\left(\frac{x+h-x}{2}\right)/h\\
+    =&\lim_{h\to0}\frac{2}{h}\cos\left(x+\frac{h}{2}\right)\sin\left(\frac{h}{2}\right)\\
+    =&\lim_{k\to0}\cos(x+k)\frac{\sin(k)}{k}\\
+    =&\cos(x)\cdot1
   \end{align}<p style="text-align:center;">&#x220E;</p>
+  <h3>Proof 3 from First Principles </h3>
+  \begin{align}
+    \lim_{h\to0}\frac{\sin(x+h)-\sin(x)}{h}=&\lim_{h\to0}\frac{\sin(x)\cos(h)+\cos(x)\sin(h)-\sin(x)}{h}\\
+    =&\sin(x)\lim_{h\to0}\frac{\cos(h)-1}{h}+\cos(x)\lim_{h\to0}\frac{sin(h)}{h}\\
+    =&\sin(x)\cdot0+\cos(x)\cdot1
+  \end{align}
   This means that if we take the second derivative we get that
   <div class="cor"><center><h2> Corollary </h2></center>
   \begin{align}
