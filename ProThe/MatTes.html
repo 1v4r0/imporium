@@ -129,20 +129,18 @@
     <h1> Main Result </h1>
       Before I state the main results, I need a lemma
       <div class="lem"><center><h2> Lemma </h2></center>
-        $$g(n)=\sum_{r=0}^n\frac{1}{(n-r)!}\sum_{k=0}^r\frac{(-1)^k}{k!}=1$$</div>
+        $$g(n)=\sum_{r=0}^n\frac{1}{r!}\sum_{k=0}^{n-r}\frac{(-1)^k}{k!}=1$$</div>
         <h3> Proof </h3>
           I will show that \(g(n+1)=g(n)\) and then it follows from the fact that
           \(g(0)=1\).
           \begin{align}
-            g(n+1)=&\sum_{r=0}^{n+1}\frac{1}{(n+1-r)!}\sum_{k=0}^r\frac{(-1)^k}{k!}\\
-            =&\sum_{r=-1}^n\frac{1}{(n-r)!}\sum_{k=0}^{r+1}\frac{
-              (-1)^k}{k!}\\
-            =&\sum_{r=-1}^n\frac{1}{(n-r)!}\left(\frac{(-1)^{r+1}}{(r+1)!}+\sum_{k=0}^r
-              \frac{(-1)^k}{k!}\right)\\
-            =&g(n)+\frac{1}{(n+1)!}\sum_{r=0}^n\frac{(-1)^{r+1}(n+1)!}{(r+1)!(n+1
-              -(r+1))!}\\
-            =&g(n)+\sum_{r=-1}^n(-1)^{r+1}{n+1\choose r+1}\\
-            =&g(n)+\cancel{\sum_{r=0}^{n+1}(-1)^r{n+1\choose r}}
+            g(n+1)-g(n)=&\sum_{r=0}^{n+1}\frac{1}{r!}\sum_{k=0}^{n+1-r}\frac{(-1)^k}{k!}-\sum_{r=0}^n\frac{1}{r!}\sum_{k=0}^{n-r}\frac{(-1)^k}{k!}\\
+            =&\frac{1}{(n+1)!}\sum_{k=0}^{n+1-(n+1)}\frac{(-1)^k}{k!}+\sum_{r=0}^{n-r}\frac{1}{r!}\frac{(-1)^{n+1-r}}{(n+1-r)!}\\
+            =&\frac{1}{(n+1)!}\sum_{k=0}^{n+1-(n+1)}\frac{(-1)^k}{k!}+\frac{1}{(n+1)!}\sum_{r=0}^{n-r}(-1)^{n+1-r}\frac{(n+1)!}{r!(n+1-r)!}\\
+            =&\frac{1}{(n+1)!}\left(1+\sum_{r=0}^n(-1)^{n+1-r}{n+1\choose r}\right)\\
+            =&\frac{1}{(n+1)!}\left((-1)^{n+1-(n+1)}{n+1\choose n+1}+\sum_{r=0}^n(-1)^{n+1-r}{n+1\choose r}\right)\\
+            =&\frac{1}{(n+1)!}\sum_{r=0}^{n+1}(-1)^{n+1-r}{n+1\choose r}\\
+            =&\frac{1}{(n+1)!}\cdot0=0
           \end{align}
           since alternately adding and subtracting every element in a row in Pascal's
           triangle always yields 0.
@@ -172,6 +170,7 @@
           =&\sum_{r=0}^{n-1}\frac{(n-r)\cancel{n!}}{\cancel{r!}(n-r)!\cancel{n!}}\cancel{
             r!}\sum_{k=0}^r\frac{(-1)^k}{k!}\\
           =&\sum_{r=0}^{n-1}\frac{1}{(n-r-1)!}\sum_{k=0}^r\frac{(-1)^k}{k!}\\
+          =&\sum_{r=0}^{n-1}\frac{1}{r!}\sum_{k=0}^{n-1-r}\frac{(-1)^k}{k!}\\
           =&1
         \end{align}
         by the lemma.

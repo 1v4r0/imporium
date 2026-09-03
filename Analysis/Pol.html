@@ -50,9 +50,9 @@
     that states that the polynomial always has \(n\) roots, with
     so-called "multiplicity". With respect to the roots the polynomial can
     always be written in a factorized form as
-      $$p(x)=a_n\prod_{k=0}^n(x-r_k)$$
+      $$p(x)=a_n\prod_{k=1}^n(x-r_k)$$
     where
-      $$p(0)=a_0=a_n\prod_{k=1}^nr_k$$
+      $$p(0)=a_0=a_n(-1)^n\prod_{k=1}^nr_k$$
     where \(r_k\) are all the roots, and their multiplicity is how many times
     they appear in this product. If a polynomial has more than one real root
     then its graph must intersect the x-axis at least twice, which means that
@@ -69,7 +69,7 @@
       It can actually be factorized into
         $$p(x)=(x+1)^5$$
       with
-        $$a_5\prod_{k=1}^5 r_k=1\prod_{k=1}^5 1=1\cdot1^5=1=a_0=p(0)$$
+        $$a_5(-1)^5\prod_{k=1}^5 r_k=-1\prod_{k=1}^5-1=-1\cdot(-1)^5=1=a_0=p(0)$$
     </div></div>
     <h2> Derivatives </h2>
       We can differentiate the polynomial term-wise and get
@@ -132,7 +132,7 @@
       y-axis and related the sum of the roots, \(b=-a(r_1+r_2)\). The last part
       of that is the first half of Viète's formula for quadratics, the full
       formula following directly from the factorization form
-        $$p(x)=a(x-r_1)(x-r_2)=ax^2-2a(r_1+r_2)x+r_1r_2$$
+        $$p(x)=a(x-r_1)(x-r_2)=ax^2-a(r_1+r_2)x+r_1r_2$$
       so
         $$-\frac{b}{a}=r_1+r_2$$
       and
