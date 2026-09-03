@@ -136,7 +136,7 @@
           \begin{align}
             g(n+1)-g(n)=&\sum_{r=0}^{n+1}\frac{1}{r!}\sum_{k=0}^{n+1-r}\frac{(-1)^k}{k!}-\sum_{r=0}^n\frac{1}{r!}\sum_{k=0}^{n-r}\frac{(-1)^k}{k!}\\
             =&\frac{1}{(n+1)!}\sum_{k=0}^{n+1-(n+1)}\frac{(-1)^k}{k!}+\sum_{r=0}^{n-r}\frac{1}{r!}\frac{(-1)^{n+1-r}}{(n+1-r)!}\\
-            =&\frac{1}{(n+1)!}\sum_{k=0}^{n+1-(n+1)}\frac{(-1)^k}{k!}+\frac{1}{(n+1)!}\sum_{r=0}^{n-r}(-1)^{n+1-r}\frac{(n+1)!}{r!(n+1-r)!}\\
+            =&\frac{1}{(n+1)!}\frac{(-1)^0}{0!}+\frac{1}{(n+1)!}\sum_{r=0}^{n-r}(-1)^{n+1-r}\frac{(n+1)!}{r!(n+1-r)!}\\
             =&\frac{1}{(n+1)!}\left(1+\sum_{r=0}^n(-1)^{n+1-r}{n+1\choose r}\right)\\
             =&\frac{1}{(n+1)!}\left((-1)^{n+1-(n+1)}{n+1\choose n+1}+\sum_{r=0}^n(-1)^{n+1-r}{n+1\choose r}\right)\\
             =&\frac{1}{(n+1)!}\sum_{r=0}^{n+1}(-1)^{n+1-r}{n+1\choose r}\\
