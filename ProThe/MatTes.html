@@ -37,7 +37,7 @@
         I will define the formulas for \(n+1\) for convenience
         \begin{align}
         (n+1)¡=&n!\sum_{k=0}^{n-1}\frac{k¡}{k!}\\
-        =&k(k¡+(k-1)¡)
+        =&n(n¡+(n-1)¡)
         \end{align}</div>
         <h3> Proof </h3>
         Denote a "correct" answer to the matching test with \(n+1\) questions, or
@@ -56,8 +56,8 @@
         spot or I place it in one of the others. In the former case, I have the following
         configuration
           $$BA---...$$
-        where I still have to scramble the last \(n-2\) letters, but this can be
-        done in \((n-2)¡\) ways by definition. In the latter case, I have \(n-2\)
+        where I still have to scramble the last \(n-1\) letters, but this can be
+        done in \((n-1)¡\) ways by definition. In the latter case, I have \(n-1\)
         choices of where to place the \(B\) and they are all symmetric so I can just
         choose \(C\) with the following configuration
           $$-AB--...$$
@@ -69,7 +69,7 @@
           (n+1)¡=n(&(n-1)¡+(n-1)(\\
           &(n-2)¡+(n-2)(\\
           &(n-3)¡+\cdots+3(\\
-          &2¡+2(1¡+1)\cdots)))
+          &2¡+2(1¡+1(0¡+0))\cdots)))
         \end{align}
         These are a bunch of layered parentheses, and if we expand them, what we
         get is
