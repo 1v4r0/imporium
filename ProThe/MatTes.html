@@ -69,13 +69,13 @@
           (n+1)¡=n(&(n-1)¡+(n-1)(\\
           &(n-2)¡+(n-2)(\\
           &(n-3)¡+\cdots+3(\\
-          &2¡+2(1¡+1(0¡+0))\cdots)))
+          &2¡+2(1¡+1(0¡+0))\cdots))))
         \end{align}
         These are a bunch of layered parentheses, and if we expand them, what we
         get is
         \begin{align}
           (n+1)¡=&n(n-1)¡+n(n-1)(n-2)¡\\
-          &+\cdots+\frac{n!}{2!}2¡+n!1¡+n!\\
+          &+\cdots+\frac{n!}{2!}2¡+n!1¡+n!0¡\\
           =&\sum_{k=0}^{n-1}\frac{n!}{k!}k¡\\
           =&n!\sum_{k=0}^{n-1}\frac{k¡}{k!}
         \end{align}
@@ -90,11 +90,22 @@
         <center><p style="text-align:center;">&#x220E;</p></center>
       I will state and prove a closed form formula for later
       <div class="thm"><center><h2> Closed Form </h2></center>
-        $$n¡=n!\sum_{k=0}^n\frac{(-1)^k}{k!}$$</div>
+        $$n¡=n!\sum_{k=0}^n\frac{(-1)^k}{k!}\approx\frac{n!}{e}$$
+      </div>
       What is slightly amazing is that these are just the partial sums for the MacLaurin
-      series for \(f(x)=e^{-x}\), which means that you can actually calculate these
-      by rounding the number \(\frac{n!}{e}\) to the nearest integer.
-      <h3> Proof </h3>
+      series for \(f(x)=e^{-x}\), which explains the last approximation. This also means that
+        $$\frac{n¡}{n!}\approx\frac{1}{e}\approx37\%$$
+      <div class="lem"><center><h3> Lemma </h3></center>
+        $$n¡-n(n-1)¡=(-1)^n$$
+      </div>
+        <h4> Proof </h4>
+        \begin{align}
+          n¡-n(n-1)¡=&n!\sum_{k=0}^n\frac{(-1)^k}{k!}+n(n-1)!\sum_{k=0}^{n-1}\frac{(-1)^k}{k!}\\
+          =&n!\left(\sum_{\cancel{k=0}}^n\frac{(-1)^k}{k!}-\cancel{\sum_{k=0}^{n-1}\frac{(-1)^k}{k!}}\right)\\
+          =&\cancel{n!}\frac{(-1)^n}{\cancel{n!}}
+        \end{align}
+        <center><p style="text-align:center;">&#x220E;</p></center>
+      <h3> Proof of theorem </h3>
         I will make a proof by induction and it's obviously true for \(0\leq n\leq2\),
         so assume it's true for all \(n\leq N\), and I will show it's true for \(
         n=N+1\).
@@ -102,26 +113,23 @@
           (N+1)!\sum_{k=0}^{N+1}\frac{(-1)^k}{k!}=&(N+1)!\left(\frac{(-1)^{N+1}}
           {(N+1)!}+\sum_{k=0}^N\frac{(-1)^k}{k!}\right)\\
           =&(-1)^{N+1}+(N+1)N!\sum_{k=0}^N\frac{(-1)^k}{k!}\\
-          =&(-1)^{N+1}+(N+1)N¡
+          =&(N+1)N¡+(-1)^{N+1}\\
+          =&NN¡+N¡+(-1)^{N+1}\\
+          =&NN¡+(N-1)((N-1)¡+(N-2)¡)+(-1)^{N+1}\\
+          =&NN¡+N(N-1)¡-(N-1)¡+(N-1)(N-2)¡+(-1)^{N+1}\\
+          =&N(N¡+(N-1)¡)-\cancel{(-1)^{N-1}+(-1)^{N+1}}\\
+          =&(N+1)¡
         \end{align}
-        By the induction assumption. Now I will focus on the last term.
-        \begin{align}
-          (N+1)N¡=&NN¡+N¡\\
-          =&NN¡+(N-1)((N-1)¡+(N-2)¡)\\
-          =&NN¡+N(N-1)¡-(N-1)¡+(N-1)(N-2)¡\\
-          =&N(N¡+(N-1)¡)\\
-          &-(N-1)!\sum_{k=0}^{N-1}\frac{(-1)^k}{k!}+(N-1)(N-2)!\sum_{k=0}^{N-2}
-          \frac{(-1)^k}{k!}\\
-          =&(N+1)¡-\cancel{(N-1)!}\frac{(-1)^{N-1}}{\cancel{(N-1)!}}
-        \end{align}
-        since all the terms in the two sums cancel except for the highest term in
-        the first one. This means that
-        \begin{align}
-          (N+1)!\sum_{k=0}^{N+1}\frac{(-1)^k}{k!}=&(-1)^{N+1}+(N+1)N¡\\
-          =&\cancel{(-1)^{N+1}}+(N+1)¡-\cancel{(-1)^{N-1}}
-        \end{align}
-        since every other power of \(-1\) is equal.
+        By the induction assumption and since every other power of \(-1\) is equal.
         <center><p style="text-align:center;">&#x220E;</p></center>
+        A fun consequence of this is that
+        \begin{align}
+          \frac{(n+1)!}{e}\approx(n+1)¡=n!\sum_{k=0}^{n-1}\frac{k¡}{k!}
+          =n!\sum_{k=0}^{n-1}\frac{1}{e}+e_k=n!\left(\frac{n}{e}+\sum_{k=0}^{n-1}e_k\right)
+          =\frac{n!}{e}\left(n+e\sum_{k=0}^{n-1}e_k\right)
+        \end{align}
+        where \(e_k\) are the error terms in the approximation to \(e^{-1}\). The only way
+        this can be true, is if the sum of the error terms =itself approximates \(e^{-1}\)
         <center><iframe width="560" height="315" src="https://www.youtube.com/embed/X3G_rMX8kdQ"
           title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
           clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -130,6 +138,9 @@
       Before I state the main results, I need a lemma
       <div class="lem"><center><h2> Lemma </h2></center>
         $$g(n)=\sum_{r=0}^n\frac{1}{r!}\sum_{k=0}^{n-r}\frac{(-1)^k}{k!}=1$$</div>
+      A heuristic argument is that the two sums that appear in this expression are just
+      the partial Taylor series for \(e\) and \(e^{-1}\) so \(g(n)\approx e\cdot e^{-1}=1\).
+      It's actually interesting that the errors seem to perfectly cancel.
         <h3> Proof </h3>
           I will show that \(g(n+1)=g(n)\) and then it follows from the fact that
           \(g(0)=1\).
